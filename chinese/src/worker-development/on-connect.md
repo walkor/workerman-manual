@@ -1,0 +1,25 @@
+# onConnect
+## 说明:
+```php
+callback Worker::$onConnect
+```
+
+当有客户端连接时触发的回调函数
+
+## 回调函数的参数
+
+``` $connection ```
+
+连接对象，连接对象的说明见下一节
+
+
+## 范例
+
+```php
+use WorkerMan\Worker;
+$worker = new Worker('websocket://0.0.0.0:8484');
+$worker->onConnect = function($connection)
+{
+    echo "new connection from ip " . $connection->getRemoteIp() . "\n";
+};
+```
