@@ -11,8 +11,8 @@ static Event Worker::$globalEvent
 ## 范例
 
 ```php
-use WorkerMan\Worker;
-use \Workerman\Events\EventInterface;
+use Workerman\Worker;
+use Workerman\Events\EventInterface;
 
 $worker = new Worker('Text://0.0.0.0:8484');
 $worker->onWorkerStart = function($worker)

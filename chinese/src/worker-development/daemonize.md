@@ -10,7 +10,7 @@ static bool Worker::$daemonize
 ## 范例
 
 ```php
-use WorkerMan\Worker;
+use Workerman\Worker;
 Worker::$daemonize = true;
 $worker = new Worker('Text://0.0.0.0:8484');
 $worker->onWorkerStart = function($worker)

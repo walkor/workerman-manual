@@ -13,7 +13,7 @@ string Worker::$user
 ## 范例
 
 ```php
-use WorkerMan\Worker;
+use Workerman\Worker;
 $worker = new Worker('websocket://0.0.0.0:8484');
 // 设置实例的运行用户
 $worker->user = 'www-data';

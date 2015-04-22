@@ -11,7 +11,7 @@ callback Connection::$onMessage
 ## 范例
 
 ```php
-use WorkerMan\Worker;
+use Workerman\Worker;
 $worker = new Worker('websocket://0.0.0.0:8484');
 // 当有客户端连接事件时
 $worker->onConnect = function($connection)
@@ -28,7 +28,7 @@ $worker->onConnect = function($connection)
 上面代码与下面的效果是一样的
 
 ```php
-use WorkerMan\Worker;
+use Workerman\Worker;
 $worker = new Worker('websocket://0.0.0.0:8484');
 // 直接设置所有连接的onMessage回调
 $worker->onMessage = function($connection, $data)

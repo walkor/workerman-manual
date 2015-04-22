@@ -16,7 +16,7 @@ static Event Worker::$pidFile
 ## 范例
 
 ```php
-use WorkerMan\Worker;
+use Workerman\Worker;
 Worker::$pidFile = '/var/run/workerman.pid';
 
 $worker = new Worker('Text://0.0.0.0:8484');

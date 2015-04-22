@@ -12,7 +12,7 @@ string Worker::$reloadable
 ## 范例
 
 ```php
-use WorkerMan\Worker;
+use Workerman\Worker;
 $worker = new Worker('websocket://0.0.0.0:8484');
 // 设置此实例收到reload信号后是否reload重启
 $worker->reloadable = false;

@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="7.2.1.3" data-basepath=".." data-revision="1429281544496">
+    <div class="book"  data-level="7.2.1.3" data-basepath=".." data-revision="1429715960477">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1511,7 +1511,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_119">
+                    <section class="normal" id="section-gitbook_140">
                     
                         <h1 id="user">user</h1>
 <h2 id="-">说明:</h2>
@@ -1520,7 +1520,7 @@
 <p>设置当前Worker实例以哪个用户运行。此属性只有当前用户为root时才能生效。不设置时默认以当前用户运行。</p>
 <p>建议<code>$user</code>设置权限较低的用户，例如www-data、apache、nobody等。</p>
 <h2 id="-">范例</h2>
-<pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">WorkerMan</span>\<span class="hljs-title">Worker</span>;
+<pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'websocket://0.0.0.0:8484'</span>);
 <span class="hljs-comment">// 设置实例的运行用户</span>
 <span class="hljs-variable">$worker</span>-&gt;user = <span class="hljs-string">'www-data'</span>;

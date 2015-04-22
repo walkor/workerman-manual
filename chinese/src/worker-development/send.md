@@ -27,7 +27,7 @@ false 表示发送失败，失败原因可能是客户端连接已经关闭，�
 ## 范例
 
 ```php
-use WorkerMan\Worker;
+use Workerman\Worker;
 $worker = new Worker('websocket://0.0.0.0:8484');
 $worker->onMessage = function($connection, $data)
 {

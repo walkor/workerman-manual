@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="7.2.1.4" data-basepath=".." data-revision="1429281544496">
+    <div class="book"  data-level="7.2.1.4" data-basepath=".." data-revision="1429715960477">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1511,7 +1511,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_113">
+                    <section class="normal" id="section-gitbook_134">
                     
                         <h1 id="reloadable">reloadable</h1>
 <h2 id="-">说明:</h2>
@@ -1520,7 +1520,7 @@
 <p>设置当前Worker实例是否可以reload，即收到reload信号后是否退出重启。不设置默认为true，收到reload信号后自动重启进程。</p>
 <p>有些进程维持着客户端连接，例如Gateway/Worker模型中的gateway进程，当运行reload重新载入业务代码时，却又不想客户端连接断开，则设置gateway进程的reloadable属性为false</p>
 <h2 id="-">范例</h2>
-<pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">WorkerMan</span>\<span class="hljs-title">Worker</span>;
+<pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'websocket://0.0.0.0:8484'</span>);
 <span class="hljs-comment">// 设置此实例收到reload信号后是否reload重启</span>
 <span class="hljs-variable">$worker</span>-&gt;reloadable = <span class="hljs-keyword">false</span>;

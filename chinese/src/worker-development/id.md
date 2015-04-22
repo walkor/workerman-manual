@@ -12,7 +12,7 @@ int Connection::$id
 
 
 ```php
-use WorkerMan\Worker;
+use Workerman\Worker;
 $worker = new Worker('tcp://0.0.0.0:8484');
 $worker->onConnect = function($connection)
 {

@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="7.2.1.6" data-basepath=".." data-revision="1429281544496">
+    <div class="book"  data-level="7.2.1.6" data-basepath=".." data-revision="1429715960477">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1511,7 +1511,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_90">
+                    <section class="normal" id="section-gitbook_110">
                     
                         <h1 id="connections">connections</h1>
 <h2 id="-">说明:</h2>
@@ -1519,8 +1519,8 @@
 </code></pre>
 <p>此属性中存储了<strong>当前进程</strong>的所有的客户端连接，这在广播时非常有用。</p>
 <h2 id="-">范例</h2>
-<pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">WorkerMan</span>\<span class="hljs-title">Worker</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">WorkerMan</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
+<pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
 <span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'Text://0.0.0.0:8484'</span>);
 <span class="hljs-comment">// 进程启动时设置一个定时器，定时向所有客户端连接发送数据</span>
 <span class="hljs-variable">$worker</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$worker</span>)</span>

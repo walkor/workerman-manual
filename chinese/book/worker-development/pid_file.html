@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="7.2.1.9" data-basepath=".." data-revision="1429281544496">
+    <div class="book"  data-level="7.2.1.9" data-basepath=".." data-revision="1429715960477">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1511,7 +1511,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_111">
+                    <section class="normal" id="section-gitbook_131">
                     
                         <h1 id="pidfile">pidFile</h1>
 <h2 id="-">说明:</h2>
@@ -1522,7 +1522,7 @@
 <p>此项设置在监控中比较有用，例如将WorkerMan的pid文件放入固定的目录中，可以方便一些监控软件读取pid文件，从而监控WorkerMan进程状态。</p>
 <p>如果不设置，WorkerMan默认会在<code>sys_get_temp_dir()</code>下自动生成一个pid文件，并且为了避免启动多个WorkerMan实例导致pid冲突，WorkerMan生成pid文件包含了当前WorkerMan的路径</p>
 <h2 id="-">范例</h2>
-<pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">WorkerMan</span>\<span class="hljs-title">Worker</span>;
+<pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 Worker::<span class="hljs-variable">$pidFile</span> = <span class="hljs-string">'/var/run/workerman.pid'</span>;
 
 <span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'Text://0.0.0.0:8484'</span>);

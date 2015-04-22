@@ -10,7 +10,7 @@ string Worker::$transport
 ## 范例
 
 ```php
-use WorkerMan\Worker;
+use Workerman\Worker;
 $worker = new Worker('Text://0.0.0.0:8484');
 // 使用udp协议
 $worker->transport = 'udp';

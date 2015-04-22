@@ -16,7 +16,7 @@ void Connection::destroy()
 ## 范例
 
 ```php
-use WorkerMan\Worker;
+use Workerman\Worker;
 $worker = new Worker('websocket://0.0.0.0:8484');
 $worker->onMessage = function($connection, $data)
 {

@@ -12,7 +12,7 @@ static string Worker::$stdoutFile
 ## 范例
 
 ```php
-use WorkerMan\Worker;
+use Workerman\Worker;
 Worker::$daemonize = true;
 // 所有的打印输出全部保存在/tmp/stdout.log文件中
 Worker::$stdoutFile = '/tmp/stdout.log';

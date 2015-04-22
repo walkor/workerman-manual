@@ -9,7 +9,7 @@ callback Connection::$onClose
 ## 范例
 
 ```php
-use WorkerMan\Worker;
+use Workerman\Worker;
 $worker = new Worker('websocket://0.0.0.0:8484');
 // 当有链接事件时触发
 $worker->onConnection = function($connection)
@@ -25,7 +25,7 @@ $worker->onConnection = function($connection)
 上面代码与下面的效果相同
 
 ```php
-use WorkerMan\Worker;
+use Workerman\Worker;
 $worker = new Worker('websocket://0.0.0.0:8484');
 // 设置所有连接的onclose回调
 $worker->onClose = function($connection)
