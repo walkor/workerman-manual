@@ -10,7 +10,7 @@ https://github.com/walkor/GatewayClient
 
 **使用方法：**
 
-*注意:如果项目与WorkerMan不在同一台服务器，需要安装memcached，参考8.10 Config/Store配置章节*
+*注意:如果项目与WorkerMan不在同一台服务器，需要安装memcached，参考8.10 Config/Store配置章节。注意php有memcache和memcached两个扩展，请确保每个项目使用的是相同的扩展*
 
 
 1、拷贝WorkerMan项目中的Applications/YourApp/Config目录到GatewayClient下。
