@@ -6,7 +6,7 @@ static int Connection::$maxSendBufferSize
 
 此属性为全局静态属性，用来设置每个客户端连接的应用层发送缓冲区大小。不设置默认为1MB。
 
-此属性影响onBuffer回调
+此属性影响onBufferFull回调
 
 
 ## 范例

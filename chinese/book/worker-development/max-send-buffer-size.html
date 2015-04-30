@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="7.3.1.4" data-basepath=".." data-revision="1430061923025">
+    <div class="book"  data-level="7.3.1.4" data-basepath=".." data-revision="1430401818822">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1511,14 +1511,14 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_200">
+                    <section class="normal" id="section-gitbook_99">
                     
                         <h1 id="maxsendbuffersize">maxSendBufferSize</h1>
 <h2 id="-">说明:</h2>
 <pre><code class="lang-php"><span class="hljs-keyword">static</span> int Connection::<span class="hljs-variable">$maxSendBufferSize</span>
 </code></pre>
 <p>此属性为全局静态属性，用来设置每个客户端连接的应用层发送缓冲区大小。不设置默认为1MB。</p>
-<p>此属性影响onBuffer回调</p>
+<p>此属性影响onBufferFull回调</p>
 <h2 id="-">范例</h2>
 <pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Protocols</span>\<span class="hljs-title">TcpConnection</span>;
