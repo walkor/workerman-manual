@@ -1,27 +1,24 @@
 # maxSendBufferSize
 ## 说明:
 ```php
-static int Connection::$maxSendBufferSize
+int Connection::$maxSendBufferSize
 ```
 
-此属性为全局静态属性，用来设置每个客户端连接的应用层发送缓冲区大小。不设置默认为1MB。
+此属性用来设置当前连接的应用层发送缓冲区大小。不设置默认为```Connection::$defaultMaxSendBufferSize```(1MB)。```Connection::$maxSendBufferSize``` 和 ```Connection::$defaultMaxSendBufferSize```均可以动态设置。
 
 此属性影响onBufferFull回调
 
 
 ## 范例
 
-
 ```php
 use Workerman\Worker;
 use Workerman\Protocols\TcpConnection;
 
-// 设置每个连接的应用层发送缓冲区大小为102400字节
-TcpConnection::$maxSendBufferSize = 102400;
-
 $worker = new Worker('Websocket://0.0.0.0:8484');
-$worker->onMessage = function($connection, $data)
+$worker->onConnect = function($connection)
 {
-    $connection->send('hello');
+    // 设置当前连接的应用层发送缓冲区大小为102400字节
+    $connection->maxSendBufferSize = 102400;
 };
 ```

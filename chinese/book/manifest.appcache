@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# Revision 1430401818823
+# Revision 1430495165413
 
 CACHE:
 gateway-worker-development/is-online.html
@@ -14,8 +14,8 @@ gateway-worker-development/gateway.html
 gateway-worker-development/get-online-status.html
 gateway-worker-development/heartbeat.html
 gateway-worker-development/how-distributed.html
-gateway-worker-development/lib-gateway-functions.html
 gateway-worker-development/business-worker.html
+gateway-worker-development/lib-gateway-functions.html
 gateway-worker-development/onclose.html
 gateway-worker-development/onconnect.html
 gateway-worker-development/onmessage.html
@@ -36,8 +36,8 @@ advanced/webserver.html
 appendices/README.html
 appendices/install-extension.html
 appendices/kernel-optimization.html
-appendices/stress-test.html
 appendices/mysql.html
+appendices/stress-test.html
 debug/README.html
 debug/base.html
 debug/strace.html
@@ -66,7 +66,7 @@ protocols/README.html
 protocols/example.html
 protocols/how-protocols.html
 protocols/why-protocols.html
-worker-development/max-package-size.html
+worker-development/id.html
 worker-development/README.html
 worker-development/add.html
 worker-development/async-tcp-connection.html
@@ -84,14 +84,15 @@ worker-development/connection-on-message.html
 worker-development/connection-property.html
 worker-development/connections.html
 worker-development/count.html
-worker-development/del.html
 worker-development/daemonize.html
+worker-development/default-max-send-buffer-size.html
+worker-development/del.html
 worker-development/destroy.html
 worker-development/get-remote-ip.html
 worker-development/get-remote-port.html
 worker-development/global-event.html
-worker-development/id.html
 worker-development/__construct.html
+worker-development/max-package-size.html
 worker-development/max-send-buffer-size.html
 worker-development/name.html
 worker-development/on-buffer-drain.html

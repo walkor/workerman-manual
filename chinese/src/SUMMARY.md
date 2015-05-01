@@ -47,6 +47,7 @@
            * [protocol](worker-development/protocol.md)
            * [worker](worker-development/worker.md)
            * [maxSendBufferSize](worker-development/max-send-buffer-size.md)
+           * [defaultMaxSendBufferSize](worker-development/default-max-send-buffer-size.md)
            * [maxPackageSize](worker-development/max-package-size.md)
        * [回调接口](worker-development/connection-callback.md)
            * [onMessage](worker-development/connection-on-message.md)

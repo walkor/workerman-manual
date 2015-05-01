@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>onMessage | WorkerMan 3.x 手册</title>
+        <title>defaultMaxSendBufferSize | WorkerMan 3.x 手册</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 0.5.2">
@@ -17,10 +17,10 @@
     
     
     
-    <link rel="next" href="../worker-development/on-close.html" />
+    <link rel="next" href="../worker-development/max-package-size.html" />
     
     
-    <link rel="prev" href="../worker-development/on-connect.html" />
+    <link rel="prev" href="../worker-development/max-send-buffer-size.html" />
     
 
         
@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="7.2.2.4" data-basepath=".." data-revision="1430495165412">
+    <div class="book"  data-level="7.3.1.5" data-basepath=".." data-revision="1430495165412">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1283,7 +1283,7 @@
             <div class="page-wrapper" tabindex="-1">
                 <div class="book-progress">
     <div class="bar">
-        <div class="inner" style="width: 32.45614035087719%;min-width: 31.57894736842105%;"></div>
+        <div class="inner" style="width: 42.10526315789474%;min-width: 41.228070175438596%;"></div>
     </div>
     <div class="chapters">
     
@@ -1363,27 +1363,27 @@
     
         <a href="../worker-development/on-message.html" title="onMessage" class="chapter done " data-progress="7.2.2.4" style="left: 32.45614035087719%;"></a>
     
-        <a href="../worker-development/on-close.html" title="onClose" class="chapter  " data-progress="7.2.2.5" style="left: 33.333333333333336%;"></a>
+        <a href="../worker-development/on-close.html" title="onClose" class="chapter done " data-progress="7.2.2.5" style="left: 33.333333333333336%;"></a>
     
-        <a href="../worker-development/on-buffer-full.html" title="onBufferFull" class="chapter  " data-progress="7.2.2.6" style="left: 34.21052631578947%;"></a>
+        <a href="../worker-development/on-buffer-full.html" title="onBufferFull" class="chapter done " data-progress="7.2.2.6" style="left: 34.21052631578947%;"></a>
     
-        <a href="../worker-development/on-buffer-drain.html" title="onBufferDrain" class="chapter  " data-progress="7.2.2.7" style="left: 35.08771929824562%;"></a>
+        <a href="../worker-development/on-buffer-drain.html" title="onBufferDrain" class="chapter done " data-progress="7.2.2.7" style="left: 35.08771929824562%;"></a>
     
-        <a href="../worker-development/on-error.html" title="onError" class="chapter  " data-progress="7.2.2.8" style="left: 35.96491228070175%;"></a>
+        <a href="../worker-development/on-error.html" title="onError" class="chapter done " data-progress="7.2.2.8" style="left: 35.96491228070175%;"></a>
     
-        <a href="../worker-development/connection-functions.html" title="TcpConnection类" class="chapter  " data-progress="7.3" style="left: 36.8421052631579%;"></a>
+        <a href="../worker-development/connection-functions.html" title="TcpConnection类" class="chapter done " data-progress="7.3" style="left: 36.8421052631579%;"></a>
     
-        <a href="../worker-development/connection-property.html" title="属性" class="chapter  " data-progress="7.3.1" style="left: 37.719298245614034%;"></a>
+        <a href="../worker-development/connection-property.html" title="属性" class="chapter done " data-progress="7.3.1" style="left: 37.719298245614034%;"></a>
     
-        <a href="../worker-development/id.html" title="id" class="chapter  " data-progress="7.3.1.1" style="left: 38.59649122807018%;"></a>
+        <a href="../worker-development/id.html" title="id" class="chapter done " data-progress="7.3.1.1" style="left: 38.59649122807018%;"></a>
     
-        <a href="../worker-development/protocol.html" title="protocol" class="chapter  " data-progress="7.3.1.2" style="left: 39.473684210526315%;"></a>
+        <a href="../worker-development/protocol.html" title="protocol" class="chapter done " data-progress="7.3.1.2" style="left: 39.473684210526315%;"></a>
     
-        <a href="../worker-development/worker.html" title="worker" class="chapter  " data-progress="7.3.1.3" style="left: 40.35087719298246%;"></a>
+        <a href="../worker-development/worker.html" title="worker" class="chapter done " data-progress="7.3.1.3" style="left: 40.35087719298246%;"></a>
     
-        <a href="../worker-development/max-send-buffer-size.html" title="maxSendBufferSize" class="chapter  " data-progress="7.3.1.4" style="left: 41.228070175438596%;"></a>
+        <a href="../worker-development/max-send-buffer-size.html" title="maxSendBufferSize" class="chapter done " data-progress="7.3.1.4" style="left: 41.228070175438596%;"></a>
     
-        <a href="../worker-development/default-max-send-buffer-size.html" title="defaultMaxSendBufferSize" class="chapter  " data-progress="7.3.1.5" style="left: 42.10526315789474%;"></a>
+        <a href="../worker-development/default-max-send-buffer-size.html" title="defaultMaxSendBufferSize" class="chapter done " data-progress="7.3.1.5" style="left: 42.10526315789474%;"></a>
     
         <a href="../worker-development/max-package-size.html" title="maxPackageSize" class="chapter  " data-progress="7.3.1.6" style="left: 42.98245614035088%;"></a>
     
@@ -1522,25 +1522,26 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_518">
+                    <section class="normal" id="section-gitbook_503">
                     
-                        <h1 id="onmessage">onMessage</h1>
+                        <h1 id="defaultmaxsendbuffersize">defaultMaxSendBufferSize</h1>
 <h2 id="-">说明:</h2>
-<pre><code class="lang-php">callback Worker::<span class="hljs-variable">$onMessage</span>
+<pre><code class="lang-php"><span class="hljs-keyword">static</span> int Connection::<span class="hljs-variable">$defaultMaxSendBufferSize</span>
 </code></pre>
-<p>当有客户端的连接上有数据发来时触发</p>
-<h2 id="-">回调函数的参数</h2>
-<p><code>$connection</code></p>
-<p>连接对象，连接对象的说明见下一节</p>
-<p><code>$data</code></p>
-<p>客户端连接上发来的数据，如果Worker指定了协议，则$data是对应协议decode（解码）了的数据</p>
+<p>此属性为全局静态属性，用来设置所有连接的默认应用层发送缓冲区大小。不设置默认为<code>1MB</code>。 <code>Connection::$defaultMaxSendBufferSize</code>可以动态设置，设置后只对之后产生的新连接有效</p>
+<p>此属性影响onBufferFull回调</p>
 <h2 id="-">范例</h2>
 <pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
-<span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'websocket://0.0.0.0:8484'</span>);
-<span class="hljs-variable">$worker</span>-&gt;onMessage = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>, <span class="hljs-variable">$data</span>)</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Protocols</span>\<span class="hljs-title">TcpConnection</span>::;
+
+<span class="hljs-comment">// 设置所有连接的默认应用层发送缓冲区大小</span>
+TcpConnection::<span class="hljs-variable">$defaultMaxSendBufferSize</span> = <span class="hljs-number">2</span>*<span class="hljs-number">1024</span>*<span class="hljs-number">1024</span>;
+
+<span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'Websocket://0.0.0.0:8484'</span>);
+<span class="hljs-variable">$worker</span>-&gt;onConnect = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>)</span>
 {</span>
-    var_dump(<span class="hljs-variable">$data</span>);
-    <span class="hljs-variable">$connection</span>-&gt;send(<span class="hljs-string">'receive success'</span>);
+    <span class="hljs-comment">// 设置当前连接的应用层发送缓冲区大小，会覆盖掉默认值</span>
+    <span class="hljs-variable">$connection</span>-&gt;maxSendBufferSize = <span class="hljs-number">4</span>*<span class="hljs-number">1024</span>*<span class="hljs-number">1024</span>;
 };
 </code></pre>
 
@@ -1552,10 +1553,10 @@
         </div>
 
         
-        <a href="../worker-development/on-connect.html" class="navigation navigation-prev " aria-label="Previous page: onConnect"><i class="fa fa-angle-left"></i></a>
+        <a href="../worker-development/max-send-buffer-size.html" class="navigation navigation-prev " aria-label="Previous page: maxSendBufferSize"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../worker-development/on-close.html" class="navigation navigation-next " aria-label="Next page: onClose"><i class="fa fa-angle-right"></i></a>
+        <a href="../worker-development/max-package-size.html" class="navigation navigation-next " aria-label="Next page: maxPackageSize"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
