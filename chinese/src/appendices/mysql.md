@@ -1,5 +1,11 @@
 ## Gateway/Worker模型 数据库使用示例
 
+## 说明
+常驻内存的程序在使用mysql时经常会遇到```mysql gone away```的错误，这个是由于程序与mysql的连接长时间没有通讯，连接被mysql服务端踢掉导致。workerman提供了一个mysql类，可以解决这个问题，当发生```mysql gone away```错误时，会自动重试一次。
+
+## 注意
+不要直接在```sart.php```直接使用这个mysql类，会导致错误。请在```onXXXX```回调中使用这个数据库类。
+
 1、数据库配置Applications/XXX/Config/Db.php
 ```php
 <?php

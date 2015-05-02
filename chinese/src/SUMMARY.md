@@ -69,6 +69,7 @@
    * [定时器Timer类](worker-development/timer-functions.md)
        * [add](worker-development/add.md)
        * [del](worker-development/del.md)
+       * [注意事项](worker-development/timer-notice.md)
 * [基于Gateway/BusinessWorker开发](gateway-worker-development/README.md)
    * [适用范围](gateway-worker-development/gateway-worker-development.md)
    * [Gateway类的使用](gateway-worker-development/gateway.md)

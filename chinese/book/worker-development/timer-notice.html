@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>del | WorkerMan 3.x 手册</title>
+        <title>注意事项 | WorkerMan 3.x 手册</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 0.5.2">
@@ -17,10 +17,10 @@
     
     
     
-    <link rel="next" href="../worker-development/timer-notice.html" />
+    <link rel="next" href="../gateway-worker-development/README.html" />
     
     
-    <link rel="prev" href="../worker-development/add.html" />
+    <link rel="prev" href="../worker-development/del.html" />
     
 
         
@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="7.5.2" data-basepath=".." data-revision="1430577801376">
+    <div class="book"  data-level="7.5.3" data-basepath=".." data-revision="1430577801376">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1292,7 +1292,7 @@
             <div class="page-wrapper" tabindex="-1">
                 <div class="book-progress">
     <div class="bar">
-        <div class="inner" style="width: 60%;min-width: 59.130434782608695%;"></div>
+        <div class="inner" style="width: 60.869565217391305%;min-width: 60%;"></div>
     </div>
     <div class="chapters">
     
@@ -1436,7 +1436,7 @@
     
         <a href="../worker-development/del.html" title="del" class="chapter done " data-progress="7.5.2" style="left: 60%;"></a>
     
-        <a href="../worker-development/timer-notice.html" title="注意事项" class="chapter  " data-progress="7.5.3" style="left: 60.869565217391305%;"></a>
+        <a href="../worker-development/timer-notice.html" title="注意事项" class="chapter done " data-progress="7.5.3" style="left: 60.869565217391305%;"></a>
     
         <a href="../gateway-worker-development/README.html" title="基于Gateway/BusinessWorker开发" class="chapter  new-chapter" data-progress="8" style="left: 61.73913043478261%;"></a>
     
@@ -1533,36 +1533,15 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_1360">
+                    <section class="normal" id="section-gitbook_1385">
                     
-                        <h1 id="del">del</h1>
-<pre><code class="lang-php">boolean \Workerman\Lib\Timer::del(int <span class="hljs-variable">$timer_id</span>)
-</code></pre>
-<p>删除某个定时器</p>
-<h3 id="-">参数</h3>
-<p><code>timer_id</code></p>
-<p>定时器的id，即add接口返回的整型</p>
-<h3 id="-">返回值</h3>
-<p>boolean</p>
-<h3 id="-">示例</h3>
-<p>```php
-use \Workerman\Worker;</p>
-<p>$task = new Worker();
-// 开启多少个进程运行定时任务，注意多进程并发问题
-$task-&gt;count = 1;
-$task-&gt;onWorkerStart = function($task)
-{
-    // 每2秒运行一次
-    $timer_id = \Workerman\Lib\Timer::add(2, function()
-    {
-        echo &quot;task run\n&quot;;
-    });
-    // 20秒后运行一个一次性任务，删除2秒一次的定时任务
-    Timer::add(20, function($timer_id)
-    {
-        Timer::del($timer_id);
-    }, array($timer_id), false);
-};</p>
+                        <h1 id="-">注意事项</h1>
+<h2 id="-">定时器使用注意事项</h2>
+<p>1、只能在<code>onXXXX</code>回调中添加定时器。全局的定时器推荐在<code>onWorkerStart</code>回调中设置，针对某个连接的定时器推荐在<code>onConnect</code>中设置。除非业务需要，<code>onMessage</code>中一般不适合设置定时器。</p>
+<p>2、添加的定时任务在当前进程执行，如果任务很重（特别是涉及到网络IO的任务），可能会导致该进程阻塞，暂时无法处理其它业务。所以最好将耗时的任务放到单独的进程运行，例如建立一个/多个Worker进程运行</p>
+<p>3、当一个任务没有在预期的时间运行完，这时又到了下一个运行周期，则会等待当前任务完成才会运行。也就是说当前进程的任务都是串行执行的，如果是多进程则进程间的任务运行是并行的。</p>
+<p>4、要考虑到多进程设置了定时任务造成并发问题</p>
+<p>5、可能会有1毫秒左右的误差</p>
 
                     
                     </section>
@@ -1572,10 +1551,10 @@ $task-&gt;onWorkerStart = function($task)
         </div>
 
         
-        <a href="../worker-development/add.html" class="navigation navigation-prev " aria-label="Previous page: add"><i class="fa fa-angle-left"></i></a>
+        <a href="../worker-development/del.html" class="navigation navigation-prev " aria-label="Previous page: del"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../worker-development/timer-notice.html" class="navigation navigation-next " aria-label="Next page: 注意事项"><i class="fa fa-angle-right"></i></a>
+        <a href="../gateway-worker-development/README.html" class="navigation navigation-next " aria-label="Next page: 基于Gateway/BusinessWorker开发"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

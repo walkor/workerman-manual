@@ -13,18 +13,6 @@ boolean \Workerman\Lib\Timer::del(int $timer_id)
 boolean
 
 
-## 定时任务使用注意事项
-1、可以在WorkerMan**运行过程中**任意位置使用```\Workerman\Lib\Timer::add(int $time_interval, callable $callback [,$args = array(), bool $persistent = true])```添加定时任务。
-
-2、添加的任务在当前进程执行，如果任务很重（特别是涉及到网络IO的任务），可能会导致该进程阻塞，暂时无法处理其它业务。所以最好将耗时的任务放到单独的进程运行，例如建立一个/多个Worker进程运行
-
-3、当一个任务没有在预期的时间运行完，这时又到了下一个运行周期，则会等待当前任务完成才会运行。也就是说当前进程的任务都是串行执行的，如果是多进程则进程间的任务运行是并行的。
-
-4、要考虑到多进程设置了定时任务造成并发问题
-
-5、可能会有1毫秒左右的误差
-
-
 ### 示例
 ```php
 use \Workerman\Worker;

@@ -122,4 +122,22 @@ $worker->count = 4;
 
 ```
 
+## 四、区分主进程和子进程
+有必要注意下代码是运行在主进程还是子进程，一般来说，直接在启动脚本中运行的代码属于主进程的，而```onXXXX```回调都是运行在子进程的。
 
+例如下面的代码
+```php
+require_once './Workerman/Autoloader.php';
+use Workerman\Worker;
+
+// 运行在主进程
+$tcp_worker = new Worker("tcp://0.0.0.0:2347");
+// 赋值过程运行在主进程
+$tcp_worker->onMessage = function($connection, $data)
+{
+    // 这部分运行在子进程
+    $connection->send('hello ' . $data);
+};
+```
+
+**注意：**不要在主进程中初始化数据库、memcache、redis等连接资源，因为主进程初始化的连接可能会被子进程自动继承（尤其是使用单例的时候），但是这个链接资源在子进程是无法使用的，因为服务端通过这个连接返回的数据在多个进程上都可读，会导致数据错乱。
