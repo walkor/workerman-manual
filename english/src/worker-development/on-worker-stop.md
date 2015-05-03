@@ -1,18 +1,18 @@
 # onWorkerStop
-## 说明:
+## Description:
 ```php
 callback Worker::$onWorkerStop
 ```
 
-设置Workert停止时的回调函数，即当Worker收到stop信号后执行Worker::onWorkerStop指定的回调函数
+Emitted when a Woker process stop.
 
-## 回调函数的参数
+## Parameters
 
 ``` $worker ```
 
-即Worker对象
+The worker.
 
-## 范例
+## Examples
 
 ```php
 use Workerman\Worker;

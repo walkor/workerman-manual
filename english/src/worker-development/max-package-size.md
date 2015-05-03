@@ -1,16 +1,14 @@
 # maxPackageSize
 
-## 说明:
+## Description:
 ```php
 static int Connection::$maxPackageSize
 ```
 
-此属性为全局静态属性，用来设置每个连接能够接收的最大包包长。不设置默认为10MB。
-
-如果发来的数据包解析(协议类的input方法返回值)得到包长大于```Connection::$maxPackageSize```，则会视为非法数据，连接会断开。
+This is a static property. Set the max package size can be received .Default value is 10MB.
 
 
-## 范例
+## Examples
 
 
 ```php

@@ -1,17 +1,19 @@
 # getRemoteIp
-## 说明:
+## Description:
 ```php
 string Connection::getRemoteIp()
 ```
 
-获得该连接的客户端ip
+get remote ip
 
-## 参数
+## Parameters
 
-无参数
+This function has no parameters.
 
+## Return Values
+The remote ip. For Example ```111.26.36.12```.
 
-## 范例
+## Examples
 
 ```php
 use Workerman\Worker;

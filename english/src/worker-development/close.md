@@ -1,27 +1,32 @@
 # close
-## 说明:
+## Description:
 ```php
 void Connection::close(mixed $data = '')
 ```
 
-安全的关闭连接.
+Sends a FIN packet.
 
-调用close会等待发送缓冲区的数据发送完毕后才关闭连接，并触发连接的```onClose```回调。
+```$connection->onClose``` will be called when send buffer is mepty.
 
-## 参数
+## Parameters
 
 ``` $data ```
 
-可选参数，要发送的数据（如果有指定协议，则会自动调用协议的encode方法打包```$data```数据），当数据发送完毕后关闭连接，随后会触发onClose回调
+Optional data.
+
+If the protocol is setted, ```$data``` will be encoded with ```Protocol::encode($data)``` before send.
+
+## Return Values
 
 
-## 范例
+## Examples
 
 ```php
 use Workerman\Worker;
 $worker = new Worker('websocket://0.0.0.0:8484');
 $worker->onMessage = function($connection, $data)
 {
+    // hello\n Will be encode by \Workerman\Protocols\Websocket::encode before to be sent
     $connection->close("hello\n");
 };
 ```

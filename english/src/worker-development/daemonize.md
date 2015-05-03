@@ -1,13 +1,13 @@
 # daemonize
-## 说明:
+## Description:
 ```php
 static bool Worker::$daemonize
 ```
 
-此属性为全局静态属性，表示是否以daemon方式运行。如果启动命令使用了 ```-d```参数，则该属性会自动设置为true。也可以代码中手动设置。
+This is a static property. Workerman will run as daemon mode when  ```Worker::$daemonize=true``` , otherwise run as debug mode by default. Use ```-d``` option start workerman will run as daemon mode.
 
 
-## 范例
+## Examples
 
 ```php
 use Workerman\Worker;

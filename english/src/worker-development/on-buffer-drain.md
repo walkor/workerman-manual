@@ -1,23 +1,20 @@
 # onBufferDrain
-## 说明:
+## Description:
 ```php
 callback Worker::$onBufferDrain
 ```
 
-每个连接都有一个单独的应用层发送缓冲区，缓冲区大小由```TcpConnection::$maxSendBufferSize```决定，默认值为1MB，可以手动设置更改大小，更改后会对所有连接生效。
-
-该回调在应用层发送缓冲区数据全部发送完毕后触发。一般与onBufferFull配合使用，例如在onBufferFull时停止向对端继续send数据，在onBufferDrain恢复写入数据。
+Emitted when the send buffer becomes empty.
 
 
-
-## 回调函数的参数
+## Parameters
 
 ``` $connection ```
 
-连接对象
+The instance of Connection.
 
 
-## 范例
+## Examples
 
 ```php
 use Workerman\Worker;
@@ -31,6 +28,3 @@ $worker->onBufferDrain = function($connection)
     echo "buffer drain and continue send\n";
 };
 ```
-
-## 参见
-onBufferFull 当连接的应用层发送缓冲区满时触发

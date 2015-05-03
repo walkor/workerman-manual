@@ -1,29 +1,42 @@
 # connections
-## 说明:
+## Description:
 ```php
 array Worker::$connections
 ```
 
-此属性中存储了**当前进程**的所有的客户端连接，这在广播时非常有用。
+It contains all of the connections of the worker.
 
 
-## 范例
+## Examples
 
 ```php
 use Workerman\Worker;
 use Workerman\Lib\Timer;
 $worker = new Worker('Text://0.0.0.0:8484');
-// 进程启动时设置一个定时器，定时向所有客户端连接发送数据
+$worker->count = 6;
+
+// Add a Timer to Every worker process when the worker process start
 $worker->onWorkerStart = function($worker)
 {
-    // 定时，每10秒一次
+    // Timer every 10 seconds
     Timer::add(10, function()use($worker)
     {
-        // 遍历当前进程所有的客户端连接，发送当前服务器的时间
+        // Iterate over connections and send the time
         foreach($worker->connections as $connection)
         {
             $connection->send(time());
         }
     });
 };
+```
+
+**Test**
+
+```shell
+telnet 127.0.0.1 8484
+Trying 127.0.0.1...
+Connected to 127.0.0.1.
+Escape character is '^]'.
+1430638160
+1430638170
 ```

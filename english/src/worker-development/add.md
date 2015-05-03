@@ -1,37 +1,40 @@
 # add
+## Description:
 ```php
-int \Workerman\Lib\Timer::add(int $time_interval, callable $callback [,$args = array(), bool $persistent = true])
+int \Workerman\Lib\Timer::add(float $time_interval, callable $callback [,$args = array(), bool $persistent = true])
 ```
-定时执行某个函数或者类方法
+To schedule execution of a callback after/every ```$time_interval``` seconds. Returns a timerId for possible use with Timer::del(). Optionally you can also pass arguments to the callback.
 
-### 参数
+## Notice
+You should add Timer at ```on{.....}```
+
+
+### Parameters
 ``` time_interval ```
 
-多长时间执行一次，单位秒，支持小数，可以精确到0.001，即精确到毫秒级别。
+The delay time. For example 2.5, 1, 0.01
 
 
 ``` callback ```
 
-回调函数
+Callback
 
 ``` args ```
 
-回调函数的参数，必须为数组
+Arguments
 
 ``` persistent ```
 
-是否是持久的，如果只想定时执行一次，则传递false。默认是true，即一直定时执行。
+If the execution is one-time callback, ``` persistent ``` should be set ```false```, otherwise ``` persistent ``` should be set ```true```.
 
-### 返回值
-返回一个整数，代表计时器的timerid，可以通过这个timerid删除对应的计时器
+### Return Values
+Return a integer as timerid
 
-### 示例
+### Examples
 ```php
 use \Workerman\Worker;
 
 $task = new Worker();
-// 开启多少个进程运行定时任务，注意多进程并发问题
-$task->count = 1;
 $task->onWorkerStart = function($task)
 {
     $time_interval = 2.5;

@@ -1,20 +1,20 @@
 # count
 
-## 说明:
+## Description :
 ```php
 int Worker::$count
 ```
 
-设置当前Worker实例启动多少个进程，不设置时默认为1。
+Set the process count of the worker instance. Default value is ```1```.
 
 
-## 范例
+## Examples
 
 
 ```php
 use Workerman\Worker;
 $worker = new Worker('websocket://0.0.0.0:8484');
-// 启动8个进程，同时监听8484端口，以websocket协议提供服务
+// 8 porcesses
 $worker->count = 8;
 $worker->onWorkerStart = function($worker)
 {

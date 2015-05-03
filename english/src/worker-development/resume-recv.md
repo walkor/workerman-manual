@@ -1,17 +1,20 @@
 # resumeRecv
-## 说明:
+## Description:
 ```php
 void Connection::resumeRecv(void)
 ```
 
-使当前连接继续接收数据。此方法与Connection::pauseRecv配合使用，对于上传流量控制非常有用
+Resumes reading after a call to pause().
 
-## 参数
+## Parameters
 
-无参数
+This function has no parameters.
 
+## Return Values
 
-## 范例
+No value is returned.
+
+## Examples
 
 ```php
 use Workerman\Worker;
@@ -20,23 +23,19 @@ use Workerman\Lib\Timer;
 $worker = new Worker('websocket://0.0.0.0:8484');
 $worker->onConnect = function($connection)
 {
-    // 给connection对象动态添加一个属性，用来保存当前连接发来多少个请求
     $connection->messageCount = 0;
 };
 $worker->onMessage = function($connection, $data)
 {
-    // 每个连接接收100个请求后就不再接收数据
+    // Stop receive data when 100 package received
     $limit = 100;
     if(++$connection->messageCount > $limit)
     {
         $connection->pauseRecv();
-        // 30秒后恢复接收数据
+        // Resumes reading after 30s
         Timer::add(30, function($connection){
             $connection->resumeRecv();
         }, array($connection), false);
     }
 };
 ```
-
-## 参见
-void Connection::pauseRecv(void) 使得对应连接对象停止接收数据

@@ -1,21 +1,21 @@
 # onWorkerStart
-## 说明:
+## Description:
 ```php
 callback Worker::$onWorkerStart
 ```
 
-设置Worker启动时的回调函数，即当Worker启动后立即执行Worker::onWorkerStart成员指定的回调函数
+Emitted when a Woker process start.
 
 
-## 回调函数的参数
+## Parameters
 
 ``` $worker ```
 
-即Worker对象
+The worker.
 
 
 
-## 范例
+## Examples
 
 
 ```php

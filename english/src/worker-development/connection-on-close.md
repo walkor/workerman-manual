@@ -1,20 +1,18 @@
 # onClose
-## 说明:
+## Description:
 ```php
 callback Connection::$onClose
 ```
 
-此回调与```Worker::$onClose```回调作用相同，区别是只针对当前连接有效,也就是可以针对某个连接的设置onClose回调。
+Is the same as ```$worker->onClose```, but only for the current connection.
 
-## 范例
+## Examples
 
 ```php
 use Workerman\Worker;
 $worker = new Worker('websocket://0.0.0.0:8484');
-// 当有链接事件时触发
 $worker->onConnection = function($connection)
 {
-    // 设置连接的onClose回调
     $connection->onClose = function($connection)
     {
         echo "connection closed\n";
@@ -22,12 +20,11 @@ $worker->onConnection = function($connection)
 };
 ```
 
-上面代码与下面的效果相同
+Is the same as
 
 ```php
 use Workerman\Worker;
 $worker = new Worker('websocket://0.0.0.0:8484');
-// 设置所有连接的onclose回调
 $worker->onClose = function($connection)
 {
     echo "connection closed\n";

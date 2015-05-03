@@ -1,19 +1,19 @@
 # onConnect
-## 说明:
+## Description:
 ```php
 callback Worker::$onConnect
 ```
 
-当有客户端连接时触发的回调函数
+Emitted when a new connection is made.
 
-## 回调函数的参数
+## Parameters
 
 ``` $connection ```
 
-连接对象，连接对象的说明见下一节
+The instance of Connection.
 
 
-## 范例
+## Examples
 
 ```php
 use Workerman\Worker;

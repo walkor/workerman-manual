@@ -1,29 +1,31 @@
 # pauseRecv
-## 说明:
+## Description:
 ```php
 void Connection::pauseRecv(void)
 ```
 
-使当前连接停止接收数据。该连接的onMessage回调将不会被触发。此方法对于上传流量控制非常有用
+Pauses the reading of data. That is, 'data' events will not be emitted. Useful to throttle back an upload.
 
-## 参数
+## Parameters
 
-无参数
+This function has no parameters.
+
+## Return Values
+No value is returned.
 
 
-## 范例
+## Examples
 
 ```php
 use Workerman\Worker;
 $worker = new Worker('websocket://0.0.0.0:8484');
 $worker->onConnect = function($connection)
 {
-    // 给connection对象动态添加一个属性，用来保存当前连接发来多少个请求
     $connection->messageCount = 0;
 };
 $worker->onMessage = function($connection, $data)
 {
-    // 每个连接接收100个请求后就不再接收数据
+    // Stop receive data when 100 package received
     $limit = 100;
     if(++$connection->messageCount > $limit)
     {
@@ -31,6 +33,3 @@ $worker->onMessage = function($connection, $data)
     }
 };
 ```
-
-## 参见
-void Connection::resumeRecv(void) 使得对应连接对象恢复接收数据

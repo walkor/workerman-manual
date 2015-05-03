@@ -1,20 +1,20 @@
 # worker
-## 说明:
+## Description:
 ```php
 Worker Connection::$worker
 ```
 
-此属性为只读属性，即当前connection对象所属的worker实例
+Read only. The owner of the connection.
 
 
-## 范例
+## Examples
 
 
 ```php
 use Workerman\Worker;
 $worker = new Worker('Websocket://0.0.0.0:8484');
 
-// 当一个客户端发来数据时，转发给当前进程所维护的其它所有客户端
+// When received message，forwarded to all connections of the worker
 $worker->onMessage = function($connection, $data)
 {
     foreach($connection->worker->connections as $con)

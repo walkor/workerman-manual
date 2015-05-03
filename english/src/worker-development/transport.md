@@ -1,18 +1,18 @@
 # transport
-## 说明:
+## Description:
 ```php
 string Worker::$transport
 ```
 
-设置当前Worker实例所使用的传输层协议，目前只支持两种，tcp和udp。不设置默认为tcp。
+Set the protocol of transport layer, tcp or udp.
 
 
-## 范例
+## Examples
 
 ```php
 use Workerman\Worker;
 $worker = new Worker('Text://0.0.0.0:8484');
-// 使用udp协议
+// udp
 $worker->transport = 'udp';
 $worker->onMessage = function($connection, $data)
 {

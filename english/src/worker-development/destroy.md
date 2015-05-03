@@ -1,19 +1,22 @@
 # destroy
-## 说明:
+## Description:
 ```php
 void Connection::destroy()
 ```
 
-立刻关闭连接。
+Destroy the connection.
 
-与close不同之处是，调用destroy后即使该连接的发送缓冲区还有数据未发送到对端，连接也会立刻被关闭，并立刻触发该连接的```onClose```回调。
+```$connection->onClose``` event will be called directly following this event
 
-## 参数
+## Parameters
 
-无参数
+This function has no parameters.
 
+## Return Values
 
-## 范例
+No value is returned.
+
+## Examples
 
 ```php
 use Workerman\Worker;

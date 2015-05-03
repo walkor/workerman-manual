@@ -1,21 +1,21 @@
 # user
 
-## 说明:
+## Description:
 ```php
 string Worker::$user
 ```
 
-设置当前Worker实例以哪个用户运行。此属性只有当前用户为root时才能生效。不设置时默认以当前用户运行。
+Set the user of the worker processes. This needs appropriate privileges (usually root) on the system to be able to perform this.
 
-建议```$user```设置权限较低的用户，例如www-data、apache、nobody等。
+Recommend ```www-data```, ```apache```, ```nobody``` and so on.
 
 
-## 范例
+## Examples
 
 ```php
 use Workerman\Worker;
 $worker = new Worker('websocket://0.0.0.0:8484');
-// 设置实例的运行用户
+// Set the user of worker processes
 $worker->user = 'www-data';
 $worker->onWorkerStart = function($worker)
 {

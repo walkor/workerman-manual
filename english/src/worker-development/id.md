@@ -1,14 +1,14 @@
 # id
 
-## 说明:
+## Description:
 ```php
 int Connection::$id
 ```
 
-连接的id。这是一个自增的整数
+Each new connection is given its own unique id, this id is stored in the id.
 
 
-## 范例
+## Examples
 
 
 ```php

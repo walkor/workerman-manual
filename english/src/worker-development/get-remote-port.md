@@ -1,17 +1,21 @@
 # getRemotePort
-## 说明:
+## Description:
 ```php
 int Connection::getRemotePort()
 ```
 
-获得该连接的客户端端口
+Get remote port
 
-## 参数
+## Parameters
 
-无参数
+This function has no parameters.
 
 
-## 范例
+## Return Values
+
+The remote port. Example ```5698```.
+
+## Examples
 
 ```php
 use Workerman\Worker;

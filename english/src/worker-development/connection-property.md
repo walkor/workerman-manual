@@ -1,1 +1,1 @@
-# 属性
+# Properties

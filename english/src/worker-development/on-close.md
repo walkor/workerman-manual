@@ -1,19 +1,19 @@
 # onClose
-## 说明:
+## Description:
 ```php
 callback Worker::$onClose
 ```
 
-当客户端的连接断开时触发，不管连接是如何断开的，只要断开就会触发
+Emitted once the connection is closed.
 
-## 回调函数的参数
+## Parameters
 
 ``` $connection ```
 
-连接对象，连接对象的说明见下一节
+The instance of Connection.
 
 
-## 范例
+## Examples
 
 ```php
 use Workerman\Worker;
