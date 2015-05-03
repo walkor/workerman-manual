@@ -12,6 +12,8 @@ It contains all of the connections of the worker.
 ```php
 use Workerman\Worker;
 use Workerman\Lib\Timer;
+require_once './Workerman/Autoloader.php';
+
 $worker = new Worker('Text://0.0.0.0:8484');
 $worker->count = 6;
 
@@ -28,6 +30,9 @@ $worker->onWorkerStart = function($worker)
         }
     });
 };
+
+// Run all workers
+Worker::runAll();
 ```
 
 **Test**

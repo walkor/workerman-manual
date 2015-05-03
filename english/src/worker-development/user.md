@@ -14,6 +14,8 @@ Recommend ```www-data```, ```apache```, ```nobody``` and so on.
 
 ```php
 use Workerman\Worker;
+require_once './Workerman/Autoloader.php';
+
 $worker = new Worker('websocket://0.0.0.0:8484');
 // Set the user of worker processes
 $worker->user = 'www-data';
@@ -21,4 +23,7 @@ $worker->onWorkerStart = function($worker)
 {
     echo "Worker starting...\n";
 };
+
+// Run all workers
+Worker::runAll();
 ```

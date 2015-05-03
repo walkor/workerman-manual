@@ -6,7 +6,7 @@ int \Workerman\Lib\Timer::add(float $time_interval, callable $callback [,$args =
 To schedule execution of a callback after/every ```$time_interval``` seconds. Returns a timerId for possible use with Timer::del(). Optionally you can also pass arguments to the callback.
 
 ## Notice
-You should add Timer at ```on{.....}```
+You should add Timer at ```on{.....}``` callbacks, otherwise the timer will have no effect
 
 
 ### Parameters
@@ -33,6 +33,7 @@ Return a integer as timerid
 ### Examples
 ```php
 use \Workerman\Worker;
+require_once './Workerman/Autoloader.php';
 
 $task = new Worker();
 $task->onWorkerStart = function($task)
@@ -43,5 +44,8 @@ $task->onWorkerStart = function($task)
         echo "task run\n";
     });
 };
+
+// Run all workers
+Worker::runAll();
 
 ```

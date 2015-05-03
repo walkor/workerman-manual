@@ -17,6 +17,7 @@ No value is returned.
 ```php
 use \Workerman\Worker;
 use \Workerman\Connection\AsyncTcpConnection;
+require_once './Workerman/Autoloader.php';
 
 $REAL_MYSQL_ADDRESS = 'tcp://127.0.0.1:3306';
 
@@ -61,6 +62,9 @@ $proxy->onConnect = function($connection)
     };
 
 };
+
+// Run all workers
+Worker::runAll();
 ```
 
  **Test**

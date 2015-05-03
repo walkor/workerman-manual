@@ -18,6 +18,8 @@ The instance of Connection.
 
 ```php
 use Workerman\Worker;
+require_once './Workerman/Autoloader.php';
+
 $worker = new Worker('websocket://0.0.0.0:8484');
 $worker->onBufferFull = function($connection)
 {
@@ -27,4 +29,7 @@ $worker->onBufferDrain = function($connection)
 {
     echo "buffer drain and continue send\n";
 };
+
+// Run all workers
+Worker::runAll();
 ```

@@ -13,6 +13,8 @@ yourfile.php
 
 ```php
 use Workerman\Worker;
+require_once './Workerman/Autoloader.php';
+
 $worker = new Worker('websocket://0.0.0.0:8485');
 // set the worker name
 $worker->name = 'MyWebsocketWorker';
@@ -21,6 +23,9 @@ $worker->onWorkerStart = function($worker)
 {
     echo "Worker starting...\n";
 };
+
+// Run all workers
+Worker::runAll();
 ```
 
 ```php yourfile.php start -d``` and ```php yourfile.php status``` you will see

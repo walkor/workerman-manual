@@ -12,6 +12,8 @@ Read only. The owner of the connection.
 
 ```php
 use Workerman\Worker;
+require_once './Workerman/Autoloader.php';
+
 $worker = new Worker('Websocket://0.0.0.0:8484');
 
 // When received message，forwarded to all connections of the worker
@@ -22,4 +24,7 @@ $worker->onMessage = function($connection, $data)
         $con->send($data);
     }
 };
+
+// Run all workers
+Worker::runAll();
 ```

@@ -13,6 +13,8 @@ The protocol of the connection.
 
 ```php
 use Workerman\Worker;
+require_once './Workerman/Autoloader.php';
+
 $worker = new Worker('tcp://0.0.0.0:8484');
 $worker->onConnect = function($connection)
 {
@@ -23,4 +25,7 @@ $worker->onMessage = function($connection, $data)
     var_dump($_GET, $_POST);
     $connection->send("hello");
 };
+
+// Run all workers
+Worker::runAll();
 ```

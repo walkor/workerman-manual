@@ -19,6 +19,7 @@ No value is returned.
 ```php
 use Workerman\Worker;
 use Workerman\Lib\Timer;
+require_once './Workerman/Autoloader.php';
 
 $worker = new Worker('websocket://0.0.0.0:8484');
 $worker->onConnect = function($connection)
@@ -38,4 +39,7 @@ $worker->onMessage = function($connection, $data)
         }, array($connection), false);
     }
 };
+
+// Run all workers
+Worker::runAll();
 ```

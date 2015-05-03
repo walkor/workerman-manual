@@ -23,6 +23,8 @@ If the Protocol of Worker is setted, the data will be the result of ```Protocol:
 
 ```php
 use Workerman\Worker;
+require_once './Workerman/Autoloader.php';
+
 $worker = new Worker('websocket://0.0.0.0:8484');
 $worker->onMessage = function($connection, $data)
 {
@@ -30,4 +32,7 @@ $worker->onMessage = function($connection, $data)
     var_dump($data);
     $connection->send('receive success');
 };
+
+// Run all workers
+Worker::runAll();
 ```

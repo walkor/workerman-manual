@@ -13,6 +13,8 @@ This is a static property. All output (echo var_dump, etc.) to the terminal  wil
 
 ```php
 use Workerman\Worker;
+require_once './Workerman/Autoloader.php';
+
 Worker::$daemonize = true;
 
 // All output will be redirected to /tmp/stdout.log
@@ -22,4 +24,7 @@ $worker->onWorkerStart = function($worker)
 {
     echo "Worker start\n";
 };
+
+// Run all workers
+Worker::runAll();
 ```

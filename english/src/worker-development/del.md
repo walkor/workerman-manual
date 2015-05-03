@@ -18,6 +18,7 @@ boolean
 
 ```php
 use \Workerman\Worker;
+require_once './Workerman/Autoloader.php';
 
 $task = new Worker();
 $task->onWorkerStart = function($task)
@@ -31,4 +32,7 @@ $task->onWorkerStart = function($task)
         Timer::del($timer_id);
     }, array($timer_id), false);
 };
+
+// Run all workers
+Worker::runAll();
 ```

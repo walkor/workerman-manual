@@ -11,10 +11,15 @@ This is a static property. Workerman will run as daemon mode when  ```Worker::$d
 
 ```php
 use Workerman\Worker;
+require_once './Workerman/Autoloader.php';
+
 Worker::$daemonize = true;
 $worker = new Worker('Text://0.0.0.0:8484');
 $worker->onWorkerStart = function($worker)
 {
     echo "Worker start\n";
 };
+
+// Run all workers
+Worker::runAll();
 ```

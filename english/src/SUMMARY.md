@@ -58,8 +58,7 @@
    * [Timer](worker-development/timer-functions.md)
        * [add](worker-development/add.md)
        * [del](worker-development/del.md)
-   * [WebServer](worker-development/webserver.md)
-* [高级应用](advanced/README.md)
-   * [WebServer](advanced/webserver.md)
-   * [查看WorkerMan运行状态](advanced/status.md)
+   * [WebServer](worker-development/web-server.md)
+       * [__construct](worker-development/webserver-construct.md)
+       * [addRoot](worker-development/webserver-add-root.md)
 

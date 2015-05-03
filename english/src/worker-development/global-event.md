@@ -13,6 +13,7 @@ This is a static property. ```Worker::$globalEvent``` is the global eventloop.
 ```php
 use Workerman\Worker;
 use Workerman\Events\EventInterface;
+require_once './Workerman/Autoloader.php';
 
 $worker = new Worker('Text://0.0.0.0:8484');
 $worker->onWorkerStart = function($worker)
@@ -23,4 +24,7 @@ $worker->onWorkerStart = function($worker)
         echo "Get signal SIGALRM\n";
     });
 };
+
+// Run all workers
+Worker::runAll();
 ```

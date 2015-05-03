@@ -19,10 +19,15 @@ The remote port. Example ```5698```.
 
 ```php
 use Workerman\Worker;
+require_once './Workerman/Autoloader.php';
+
 $worker = new Worker('websocket://0.0.0.0:8484');
 $worker->onConnect = function($connection)
 {
     echo "new connection from address " .
     $connection->getRemoteIp() . ":". $connection->getRemotePort() ."\n";
 };
+
+// Run all workers
+Worker::runAll();
 ```
