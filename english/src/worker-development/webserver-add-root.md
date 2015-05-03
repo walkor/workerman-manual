@@ -15,7 +15,7 @@ Domain.
 
 ``` path ```
 
-the document root directory for the ```$domain```
+The document root directory for the ```$domain```
 
 
 ### Return Values
