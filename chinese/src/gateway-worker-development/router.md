@@ -41,7 +41,7 @@ callback Gateway::$router
 
 
 
-## 范例
+## 范例 1 随机路由
 
 ```php
 use \GatewayWorker\Gateway;
@@ -52,3 +52,19 @@ $gateway->router = function($worker_connections, $client_connection, $cmd, $buff
     return $worker_connections[array_rand($worker_connections)];
 };
 ```
+
+## 范例 2 随机绑定
+```php
+use \GatewayWorker\Gateway;
+$gateway = new Gateway("Websocket://0.0.0.0:8585");
+$gateway->router = function($worker_connections, $client_connection, $cmd, $buffer)
+{
+    if(!isset($client_connection->businessworker))
+    {
+        $client_connection->businessworker = $worker_connections[array_rand($worker_connections)];
+    }
+    return $client_connection->businessworker;
+};
+```
+
+

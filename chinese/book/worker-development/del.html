@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="7.5.2" data-basepath=".." data-revision="1430742998927">
+    <div class="book"  data-level="7.5.2" data-basepath=".." data-revision="1430745142209">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1533,7 +1533,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_102">
+                    <section class="normal" id="section-gitbook_334">
                     
                         <h1 id="del">del</h1>
 <pre><code class="lang-php">boolean \Workerman\Lib\Timer::del(int <span class="hljs-variable">$timer_id</span>)
@@ -1545,24 +1545,25 @@
 <h3 id="-">返回值</h3>
 <p>boolean</p>
 <h3 id="-">示例</h3>
-<p>```php
-use \Workerman\Worker;</p>
-<p>$task = new Worker();
-// 开启多少个进程运行定时任务，注意多进程并发问题
-$task-&gt;count = 1;
-$task-&gt;onWorkerStart = function($task)
-{
-    // 每2秒运行一次
-    $timer_id = \Workerman\Lib\Timer::add(2, function()
-    {
-        echo &quot;task run\n&quot;;
+<pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+
+<span class="hljs-variable">$task</span> = <span class="hljs-keyword">new</span> Worker();
+<span class="hljs-comment">// 开启多少个进程运行定时任务，注意多进程并发问题</span>
+<span class="hljs-variable">$task</span>-&gt;count = <span class="hljs-number">1</span>;
+<span class="hljs-variable">$task</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$task</span>)</span>
+{</span>
+    <span class="hljs-comment">// 每2秒运行一次</span>
+    <span class="hljs-variable">$timer_id</span> = \Workerman\Lib\Timer::add(<span class="hljs-number">2</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>
+    {</span>
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">"task run\n"</span>;
     });
-    // 20秒后运行一个一次性任务，删除2秒一次的定时任务
-    Timer::add(20, function($timer_id)
-    {
-        Timer::del($timer_id);
-    }, array($timer_id), false);
-};</p>
+    <span class="hljs-comment">// 20秒后运行一个一次性任务，删除2秒一次的定时任务</span>
+    Timer::add(<span class="hljs-number">20</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$timer_id</span>)</span>
+    {</span>
+        Timer::del(<span class="hljs-variable">$timer_id</span>);
+    }, <span class="hljs-keyword">array</span>(<span class="hljs-variable">$timer_id</span>), <span class="hljs-keyword">false</span>);
+};
+</code></pre>
 
                     
                     </section>

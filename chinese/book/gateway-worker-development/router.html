@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="8.6" data-basepath=".." data-revision="1430742998927">
+    <div class="book"  data-level="8.6" data-basepath=".." data-revision="1430745142209">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1533,7 +1533,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_34">
+                    <section class="normal" id="section-gitbook_266">
                     
                         <h1 id="router">router</h1>
 <h2 id="-">说明:</h2>
@@ -1555,13 +1555,25 @@
 <p>客户端发来的数据。注意只有当 <code>$cmd</code> 为<code>2</code>时 <code>$buffer</code>才有值</p>
 <h2 id="-">返回值</h2>
 <p>返回 <code>$worker_connnections</code> 中的一个连接对象</p>
-<h2 id="-">范例</h2>
+<h2 id="-1-">范例 1 随机路由</h2>
 <pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">GatewayWorker</span>\<span class="hljs-title">Gateway</span>;
 <span class="hljs-variable">$gateway</span> = <span class="hljs-keyword">new</span> Gateway(<span class="hljs-string">"Websocket://0.0.0.0:8585"</span>);
 <span class="hljs-comment">// 随机路由</span>
 <span class="hljs-variable">$gateway</span>-&gt;router = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$worker_connections</span>, <span class="hljs-variable">$client_connection</span>, <span class="hljs-variable">$cmd</span>, <span class="hljs-variable">$buffer</span>)</span>
 {</span>
     <span class="hljs-keyword">return</span> <span class="hljs-variable">$worker_connections</span>[array_rand(<span class="hljs-variable">$worker_connections</span>)];
+};
+</code></pre>
+<h2 id="-2-">范例 2 随机绑定</h2>
+<pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">GatewayWorker</span>\<span class="hljs-title">Gateway</span>;
+<span class="hljs-variable">$gateway</span> = <span class="hljs-keyword">new</span> Gateway(<span class="hljs-string">"Websocket://0.0.0.0:8585"</span>);
+<span class="hljs-variable">$gateway</span>-&gt;router = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$worker_connections</span>, <span class="hljs-variable">$client_connection</span>, <span class="hljs-variable">$cmd</span>, <span class="hljs-variable">$buffer</span>)</span>
+{</span>
+    <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$client_connection</span>-&gt;businessworker))
+    {
+        <span class="hljs-variable">$client_connection</span>-&gt;businessworker = <span class="hljs-variable">$worker_connections</span>[array_rand(<span class="hljs-variable">$worker_connections</span>)];
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-variable">$client_connection</span>-&gt;businessworker;
 };
 </code></pre>
 
