@@ -55,8 +55,6 @@ $web->addRoot('kedou.workerman.net', __DIR__.'/Web');
 
 3、由于192.168.0.2/3 两台服务器只部署BusinessWorker进程，所以将这两台ip上的Gateway初始化注释掉或者删掉，避免运行Gateway进程，BusinessWorker服务器初始化文件类似下面(如果有单独的Web服务器运行蝌蚪界面，可以把WebServer初始化部分也去掉)
 
-文件Applications/Todpole/start.php
-
 ```php
 <?php
 use \Workerman\WebServer;
@@ -83,18 +81,18 @@ $web->count = 12;
 $web->addRoot('kedou.workerman.net', __DIR__.'/Web');
 ```
 
-4、由于物理机之间需要共享一些数据，需要部署一台memcache服务器，假设部署在Gateway（192.168.0.1）这台机器上，memcache服务端口为11211
+4、由于物理机之间需要共享一些数据，需要部署一台redis服务器，假设部署在Gateway（192.168.0.1）这台机器上，redis服务端口为6379
 
-5、给三台服务器的PHP添加memcached或者memcache扩展。推荐用memcached扩展，ubuntu/debian可使用 sudo apt-get install php5-memcached安装。
+5、给三台服务器的PHP添加redisd或者redis扩展。推荐用redisd扩展，ubuntu/debian可使用 ```sudo apt-get install php5-redis```安装；centos系统使用```yum install php-pecl-redis``` 安装。
 
-6、配置memcache，更改三台服务器上```Applications/Todpole/Config/Store.php```中的```driver```、```gateway```两项配置如下，
+6、配置redis，更改三台服务器上```Applications/Todpole/Config/Store.php```中的```driver```、```gateway```两项配置如下，
 
 ```php
-// 存储驱动改为memcache
-public static $driver = self::DRIVER_MC
-// 更改memcache ip和端口
+// 存储驱动改为redis
+public static $driver = self::DRIVER_REDIS
+// 更改redis ip和端口
 public static $gateway = array(
-     '192.168.0.1:11211',
+     '192.168.0.1:6379',
 );
 
 ```

@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="10.3" data-basepath=".." data-revision="1430745142209">
+    <div class="book"  data-level="10.3" data-basepath=".." data-revision="1431261439839">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1533,7 +1533,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_277">
+                    <section class="normal" id="section-gitbook_719">
                     
                         <h1 id="-workerman-">在非WorkerMan项目中推送消息</h1>
 <h2 id="-">需求</h2>
@@ -1542,7 +1542,7 @@
 <p><strong>客户端地址：</strong></p>
 <p><a href="https://github.com/walkor/GatewayClient" target="_blank">https://github.com/walkor/GatewayClient</a></p>
 <p><strong>使用方法：</strong></p>
-<p><em>注意:如果项目与WorkerMan不在同一台服务器，需要安装memcached，参考8.10 Config/Store配置章节。注意php有memcache和memcached两个扩展，请确保每个项目使用的是相同的扩展</em></p>
+<p>*注意:如果项目与WorkerMan不在同一台服务器，需要安装redis，参考8.10 Config/Store配置章节。</p>
 <p>1、拷贝WorkerMan项目中的Applications/YourApp/Config目录到GatewayClient下。</p>
 <p>拷贝后的GatewayClient目录结构如下</p>
 <pre><code class="lang-shell">GatewayClient/
@@ -1580,7 +1580,7 @@ Gateway::isOnline(<span class="hljs-variable">$client_id</span>);
 <span class="hljs-comment">// #### 内部推送端口(假设内网ip为192.168.100.100) ####</span>
 <span class="hljs-variable">$internal_gateway</span> = <span class="hljs-keyword">new</span> Gateway(<span class="hljs-string">"Text://192.168.100.100:7273"</span>);
 <span class="hljs-variable">$internal_gateway</span>-&gt;name=<span class="hljs-string">'internalGateway'</span>;
-<span class="hljs-variable">$internal_gateway</span>-&gt;startProt = <span class="hljs-number">2800</span>;
+<span class="hljs-variable">$internal_gateway</span>-&gt;startPort = <span class="hljs-number">2800</span>;
 <span class="hljs-comment">// #### 内部推送端口设置完毕 ####</span>
 
 <span class="hljs-comment">// bussinessWorker</span>

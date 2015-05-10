@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="8.10.2" data-basepath=".." data-revision="1430745142209">
+    <div class="book"  data-level="8.10.2" data-basepath=".." data-revision="1431261439839">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1533,30 +1533,30 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_260">
+                    <section class="normal" id="section-gitbook_702">
                     
                         <h1 id="-workerman">如何分布式WorkerMan</h1>
 <h2 id="-">关键点</h2>
 <h3 id="1-gateway-lanip-ip-">1、设置Gateway实例的<code>lanIp</code>与当前服务器内网ip一致</h3>
-<h3 id="2-applications-xxx-config-store-php-memcache-">2、<code>Applications/XXX/Config/Store.php</code> 中 memcache 相关配置</h3>
-<pre><code class="lang-php"><span class="hljs-comment">// self::DRIVER_MC代表使用memcache存储</span>
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-variable">$driver</span> = <span class="hljs-keyword">self</span>::DRIVER_MC;
-<span class="hljs-comment">// 改成memcache服务器内网ip端口</span>
+<h3 id="2-applications-xxx-config-store-php-redis-">2、<code>Applications/XXX/Config/Store.php</code> 中 redis 相关配置</h3>
+<pre><code class="lang-php"><span class="hljs-comment">// self::DRIVER_REDIS代表使用redis存储</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-variable">$driver</span> = <span class="hljs-keyword">self</span>::DRIVER_REDIS;
+<span class="hljs-comment">// 改成redis服务器内网ip端口</span>
 <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-variable">$gateway</span> = <span class="hljs-keyword">array</span>(
-     <span class="hljs-string">'memcache内网ip:memcache端口'</span>,
+     <span class="hljs-string">'redis内网ip:redis端口'</span>,
 );
 </code></pre>
 <h2 id="-">部署示例</h2>
-<p>以Applications/Demo为例，假如需要部署三台服务器(192.168.1.1-3)提供高可用服务。。另外有一台memcache服务器（ip 192.168.1.4，端口11211）做全局数据共享。</p>
-<p>1、给三台服务器的PHP添加memcached或者memcache扩展。推荐用memcached扩展，ubuntu/debian可使用 sudo apt-get install php5-memcached安装。<em>注意：php有memcache和memcached两个扩展，请确保每个项目使用的是相同的扩展</em></p>
+<p>以Applications/Demo为例，假如需要部署三台服务器(192.168.1.1-3)提供高可用服务。。另外有一台redis服务器（ip 192.168.1.4，端口6379）做全局数据共享。</p>
+<p>1、给三台服务器的PHP添加redis扩展。ubuntu/debian可使用 <code>sudo apt-get install php5-redis</code>安装。centos系统使用<code>yum install php-pecl-redis</code>。</p>
 <p>2、配置三台服务器<code>Applications/Demo/Config/Store.php</code>如下</p>
-<pre><code class="lang-php"><span class="hljs-comment">// 存储驱动改为memcache</span>
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-variable">$driver</span> = <span class="hljs-keyword">self</span>::DRIVER_MC
-<span class="hljs-comment">// 更改memcache ip和端口</span>
+<pre><code class="lang-php"><span class="hljs-comment">// 存储驱动改为redis</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-variable">$driver</span> = <span class="hljs-keyword">self</span>::DRIVER_REDIS
+<span class="hljs-comment">// 更改redis ip和端口</span>
 <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-variable">$gateway</span> = <span class="hljs-keyword">array</span>(
-     <span class="hljs-string">'192.168.1.4:11211'</span>,
+     <span class="hljs-string">'192.168.1.4:6379'</span>,
 );
-<span class="hljs-comment">// 如果有其它的配置如workerman-chat中的$room配置，也需要将其改成memcache的ip和端口</span>
+<span class="hljs-comment">// 如果有其它的配置如workerman-chat中的$room配置，也需要将其改成redis的ip和端口</span>
 ...
 </code></pre>
 <p>3、分别配置三台服务器Gateway对象的<code>lanIp</code>为当前服务器的内网ip。例如配置192.168.1.1服务器Gateway实例</p>

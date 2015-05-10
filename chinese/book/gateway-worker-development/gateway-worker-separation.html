@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="8.10.3" data-basepath=".." data-revision="1430745142209">
+    <div class="book"  data-level="8.10.3" data-basepath=".." data-revision="1431261439839">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1533,7 +1533,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_256">
+                    <section class="normal" id="section-gitbook_698">
                     
                         <h1 id="gateway-worker-">gateway worker 分离部署</h1>
 <h2 id="-gateway-worker-">什么是Gateway Worker分离部署</h2>
@@ -1578,7 +1578,6 @@
 <span class="hljs-variable">$web</span>-&gt;addRoot(<span class="hljs-string">'kedou.workerman.net'</span>, <span class="hljs-keyword">__DIR__</span>.<span class="hljs-string">'/Web'</span>);
 </code></pre>
 <p>3、由于192.168.0.2/3 两台服务器只部署BusinessWorker进程，所以将这两台ip上的Gateway初始化注释掉或者删掉，避免运行Gateway进程，BusinessWorker服务器初始化文件类似下面(如果有单独的Web服务器运行蝌蚪界面，可以把WebServer初始化部分也去掉)</p>
-<p>文件Applications/Todpole/start.php</p>
 <pre><code class="lang-php"><span class="hljs-preprocessor">&lt;?php</span>
 <span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">WebServer</span>;
 <span class="hljs-keyword">use</span> \<span class="hljs-title">GatewayWorker</span>\<span class="hljs-title">Gateway</span>;
@@ -1603,14 +1602,14 @@
 <span class="hljs-variable">$web</span>-&gt;count = <span class="hljs-number">12</span>;
 <span class="hljs-variable">$web</span>-&gt;addRoot(<span class="hljs-string">'kedou.workerman.net'</span>, <span class="hljs-keyword">__DIR__</span>.<span class="hljs-string">'/Web'</span>);
 </code></pre>
-<p>4、由于物理机之间需要共享一些数据，需要部署一台memcache服务器，假设部署在Gateway（192.168.0.1）这台机器上，memcache服务端口为11211</p>
-<p>5、给三台服务器的PHP添加memcached或者memcache扩展。推荐用memcached扩展，ubuntu/debian可使用 sudo apt-get install php5-memcached安装。</p>
-<p>6、配置memcache，更改三台服务器上<code>Applications/Todpole/Config/Store.php</code>中的<code>driver</code>、<code>gateway</code>两项配置如下，</p>
-<pre><code class="lang-php"><span class="hljs-comment">// 存储驱动改为memcache</span>
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-variable">$driver</span> = <span class="hljs-keyword">self</span>::DRIVER_MC
-<span class="hljs-comment">// 更改memcache ip和端口</span>
+<p>4、由于物理机之间需要共享一些数据，需要部署一台redis服务器，假设部署在Gateway（192.168.0.1）这台机器上，redis服务端口为6379</p>
+<p>5、给三台服务器的PHP添加redisd或者redis扩展。推荐用redisd扩展，ubuntu/debian可使用 <code>sudo apt-get install php5-redis</code>安装；centos系统使用<code>yum install php-pecl-redis</code> 安装。</p>
+<p>6、配置redis，更改三台服务器上<code>Applications/Todpole/Config/Store.php</code>中的<code>driver</code>、<code>gateway</code>两项配置如下，</p>
+<pre><code class="lang-php"><span class="hljs-comment">// 存储驱动改为redis</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-variable">$driver</span> = <span class="hljs-keyword">self</span>::DRIVER_REDIS
+<span class="hljs-comment">// 更改redis ip和端口</span>
 <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-variable">$gateway</span> = <span class="hljs-keyword">array</span>(
-     <span class="hljs-string">'192.168.0.1:11211'</span>,
+     <span class="hljs-string">'192.168.0.1:6379'</span>,
 );
 </code></pre>
 <p>7、首先启动Gateway服务器192.168.0.1，然后启动BusinessWorker的服务器192.168.0.2/3</p>

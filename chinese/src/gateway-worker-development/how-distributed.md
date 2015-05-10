@@ -1,31 +1,31 @@
 # 如何分布式WorkerMan
 ##关键点
 ### 1、设置Gateway实例的```lanIp```与当前服务器内网ip一致
-### 2、```Applications/XXX/Config/Store.php``` 中 memcache 相关配置
+### 2、```Applications/XXX/Config/Store.php``` 中 redis 相关配置
 ```php
-// self::DRIVER_MC代表使用memcache存储
-public static $driver = self::DRIVER_MC;
-// 改成memcache服务器内网ip端口
+// self::DRIVER_REDIS代表使用redis存储
+public static $driver = self::DRIVER_REDIS;
+// 改成redis服务器内网ip端口
 public static $gateway = array(
-     'memcache内网ip:memcache端口',
+     'redis内网ip:redis端口',
 );
 ```
 
 ## 部署示例
-以Applications/Demo为例，假如需要部署三台服务器(192.168.1.1-3)提供高可用服务。。另外有一台memcache服务器（ip 192.168.1.4，端口11211）做全局数据共享。
+以Applications/Demo为例，假如需要部署三台服务器(192.168.1.1-3)提供高可用服务。。另外有一台redis服务器（ip 192.168.1.4，端口6379）做全局数据共享。
 
-1、给三台服务器的PHP添加memcached或者memcache扩展。推荐用memcached扩展，ubuntu/debian可使用 sudo apt-get install php5-memcached安装。*注意：php有memcache和memcached两个扩展，请确保每个项目使用的是相同的扩展*
+1、给三台服务器的PHP添加redis扩展。ubuntu/debian可使用 ```sudo apt-get install php5-redis```安装。centos系统使用```yum install php-pecl-redis```。
 
 2、配置三台服务器```Applications/Demo/Config/Store.php```如下
 
 ```php
-// 存储驱动改为memcache
-public static $driver = self::DRIVER_MC
-// 更改memcache ip和端口
+// 存储驱动改为redis
+public static $driver = self::DRIVER_REDIS
+// 更改redis ip和端口
 public static $gateway = array(
-     '192.168.1.4:11211',
+     '192.168.1.4:6379',
 );
-// 如果有其它的配置如workerman-chat中的$room配置，也需要将其改成memcache的ip和端口
+// 如果有其它的配置如workerman-chat中的$room配置，也需要将其改成redis的ip和端口
 ...
 ```
 
