@@ -17,6 +17,8 @@ static Event Worker::$pidFile
 
 ```php
 use Workerman\Worker;
+require_once './Workerman/Autoloader.php';
+
 Worker::$pidFile = '/var/run/workerman.pid';
 
 $worker = new Worker('Text://0.0.0.0:8484');

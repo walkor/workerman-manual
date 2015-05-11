@@ -13,6 +13,7 @@ static Event Worker::$globalEvent
 ```php
 use Workerman\Worker;
 use Workerman\Events\EventInterface;
+require_once './Workerman/Autoloader.php';
 
 $worker = new Worker('Text://0.0.0.0:8484');
 $worker->onWorkerStart = function($worker)

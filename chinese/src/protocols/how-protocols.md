@@ -19,14 +19,14 @@
 ### 实现步骤
 在WorkerMan中如果要实现上面的协议，假设协议的名字叫JsonNL，所在项目为MyApp，则需要以下步骤
 
-1、协议文件放到Applications下项目的Protocols文件夹，例如文件Applications/MyApp/Protocols/JsonNL.php
+1、协议文件放到项目的Protocols文件夹，例如文件MyApp/Protocols/JsonNL.php
 
 2、实现JsonNL类，以```namespace Protocols;```为命名空间，必须实现三个静态方法分别为 input、encode、decode
 
 
 ### 具体实现
 
-**Applications/MyApp/Protocols/JsonNL.php的实现**
+**MyApp/Protocols/JsonNL.php的实现**
 
 ```php
 namespace Protocols;
@@ -79,9 +79,10 @@ class JsonNL
 
 至此，JsonNL协议实现完毕，可以在MyApp项目中使用，使用方法例如下面
 
-文件：Applications\MyApp\start.php
+文件：MyApp\start.php
 ```php
 use Workerman\Worker;
+require_once '/your/path/Workerman/Autoloader.php'
 $json_worker = new Worker('JsonNL://0.0.0.0:1234');
 $json_worker->onMessage = ...
 ...

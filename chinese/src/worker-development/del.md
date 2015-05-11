@@ -16,6 +16,7 @@ boolean
 ### 示例
 ```php
 use \Workerman\Worker;
+require_once './Workerman/Autoloader.php';
 
 $task = new Worker();
 // 开启多少个进程运行定时任务，注意多进程并发问题

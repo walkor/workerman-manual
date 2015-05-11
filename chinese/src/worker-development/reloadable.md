@@ -13,6 +13,8 @@ string Worker::$reloadable
 
 ```php
 use Workerman\Worker;
+require_once './Workerman/Autoloader.php';
+
 $worker = new Worker('websocket://0.0.0.0:8484');
 // 设置此实例收到reload信号后是否reload重启
 $worker->reloadable = false;

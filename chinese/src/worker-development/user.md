@@ -14,6 +14,8 @@ string Worker::$user
 
 ```php
 use Workerman\Worker;
+require_once './Workerman/Autoloader.php';
+
 $worker = new Worker('websocket://0.0.0.0:8484');
 // 设置实例的运行用户
 $worker->user = 'www-data';

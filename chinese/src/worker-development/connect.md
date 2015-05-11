@@ -16,6 +16,7 @@ void \Workerman\Connection\AsyncTcpConnection::connect()
 ```php
 use \Workerman\Worker;
 use \Workerman\Connection\AsyncTcpConnection;
+require_once './Workerman/Autoloader.php';
 
 // 真实的mysql地址，假设这里是本机3306端口
 $REAL_MYSQL_ADDRESS = 'tcp://127.0.0.1:3306';

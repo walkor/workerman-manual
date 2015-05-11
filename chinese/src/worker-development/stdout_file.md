@@ -13,6 +13,8 @@ static string Worker::$stdoutFile
 
 ```php
 use Workerman\Worker;
+require_once './Workerman/Autoloader.php';
+
 Worker::$daemonize = true;
 // 所有的打印输出全部保存在/tmp/stdout.log文件中
 Worker::$stdoutFile = '/tmp/stdout.log';

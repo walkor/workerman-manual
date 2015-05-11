@@ -11,6 +11,7 @@
 ```php
 <?php
 use \Workerman\Worker;
+require_once './Workerman/Autoloader.php';
 
 // 全局变量，保存当前进程的客户端连接数
 $connection_count = 0;

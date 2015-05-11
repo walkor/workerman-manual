@@ -31,11 +31,6 @@ git clone https://github.com/walkor/workerman
 ```
 
 
-5、进入到WorkerMan主程序根目录，命令行运行以下命令启动WorkerMan
-```shell
-php start.php start
-```
-
 
 ### debian/ubuntu系统安装教程(如果不是root用户请用sudo 后面加命令)
 
@@ -64,12 +59,6 @@ git clone https://github.com/walkor/workerman
 ```
 
 
-5、进入到WorkerMan主程序根目录，命令行运行以下命令启动WorkerMan
-```shell
-php start.php start
-```
-
-
 ##下载ZIP文件安装
 
 
@@ -77,8 +66,4 @@ php start.php start
 
 2、通过http://www.workerman.net/download/workermanzip 连接下载WorkerMan
 
-3、进入到WorkerMan主程序根目录，命令行运行以下命令启动WorkerMan
-```shell
-php start.php start
-```
 

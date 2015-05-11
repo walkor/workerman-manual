@@ -169,6 +169,7 @@ class BinaryTransfer
 
 ```php
 use Workerman\Worker;
+require_once '/your/path/Workerman/Autoloader.php'
 
 $worker = new Worker('BinaryTransfer://0.0.0.0:8333');
 // 保存文件到tmp下
@@ -178,6 +179,8 @@ $worker->onMessage = function($connection, $data)
     file_put_contents($save_path, $data['file_data']);
     $connection->send("upload success. save path $save_path");
 };
+
+Worker::runAll();
 ```
 
 ### 客户端文件 client.php （这里用php模拟客户端上传）
@@ -282,6 +285,7 @@ class TextTransfer
 
 ```php
 use Workerman\Worker;
+require_once '/your/path/Workerman/Autoloader.php'
 
 $worker = new Worker('TextTransfer://0.0.0.0:8333');
 // 保存文件到tmp下
@@ -291,6 +295,8 @@ $worker->onMessage = function($connection, $data)
     file_put_contents($save_path, $data['file_data']);
     $connection->send("upload success. save path $save_path");
 };
+
+Worker::runAll();
 ```
 
 ### 客户端文件 textclient.php （这里用php模拟客户端上传）

@@ -11,6 +11,8 @@ static bool Worker::$daemonize
 
 ```php
 use Workerman\Worker;
+require_once './Workerman/Autoloader.php';
+
 Worker::$daemonize = true;
 $worker = new Worker('Text://0.0.0.0:8484');
 $worker->onWorkerStart = function($worker)

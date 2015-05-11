@@ -4,26 +4,23 @@
 
 以debug方式启动
 
-```php start.php start```
+```php yourfile.php start```
 
 以daemon方式启动
 
-```php start.php start -d```
+```php yourfile.php start -d```
 
 ### 停止
-```php start.php stop```
+```php yourfile.php stop```
 
 ### 重启
-```php start.php restart```
+```php yourfile.php restart```
 
 ### 平滑重启
-```php start.php reload```
+```php yourfile.php reload```
 
 ### 查看状态
-```php start.php status```
-
-## 启动文件说明
-WorkerMan自带一个启动文件start.php，用于启动applications下的所有应用。它的原理是扫描查找applications/应用/下的start.php文件，并载入。applications/应用/start.php里面是服务启动的具体脚本，包含端口、进程数等设置。
+```php yourfile.php status```
 
 
 ## 什么是平滑重启？
@@ -39,8 +36,5 @@ WorkerMan分为主进程和子进程，主进程负责监控子进程，子进�
 当WorkerMan主进程收到平滑重启信号时，主进程会向其中一个子进程发送安全退出(让对应进程处理完毕当前请求后才退出)信号，当这个进程退出后，主进程会重新创建一个新的子进程（这个子进程载入了新的PHP代码），然后主进程再次向另外一个旧的进程发送停止命令，这样一个进程一个进程的重启，直到所有旧的进程全部被置换为止。
 
 我们看到平滑重启实际上是让旧的业务进程逐个退出然后并逐个创建新的进程做到的。为了在平滑重启时不影响客用户，这就要求进程中不要保存用户相关的状态信息，即业务进程最好是无状态的，避免由于进程退出导致信息丢失。
-
-然而像聊天类的长连接应用中，势必要进程保存客户端的socket连接，在平滑重启时会导致客户端连接断开。为了避免这种情况，WorkerMan将即时通讯类的长连接应用分为Gateway进程和BusinessWorker进程。Gateway进程负责接收客户端连接和请求数据，并将请求数据交给BusinessWorker处理，BusinessWorker进程负责业务处理，并把处理结果转发给Gateway进程，进而再转发给用户。这种Gateway BusinessWorker进程模型在业务代码更新时，其实只要平滑重启BusinessWorker进程即可，Gateway进程其实不用重启，所以一般在Gateway进程的中配置noReload=true来避免平滑重启Gateway进程导致客户端连接断开。
-
 
 

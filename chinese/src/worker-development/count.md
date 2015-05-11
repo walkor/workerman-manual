@@ -13,6 +13,8 @@ int Worker::$count
 
 ```php
 use Workerman\Worker;
+require_once './Workerman/Autoloader.php';
+
 $worker = new Worker('websocket://0.0.0.0:8484');
 // 启动8个进程，同时监听8484端口，以websocket协议提供服务
 $worker->count = 8;

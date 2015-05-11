@@ -4,10 +4,14 @@
 进程数是由```count```属性决定的，例如下面代码
 ```
 use Workerman\Worker;
+require_once './Workerman/Autoloader.php';
+
 $http_worker = new Worker("http://0.0.0.0:2345");
 
 // ## 启动4个进程对外提供服务 ##
 $http_worker->count = 4;
+
+...
 
 ```
 
@@ -36,21 +40,13 @@ $http_worker->count = 4;
 
 如果流水线上的商品每一步操作都比较快（CPU密集型），只需要少数工人即可
 
-## 如果是基于Worker开发
-如果是基于Worker开发，业务代码是IO密集型的（业务代码有IO阻塞的地方），则根据IO密集程度设置进程数，例如CPU核数的3倍。
+## 进程数设置参考值
+如果业务代码是IO密集型的（业务代码有IO阻塞的地方），则根据IO密集程度设置进程数，例如CPU核数的3倍。
 
 如果业务代码中无阻塞式IO通讯，则可以将进程数设置成cpu核数
 
-
-## 如果是基于Gateway/Worker开发
-Gateway/Worker模型与Nginx+PHP-FPM模型非常相像，Gateway相当于Nginx，Worker相当于PHP-FPM。进程数设置原则也类似。
-
-Gateway进程虽然处理大量IO操作，但是由于Gateway进程的IO都是非阻塞的，所以它不是IO密集型进程，而是CPU密集型，将进程数设置成CPU核数即可
-
-Worker进程是处理业务的，根据业务是否有IO阻塞操作以及阻塞程度设置进程数
-
 ## 注意
-WorkerMan自身的IO都是非阻塞的，例如```Connection->send、Gateway::sendToClient、Gateway::sendToAll```等都是非阻塞的，属于CPU密集型操作。如果不清楚自己业务偏向于哪种类型，可设置进程数为CPU核数的2倍左右即可（注意Gateway为CPU密集型进程，设置与CPU核数相同）。
+WorkerMan自身的IO都是非阻塞的，例如```Connection->send```等都是非阻塞的，属于CPU密集型操作。如果不清楚自己业务偏向于哪种类型，可设置进程数为CPU核数的2倍左右即可。
 
 
 

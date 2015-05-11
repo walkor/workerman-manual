@@ -2,13 +2,15 @@
 
 ## 应用程序目录
 
-应用程序目录一般放在applications目录下，如applications/ChatApp/
+应用程序目录可以放到任意位置
 
 ## 入口文件
 
-和nginx+PHP-FPM下的PHP应用程序一样，WorkerMan中的应用程序也需要一个入口文件，WorkerMan的入口文件为start.php，放在applications/YourApp/下（YourApp为你应用的名称）。
+和nginx+PHP-FPM下的PHP应用程序一样，WorkerMan中的应用程序也需要一个入口文件，入口文件名没有要求，并且这个入口文件是以PHP Cli方式运行的。
 
-applications/YourApp/start.php 中是创建监听进程相关的代码，例如下面的基于Worker开发的代码片段
+ 入口文件中是创建监听进程相关的代码，例如下面的基于Worker开发的代码片段
+
+ test.php
 ```php
 <?php
 use Workerman\Worker;
@@ -26,10 +28,9 @@ $http_worker->onMessage = function($connection, $data)
     $connection->send('hello world');
 };
 
-```
+Worker::runAll();
 
-## 注意
-applications下的启动文件start.php中不要运行```Worker::runAll();```，```Worker::runAll();```统一由WorkerMan根目录中的start.php运行
+```
 
 ## WorkerMan中的代码规范
 
@@ -42,7 +43,7 @@ class UserInfo
 
 2、使用命名空间，命名空间名字与目录路径对应，并以开发者的项目根目录为基准。
 
-例如项目Applications/MyApp/，类文件Applications/MyApp/MyClass.php因为在项目根目录，所以命名空间省略。类文件Applications/MyApp/Protocols/MyProtocol.php因为MyProtocol.php在MyApp项目的Protocols目录下，所以要加上命名空间 ```namespace Protocols;```，如下：
+例如项目MyApp/，类文件MyApp/MyClass.php因为在项目根目录，所以命名空间省略。类文件MyApp/Protocols/MyProtocol.php因为MyProtocol.php在MyApp项目的Protocols目录下，所以要加上命名空间 ```namespace Protocols;```，如下：
 ```php
 namespace Protocols;
 class MyProtocol

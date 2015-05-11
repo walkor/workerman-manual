@@ -21,6 +21,8 @@ callback Worker::$onBufferDrain
 
 ```php
 use Workerman\Worker;
+require_once './Workerman/Autoloader.php';
+
 $worker = new Worker('websocket://0.0.0.0:8484');
 $worker->onBufferFull = function($connection)
 {

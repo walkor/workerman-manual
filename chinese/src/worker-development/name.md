@@ -12,6 +12,8 @@ string Worker::$name
 
 ```php
 use Workerman\Worker;
+require_once './Workerman/Autoloader.php';
+
 $worker = new Worker('websocket://0.0.0.0:8484');
 // 设置实例的名称
 $worker->name = 'MyWebsocketWorker';

@@ -12,6 +12,8 @@ callback Connection::$onMessage
 
 ```php
 use Workerman\Worker;
+require_once './Workerman/Autoloader.php';
+
 $worker = new Worker('websocket://0.0.0.0:8484');
 // 当有客户端连接事件时
 $worker->onConnect = function($connection)

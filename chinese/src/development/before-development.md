@@ -62,67 +62,8 @@ TCP是一种面向连接的、可靠的、基于IP的传输层协议。TCP传输
 
 平滑重启WorkerMan可以使用 ```php your_file.php reload```命令，能够做到在不影响服务质量的情况下更新应用程序
 
-## 三、两种开发模式
-在WorkerMan中有两种开发模式
 
-#### 1、基于Worker开发
-
-即直接使用Worker类来开发，例如下面的代码
-```php
-require_once './Workerman/Autoloader.php';
-use Workerman\Worker;
-
-// 创建一个Worker监听2347端口，不使用任何应用层协议
-$tcp_worker = new Worker("tcp://0.0.0.0:2347");
-// 当客户端发来数据时
-$tcp_worker->onMessage = function($connection, $data)
-{
-    // 向客户端发送hello $data
-    $connection->send('hello ' . $data);
-};
-```
-
-Worker是WorkerMan中最基本的功能单元，提供了接收并维护大量客户端连接的能力，同时也可以做相应的业务逻辑。基于Worker能开发出各种复杂的进程模型，以满足各种应用需求。例如下面讲到的Gateway/Worker进程模型也是基于Worker开发的。
-
-#### 2、基于Gateway/Worker开发
-Gateway/Worker也是基于Worker开发的，这种进程模型分为两组进程，Gateway进程和Worker进程，其中Gateway进程只负责网络IO，Worker进程只负责处理业务逻辑。所有客户端与Gateway进程开放的端口建立连接发送及接收数据，Gateway进程将接收到的数据交给Worker进程处理，Worker处理过程中如果需要给其它客户端发送数据，则将数据交给Gateway转发。
-
-Gateway/Worker模型非常适合游戏类、即时IM、聊天室等客户端与客户端需要即时通讯的业务。
-
-下面是基于Gateway/Worker开发小蝌蚪服务端代码片段
-
-```php
-use \Workerman\WebServer;
-use \GatewayWorker\Gateway;
-use \GatewayWorker\BusinessWorker;
-
-require_once __DIR__ . '/../../Workerman/Autoloader.php';
-
-// gateway
-$gateway = new Gateway("websocket://0.0.0.0:8585");
-
-$gateway->name = 'TodpoleGateway';
-
-$gateway->count = 4;
-
-$gateway->reloadable = false;
-
-$gateway->lanIp = '127.0.0.1';
-
-$gateway->startPort = 4000;
-
-
-
-// bussinessWorker
-$worker = new BusinessWorker();
-
-$worker->name = 'TodpoleBusinessWorker';
-
-$worker->count = 4;
-
-```
-
-## 四、区分主进程和子进程
+## 三、区分主进程和子进程
 有必要注意下代码是运行在主进程还是子进程，一般来说，直接在启动脚本中运行的代码属于主进程的，而```onXXXX```回调都是运行在子进程的。
 
 例如下面的代码

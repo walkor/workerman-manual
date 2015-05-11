@@ -8,6 +8,7 @@ WorkerMan自带了一个简单的Web服务器，同样也是基于Worker实现�
 
 ```php
 use \Workerman\WebServer;
+require_once './Workerman/Autoloader.php';
 
 // 这里监听8080端口，如果要监听80端口，需要root权限，并且端口没有被其它程序占用
 $webserver = new WebServer('http://0.0.0.0:8080');
@@ -16,6 +17,7 @@ $webserver->addRoot('www.example.com', '/your/path/of/web/');
 // 设置开启多少进程
 $sebserver->count = 4;
 
+Worker::runAll();
 ```
 
 # WorkerMan的Webserver与普通Web开发异同

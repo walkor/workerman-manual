@@ -17,6 +17,7 @@ void \Workerman\Connection\AsyncTcpConnection::__construct(string $remote_addres
 ```php
 use \Workerman\Worker;
 use \Workerman\Connection\AsyncTcpConnection;
+require_once './Workerman/Autoloader.php';
 
 $task = new Worker();
 // 进程启动时异步建立一个到www.baidu.com连接对象，并发送数据获取数据
