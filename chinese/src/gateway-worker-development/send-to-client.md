@@ -22,7 +22,7 @@ void Gateway::sendToClient(int $client_id, mixed $send_data);
 use \GatewayWorker\Lib\Gateway;
 class Event
 {
-...
+    ...
 
     public static function onMessage($client_id, $message)
     {
@@ -36,7 +36,7 @@ class Event
         }
     }
 
-...
+    ...
 }
 
 ```

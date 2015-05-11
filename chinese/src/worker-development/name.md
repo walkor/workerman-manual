@@ -19,4 +19,6 @@ $worker->onWorkerStart = function($worker)
 {
     echo "Worker starting...\n";
 };
+// 运行worker
+Worker::runAll();
 ```

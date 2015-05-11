@@ -30,6 +30,8 @@ $worker->onBufferDrain = function($connection)
 {
     echo "buffer drain and continue send\n";
 };
+// 运行worker
+Worker::runAll();
 ```
 
 ## 参见

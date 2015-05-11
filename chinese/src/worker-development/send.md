@@ -34,4 +34,6 @@ $worker->onMessage = function($connection, $data)
     // 会自动调用\Workerman\Protocols\Websocket::encode打包成websocket协议数据后发送
     $connection->send("hello\n");
 };
+// 运行worker
+Worker::runAll();
 ```

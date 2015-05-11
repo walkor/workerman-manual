@@ -23,4 +23,6 @@ $worker->onMessage = function($connection, $data)
     // if something wrong
     $connection->destroy();
 };
+// 运行worker
+Worker::runAll();
 ```

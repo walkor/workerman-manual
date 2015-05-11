@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="8.4.3" data-basepath=".." data-revision="1431261439839">
+    <div class="book"  data-level="8.4.3" data-basepath=".." data-revision="1431348669295">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1533,7 +1533,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_705">
+                    <section class="normal" id="section-gitbook_260">
                     
                         <h1 id="event-onclose">Event::onClose</h1>
 <h2 id="-">说明:</h2>
@@ -1548,15 +1548,22 @@
 <h2 id="-">范例</h2>
 <pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">GatewayWorker</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Gateway</span>;
 
-<span class="hljs-comment">/**
- * 当用户断开连接时触发的方法
- *<span class="hljs-phpdoc"> @param</span> integer $client_id 断开连接的客户端client_id
- *<span class="hljs-phpdoc"> @return</span> void
- */</span>
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onClose</span><span class="hljs-params">(<span class="hljs-variable">$client_id</span>)</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Event</span>
 {</span>
-   <span class="hljs-comment">// 广播 xxx 退出了</span>
-   GateWay::sendToAll(<span class="hljs-string">"client[$client_id] logout\n"</span>));
+    ...
+
+    <span class="hljs-comment">/**
+     * 当用户断开连接时触发的方法
+     *<span class="hljs-phpdoc"> @param</span> integer $client_id 断开连接的客户端client_id
+     *<span class="hljs-phpdoc"> @return</span> void
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onClose</span><span class="hljs-params">(<span class="hljs-variable">$client_id</span>)</span>
+    {</span>
+       <span class="hljs-comment">// 广播 xxx 退出了</span>
+       GateWay::sendToAll(<span class="hljs-string">"client[$client_id] logout\n"</span>));
+    }
+
+    ...
 }
 </code></pre>
 

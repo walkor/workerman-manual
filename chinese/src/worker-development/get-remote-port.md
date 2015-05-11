@@ -21,4 +21,6 @@ $worker->onConnect = function($connection)
     echo "new connection from address " .
     $connection->getRemoteIp() . ":". $connection->getRemotePort() ."\n";
 };
+// 运行worker
+Worker::runAll();
 ```

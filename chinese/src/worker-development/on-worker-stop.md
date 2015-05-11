@@ -21,4 +21,6 @@ $worker->onWorkerStop = function($worker)
 {
     echo "Worker stopping...\n";
 };
+// 运行worker
+Worker::runAll();
 ```

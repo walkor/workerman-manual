@@ -26,4 +26,6 @@ $worker->onWorkerStart = function($worker)
         }
     });
 };
+// 运行worker
+Worker::runAll();
 ```

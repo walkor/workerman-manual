@@ -20,7 +20,7 @@ use \GatewayWorker\Lib\Gateway;
 
 class Event
 {
-...
+    ...
 
     public static function onMessage($client_id, $message)
     {
@@ -32,7 +32,7 @@ class Event
         }
     }
 
-...
+    ...
 }
 ```
 

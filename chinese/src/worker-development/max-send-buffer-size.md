@@ -21,4 +21,6 @@ $worker->onConnect = function($connection)
     // 设置当前连接的应用层发送缓冲区大小为102400字节
     $connection->maxSendBufferSize = 102400;
 };
+// 运行worker
+Worker::runAll();
 ```

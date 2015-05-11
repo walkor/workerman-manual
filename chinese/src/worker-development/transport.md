@@ -18,4 +18,6 @@ $worker->onMessage = function($connection, $data)
 {
     $connection->send('Hello');
 };
+// 运行worker
+Worker::runAll();
 ```

@@ -36,6 +36,8 @@ $worker->onMessage = function($connection, $data)
         }, array($connection), false);
     }
 };
+// 运行worker
+Worker::runAll();
 ```
 
 ## 参见

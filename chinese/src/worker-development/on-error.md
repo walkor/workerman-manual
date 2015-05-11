@@ -44,4 +44,6 @@ $worker->onError = function($connection, $code, $msg)
 {
     echo "error $code $msg\n";
 };
+// 运行worker
+Worker::runAll();
 ```

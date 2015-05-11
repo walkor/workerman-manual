@@ -63,6 +63,8 @@ $proxy->onConnect = function($connection)
     };
 
 };
+// 运行worker
+Worker::runAll();
 ```
 
  **测试**

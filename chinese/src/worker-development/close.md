@@ -24,4 +24,6 @@ $worker->onMessage = function($connection, $data)
 {
     $connection->close("hello\n");
 };
+// 运行worker
+Worker::runAll();
 ```

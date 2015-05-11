@@ -22,9 +22,16 @@ void Event::onConnect(int $client_id);
 ```php
 use \GatewayWorker\Lib\Gateway;
 
-public onConnect($client)
+class Event
 {
-   Gateway::sendToCurrentClient('hello');
-}
+    ...
 
+    public onConnect($client)
+    {
+       Gateway::sendToCurrentClient('hello');
+    }
+
+    ...
+
+}
 ```

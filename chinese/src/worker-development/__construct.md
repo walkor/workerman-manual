@@ -44,5 +44,7 @@ $task->onWorkerStart = function($task)
     $connection_to_baidu->connect();
 };
 
+// 运行worker
+Worker::runAll();
 ```
 

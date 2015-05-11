@@ -20,14 +20,21 @@ void Event::onClose(int $client_id);
 ```php
 use \GatewayWorker\Lib\Gateway;
 
-/**
- * 当用户断开连接时触发的方法
- * @param integer $client_id 断开连接的客户端client_id
- * @return void
- */
-public static function onClose($client_id)
+class Event
 {
-   // 广播 xxx 退出了
-   GateWay::sendToAll("client[$client_id] logout\n"));
+    ...
+
+    /**
+     * 当用户断开连接时触发的方法
+     * @param integer $client_id 断开连接的客户端client_id
+     * @return void
+     */
+    public static function onClose($client_id)
+    {
+       // 广播 xxx 退出了
+       GateWay::sendToAll("client[$client_id] logout\n"));
+    }
+
+    ...
 }
 ```

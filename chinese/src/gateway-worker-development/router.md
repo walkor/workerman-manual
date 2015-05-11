@@ -51,6 +51,7 @@ $gateway->router = function($worker_connections, $client_connection, $cmd, $buff
 {
     return $worker_connections[array_rand($worker_connections)];
 };
+...
 ```
 
 ## 范例 2 随机绑定
@@ -65,6 +66,7 @@ $gateway->router = function($worker_connections, $client_connection, $cmd, $buff
     }
     return $client_connection->businessworker;
 };
+...
 ```
 
 

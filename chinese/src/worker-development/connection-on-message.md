@@ -23,6 +23,8 @@ $worker->onConnect = function($connection)
         $connection->send('receive success');
     };
 };
+// 运行worker
+Worker::runAll();
 ```
 
 上面代码与下面的效果是一样的
@@ -36,4 +38,6 @@ $worker->onMessage = function($connection, $data)
     var_dump($data);
     $connection->send('receive success');
 };
+// 运行worker
+Worker::runAll();
 ```

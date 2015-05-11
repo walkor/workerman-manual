@@ -18,4 +18,6 @@ $worker->onConnect = function($connection)
 {
     echo $connection->id;
 };
+// 运行worker
+Worker::runAll();
 ```

@@ -27,4 +27,6 @@ $worker->onMessage = function($connection, $data)
     var_dump($data);
     $connection->send('receive success');
 };
+// 运行worker
+Worker::runAll();
 ```

@@ -24,4 +24,6 @@ $worker->onMessage = function($connection, $data)
     // send 时会自动调用$connection->protocol::encode()，打包数据后再发送
     $connection->send("hello");
 };
+// 运行worker
+Worker::runAll();
 ```

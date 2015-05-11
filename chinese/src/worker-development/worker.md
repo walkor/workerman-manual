@@ -22,4 +22,6 @@ $worker->onMessage = function($connection, $data)
         $con->send($data);
     }
 };
+// 运行worker
+Worker::runAll();
 ```

@@ -51,6 +51,8 @@ $gateway->pingData = '{"type":"ping"}';
 $web = new WebServer("http://0.0.0.0:8383");
 $web->count = 12;
 $web->addRoot('kedou.workerman.net', __DIR__.'/Web');
+
+...
 ```
 
 3、由于192.168.0.2/3 两台服务器只部署BusinessWorker进程，所以将这两台ip上的Gateway初始化注释掉或者删掉，避免运行Gateway进程，BusinessWorker服务器初始化文件类似下面(如果有单独的Web服务器运行蝌蚪界面，可以把WebServer初始化部分也去掉)

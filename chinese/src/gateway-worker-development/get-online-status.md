@@ -12,9 +12,18 @@ array Gateway::getOnlineStatus(void);
 ```php
 use \GatewayWorker\Lib\Gateway;
 
-// 打印在线client_id列表
-var_export(Gateway::getOnlineStatus());
-```
+class Event
+{
+    ...
+    public onConnect($client)
+    {
+        // 打印在线client_id列表
+        var_export(Gateway::getOnlineStatus());
+    }
+    ...
+
+}
+    ```
 
 打印出的数据类似如下：
 ```php

@@ -27,7 +27,7 @@ use \GatewayWorker\Lib\Gateway;
 
 class Event
 {
-...
+    ...
     /**
      * 有消息时触发该方法
      * @param int $client_id 发消息的client_id
@@ -39,6 +39,6 @@ class Event
         // 群聊，转发请求给其它所有的客户端
         return GateWay::sendToAll($message));
     }
-...
+    ...
 }
 ```

@@ -33,4 +33,7 @@ $task->onWorkerStart = function($task)
         Timer::del($timer_id);
     }, array($timer_id), false);
 };
+
+// 运行worker
+Worker::runAll();
 ```

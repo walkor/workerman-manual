@@ -23,4 +23,6 @@ $worker->onWorkerStart = function($worker)
         echo "Get signal SIGALRM\n";
     });
 };
+// 运行worker
+Worker::runAll();
 ```

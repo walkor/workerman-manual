@@ -31,6 +31,8 @@ $worker->onBufferFull = function($connection)
 {
     echo "bufferFull and do not send again\n";
 };
+// 运行worker
+Worker::runAll();
 ```
 
 ## 参见

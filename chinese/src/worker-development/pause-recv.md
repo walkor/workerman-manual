@@ -30,6 +30,8 @@ $worker->onMessage = function($connection, $data)
         $connection->pauseRecv();
     }
 };
+// 运行worker
+Worker::runAll();
 ```
 
 ## 参见

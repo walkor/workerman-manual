@@ -20,6 +20,8 @@ $worker->onConnection = function($connection)
         echo "connection closed\n";
     };
 };
+// 运行worker
+Worker::runAll();
 ```
 
 上面代码与下面的效果相同
@@ -32,4 +34,6 @@ $worker->onClose = function($connection)
 {
     echo "connection closed\n";
 };
+// 运行worker
+Worker::runAll();
 ```

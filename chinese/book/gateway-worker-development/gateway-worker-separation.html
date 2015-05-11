@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="8.10.3" data-basepath=".." data-revision="1431261439839">
+    <div class="book"  data-level="8.10.3" data-basepath=".." data-revision="1431348669295">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1533,7 +1533,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_698">
+                    <section class="normal" id="section-gitbook_253">
                     
                         <h1 id="gateway-worker-">gateway worker 分离部署</h1>
 <h2 id="-gateway-worker-">什么是Gateway Worker分离部署</h2>
@@ -1576,6 +1576,8 @@
 <span class="hljs-variable">$web</span> = <span class="hljs-keyword">new</span> WebServer(<span class="hljs-string">"http://0.0.0.0:8383"</span>);
 <span class="hljs-variable">$web</span>-&gt;count = <span class="hljs-number">12</span>;
 <span class="hljs-variable">$web</span>-&gt;addRoot(<span class="hljs-string">'kedou.workerman.net'</span>, <span class="hljs-keyword">__DIR__</span>.<span class="hljs-string">'/Web'</span>);
+
+...
 </code></pre>
 <p>3、由于192.168.0.2/3 两台服务器只部署BusinessWorker进程，所以将这两台ip上的Gateway初始化注释掉或者删掉，避免运行Gateway进程，BusinessWorker服务器初始化文件类似下面(如果有单独的Web服务器运行蝌蚪界面，可以把WebServer初始化部分也去掉)</p>
 <pre><code class="lang-php"><span class="hljs-preprocessor">&lt;?php</span>

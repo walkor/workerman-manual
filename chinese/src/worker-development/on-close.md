@@ -22,4 +22,6 @@ $worker->onClose = function($connection)
 {
     echo "connection closed\n";
 };
+// 运行worker
+Worker::runAll();
 ```

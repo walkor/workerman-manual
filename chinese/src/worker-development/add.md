@@ -41,4 +41,6 @@ $task->onWorkerStart = function($task)
     });
 };
 
+// 运行worker
+Worker::runAll();
 ```
