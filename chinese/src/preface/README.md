@@ -7,9 +7,7 @@
 WorkerMan是一款纯PHP开发的开源的高性能的PHP socket服务器框架，基于WorkerMan开发者可以开发出各种网络服务器，例如基于websocket的服务器、游戏服务器、移动通讯服务器、智能家居服务端、物联网服务、web服务器、RPC服务器等等。几乎任何基于TCP/UDP通讯的服务端都可以用WorkerMan来开发。WorkerMan使得开发者摆脱PHP只能用于Web开发的束缚，向更广阔的前景发展。
 
 # 本手册作用范围
-WorkerMan有分为多进程版本[WorkerMan](https://github.com/walkor/workerman)和多线程版本[WorkerMan-MT](https://github.com/walkor/workerman-MT)两个版本，多进程版本是稳定版本并运行在Linux系统下，多线程版本处于研发阶段，可以运行在windows系统下用作开发
-
-本手册主要是针对Linux多进程3.x版本的说明
+WorkerMan有分为Linux版本[WorkerMan](https://github.com/walkor/workerman)和Windows版本[WorkerMan-for-win](https://github.com/walkor/workerman-for-win)。Linux版本用于开发调试及正式环境部署，windows版本只适合开发调试使用。
 
 # 客户端
 
