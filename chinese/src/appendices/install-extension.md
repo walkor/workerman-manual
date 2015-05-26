@@ -212,4 +212,5 @@ Installing shared extensions:     /usr/lib/php5/20090626/
 ```
 
 8、配置ini文件
+
 通过运行 ```php --ini```查找php.ini文件位置，然后在文件中添加```extension=libevent.so```
