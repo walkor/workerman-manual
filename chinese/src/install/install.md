@@ -66,4 +66,7 @@ git clone https://github.com/walkor/workerman
 
 2、通过http://www.workerman.net/download/workermanzip 连接下载WorkerMan
 
+## libevent扩展说明
+libevent扩展不是必须的，当业务需要支撑上万并发连接时，推荐安装libevent，能够支持巨大的并发连接。如果业务并发连接比较低，例如5000并发连接，则可以不用安装。
+
 
