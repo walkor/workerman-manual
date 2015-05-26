@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="10.2" data-basepath=".." data-revision="1432565038524">
+    <div class="book"  data-level="10.2" data-basepath=".." data-revision="1432649193120">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1201,7 +1201,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_43">
+                    <section class="normal" id="section-gitbook_860">
                     
                         <h1 id="-">安装扩展</h1>
 <h2 id="-">注意</h2>
@@ -1316,6 +1316,57 @@ Installing shared extensions:     /usr/lib/php5/20090626/
 <pre><code class="lang-shell">~# ./configure --enable-pcntl --enable-posix ...
 ~# make &amp;&amp; make install
 </code></pre>
+<h2 id="-phpize-">方法四、phpize安装</h2>
+<p>如果要安装的扩展在php源码ext目录中没有，那么这个扩展需要到<a href="http://pecl.php.net" target="_blank">http://pecl.php.net</a> 搜索下载</p>
+<p>以安装libevent扩展为例（假设系统安装了libevent-dev库）</p>
+<p>1、下载libevent扩展文件压缩包（在当前系统哪个目录下载随意）</p>
+<pre><code class="lang-shell">~# wget http://pecl.php.net/get/libevent-0.1.0.tgz
+--2015-05-26 21:43:40--  http://pecl.php.net/get/libevent-0.1.0.tgz
+Resolving pecl.php.net... 104.236.228.160
+Connecting to pecl.php.net|104.236.228.160|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 9806 (9.6K) [application/octet-stream]
+Saving to: “libevent-0.1.0.tgz”
+
+100%[=======================================================&gt;] 9,806       41.4K/s   in 0.2s
+</code></pre>
+<p>2、解压扩展文件压缩包</p>
+<pre><code class="lang-shell">~# tar -zxvf libevent-0.1.0.tgz
+package.xml
+libevent-0.1.0/config.m4
+libevent-0.1.0/CREDITS
+libevent-0.1.0/libevent.c
+....
+</code></pre>
+<p>3、进入到源码目录</p>
+<pre><code class="lang-shell">~# cd libevent-0.1.0/
+</code></pre>
+<p>4、运行<code>phpize</code>命令</p>
+<pre><code class="lang-shell">~# phpize
+Configuring for:
+PHP Api Version:         20090626
+Zend Module Api No:      20090626
+Zend Extension Api No:   220090626
+</code></pre>
+<p>5、运行<code>configure</code>命令</p>
+<pre><code class="lang-shell">~# ./configure
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking for a sed that does not truncate output... /bin/sed
+checking for cc... cc
+checking whether the C compiler works... yes
+...
+</code></pre>
+<p>6、运行<code>make</code>命令</p>
+<pre><code class="lang-shell">~# /bin/bash /data/test/libevent-0.1.0/libtool --mode=compile cc  -I. -I/data/test/libevent-0.1.0 -DPHP_ATOM_INC -I/data/test/libevent-0.1.0/include
+...
+</code></pre>
+<p>7、运行<code>make install</code>命令</p>
+<pre><code class="lang-shell">~# make install
+Installing shared extensions:     /usr/lib/php5/20090626/
+</code></pre>
+<p>8、配置ini文件
+通过运行 <code>php --ini</code>查找php.ini文件位置，然后在文件中添加<code>extension=libevent.so</code></p>
 
                     
                     </section>

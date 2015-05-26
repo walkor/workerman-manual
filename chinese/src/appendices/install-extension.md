@@ -145,4 +145,71 @@ Installing shared extensions:     /usr/lib/php5/20090626/
 ~# make && make install
 ```
 
+## 方法四、phpize安装
+如果要安装的扩展在php源码ext目录中没有，那么这个扩展需要到http://pecl.php.net 搜索下载
 
+以安装libevent扩展为例（假设系统安装了libevent-dev库）
+
+1、下载libevent扩展文件压缩包（在当前系统哪个目录下载随意）
+```shell
+~# wget http://pecl.php.net/get/libevent-0.1.0.tgz
+--2015-05-26 21:43:40--  http://pecl.php.net/get/libevent-0.1.0.tgz
+Resolving pecl.php.net... 104.236.228.160
+Connecting to pecl.php.net|104.236.228.160|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 9806 (9.6K) [application/octet-stream]
+Saving to: “libevent-0.1.0.tgz”
+
+100%[=======================================================>] 9,806       41.4K/s   in 0.2s
+
+```
+
+2、解压扩展文件压缩包
+```shell
+~# tar -zxvf libevent-0.1.0.tgz
+package.xml
+libevent-0.1.0/config.m4
+libevent-0.1.0/CREDITS
+libevent-0.1.0/libevent.c
+....
+```
+
+3、进入到源码目录
+```shell
+~# cd libevent-0.1.0/
+```
+
+4、运行``` phpize ```命令
+```shell
+~# phpize
+Configuring for:
+PHP Api Version:         20090626
+Zend Module Api No:      20090626
+Zend Extension Api No:   220090626
+```
+
+5、运行``` configure ```命令
+```shell
+~# ./configure
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking for a sed that does not truncate output... /bin/sed
+checking for cc... cc
+checking whether the C compiler works... yes
+...
+```
+
+6、运行``` make ```命令
+```shell
+~# /bin/bash /data/test/libevent-0.1.0/libtool --mode=compile cc  -I. -I/data/test/libevent-0.1.0 -DPHP_ATOM_INC -I/data/test/libevent-0.1.0/include
+...
+```
+
+7、运行``` make install ```命令
+```shell
+~# make install
+Installing shared extensions:     /usr/lib/php5/20090626/
+```
+
+8、配置ini文件
+通过运行 ```php --ini```查找php.ini文件位置，然后在文件中添加```extension=libevent.so```

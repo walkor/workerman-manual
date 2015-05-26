@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# Revision 1432565038526
+# Revision 1432649193121
 
 CACHE:
 faq/README.html
@@ -15,9 +15,9 @@ advanced/webserver.html
 appendices/README.html
 appendices/install-extension.html
 appendices/kernel-optimization.html
-appendices/stress-test.html
 debug/README.html
 debug/base.html
+appendices/stress-test.html
 debug/strace.html
 debug/tcpdump.html
 development/README.html
@@ -40,8 +40,8 @@ protocols/how-protocols.html
 protocols/why-protocols.html
 worker-development/max-package-size.html
 worker-development/README.html
-worker-development/add.html
 worker-development/async-tcp-connection.html
+worker-development/add.html
 worker-development/callback.html
 worker-development/close.html
 worker-development/connect.html
@@ -79,8 +79,8 @@ worker-development/pause-recv.html
 worker-development/pid_file.html
 worker-development/property.html
 worker-development/protocol.html
-worker-development/reloadable.html
 worker-development/resume-recv.html
+worker-development/reloadable.html
 worker-development/send.html
 worker-development/stdout_file.html
 worker-development/timer-functions.html

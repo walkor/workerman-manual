@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="4.2" data-basepath=".." data-revision="1432565038524">
+    <div class="book"  data-level="4.2" data-basepath=".." data-revision="1432649193120">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1201,7 +1201,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_59">
+                    <section class="normal" id="section-gitbook_876">
                     
                         <h1 id="-">安装</h1>
 <p>WorkerMan实际上没有安装脚本，如果你的php环境已经装好，只需要把WorkerMan源代码下载下来即可运行。
@@ -1211,10 +1211,10 @@
 <p>1、命令行运行（此步骤包含了安装php-cli主程序以及pcntl、posix、libevent扩展及github程序）</p>
 <pre><code class="lang-shell">yum install php-cli php-process git gcc php-devel php-pear libevent-devel
 </code></pre>
-<p>2、命令行运行（此步骤是通过pecl安装libevent扩展，如果失败请尝试按照 4.1 环境要求 一节中使用源码phpize的方式安装）</p>
+<p>2、命令行运行（此步骤是通过pecl安装libevent扩展，如果失败请尝试按照 10.2 安装扩展 一节中使用源码phpize的方式安装。注意libevent扩展不是必须的，此步骤可以跳过）</p>
 <pre><code class="lang-shell">pecl install channel://pecl.php.net/libevent-0.1.0
 </code></pre>
-<p>3、命令行运行（此步骤是配置libevent的ini配置）</p>
+<p>3、命令行运行（此步骤是配置libevent扩咱的ini配置，如果不安装libevent此步骤跳过）</p>
 <pre><code class="lang-shell">echo extension=libevent.so &gt; /etc/php.d/libevent.ini
 </code></pre>
 <p>注意在提示libevent installation [autodetect]: 时按回车即可</p>
@@ -1225,11 +1225,11 @@
 <p>1、命令行运行（此步骤包含了安装php-cli主程序、libevent扩展及github程序）</p>
 <pre><code class="lang-shell">apt-get install php5-cli git gcc php-pear php5-dev libevent-dev
 </code></pre>
-<p>2、命令行运行（此步骤是通过pecl安装libevent扩展，如果失败请尝试按照 4.1 环境要求 一节中使用源码phpize的方式安装）</p>
+<p>2、命令行运行（此步骤是通过pecl安装libevent扩展，如果失败请尝试按照 4.1 环境要求 一节中使用源码phpize的方式安装。注意libevent扩展不是必须的，此步骤可以跳过）</p>
 <pre><code class="lang-shell">pecl install channel://pecl.php.net/libevent-0.1.0
 </code></pre>
 <p>　  提示libevent installation [autodetect]: 时按回车</p>
-<p>3、命令行运行（此步骤是配置libevent的ini配置）</p>
+<p>3、命令行运行（此步骤是配置libevent扩展的ini配置，如果不安装libevent此步骤跳过）</p>
 <pre><code class="lang-shell">echo extension=libevent.so &gt; /etc/php5/cli/conf.d/libevent.ini
 </code></pre>
 <p>4、命令行运行（此步骤是通过github下载WorkerMan主程序）</p>

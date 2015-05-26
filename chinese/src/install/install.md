@@ -12,13 +12,13 @@ yum install php-cli php-process git gcc php-devel php-pear libevent-devel
 ```
 
 
-2、命令行运行（此步骤是通过pecl安装libevent扩展，如果失败请尝试按照 4.1 环境要求 一节中使用源码phpize的方式安装）
+2、命令行运行（此步骤是通过pecl安装libevent扩展，如果失败请尝试按照 10.2 安装扩展 一节中使用源码phpize的方式安装。注意libevent扩展不是必须的，此步骤可以跳过）
 ```shell
 pecl install channel://pecl.php.net/libevent-0.1.0
 ```
 
 
-3、命令行运行（此步骤是配置libevent的ini配置）
+3、命令行运行（此步骤是配置libevent扩咱的ini配置，如果不安装libevent此步骤跳过）
 ```shell
 echo extension=libevent.so > /etc/php.d/libevent.ini
 ```
@@ -40,14 +40,14 @@ apt-get install php5-cli git gcc php-pear php5-dev libevent-dev
 ```
 
 
-2、命令行运行（此步骤是通过pecl安装libevent扩展，如果失败请尝试按照 4.1 环境要求 一节中使用源码phpize的方式安装）
+2、命令行运行（此步骤是通过pecl安装libevent扩展，如果失败请尝试按照 4.1 环境要求 一节中使用源码phpize的方式安装。注意libevent扩展不是必须的，此步骤可以跳过）
 ```shell
 pecl install channel://pecl.php.net/libevent-0.1.0
 ```
 　  提示libevent installation [autodetect]: 时按回车
 
 
-3、命令行运行（此步骤是配置libevent的ini配置）
+3、命令行运行（此步骤是配置libevent扩展的ini配置，如果不安装libevent此步骤跳过）
 ```shell
 echo extension=libevent.so > /etc/php5/cli/conf.d/libevent.ini
 ```
