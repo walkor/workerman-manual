@@ -22,7 +22,7 @@ SimpleChat/start.php
 ```php
 <?php
 use Workerman\Worker;
-require_once '/your/path/Workerman/Autoloader.php'
+require_once '/your/path/Workerman/Autoloader.php';
 
 $global_uid = 0;
 
