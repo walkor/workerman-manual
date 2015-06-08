@@ -89,6 +89,7 @@ ws.onmessage = function(e) {
 **创建tcp_test.php**
 
 ```php
+<?php
 use Workerman\Worker;
 require_once './Workerman/Autoloader.php';
 

@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# Revision 1433576241240
+# Revision 1433764252559
 
 CACHE:
 faq/README.html
@@ -35,8 +35,8 @@ install/start-and-stop.html
 license/README.html
 preface/README.html
 protocols/README.html
-protocols/how-protocols.html
 protocols/example.html
+protocols/how-protocols.html
 protocols/why-protocols.html
 worker-development/max-package-size.html
 worker-development/README.html
@@ -62,6 +62,7 @@ worker-development/del.html
 worker-development/destroy.html
 worker-development/get-remote-ip.html
 worker-development/get-remote-port.html
+worker-development/global-event.html
 worker-development/id.html
 worker-development/__construct.html
 worker-development/max-send-buffer-size.html
@@ -75,7 +76,6 @@ worker-development/on-message.html
 worker-development/on-worker-stop.html
 worker-development/on_worker_start.html
 worker-development/pause-recv.html
-worker-development/global-event.html
 worker-development/pid_file.html
 worker-development/property.html
 worker-development/protocol.html
