@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="6.1" data-basepath=".." data-revision="1433764252557">
+    <div class="book"  data-level="6.1" data-basepath=".." data-revision="1433859967735">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1201,17 +1201,17 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_46">
+                    <section class="normal" id="section-gitbook_72">
                     
                         <h1 id="-">通讯协议的作用</h1>
 <p>由于TCP是基于流的，客户端发送的请求数据是像水流一样流入到服务端，服务端探测到有数据到来后应该检查数据是否是完整的，因为可能只是一个请求的部分数据到达服务端，，甚至可能是多个请求连在一起到达服务端。如何判断请求是否全部到达或者从多个连在一起的请求中分离请求，就需要规定一套通讯协议。</p>
 <h2 id="-workerman-">在WorkerMan中为什么要制定协议？</h2>
 <p>传统PHP开发都是基于Web的，基本上都是HTTP协议，HTTP协议的解析处理都由WebServer独自承担了，所以开发者不会关心协议方面的事情。然而当我们需要基于非HTTP协议开发时，开发者就需要考虑协议的事情了。</p>
 <h2 id="workerman-">WorkerMan已经支持的协议</h2>
-<p>WorkerMan目前已经支持HTTP、Websocket、Telnet协议，需要基于这些协议通讯时可以直接使用，使用方法及时在初始化Worker时指定协议，例如</p>
+<p>WorkerMan目前已经支持HTTP、Websocket、Text(一个非常简单的文本协议)协议，需要基于这些协议通讯时可以直接使用，使用方法及时在初始化Worker时指定协议，例如</p>
 <pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-comment">// websocket://0.0.0.0:2345 表明用websocket协议监听2345端口</span>
-<span class="hljs-variable">$websocket_worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'websocket://0.0.0.0:2345'</span>);
+<span class="hljs-variable">$websocket_worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'Websocket://0.0.0.0:2345'</span>);
 </code></pre>
 <h2 id="-">使用自定义的通讯协议</h2>
 <p>当WorkerMan自带的通讯协议满足不了开发需求时，开发者可以定制自己的通讯协议，定制方法见下一节内容</p>
