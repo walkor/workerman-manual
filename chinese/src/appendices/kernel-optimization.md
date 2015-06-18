@@ -33,8 +33,13 @@ Soft open files 修改方法：
 （2）将ulimit -HSn 102400写到/etc/profile中，这样每次登录终端时，都会自动执行/etc/profile。
 
 （3）令修改open files的数值永久生效，则必须修改配置文件：/etc/security/limits.conf. 在这个文件后加上：
-soft nofile 102400
-hard nofile 102400
+
+```
+* soft nofile 1024000
+* hard nofile 1024000
+root soft nofile 1024000
+root hard nofile 1024000
+```
 
 这种方法需要重启机器才能生效。
 

@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="10.3" data-basepath=".." data-revision="1434463881434">
+    <div class="book"  data-level="10.3" data-basepath=".." data-revision="1434633532496">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1201,7 +1201,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_59">
+                    <section class="normal" id="section-gitbook_148">
                     
                         <h1 id="linux-">Linux内核调优</h1>
 <h2 id="-">网络</h2>
@@ -1223,10 +1223,12 @@ net.ipv4.tcp_tw_recycle = 1
 <p>（1）ulimit -HSn 102400</p>
 <p>这只是在当前终端有效，退出之后，open files 又变为默认值。</p>
 <p>（2）将ulimit -HSn 102400写到/etc/profile中，这样每次登录终端时，都会自动执行/etc/profile。</p>
-<p>（3）令修改open files的数值永久生效，则必须修改配置文件：/etc/security/limits.conf. 在这个文件后加上：
-soft nofile 102400
-hard nofile 102400</p>
-<p>这种方法需要重启机器才能生效。</p>
+<p>（3）令修改open files的数值永久生效，则必须修改配置文件：/etc/security/limits.conf. 在这个文件后加上：</p>
+<pre><code>* soft nofile 1024000
+* hard nofile 1024000
+root soft nofile 1024000
+root hard nofile 1024000
+</code></pre><p>这种方法需要重启机器才能生效。</p>
 
                     
                     </section>
