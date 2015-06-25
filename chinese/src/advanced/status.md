@@ -36,7 +36,7 @@ pid     memory  listening                worker_name           connections total
 
 WorkerMan的版本```version:3.0.3```
 
-启动时间```2015-02-21 18:05:47```，运行了```run 6 days 22 hours```
+启动时间```2015-02-21 18:05:47```，运行了```run 86 days 22 hours```
 
 服务器负载 ```load average: 0, 0, 0```
 
