@@ -1,4 +1,4 @@
-# 序言
+# Preface
 
 [PHP](http://www.php.net) is a widely-used open source general-purpose scripting language that is especially suited for web development.The main goal of the language is to allow web developers to write dynamically generated web pages quickly, but you can do much more with PHP.
 
