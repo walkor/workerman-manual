@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="5.1" data-basepath=".." data-revision="1435238839959">
+    <div class="book"  data-level="5.1" data-basepath=".." data-revision="1436621458121">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1201,7 +1201,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_28">
+                    <section class="normal" id="section-gitbook_227">
                     
                         <h1 id="-">开发前必读</h1>
 <p>使用WorkerMan开发应用，你需要了解以下内容：</p>
@@ -1246,7 +1246,8 @@
 <h3 id="5-">5、平滑重启</h3>
 <p>一般的重启的过程是把所有进程全部停止后，再开始创建全新的服务进程。在这个过程中会有一个短暂的时间内是没有进程对外提供服务的，这就会导致服务暂时不可用，这在高并发时势必会导致请求失败。</p>
 <p>而平滑重启则不是一次性的停止所有进程，而是一个进程一个进程的停止，每停止一个进程后马上重新创建一个新的进程顶替，直到所有旧的进程都被替换为止。</p>
-<p>平滑重启WorkerMan可以使用 <code>php your_file.php reload</code>命令，能够做到在不影响服务质量的情况下更新应用程序</p>
+<p>平滑重启WorkerMan可以使用 <code>php your_file.php reload</code>命令，能够做到在不影响服务质量的情况下更新应用程序。</p>
+<p><strong>注意：只有在on{...}回调中载入的文件平滑重启后才会自动更新，启动脚本中直接载入的文件或者写死的代码运行reload不会自动更新。</strong></p>
 <h2 id="-">三、区分主进程和子进程</h2>
 <p>有必要注意下代码是运行在主进程还是子进程，一般来说，直接在启动脚本中运行的代码属于主进程的，而<code>onXXXX</code>回调都是运行在子进程的。</p>
 <p>例如下面的代码</p>
