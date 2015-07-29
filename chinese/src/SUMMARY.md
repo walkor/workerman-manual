@@ -63,6 +63,7 @@
            * [destroy](worker-development/destroy.md)
            * [pauseRecv](worker-development/pause-recv.md)
            * [resumeRecv](worker-development/resume-recv.md)
+           * [pipe](worker-development/pipe.md)
    * [AsyncTcpConnection类](worker-development/async-tcp-connection.md)
        * [__construct](worker-development/__construct.md)
        * [connect](worker-development/connect.md)

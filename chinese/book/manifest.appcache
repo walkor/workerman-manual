@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# Revision 1436621458122
+# Revision 1438179394323
 
 CACHE:
 faq/README.html
@@ -77,6 +77,7 @@ worker-development/on-worker-stop.html
 worker-development/on_worker_start.html
 worker-development/pause-recv.html
 worker-development/pid_file.html
+worker-development/pipe.html
 worker-development/property.html
 worker-development/protocol.html
 worker-development/reloadable.html
