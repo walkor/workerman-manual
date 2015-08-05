@@ -8,6 +8,13 @@
 
 3、建议安装libevent扩展，但不是必须的
 
+## 环境检查脚本
+可以运行以下脚本检查本地环境是否满足WorkerMan要求
+
+```curl -Ss http://www.workerman.net/check.php | php```
+
+如果脚本中全部提示ok，则代表满足WorkerMan运行环境
+
 ## 详细说明
 
 ### 关于PHP-CLI
