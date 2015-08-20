@@ -18,7 +18,7 @@ pecl install channel://pecl.php.net/libevent-0.1.0
 ```
 
 
-3、命令行运行（此步骤是配置libevent扩咱的ini配置，如果不安装libevent此步骤跳过）
+3、命令行运行（此步骤是配置libevent扩展的ini配置，如果不安装libevent此步骤跳过）
 ```shell
 echo extension=libevent.so > /etc/php.d/libevent.ini
 ```
