@@ -4,7 +4,7 @@
 
 1、WorkerMan 要求运行在Linux环境下（centos、RedHat、Ubuntu、debian、mac os等）
 
-2、安装有PHP-CLI(版本高于5.3.3),并安装了pcntl、posix扩展
+2、安装有PHP-CLI(版本不小于5.3.3),并安装了pcntl、posix扩展
 
 3、建议安装libevent扩展，但不是必须的
 
