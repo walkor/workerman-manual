@@ -3,4 +3,4 @@
 
 Workerman主页:[www.workerman.net](http://www.workerman.net)
 
-GatewayWorker项目手册：http://gatewayworker-doc.workerman.net/
+GatewayWorker项目手册：http://www.workerman.net/gatewaydoc/
