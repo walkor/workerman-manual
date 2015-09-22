@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>常见问题 | WorkerMan 3.x 手册</title>
+        <title>workerman例子无法工作 | WorkerMan 3.x 手册</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 0.5.2">
@@ -17,10 +17,10 @@
     
     
     
-    <link rel="next" href="../faq/running-concurent.html" />
+    <link rel="next" href="../faq/workerman-start-fail.html" />
     
     
-    <link rel="prev" href="../appendices/kernel-optimization.html" />
+    <link rel="prev" href="../faq/persistent-data-and-resources.html" />
     
 
         
@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="11" data-basepath=".." data-revision="1442938189528">
+    <div class="book"  data-level="11.6" data-basepath=".." data-revision="1442938189528">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1043,7 +1043,7 @@
             <div class="page-wrapper" tabindex="-1">
                 <div class="book-progress">
     <div class="bar">
-        <div class="inner" style="width: 92.22222222222223%;min-width: 91.11111111111111%;"></div>
+        <div class="inner" style="width: 98.88888888888889%;min-width: 97.77777777777777%;"></div>
     </div>
     <div class="chapters">
     
@@ -1215,17 +1215,17 @@
     
         <a href="../faq/README.html" title="常见问题" class="chapter done " data-progress="11" style="left: 92.22222222222223%;"></a>
     
-        <a href="../faq/running-concurent.html" title="运行多个WorkerMan" class="chapter  " data-progress="11.1" style="left: 93.33333333333333%;"></a>
+        <a href="../faq/running-concurent.html" title="运行多个WorkerMan" class="chapter done " data-progress="11.1" style="left: 93.33333333333333%;"></a>
     
-        <a href="../faq/protocols.html" title="支持哪些协议" class="chapter  " data-progress="11.2" style="left: 94.44444444444444%;"></a>
+        <a href="../faq/protocols.html" title="支持哪些协议" class="chapter done " data-progress="11.2" style="left: 94.44444444444444%;"></a>
     
-        <a href="../faq/processes-count.html" title="如何设置进程数" class="chapter  " data-progress="11.3" style="left: 95.55555555555556%;"></a>
+        <a href="../faq/processes-count.html" title="如何设置进程数" class="chapter done " data-progress="11.3" style="left: 95.55555555555556%;"></a>
     
-        <a href="../faq/connection-status.html" title="查看当前客户端连接数" class="chapter  " data-progress="11.4" style="left: 96.66666666666667%;"></a>
+        <a href="../faq/connection-status.html" title="查看当前客户端连接数" class="chapter done " data-progress="11.4" style="left: 96.66666666666667%;"></a>
     
-        <a href="../faq/persistent-data-and-resources.html" title="对象和资源的持久化" class="chapter  " data-progress="11.5" style="left: 97.77777777777777%;"></a>
+        <a href="../faq/persistent-data-and-resources.html" title="对象和资源的持久化" class="chapter done " data-progress="11.5" style="left: 97.77777777777777%;"></a>
     
-        <a href="../faq/demo-not-work.html" title="workerman例子无法工作" class="chapter  " data-progress="11.6" style="left: 98.88888888888889%;"></a>
+        <a href="../faq/demo-not-work.html" title="workerman例子无法工作" class="chapter done " data-progress="11.6" style="left: 98.88888888888889%;"></a>
     
         <a href="../faq/workerman-start-fail.html" title="workerman启动失败" class="chapter  " data-progress="11.7" style="left: 100%;"></a>
     
@@ -1234,9 +1234,13 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_1052">
+                    <section class="normal" id="section-gitbook_1053">
                     
-                        <h1 id="-">常见问题</h1>
+                        <h1 id="workerman-">workerman例子无法工作</h1>
+<h2 id="-">现象</h2>
+<p>workerman已经正常启动，但是按照官网写的例子或者下载的demo无法工作，例如页面打不开，socket连接失败等</p>
+<h2 id="-">解决方法</h2>
+<p>一般这种workerman启动没报错，但是无法打开页面或者无法连接的问题都是由于服务器防火墙导致的。请先关闭服务器防火墙再进行测试，如果经确认是防火墙问题，请重新设置防火墙规则。</p>
 
                     
                     </section>
@@ -1246,10 +1250,10 @@
         </div>
 
         
-        <a href="../appendices/kernel-optimization.html" class="navigation navigation-prev " aria-label="Previous page: Linux内核调优"><i class="fa fa-angle-left"></i></a>
+        <a href="../faq/persistent-data-and-resources.html" class="navigation navigation-prev " aria-label="Previous page: 对象和资源的持久化"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../faq/running-concurent.html" class="navigation navigation-next " aria-label="Next page: 运行多个WorkerMan"><i class="fa fa-angle-right"></i></a>
+        <a href="../faq/workerman-start-fail.html" class="navigation navigation-next " aria-label="Next page: workerman启动失败"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

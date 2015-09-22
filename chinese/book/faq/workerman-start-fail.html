@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>常见问题 | WorkerMan 3.x 手册</title>
+        <title>workerman启动失败 | WorkerMan 3.x 手册</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 0.5.2">
@@ -17,10 +17,8 @@
     
     
     
-    <link rel="next" href="../faq/running-concurent.html" />
     
-    
-    <link rel="prev" href="../appendices/kernel-optimization.html" />
+    <link rel="prev" href="../faq/demo-not-work.html" />
     
 
         
@@ -32,7 +30,7 @@
 
 
         
-    <div class="book"  data-level="11" data-basepath=".." data-revision="1442938189528">
+    <div class="book"  data-level="11.7" data-basepath=".." data-revision="1442938189528">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1043,7 +1041,7 @@
             <div class="page-wrapper" tabindex="-1">
                 <div class="book-progress">
     <div class="bar">
-        <div class="inner" style="width: 92.22222222222223%;min-width: 91.11111111111111%;"></div>
+        <div class="inner" style="width: 100%;min-width: 98.88888888888889%;"></div>
     </div>
     <div class="chapters">
     
@@ -1215,28 +1213,45 @@
     
         <a href="../faq/README.html" title="常见问题" class="chapter done " data-progress="11" style="left: 92.22222222222223%;"></a>
     
-        <a href="../faq/running-concurent.html" title="运行多个WorkerMan" class="chapter  " data-progress="11.1" style="left: 93.33333333333333%;"></a>
+        <a href="../faq/running-concurent.html" title="运行多个WorkerMan" class="chapter done " data-progress="11.1" style="left: 93.33333333333333%;"></a>
     
-        <a href="../faq/protocols.html" title="支持哪些协议" class="chapter  " data-progress="11.2" style="left: 94.44444444444444%;"></a>
+        <a href="../faq/protocols.html" title="支持哪些协议" class="chapter done " data-progress="11.2" style="left: 94.44444444444444%;"></a>
     
-        <a href="../faq/processes-count.html" title="如何设置进程数" class="chapter  " data-progress="11.3" style="left: 95.55555555555556%;"></a>
+        <a href="../faq/processes-count.html" title="如何设置进程数" class="chapter done " data-progress="11.3" style="left: 95.55555555555556%;"></a>
     
-        <a href="../faq/connection-status.html" title="查看当前客户端连接数" class="chapter  " data-progress="11.4" style="left: 96.66666666666667%;"></a>
+        <a href="../faq/connection-status.html" title="查看当前客户端连接数" class="chapter done " data-progress="11.4" style="left: 96.66666666666667%;"></a>
     
-        <a href="../faq/persistent-data-and-resources.html" title="对象和资源的持久化" class="chapter  " data-progress="11.5" style="left: 97.77777777777777%;"></a>
+        <a href="../faq/persistent-data-and-resources.html" title="对象和资源的持久化" class="chapter done " data-progress="11.5" style="left: 97.77777777777777%;"></a>
     
-        <a href="../faq/demo-not-work.html" title="workerman例子无法工作" class="chapter  " data-progress="11.6" style="left: 98.88888888888889%;"></a>
+        <a href="../faq/demo-not-work.html" title="workerman例子无法工作" class="chapter done " data-progress="11.6" style="left: 98.88888888888889%;"></a>
     
-        <a href="../faq/workerman-start-fail.html" title="workerman启动失败" class="chapter  " data-progress="11.7" style="left: 100%;"></a>
+        <a href="../faq/workerman-start-fail.html" title="workerman启动失败" class="chapter done " data-progress="11.7" style="left: 100%;"></a>
     
     </div>
 </div>
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_1052">
+                    <section class="normal" id="section-gitbook_1059">
                     
-                        <h1 id="-">常见问题</h1>
+                        <h1 id="workerman-">workerman启动失败</h1>
+<h2 id="-1">现象1</h2>
+<p>启动后报错类似如下：</p>
+<pre><code class="lang-php">php start.php start
+PHP Warning:  stream_socket_server(): unable to connect to tcp:<span class="hljs-comment">//0.0.0.0:xxxx (Address already in use) in /home/workerman-chat/Workerman/Worker.php on line 1208</span>
+</code></pre>
+<p><strong>关键字</strong>： <code>Address already in use</code></p>
+<p><strong>失败原因1：</strong></p>
+<p>workerman已经在运行，无法再次启动。可以运行 php start.php restart 重新启动</p>
+<p><strong>失败原因2：</strong></p>
+<p>如果restart仍然报<code>Address already in use</code>，可能是由于workerman有残留进程，可以运行 <code>ps aux | grep start.php | awk &#39;{print $2}&#39; | xargs kill -9</code> 强行杀死进程</p>
+<h2 id="-2">现象2</h2>
+<p>启动后报错类似如下：</p>
+<pre><code class="lang-php">PHP Warning:  stream_socket_server(): unable to connect to tcp:<span class="hljs-comment">//192.168.1.1:xxx (Cannot assign requested address) in /home/GatewayWorker/Workerman/Worker.php on line 1208</span>
+</code></pre>
+<p><strong>关键字：</strong> <code>Cannot assign requested address</code></p>
+<p><strong>失败原因：</strong></p>
+<p>启动脚本ip参数写错，不是本机ip，请填写本机ip机或者填写 <code>0.0.0.0</code>（表示监听本机所有ip）即可解决</p>
 
                     
                     </section>
@@ -1246,10 +1261,8 @@
         </div>
 
         
-        <a href="../appendices/kernel-optimization.html" class="navigation navigation-prev " aria-label="Previous page: Linux内核调优"><i class="fa fa-angle-left"></i></a>
+        <a href="../faq/demo-not-work.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: workerman例子无法工作"><i class="fa fa-angle-left"></i></a>
         
-        
-        <a href="../faq/running-concurent.html" class="navigation navigation-next " aria-label="Next page: 运行多个WorkerMan"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
