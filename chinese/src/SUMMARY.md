@@ -90,4 +90,9 @@
    * [对象和资源的持久化](faq/persistent-data-and-resources.md)
    * [workerman例子无法工作](faq/demo-not-work.md)
    * [workerman启动失败](faq/workerman-start-fail.md)
+   * [WorkerMan支持多少并发](faq/how-many-connections.md)
+   * [更改代码后不生效](faq/change-code-not-work.md)
+   * [如何向某个客户端发送数据](faq/send-data-to-client.md)
+   * [如何实现异步任务](faq/async-task.md)
+   * [在其它项目中推送数据](faq/push-in-other-project.md)
 
