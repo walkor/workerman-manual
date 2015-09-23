@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Linux内核调优 | WorkerMan 3.x 手册</title>
+        <title>如何向某个客户端发送数据 | WorkerMan 3.x 手册</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 0.5.2">
@@ -17,10 +17,10 @@
     
     
     
-    <link rel="next" href="../faq/README.html" />
+    <link rel="next" href="../faq/async-task.html" />
     
     
-    <link rel="prev" href="../appendices/install-extension.html" />
+    <link rel="prev" href="../faq/change-code-not-work.html" />
     
 
         
@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="10.3" data-basepath=".." data-revision="1443023131894">
+    <div class="book"  data-level="11.10" data-basepath=".." data-revision="1443023131894">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1088,7 +1088,7 @@
             <div class="page-wrapper" tabindex="-1">
                 <div class="book-progress">
     <div class="bar">
-        <div class="inner" style="width: 86.3157894736842%;min-width: 85.26315789473684%;"></div>
+        <div class="inner" style="width: 89.47368421052632%;min-width: 88.42105263157895%;"></div>
     </div>
     <div class="chapters">
     
@@ -1258,11 +1258,11 @@
     
         <a href="../appendices/kernel-optimization.html" title="Linux内核调优" class="chapter done " data-progress="10.3" style="left: 86.3157894736842%;"></a>
     
-        <a href="../faq/README.html" title="常见问题" class="chapter  " data-progress="11" style="left: 87.36842105263158%;"></a>
+        <a href="../faq/README.html" title="常见问题" class="chapter done " data-progress="11" style="left: 87.36842105263158%;"></a>
     
-        <a href="../faq/running-concurent.html" title="运行多个WorkerMan" class="chapter  " data-progress="11.1" style="left: 88.42105263157895%;"></a>
+        <a href="../faq/running-concurent.html" title="运行多个WorkerMan" class="chapter done " data-progress="11.1" style="left: 88.42105263157895%;"></a>
     
-        <a href="../faq/send-data-to-client.html" title="如何向某个客户端发送数据" class="chapter  " data-progress="11.10" style="left: 89.47368421052632%;"></a>
+        <a href="../faq/send-data-to-client.html" title="如何向某个客户端发送数据" class="chapter done " data-progress="11.10" style="left: 89.47368421052632%;"></a>
     
         <a href="../faq/async-task.html" title="如何实现异步任务" class="chapter  " data-progress="11.11" style="left: 90.52631578947368%;"></a>
     
@@ -1289,34 +1289,89 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_2218">
+                    <section class="normal" id="section-gitbook_2210">
                     
-                        <h1 id="linux-">Linux内核调优</h1>
-<h2 id="-">网络</h2>
-<p>调整linux内核参数以便满足高并发访问，解决大量time_wait占用太多本地端口导致的 <code>Cannot assign requested address</code> 问题。</p>
-<p>客户端与服务端每建立一个连接，客户端一侧都会占用一个本地端口（假设没有启用SO_REUSEADDR选项），本地端口数量是有限制的（默认是<code>net.ipv4.ip_local_port_range=32768    61000</code>），也就是说在没设置socket的SO_REUSEADDR选项时，一台Linux服务器作为<strong>客户端</strong>（<strong><code>注意是作为客户端</code></strong>）默认只能建立大概3万个TCP连接（服务端没有这个限制），可以更改<code>net.ipv4.ip_local_port_range</code>增大作为客户端可发起的并发连接数，但最多不会超过65535个（服务端没有这个限制）。</p>
-<p>当Linux服务器作为客户端频繁建立TCP短连接时，本地会可能会产生很多TIME_WAIT状态的连接，客户端侧的TIME_WAIT状态的连接会占用一个本地端口直到达到2MSL（最长分解生命期）的时间，这样会导致本地端口被暂时占用，当短连接建立速度过快时（例如做压测时），会导致<code>Cannot assign requested address</code>错误，解决办法有几种，比如像下面这样设置端口复用（复用TIME_WAIT状态的连接）。</p>
-<p>打开文件 /etc/sysctl.conf，增加以下设置</p>
-<pre><code class="lang-shell">net.ipv4.tcp_timestamps = 1
-net.ipv4.tcp_tw_reuse = 1
-net.ipv4.tcp_tw_recycle = 1
+                        <h1 id="workerman-">WorkerMan中如何向某个特定客户端发送数据</h1>
+<p>使用worker来做服务器，没有用GatewayWorker，如何实现向指定用户推送消息？</p>
+<pre><code class="lang-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+<span class="hljs-comment">// 初始化一个worker容器，监听1234端口</span>
+<span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'websocket://workerman.net:1234'</span>);
+<span class="hljs-comment">// 进程数设置为1</span>
+<span class="hljs-variable">$worker</span>-&gt;count = <span class="hljs-number">1</span>;
+<span class="hljs-comment">// 新增加一个属性，用来保存uid到connection的映射</span>
+<span class="hljs-variable">$worker</span>-&gt;uidConnections = <span class="hljs-keyword">array</span>();
+<span class="hljs-comment">// 当有客户端发来消息时执行的回调函数</span>
+<span class="hljs-variable">$worker</span>-&gt;onMessage = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>, <span class="hljs-variable">$data</span>)</span><span class="hljs-title">use</span><span class="hljs-params">(<span class="hljs-variable">$worker</span>)</span>
+{</span>
+    <span class="hljs-comment">// 判断当前客户端是否已经验证,既是否设置了uid</span>
+    <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$connection</span>-&gt;uid))
+    {
+       <span class="hljs-comment">// 没验证的话把第一个包当做uid（这里为了方便演示，没做真正的验证）</span>
+       <span class="hljs-variable">$connection</span>-&gt;uid = <span class="hljs-variable">$data</span>;
+       <span class="hljs-comment">/* 保存uid到connection的映射，这样可以方便的通过uid查找connection，
+        * 实现针对特定uid推送数据
+        */</span>
+       <span class="hljs-variable">$worker</span>-&gt;uidConnections[<span class="hljs-variable">$connection</span>-&gt;uid] = <span class="hljs-variable">$connection</span>;
+       <span class="hljs-keyword">return</span> <span class="hljs-variable">$connection</span>-&gt;send(<span class="hljs-string">'login success, your uid is '</span> . <span class="hljs-variable">$connection</span>-&gt;uid);
+    }
+    <span class="hljs-comment">// 其它罗辑，针对某个uid发送 或者 全局广播</span>
+    <span class="hljs-comment">// 假设消息格式为 uid:message 时是对 uid 发送 message</span>
+    <span class="hljs-comment">// uid 为 all 时是全局广播</span>
+    <span class="hljs-keyword">list</span>(<span class="hljs-variable">$recv_uid</span>, <span class="hljs-variable">$message</span>) = explode(<span class="hljs-string">':'</span>, <span class="hljs-variable">$data</span>);
+    <span class="hljs-comment">// 全局广播</span>
+    <span class="hljs-keyword">if</span>(<span class="hljs-variable">$recv_uid</span> == <span class="hljs-string">'all'</span>)
+    {
+        broadcast(<span class="hljs-variable">$message</span>);
+    }
+    <span class="hljs-comment">// 给特定uid发送</span>
+    <span class="hljs-keyword">else</span>
+    {
+        sendMessageByUid(<span class="hljs-variable">$recv_uid</span>, <span class="hljs-variable">$message</span>);
+    }
+};
+
+<span class="hljs-comment">// 当有客户端连接断开时</span>
+<span class="hljs-variable">$worker</span>-&gt;onClose = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>)</span><span class="hljs-title">use</span><span class="hljs-params">(<span class="hljs-variable">$worker</span>)</span>
+{</span>
+    <span class="hljs-keyword">global</span> <span class="hljs-variable">$worker</span>;
+    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$connection</span>-&gt;uid))
+    {
+        <span class="hljs-comment">// 连接断开时删除映射</span>
+        <span class="hljs-keyword">unset</span>(<span class="hljs-variable">$worker</span>-&gt;uidConnections[<span class="hljs-variable">$connection</span>-&gt;uid]);
+    }
+};
+
+<span class="hljs-comment">// 向所有验证的用户推送数据</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">broadcast</span><span class="hljs-params">(<span class="hljs-variable">$message</span>)</span>
+{</span>
+   <span class="hljs-keyword">global</span> <span class="hljs-variable">$worker</span>;
+   <span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$worker</span>-&gt;uidConnections <span class="hljs-keyword">as</span> <span class="hljs-variable">$connection</span>)
+   {
+        <span class="hljs-variable">$connection</span>-&gt;send(<span class="hljs-variable">$message</span>);
+   }
+}
+
+<span class="hljs-comment">// 针对uid推送数据</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sendMessageByUid</span><span class="hljs-params">(<span class="hljs-variable">$uid</span>, <span class="hljs-variable">$message</span>)</span>
+{</span>
+    <span class="hljs-keyword">global</span> <span class="hljs-variable">$worker</span>;
+    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$worker</span>-&gt;uidConnections[<span class="hljs-variable">$uid</span>]))
+    {
+        <span class="hljs-variable">$connection</span> = <span class="hljs-variable">$worker</span>-&gt;uidConnections[<span class="hljs-variable">$uid</span>];
+        <span class="hljs-variable">$connection</span>-&gt;send(<span class="hljs-variable">$message</span>);
+    }
+}
+
+<span class="hljs-comment">// 运行所有的worker（其实当前只定义了一个）</span>
+Worker::runAll();
 </code></pre>
-<p>运行 <code>sysctl -p</code>即可生效</p>
 <p><strong>说明：</strong></p>
-<p>/etc/sysctl.conf 可设置的选项很多，其它选项可以根据自己的环境需要进行设置</p>
-<h2 id="-">打开文件数</h2>
-<p>设置系统打开文件数设置，解决高并发下 <code>too many open files</code> 问题。此选项直接影响单个进程容纳的客户端连接数。</p>
-<p>Soft open files 是Linux系统参数，影响系统单个进程能够打开最大的文件句柄数量，这个值会影响到长链接应用如聊天中单个进程能够维持的用户连接数， 运行<code>ulimit -n</code>能看到这个参数值，如果是1024，就是代表单个进程只能同时最多只能维持1024甚至更少（因为有其它文件的句柄被打开）。如果开启4个进程维持用户链接，那么整个应用能够同时维持的连接数不会超过4*1024个，也就是说最多只能支持4x1024个用户在线可以增大这个设置以便服务能够维持更多的TCP连接。</p>
-<p>Soft open files 修改方法：</p>
-<p>（1）ulimit -HSn 102400</p>
-<p>这只是在当前终端有效，退出之后，open files 又变为默认值。</p>
-<p>（2）将ulimit -HSn 102400写到/etc/profile中，这样每次登录终端时，都会自动执行/etc/profile。</p>
-<p>（3）令修改open files的数值永久生效，则必须修改配置文件：/etc/security/limits.conf. 在这个文件后加上：</p>
-<pre><code>* soft nofile 1024000
-* hard nofile 1024000
-root soft nofile 1024000
-root hard nofile 1024000
-</code></pre><p>这种方法需要重启机器才能生效。</p>
+<p>以上例子可以针对uid推送，虽然是单进程，但是支持个10W在线是没问题的。</p>
+<p>注意这个例子注意只能单进程，多进程的话连接可能被分配到不同的进程，而不同的进程间是无法直接通讯的，不过可以建立一个中心worker进程中转消息实现多进程通讯。</p>
+<p><strong>建议：</strong></p>
+<p>针对特定客户端推送数据推荐使用<a href="http://www.workerman.net/gatewaydoc/" target="_blank">GatewayWorker</a>框架，使用Gateway::sendToClient或者Gateway::sendToUid即可。并且支持多进程，支持分布式部署，</p>
 
                     
                     </section>
@@ -1326,10 +1381,10 @@ root hard nofile 1024000
         </div>
 
         
-        <a href="../appendices/install-extension.html" class="navigation navigation-prev " aria-label="Previous page: 安装扩展"><i class="fa fa-angle-left"></i></a>
+        <a href="../faq/change-code-not-work.html" class="navigation navigation-prev " aria-label="Previous page: 更改代码后不生效"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../faq/README.html" class="navigation navigation-next " aria-label="Next page: 常见问题"><i class="fa fa-angle-right"></i></a>
+        <a href="../faq/async-task.html" class="navigation navigation-next " aria-label="Next page: 如何实现异步任务"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

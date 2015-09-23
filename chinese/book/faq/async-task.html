@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Linux内核调优 | WorkerMan 3.x 手册</title>
+        <title>如何实现异步任务 | WorkerMan 3.x 手册</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 0.5.2">
@@ -17,10 +17,10 @@
     
     
     
-    <link rel="next" href="../faq/README.html" />
+    <link rel="next" href="../faq/push-in-other-project.html" />
     
     
-    <link rel="prev" href="../appendices/install-extension.html" />
+    <link rel="prev" href="../faq/send-data-to-client.html" />
     
 
         
@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="10.3" data-basepath=".." data-revision="1443023131894">
+    <div class="book"  data-level="11.11" data-basepath=".." data-revision="1443023131894">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1088,7 +1088,7 @@
             <div class="page-wrapper" tabindex="-1">
                 <div class="book-progress">
     <div class="bar">
-        <div class="inner" style="width: 86.3157894736842%;min-width: 85.26315789473684%;"></div>
+        <div class="inner" style="width: 90.52631578947368%;min-width: 89.47368421052632%;"></div>
     </div>
     <div class="chapters">
     
@@ -1258,13 +1258,13 @@
     
         <a href="../appendices/kernel-optimization.html" title="Linux内核调优" class="chapter done " data-progress="10.3" style="left: 86.3157894736842%;"></a>
     
-        <a href="../faq/README.html" title="常见问题" class="chapter  " data-progress="11" style="left: 87.36842105263158%;"></a>
+        <a href="../faq/README.html" title="常见问题" class="chapter done " data-progress="11" style="left: 87.36842105263158%;"></a>
     
-        <a href="../faq/running-concurent.html" title="运行多个WorkerMan" class="chapter  " data-progress="11.1" style="left: 88.42105263157895%;"></a>
+        <a href="../faq/running-concurent.html" title="运行多个WorkerMan" class="chapter done " data-progress="11.1" style="left: 88.42105263157895%;"></a>
     
-        <a href="../faq/send-data-to-client.html" title="如何向某个客户端发送数据" class="chapter  " data-progress="11.10" style="left: 89.47368421052632%;"></a>
+        <a href="../faq/send-data-to-client.html" title="如何向某个客户端发送数据" class="chapter done " data-progress="11.10" style="left: 89.47368421052632%;"></a>
     
-        <a href="../faq/async-task.html" title="如何实现异步任务" class="chapter  " data-progress="11.11" style="left: 90.52631578947368%;"></a>
+        <a href="../faq/async-task.html" title="如何实现异步任务" class="chapter done " data-progress="11.11" style="left: 90.52631578947368%;"></a>
     
         <a href="../faq/push-in-other-project.html" title="在其它项目中推送数据" class="chapter  " data-progress="11.12" style="left: 91.57894736842105%;"></a>
     
@@ -1289,34 +1289,56 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_2218">
+                    <section class="normal" id="section-gitbook_2204">
                     
-                        <h1 id="linux-">Linux内核调优</h1>
-<h2 id="-">网络</h2>
-<p>调整linux内核参数以便满足高并发访问，解决大量time_wait占用太多本地端口导致的 <code>Cannot assign requested address</code> 问题。</p>
-<p>客户端与服务端每建立一个连接，客户端一侧都会占用一个本地端口（假设没有启用SO_REUSEADDR选项），本地端口数量是有限制的（默认是<code>net.ipv4.ip_local_port_range=32768    61000</code>），也就是说在没设置socket的SO_REUSEADDR选项时，一台Linux服务器作为<strong>客户端</strong>（<strong><code>注意是作为客户端</code></strong>）默认只能建立大概3万个TCP连接（服务端没有这个限制），可以更改<code>net.ipv4.ip_local_port_range</code>增大作为客户端可发起的并发连接数，但最多不会超过65535个（服务端没有这个限制）。</p>
-<p>当Linux服务器作为客户端频繁建立TCP短连接时，本地会可能会产生很多TIME_WAIT状态的连接，客户端侧的TIME_WAIT状态的连接会占用一个本地端口直到达到2MSL（最长分解生命期）的时间，这样会导致本地端口被暂时占用，当短连接建立速度过快时（例如做压测时），会导致<code>Cannot assign requested address</code>错误，解决办法有几种，比如像下面这样设置端口复用（复用TIME_WAIT状态的连接）。</p>
-<p>打开文件 /etc/sysctl.conf，增加以下设置</p>
-<pre><code class="lang-shell">net.ipv4.tcp_timestamps = 1
-net.ipv4.tcp_tw_reuse = 1
-net.ipv4.tcp_tw_recycle = 1
+                        <h1 id="-">如何实现异步任务</h1>
+<p><strong>问：</strong></p>
+<p>如何异步处理繁重的业务，避免主业务被长时间阻塞。例如我要给1000用户发送邮件，这个过程很慢，可能要阻塞数秒，这个过程中因为主流程被阻塞，会影响后续的请求，如何将这样的繁重任务交给其它进程异步处理。</p>
+<p><strong>答:</strong></p>
+<p>可以在本机或者其它服务器甚至服务器集群预先建立一些任务进程处理繁重的业务，任务进程数可以开多一些，例如cpu的10倍。</p>
+<p>任务进程服务端</p>
+<pre><code class="lang-php"><span class="hljs-comment">// task worker，使用Text协议</span>
+<span class="hljs-variable">$task_worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'Text://0.0.0.0:12345'</span>);
+<span class="hljs-comment">// task进程数可以根据需要多开一些</span>
+<span class="hljs-variable">$task_worker</span>-&gt;count = <span class="hljs-number">100</span>;
+<span class="hljs-variable">$task_worker</span>-&gt;name = <span class="hljs-string">'TaskWorker'</span>;
+<span class="hljs-variable">$task_worker</span>-&gt;onMessage = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>, <span class="hljs-variable">$task_data</span>)</span>
+{</span>
+     <span class="hljs-comment">// 假设发来的是json数据</span>
+     <span class="hljs-variable">$task_data</span> = json_decode(<span class="hljs-variable">$task_data</span>, <span class="hljs-keyword">true</span>);
+     <span class="hljs-comment">// 根据task_data处理相应的任务逻辑.... 得到结果，这里省略....</span>
+     <span class="hljs-variable">$task_result</span> = ......
+     <span class="hljs-comment">// 发送结果</span>
+     <span class="hljs-variable">$connection</span>-&gt;send(json_encode(<span class="hljs-variable">$task_result</span>));
+};
+Worker::runAll();
 </code></pre>
-<p>运行 <code>sysctl -p</code>即可生效</p>
-<p><strong>说明：</strong></p>
-<p>/etc/sysctl.conf 可设置的选项很多，其它选项可以根据自己的环境需要进行设置</p>
-<h2 id="-">打开文件数</h2>
-<p>设置系统打开文件数设置，解决高并发下 <code>too many open files</code> 问题。此选项直接影响单个进程容纳的客户端连接数。</p>
-<p>Soft open files 是Linux系统参数，影响系统单个进程能够打开最大的文件句柄数量，这个值会影响到长链接应用如聊天中单个进程能够维持的用户连接数， 运行<code>ulimit -n</code>能看到这个参数值，如果是1024，就是代表单个进程只能同时最多只能维持1024甚至更少（因为有其它文件的句柄被打开）。如果开启4个进程维持用户链接，那么整个应用能够同时维持的连接数不会超过4*1024个，也就是说最多只能支持4x1024个用户在线可以增大这个设置以便服务能够维持更多的TCP连接。</p>
-<p>Soft open files 修改方法：</p>
-<p>（1）ulimit -HSn 102400</p>
-<p>这只是在当前终端有效，退出之后，open files 又变为默认值。</p>
-<p>（2）将ulimit -HSn 102400写到/etc/profile中，这样每次登录终端时，都会自动执行/etc/profile。</p>
-<p>（3）令修改open files的数值永久生效，则必须修改配置文件：/etc/security/limits.conf. 在这个文件后加上：</p>
-<pre><code>* soft nofile 1024000
-* hard nofile 1024000
-root soft nofile 1024000
-root hard nofile 1024000
-</code></pre><p>这种方法需要重启机器才能生效。</p>
+<p>在workerman中调用</p>
+<pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Connection</span>\<span class="hljs-title">AsyncTcpConnection</span>;
+
+....
+
+<span class="hljs-comment">// 与远程task服务建立异步链接，ip为远程task服务的ip，如果是本机就是127.0.0.1，如果是集群就是lvs的ip</span>
+<span class="hljs-variable">$task_connection</span> = <span class="hljs-keyword">new</span> AsyncTcpConnection(<span class="hljs-string">'Text://ip:12345'</span>);
+<span class="hljs-comment">// 任务及参数数据</span>
+<span class="hljs-variable">$task_data</span> = <span class="hljs-keyword">array</span>(
+    <span class="hljs-string">'function'</span> =&gt; <span class="hljs-string">'send_mail'</span>,
+    <span class="hljs-string">'args'</span>       =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-string">'from'</span>=&gt;<span class="hljs-string">'xxx'</span>, <span class="hljs-string">'to'</span>=&gt;<span class="hljs-string">'xxx'</span>, <span class="hljs-string">'contents'</span>=&gt;<span class="hljs-string">'xxx'</span>),
+);
+<span class="hljs-comment">// 发送数据</span>
+<span class="hljs-variable">$task_connection</span>-&gt;send(json_encode(<span class="hljs-variable">$task_data</span>));
+<span class="hljs-comment">// 异步获得结果</span>
+<span class="hljs-variable">$task_connection</span>-&gt;onMessage = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$task_connection</span>, <span class="hljs-variable">$task_result</span>)</span>
+{</span>
+     <span class="hljs-comment">// 结果</span>
+     var_dump(<span class="hljs-variable">$task_result</span>);
+     <span class="hljs-comment">// 获得结果后记得关闭链接</span>
+     <span class="hljs-variable">$task_connection</span>-&gt;close();
+};
+<span class="hljs-comment">// 执行异步链接</span>
+<span class="hljs-variable">$task_connection</span>-&gt;connect();
+</code></pre>
+<p>这样，繁重的任务交给本机或者其它服务器的进程去做，任务完成后会异步收到结果，业务进程就不会阻塞了。</p>
 
                     
                     </section>
@@ -1326,10 +1348,10 @@ root hard nofile 1024000
         </div>
 
         
-        <a href="../appendices/install-extension.html" class="navigation navigation-prev " aria-label="Previous page: 安装扩展"><i class="fa fa-angle-left"></i></a>
+        <a href="../faq/send-data-to-client.html" class="navigation navigation-prev " aria-label="Previous page: 如何向某个客户端发送数据"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../faq/README.html" class="navigation navigation-next " aria-label="Next page: 常见问题"><i class="fa fa-angle-right"></i></a>
+        <a href="../faq/push-in-other-project.html" class="navigation navigation-next " aria-label="Next page: 在其它项目中推送数据"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
