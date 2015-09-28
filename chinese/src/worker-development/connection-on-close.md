@@ -14,7 +14,7 @@ require_once './Workerman/Autoloader.php';
 
 $worker = new Worker('websocket://0.0.0.0:8484');
 // 当有链接事件时触发
-$worker->onConnection = function($connection)
+$worker->onConnect = function($connection)
 {
     // 设置连接的onClose回调
     $connection->onClose = function($connection)

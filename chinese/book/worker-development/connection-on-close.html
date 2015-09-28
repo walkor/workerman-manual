@@ -1368,7 +1368,7 @@
 
 <span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'websocket://0.0.0.0:8484'</span>);
 <span class="hljs-comment">// 当有链接事件时触发</span>
-<span class="hljs-variable">$worker</span>-&gt;onConnection = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>)</span>
+<span class="hljs-variable">$worker</span>-&gt;onConnect = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>)</span>
 {</span>
     <span class="hljs-comment">// 设置连接的onClose回调</span>
     <span class="hljs-variable">$connection</span>-&gt;onClose = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>)</span>
