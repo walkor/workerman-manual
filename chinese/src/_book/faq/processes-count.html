@@ -1,0 +1,1951 @@
+<!DOCTYPE HTML>
+<html lang="en-US" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <title>如何设置进程数 | WorkerMan 3.x 手册</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 1.0.3">
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    
+    
+    
+    <link rel="next" href="../faq/connection-status.html" />
+    
+    
+    <link rel="prev" href="../faq/protocols.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+<link rel="stylesheet" href="../gitbook/style.css">
+
+
+        
+    <div class="book"  data-level="11.3" data-basepath=".." data-revision="1444231892754">
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+    	
+    	
+    	
+
+        
+
+        
+    
+        
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                        <i class="fa fa-check"></i>
+                        
+                         Introduction
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1" data-path="license/README.html">
+            
+                
+                    <a href="../license/README.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                         版权信息
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2" data-path="preface/README.html">
+            
+                
+                    <a href="../preface/README.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                         序言
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3" data-path="getting-started/README.html">
+            
+                
+                    <a href="../getting-started/README.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                         入门指引
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="3.1" data-path="getting-started/feature.html">
+            
+                
+                    <a href="../getting-started/feature.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                         特性
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.2" data-path="getting-started/simple-example.html">
+            
+                
+                    <a href="../getting-started/simple-example.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                         简单的开发实例
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4" data-path="install/README.html">
+            
+                
+                    <a href="../install/README.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                         安装配置
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="4.1" data-path="install/requirement.html">
+            
+                
+                    <a href="../install/requirement.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                         环境要求
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4.2" data-path="install/install.html">
+            
+                
+                    <a href="../install/install.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                         下载安装
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4.3" data-path="install/start-and-stop.html">
+            
+                
+                    <a href="../install/start-and-stop.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                         启动与停止
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="5" data-path="development/README.html">
+            
+                
+                    <a href="../development/README.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                         开发流程
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="5.1" data-path="development/before-development.html">
+            
+                
+                    <a href="../development/before-development.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                         开发前必读
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="5.2" data-path="development/directory-structure.html">
+            
+                
+                    <a href="../development/directory-structure.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                         目录结构
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="5.3" data-path="development/standard.html">
+            
+                
+                    <a href="../development/standard.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                         开发规范
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="5.4" data-path="development/process.html">
+            
+                
+                    <a href="../development/process.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                         基本流程
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="6" data-path="protocols/README.html">
+            
+                
+                    <a href="../protocols/README.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                         定制通讯协议
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="6.1" data-path="protocols/why-protocols.html">
+            
+                
+                    <a href="../protocols/why-protocols.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                         通讯协议的作用
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="6.2" data-path="protocols/how-protocols.html">
+            
+                
+                    <a href="../protocols/how-protocols.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                         如何定制协议
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="6.3" data-path="protocols/example.html">
+            
+                
+                    <a href="../protocols/example.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                         一些例子
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7" data-path="worker-development/README.html">
+            
+                
+                    <a href="../worker-development/README.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                         基于Worker开发
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="7.1" data-path="worker-development/worker-development.html">
+            
+                
+                    <a href="../worker-development/worker-development.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                         适用范围
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.2" data-path="worker-development/worker-functions.html">
+            
+                
+                    <a href="../worker-development/worker-functions.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                         Worker类
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="7.2.1" data-path="worker-development/property.html">
+            
+                
+                    <a href="../worker-development/property.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.1.</b>
+                        
+                         属性
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="7.2.1.1" data-path="worker-development/count.html">
+            
+                
+                    <a href="../worker-development/count.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.1.1.</b>
+                        
+                         count
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.2.1.2" data-path="worker-development/name.html">
+            
+                
+                    <a href="../worker-development/name.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.1.2.</b>
+                        
+                         name
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.2.1.3" data-path="worker-development/user.html">
+            
+                
+                    <a href="../worker-development/user.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.1.3.</b>
+                        
+                         user
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.2.1.4" data-path="worker-development/reloadable.html">
+            
+                
+                    <a href="../worker-development/reloadable.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.1.4.</b>
+                        
+                         reloadable
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.2.1.5" data-path="worker-development/transport.html">
+            
+                
+                    <a href="../worker-development/transport.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.1.5.</b>
+                        
+                         transport
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.2.1.6" data-path="worker-development/connections.html">
+            
+                
+                    <a href="../worker-development/connections.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.1.6.</b>
+                        
+                         connections
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.2.1.7" data-path="worker-development/daemonize.html">
+            
+                
+                    <a href="../worker-development/daemonize.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.1.7.</b>
+                        
+                         daemonize
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.2.1.8" data-path="worker-development/stdout_file.html">
+            
+                
+                    <a href="../worker-development/stdout_file.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.1.8.</b>
+                        
+                         stdoutFile 
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.2.1.9" data-path="worker-development/pid_file.html">
+            
+                
+                    <a href="../worker-development/pid_file.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.1.9.</b>
+                        
+                         pidFile
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.2.1.10" data-path="worker-development/global-event.html">
+            
+                
+                    <a href="../worker-development/global-event.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.1.10.</b>
+                        
+                         globalEvent
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.2.2" data-path="worker-development/callback.html">
+            
+                
+                    <a href="../worker-development/callback.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.2.</b>
+                        
+                         回调接口
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="7.2.2.1" data-path="worker-development/on_worker_start.html">
+            
+                
+                    <a href="../worker-development/on_worker_start.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.2.1.</b>
+                        
+                         onWorkerStart
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.2.2.2" data-path="worker-development/on-worker-stop.html">
+            
+                
+                    <a href="../worker-development/on-worker-stop.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.2.2.</b>
+                        
+                         onWorkerStop
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.2.2.3" data-path="worker-development/on-connect.html">
+            
+                
+                    <a href="../worker-development/on-connect.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.2.3.</b>
+                        
+                         onConnect
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.2.2.4" data-path="worker-development/on-message.html">
+            
+                
+                    <a href="../worker-development/on-message.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.2.4.</b>
+                        
+                         onMessage
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.2.2.5" data-path="worker-development/on-close.html">
+            
+                
+                    <a href="../worker-development/on-close.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.2.5.</b>
+                        
+                         onClose
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.2.2.6" data-path="worker-development/on-buffer-full.html">
+            
+                
+                    <a href="../worker-development/on-buffer-full.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.2.6.</b>
+                        
+                         onBufferFull
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.2.2.7" data-path="worker-development/on-buffer-drain.html">
+            
+                
+                    <a href="../worker-development/on-buffer-drain.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.2.7.</b>
+                        
+                         onBufferDrain
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.2.2.8" data-path="worker-development/on-error.html">
+            
+                
+                    <a href="../worker-development/on-error.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.2.8.</b>
+                        
+                         onError
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3" data-path="worker-development/connection-functions.html">
+            
+                
+                    <a href="../worker-development/connection-functions.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.</b>
+                        
+                         TcpConnection类
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="7.3.1" data-path="worker-development/connection-property.html">
+            
+                
+                    <a href="../worker-development/connection-property.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.1.</b>
+                        
+                         属性
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="7.3.1.1" data-path="worker-development/id.html">
+            
+                
+                    <a href="../worker-development/id.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.1.1.</b>
+                        
+                         id
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3.1.2" data-path="worker-development/protocol.html">
+            
+                
+                    <a href="../worker-development/protocol.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.1.2.</b>
+                        
+                         protocol
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3.1.3" data-path="worker-development/worker.html">
+            
+                
+                    <a href="../worker-development/worker.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.1.3.</b>
+                        
+                         worker
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3.1.4" data-path="worker-development/max-send-buffer-size.html">
+            
+                
+                    <a href="../worker-development/max-send-buffer-size.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.1.4.</b>
+                        
+                         maxSendBufferSize
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3.1.5" data-path="worker-development/default-max-send-buffer-size.html">
+            
+                
+                    <a href="../worker-development/default-max-send-buffer-size.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.1.5.</b>
+                        
+                         defaultMaxSendBufferSize
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3.1.6" data-path="worker-development/max-package-size.html">
+            
+                
+                    <a href="../worker-development/max-package-size.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.1.6.</b>
+                        
+                         maxPackageSize
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3.2" data-path="worker-development/connection-callback.html">
+            
+                
+                    <a href="../worker-development/connection-callback.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.2.</b>
+                        
+                         回调接口
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="7.3.2.1" data-path="worker-development/connection-on-message.html">
+            
+                
+                    <a href="../worker-development/connection-on-message.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.2.1.</b>
+                        
+                         onMessage
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3.2.2" data-path="worker-development/connection-on-close.html">
+            
+                
+                    <a href="../worker-development/connection-on-close.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.2.2.</b>
+                        
+                         onClose
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3.2.3" data-path="worker-development/connection-on-buffer-full.html">
+            
+                
+                    <a href="../worker-development/connection-on-buffer-full.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.2.3.</b>
+                        
+                         onBufferFull
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3.2.4" data-path="worker-development/connection-on-buffer-drain.html">
+            
+                
+                    <a href="../worker-development/connection-on-buffer-drain.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.2.4.</b>
+                        
+                         onBufferDrain
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3.2.5" data-path="worker-development/connection-on-error.html">
+            
+                
+                    <a href="../worker-development/connection-on-error.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.2.5.</b>
+                        
+                         onError
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3.3" data-path="worker-development/connection-method.html">
+            
+                
+                    <a href="../worker-development/connection-method.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.3.</b>
+                        
+                         接口
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="7.3.3.1" data-path="worker-development/send.html">
+            
+                
+                    <a href="../worker-development/send.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.3.1.</b>
+                        
+                         send
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3.3.2" data-path="worker-development/get-remote-ip.html">
+            
+                
+                    <a href="../worker-development/get-remote-ip.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.3.2.</b>
+                        
+                         getRemoteIp
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3.3.3" data-path="worker-development/get-remote-port.html">
+            
+                
+                    <a href="../worker-development/get-remote-port.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.3.3.</b>
+                        
+                         getRemotePort
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3.3.4" data-path="worker-development/close.html">
+            
+                
+                    <a href="../worker-development/close.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.3.4.</b>
+                        
+                         close
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3.3.5" data-path="worker-development/destroy.html">
+            
+                
+                    <a href="../worker-development/destroy.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.3.5.</b>
+                        
+                         destroy
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3.3.6" data-path="worker-development/pause-recv.html">
+            
+                
+                    <a href="../worker-development/pause-recv.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.3.6.</b>
+                        
+                         pauseRecv
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3.3.7" data-path="worker-development/resume-recv.html">
+            
+                
+                    <a href="../worker-development/resume-recv.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.3.7.</b>
+                        
+                         resumeRecv
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.3.3.8" data-path="worker-development/pipe.html">
+            
+                
+                    <a href="../worker-development/pipe.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.3.8.</b>
+                        
+                         pipe
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.4" data-path="worker-development/async-tcp-connection.html">
+            
+                
+                    <a href="../worker-development/async-tcp-connection.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.4.</b>
+                        
+                         AsyncTcpConnection类
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="7.4.1" data-path="worker-development/__construct.html">
+            
+                
+                    <a href="../worker-development/__construct.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.4.1.</b>
+                        
+                         __construct
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.4.2" data-path="worker-development/connect.html">
+            
+                
+                    <a href="../worker-development/connect.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.4.2.</b>
+                        
+                         connect
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.5" data-path="worker-development/timer-functions.html">
+            
+                
+                    <a href="../worker-development/timer-functions.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.5.</b>
+                        
+                         定时器Timer类
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="7.5.1" data-path="worker-development/add.html">
+            
+                
+                    <a href="../worker-development/add.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.5.1.</b>
+                        
+                         add
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.5.2" data-path="worker-development/del.html">
+            
+                
+                    <a href="../worker-development/del.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.5.2.</b>
+                        
+                         del
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="7.5.3" data-path="worker-development/timer-notice.html">
+            
+                
+                    <a href="../worker-development/timer-notice.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.5.3.</b>
+                        
+                         注意事项
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="8" data-path="debug/README.html">
+            
+                
+                    <a href="../debug/README.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                         调试
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="8.1" data-path="debug/base.html">
+            
+                
+                    <a href="../debug/base.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                         基本调试
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="8.2" data-path="debug/tcpdump.html">
+            
+                
+                    <a href="../debug/tcpdump.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                         网络抓包
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="8.3" data-path="debug/strace.html">
+            
+                
+                    <a href="../debug/strace.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.</b>
+                        
+                         追踪系统调用
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="9" data-path="advanced/README.html">
+            
+                
+                    <a href="../advanced/README.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                         高级应用
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="9.1" data-path="advanced/webserver.html">
+            
+                
+                    <a href="../advanced/webserver.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.1.</b>
+                        
+                         WebServer
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="9.2" data-path="advanced/status.html">
+            
+                
+                    <a href="../advanced/status.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.2.</b>
+                        
+                         查看WorkerMan运行状态
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="10" data-path="appendices/README.html">
+            
+                
+                    <a href="../appendices/README.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                         附录
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="10.1" data-path="appendices/stress-test.html">
+            
+                
+                    <a href="../appendices/stress-test.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.1.</b>
+                        
+                         压力测试
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="10.2" data-path="appendices/install-extension.html">
+            
+                
+                    <a href="../appendices/install-extension.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.2.</b>
+                        
+                         安装扩展
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="10.3" data-path="appendices/kernel-optimization.html">
+            
+                
+                    <a href="../appendices/kernel-optimization.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.3.</b>
+                        
+                         Linux内核调优
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="10.4" data-path="appendices/about-websocket.html">
+            
+                
+                    <a href="../appendices/about-websocket.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.4.</b>
+                        
+                         WebSocket协议
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="10.5" data-path="appendices/about-text.html">
+            
+                
+                    <a href="../appendices/about-text.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.5.</b>
+                        
+                         Text协议
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="11" data-path="faq/README.html">
+            
+                
+                    <a href="../faq/README.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                         常见问题
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="11.1" data-path="faq/running-concurent.html">
+            
+                
+                    <a href="../faq/running-concurent.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.1.</b>
+                        
+                         运行多个WorkerMan
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="11.2" data-path="faq/protocols.html">
+            
+                
+                    <a href="../faq/protocols.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.2.</b>
+                        
+                         支持哪些协议
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter active" data-level="11.3" data-path="faq/processes-count.html">
+            
+                
+                    <a href="../faq/processes-count.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.3.</b>
+                        
+                         如何设置进程数
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="11.4" data-path="faq/connection-status.html">
+            
+                
+                    <a href="../faq/connection-status.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.4.</b>
+                        
+                         查看当前客户端连接数
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="11.5" data-path="faq/persistent-data-and-resources.html">
+            
+                
+                    <a href="../faq/persistent-data-and-resources.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.5.</b>
+                        
+                         对象和资源的持久化
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="11.6" data-path="faq/demo-not-work.html">
+            
+                
+                    <a href="../faq/demo-not-work.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.6.</b>
+                        
+                         例子无法工作
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="11.7" data-path="faq/workerman-start-fail.html">
+            
+                
+                    <a href="../faq/workerman-start-fail.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.7.</b>
+                        
+                         启动失败
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="11.8" data-path="faq/how-many-connections.html">
+            
+                
+                    <a href="../faq/how-many-connections.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.8.</b>
+                        
+                         支持多少并发
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="11.9" data-path="faq/change-code-not-work.html">
+            
+                
+                    <a href="../faq/change-code-not-work.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.9.</b>
+                        
+                         更改代码后不生效
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="11.10" data-path="faq/send-data-to-client.html">
+            
+                
+                    <a href="../faq/send-data-to-client.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.10.</b>
+                        
+                         向某个客户端发送数据
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="11.11" data-path="faq/async-task.html">
+            
+                
+                    <a href="../faq/async-task.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.11.</b>
+                        
+                         如何实现异步任务
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="11.12" data-path="faq/push-in-other-project.html">
+            
+                
+                    <a href="../faq/push-in-other-project.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.12.</b>
+                        
+                         在其它项目中推送
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="11.13" data-path="faq/about-send-fail.html">
+            
+                
+                    <a href="../faq/about-send-fail.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.13.</b>
+                        
+                         status里send_fail原因
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="11.14" data-path="faq/windows-to-linux.html">
+            
+                
+                    <a href="../faq/windows-to-linux.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.14.</b>
+                        
+                         Win下开发Linux部署
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="11.15" data-path="faq/socketio-support.html">
+            
+                
+                    <a href="../faq/socketio-support.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.15.</b>
+                        
+                         是否支持socket.IO
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="11.16" data-path="faq/ssh-close-and-workerman-stop.html">
+            
+                
+                    <a href="../faq/ssh-close-and-workerman-stop.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.16.</b>
+                        
+                         终端关闭导致服务关闭
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="http://www.gitbook.io/" target="blank" class="gitbook-link">Published using GitBook</a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Toggle search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Toggle font settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Toggle share dropdown"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">Twitter</button>
+                <button type="button" data-sharing="google-plus" class="button">Google</button>
+                <button type="button" data-sharing="facebook" class="button">Facebook</button>
+                <button type="button" data-sharing="weibo" class="button">Weibo</button>
+                <button type="button" data-sharing="instapaper" class="button">Instapaper</button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Share on Google Plus"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Share on Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Share on Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >WorkerMan 3.x 手册</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-gitbook_4">
+                    
+                        <h1 id="">应该开启多少进程</h1>
+<h2 id="">如何设置进程数</h2>
+<p>进程数是由<code>count</code>属性决定的，例如下面代码</p>
+<pre><code>use Workerman\Worker;
+require_once &#39;./Workerman/Autoloader.php&#39;;
+
+$http_worker = new Worker(&quot;http://0.0.0.0:2345&quot;);
+
+// ## 启动4个进程对外提供服务 ##
+$http_worker-&gt;count = 4;
+
+...
+</code></pre><h2 id="">进程数设置需要考虑以下条件</h2>
+<p>1、cpu核数</p>
+<p>2、内存大小</p>
+<p>3、业务属于IO密集型还是CPU密集型</p>
+<h2 id="">进程数设置原则</h2>
+<p>1、每个进程占用内存之和需要小于总内存（一般来说每个业务进程占用内存大概40M左右）</p>
+<p>2、如果是IO密集型，也就是业务中涉及到一些阻塞式网络通讯开销，比如一般的访问Mysql、Redis等存储都是阻塞式访问的，进程数可以开大一些，如配置成CPU核数的3倍。如果业务中涉及的阻塞网络开销很多，可以再适当加大进程数，例如CPU核数的5倍甚至更高。</p>
+<p>3、如果是CPU密集型，也就是没有外部网络IO开销，或者没有阻塞的网络IO开销，例如使用异步IO读取网络资源，进程不会被业务代码阻塞的情况下，可以把进程数设置成和CPU核数一样</p>
+<hr>
+<p>进程数设置原理有点像生产线上工人们工作的情景，有4个生产线，就相当于CPU是4核的，生产线上的产品相当于任务，工人相当于进程。</p>
+<p>工人并非越多越好，因为只有4条生产线，生产能力有限，并且工人多了大家轮流上下生产线开销也很大，同样的进程多了进程间切换开销也很大。</p>
+<p>如果流水线上的商品每一步操作起来比较耗时（IO密集型），就需要多一点的工人去操作。</p>
+<p>如果流水线上的商品每一步操作都比较快（CPU密集型），只需要少数工人即可</p>
+<h2 id="">进程数设置参考值</h2>
+<p>如果业务代码是IO密集型的（业务代码有IO阻塞的地方），则根据IO密集程度设置进程数，例如CPU核数的3倍。</p>
+<p>如果业务代码中无阻塞式IO通讯，则可以将进程数设置成cpu核数</p>
+<h2 id="">注意</h2>
+<p>WorkerMan自身的IO都是非阻塞的，例如<code>Connection-&gt;send</code>等都是非阻塞的，属于CPU密集型操作。如果不清楚自己业务偏向于哪种类型，可设置进程数为CPU核数的2倍左右即可。</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../faq/protocols.html" class="navigation navigation-prev " aria-label="Previous page: 支持哪些协议"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../faq/connection-status.html" class="navigation navigation-next " aria-label="Next page: 查看当前客户端连接数"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="https://cdn.mathjax.org/mathjax/2.4-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
