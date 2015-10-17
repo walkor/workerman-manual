@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>属性 | WorkerMan 3.x 手册</title>
+        <title>id | WorkerMan 3.x 手册</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 0.5.2">
@@ -17,10 +17,10 @@
     
     
     
-    <link rel="next" href="../worker-development/workerid.html" />
+    <link rel="next" href="../worker-development/count.html" />
     
     
-    <link rel="prev" href="../worker-development/worker-functions.html" />
+    <link rel="prev" href="../worker-development/property.html" />
     
 
         
@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="7.2.1" data-basepath=".." data-revision="1445058773375">
+    <div class="book"  data-level="7.2.1.1" data-basepath=".." data-revision="1445058773375">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1169,7 +1169,7 @@
             <div class="page-wrapper" tabindex="-1">
                 <div class="book-progress">
     <div class="bar">
-        <div class="inner" style="width: 21.153846153846153%;min-width: 20.192307692307693%;"></div>
+        <div class="inner" style="width: 22.115384615384617%;min-width: 21.153846153846153%;"></div>
     </div>
     <div class="chapters">
     
@@ -1219,7 +1219,7 @@
     
         <a href="../worker-development/property.html" title="属性" class="chapter done " data-progress="7.2.1" style="left: 21.153846153846153%;"></a>
     
-        <a href="../worker-development/workerid.html" title="id" class="chapter  " data-progress="7.2.1.1" style="left: 22.115384615384617%;"></a>
+        <a href="../worker-development/workerid.html" title="id" class="chapter done " data-progress="7.2.1.1" style="left: 22.115384615384617%;"></a>
     
         <a href="../worker-development/count.html" title="count" class="chapter  " data-progress="7.2.1.2" style="left: 23.076923076923077%;"></a>
     
@@ -1388,9 +1388,71 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_1238">
+                    <section class="normal" id="section-gitbook_1251">
                     
-                        <h1 id="-">属性</h1>
+                        <h1 id="id">id</h1>
+<h2 id="-">说明:</h2>
+<pre><code class="lang-php">int Worker::<span class="hljs-variable">$id</span>
+</code></pre>
+<p>当前worker进程的id编号，范围为<code>0</code>到<code>$worker-&gt;count-1</code>。</p>
+<p>这个属性对于区分worker进程非常有用，例如1个worker实例有多个进程，开发者只想在其中一个进程中设置定时器，则可以通过识别进程编号id来做到这一点，比如只在该worker实例id编号为0的进程设置定时器（见范例）。</p>
+<h2 id="-">注意：</h2>
+<p>进程重启后id编号值是不变的。</p>
+<p>进程编号id的分配是基于每个worker实例的。每个worker实例都从0开始给自己的进程编号，所以worker实例间进程编号会有重复，但是一个worker实例中的进程编号不会重复。例如下面的例子：</p>
+<pre><code>&lt;?php
+use Workerman\Worker;
+require_once &#39;./Workerman/Autoloader.php&#39;;
+
+// worker实例1有4个进程，进程id编号将分别为0、1、2、3
+$worker1 = new Worker(&#39;tcp://0.0.0.0:8585&#39;);
+// 设置启动4个进程
+$worker1-&gt;count = 4;
+// 每个进程启动后打印当前进程id编号即 $worker1-&gt;id
+$worker1-&gt;onWorkerStart = function($worker1)
+{
+    echo &quot;worker1-&gt;id={$worker1-&gt;id}\n&quot;;
+};
+
+// worker实例2有两个进程，进程id编号将分别为0、1
+$worker2 = new Worker(&#39;tcp://0.0.0.0:8686&#39;);
+// 设置启动2个进程
+$worker2-&gt;count = 2;
+// 每个进程启动后打印当前进程id编号即 $worker2-&gt;id
+$worker2-&gt;onWorkerStart = function($worker2)
+{
+    echo &quot;worker2-&gt;id={$worker2-&gt;id}\n&quot;;
+};
+
+// 运行worker
+Worker::runAll();
+</code></pre><p>输出类似</p>
+<pre><code>worker1-&gt;id=0
+worker1-&gt;id=1
+worker1-&gt;id=2
+worker1-&gt;id=3
+worker2-&gt;id=0
+worker2-&gt;id=1
+</code></pre><h2 id="-">范例</h2>
+<p>一个worker实例有4个进程，只在id编号为0的进程上设置定时器。</p>
+<pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+
+<span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'tcp://0.0.0.0:8585'</span>);
+<span class="hljs-variable">$worker</span>-&gt;count = <span class="hljs-number">4</span>;
+<span class="hljs-variable">$worker</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$worker</span>)</span>
+{</span>
+    <span class="hljs-comment">// 只在id编号为0的进程上设置定时器，其它1、2、3号进程不设置定时器</span>
+    <span class="hljs-keyword">if</span>(<span class="hljs-variable">$worker</span>-&gt;id === <span class="hljs-number">0</span>)
+    {
+        Timer::add(<span class="hljs-number">1</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">"4个worker进程，只在0号进程设置定时器\n"</span>;
+        });
+    }
+};
+<span class="hljs-comment">// 运行worker</span>
+Worker::runAll();
+</code></pre>
 
                     
                     </section>
@@ -1400,10 +1462,10 @@
         </div>
 
         
-        <a href="../worker-development/worker-functions.html" class="navigation navigation-prev " aria-label="Previous page: Worker类"><i class="fa fa-angle-left"></i></a>
+        <a href="../worker-development/property.html" class="navigation navigation-prev " aria-label="Previous page: 属性"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../worker-development/workerid.html" class="navigation navigation-next " aria-label="Next page: id"><i class="fa fa-angle-right"></i></a>
+        <a href="../worker-development/count.html" class="navigation navigation-next " aria-label="Next page: count"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
