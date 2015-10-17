@@ -16,7 +16,7 @@ int Worker::$id
 
 进程编号id的分配是基于每个worker实例的。每个worker实例都从0开始给自己的进程编号，所以worker实例间进程编号会有重复，但是一个worker实例中的进程编号不会重复。例如下面的例子：
 
-```
+```php
 <?php
 use Workerman\Worker;
 require_once './Workerman/Autoloader.php';

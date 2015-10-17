@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="7.2.1.1" data-basepath=".." data-revision="1445058773375">
+    <div class="book"  data-level="7.2.1.1" data-basepath=".." data-revision="1445058974675">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1388,7 +1388,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_1251">
+                    <section class="normal" id="section-gitbook_1359">
                     
                         <h1 id="id">id</h1>
 <h2 id="-">说明:</h2>
@@ -1399,33 +1399,34 @@
 <h2 id="-">注意：</h2>
 <p>进程重启后id编号值是不变的。</p>
 <p>进程编号id的分配是基于每个worker实例的。每个worker实例都从0开始给自己的进程编号，所以worker实例间进程编号会有重复，但是一个worker实例中的进程编号不会重复。例如下面的例子：</p>
-<pre><code>&lt;?php
-use Workerman\Worker;
-require_once &#39;./Workerman/Autoloader.php&#39;;
+<pre><code class="lang-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
 
-// worker实例1有4个进程，进程id编号将分别为0、1、2、3
-$worker1 = new Worker(&#39;tcp://0.0.0.0:8585&#39;);
-// 设置启动4个进程
-$worker1-&gt;count = 4;
-// 每个进程启动后打印当前进程id编号即 $worker1-&gt;id
-$worker1-&gt;onWorkerStart = function($worker1)
-{
-    echo &quot;worker1-&gt;id={$worker1-&gt;id}\n&quot;;
+<span class="hljs-comment">// worker实例1有4个进程，进程id编号将分别为0、1、2、3</span>
+<span class="hljs-variable">$worker1</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'tcp://0.0.0.0:8585'</span>);
+<span class="hljs-comment">// 设置启动4个进程</span>
+<span class="hljs-variable">$worker1</span>-&gt;count = <span class="hljs-number">4</span>;
+<span class="hljs-comment">// 每个进程启动后打印当前进程id编号即 $worker1-&gt;id</span>
+<span class="hljs-variable">$worker1</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$worker1</span>)</span>
+{</span>
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"worker1-&gt;id={$worker1-&gt;id}\n"</span>;
 };
 
-// worker实例2有两个进程，进程id编号将分别为0、1
-$worker2 = new Worker(&#39;tcp://0.0.0.0:8686&#39;);
-// 设置启动2个进程
-$worker2-&gt;count = 2;
-// 每个进程启动后打印当前进程id编号即 $worker2-&gt;id
-$worker2-&gt;onWorkerStart = function($worker2)
-{
-    echo &quot;worker2-&gt;id={$worker2-&gt;id}\n&quot;;
+<span class="hljs-comment">// worker实例2有两个进程，进程id编号将分别为0、1</span>
+<span class="hljs-variable">$worker2</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'tcp://0.0.0.0:8686'</span>);
+<span class="hljs-comment">// 设置启动2个进程</span>
+<span class="hljs-variable">$worker2</span>-&gt;count = <span class="hljs-number">2</span>;
+<span class="hljs-comment">// 每个进程启动后打印当前进程id编号即 $worker2-&gt;id</span>
+<span class="hljs-variable">$worker2</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$worker2</span>)</span>
+{</span>
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"worker2-&gt;id={$worker2-&gt;id}\n"</span>;
 };
 
-// 运行worker
+<span class="hljs-comment">// 运行worker</span>
 Worker::runAll();
-</code></pre><p>输出类似</p>
+</code></pre>
+<p>输出类似</p>
 <pre><code>worker1-&gt;id=0
 worker1-&gt;id=1
 worker1-&gt;id=2
