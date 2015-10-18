@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="5.1" data-basepath=".." data-revision="1445059900626">
+    <div class="book"  data-level="5.1" data-basepath=".." data-revision="1445170077888">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1388,7 +1388,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_1425">
+                    <section class="normal" id="section-gitbook_65">
                     
                         <h1 id="-">开发前必读</h1>
 <p>使用WorkerMan开发应用，你需要了解以下内容：</p>
@@ -1397,9 +1397,9 @@
 <h3 id="1-">1、应用层协议不同</h3>
 <ul>
 <li>普通PHP开发一般是基于HTTP应用层协议，WebServer已经帮开发者完成了协议的解析</li>
-<li>WorkerMan支持各种协议，目前内置了HTTP、WebSocket等协议。WorkerMan非常推荐开发者使用更简单的自定义协议通讯</li>
+<li>WorkerMan支持各种协议，目前内置了HTTP、WebSocket等协议。WorkerMan推荐开发者使用更简单的自定义协议通讯</li>
 </ul>
-<p><em>由于非HTTP协议的应用，所以<code>header()</code> <code>setcookie()</code> <code>session_start</code>等函数无法直接使用，需要使用WorkerMan提供的方法</em></p>
+<p><em>由于非HTTP协议的应用，所以<code>header()</code> <code>setcookie()</code> <code>session_start</code>等函数无法直接使用，需要使用WorkerMan提供的方法，具体参考高级应用-WebServer部分</em></p>
 <h3 id="2-">2、请求周期差异</h3>
 <ul>
 <li>PHP在Web应用中一次请求过后会释放所有的变量与资源</li>

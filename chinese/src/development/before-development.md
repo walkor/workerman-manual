@@ -9,9 +9,9 @@
 
 ### 1、应用层协议不同
 * 普通PHP开发一般是基于HTTP应用层协议，WebServer已经帮开发者完成了协议的解析
-* WorkerMan支持各种协议，目前内置了HTTP、WebSocket等协议。WorkerMan非常推荐开发者使用更简单的自定义协议通讯
+* WorkerMan支持各种协议，目前内置了HTTP、WebSocket等协议。WorkerMan推荐开发者使用更简单的自定义协议通讯
 
-*由于非HTTP协议的应用，所以```header()``` ```setcookie()``` ```session_start```等函数无法直接使用，需要使用WorkerMan提供的方法*
+*由于非HTTP协议的应用，所以```header()``` ```setcookie()``` ```session_start```等函数无法直接使用，需要使用WorkerMan提供的方法，具体参考高级应用-WebServer部分*
 
 
 ### 2、请求周期差异

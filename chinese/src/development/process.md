@@ -27,7 +27,7 @@ require_once '/your/path/Workerman/Autoloader.php';
 $global_uid = 0;
 
 // 当客户端连上来时分配uid，并保存连接，并通知所有客户端
-function handler_connection($connection)
+function handle_connection($connection)
 {
     global $text_worker, $global_uid;
     // 为这个链接分配一个uid
@@ -60,7 +60,7 @@ $text_worker = new Worker("Text://0.0.0.0:2347");
 // 只启动1个进程，这样方便客户端之间传输数据
 $text_worker->count = 1;
 
-$text_worker->onConnect = 'handler_connection';
+$text_worker->onConnect = 'handle_connection';
 $text_worker->onMessage = 'handle_message';
 $text_worker->onClose = 'handle_close';
 
