@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="7.5.1" data-basepath=".." data-revision="1445178973259">
+    <div class="book"  data-level="7.5.1" data-basepath=".." data-revision="1445614464306">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1388,7 +1388,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_61">
+                    <section class="normal" id="section-gitbook_2535">
                     
                         <h1 id="add">add</h1>
 <pre><code class="lang-php">int \Workerman\Lib\Timer::add(float <span class="hljs-variable">$time_interval</span>, callable <span class="hljs-variable">$callback</span> [,<span class="hljs-variable">$args</span> = <span class="hljs-keyword">array</span>(), bool <span class="hljs-variable">$persistent</span> = <span class="hljs-keyword">true</span>])
@@ -1398,15 +1398,17 @@
 <p><code>time_interval</code></p>
 <p>多长时间执行一次，单位秒，支持小数，可以精确到0.001，即精确到毫秒级别。</p>
 <p><code>callback</code></p>
-<p>回调函数</p>
+<p>回调函数<code>注意：如果回调函数是类的方法，则方法必须是public属性</code></p>
 <p><code>args</code></p>
-<p>回调函数的参数，必须为数组</p>
+<p>回调函数的参数，必须为数组，数组元素为参数值</p>
 <p><code>persistent</code></p>
-<p>是否是持久的，如果只想定时执行一次，则传递false。默认是true，即一直定时执行。</p>
+<p>是否是持久的，如果只想定时执行一次，则传递false（只执行一次的任务在执行完毕后会自动销毁，不必调用<code>Timer::del()</code>）。默认是true，即一直定时执行。</p>
 <h3 id="-">返回值</h3>
-<p>返回一个整数，代表计时器的timerid，可以通过这个timerid删除对应的计时器</p>
+<p>返回一个整数，代表计时器的timerid，可以通过调用<code>Timer::del($timerid)</code>销毁这个计时器。</p>
 <h3 id="-">示例</h3>
+<h4 id="1-">1、定时函数为匿名函数（闭包）</h4>
 <pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
 <span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
 
 <span class="hljs-variable">$task</span> = <span class="hljs-keyword">new</span> Worker();
@@ -1414,13 +1416,231 @@
 <span class="hljs-variable">$task</span>-&gt;count = <span class="hljs-number">1</span>;
 <span class="hljs-variable">$task</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$task</span>)</span>
 {</span>
+    <span class="hljs-comment">// 每2.5秒执行一次</span>
     <span class="hljs-variable">$time_interval</span> = <span class="hljs-number">2.5</span>;
-    \Workerman\Lib\Timer::add(<span class="hljs-variable">$time_interval</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>
+    Timer::add(<span class="hljs-variable">$time_interval</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>
     {</span>
         <span class="hljs-keyword">echo</span> <span class="hljs-string">"task run\n"</span>;
     });
 };
 
+<span class="hljs-comment">// 运行worker</span>
+Worker::runAll();
+</code></pre>
+<h3 id="2-">2、定时函数为普通函数</h3>
+<pre><code class="lang-php"><span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+<span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
+
+<span class="hljs-comment">// 普通的函数</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">send_mail</span><span class="hljs-params">(<span class="hljs-variable">$to</span>, <span class="hljs-variable">$content</span>)</span>
+{</span>
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"send mail ...\n"</span>;
+}
+
+<span class="hljs-variable">$task</span> = <span class="hljs-keyword">new</span> Worker();
+<span class="hljs-variable">$task</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$task</span>)</span>
+{</span>
+    <span class="hljs-variable">$to</span> = <span class="hljs-string">'workerman@workerman.net'</span>;
+    <span class="hljs-variable">$content</span> = <span class="hljs-string">'hello workerman'</span>;
+    <span class="hljs-comment">// 10秒后执行发送邮件任务，最后一个参数传递false，表示只运行一次</span>
+    Timer::add(<span class="hljs-number">10</span>, <span class="hljs-string">'send_mail'</span>, <span class="hljs-keyword">array</span>(<span class="hljs-variable">$to</span>, <span class="hljs-variable">$content</span>), <span class="hljs-keyword">false</span>);
+};
+
+<span class="hljs-comment">// 运行worker</span>
+Worker::runAll();
+</code></pre>
+<h3 id="3-">3、定时函数为类的方法</h3>
+<pre><code class="lang-php"><span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+<span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Mail</span>
+{</span>
+    <span class="hljs-comment">// 注意，回调函数属性必须是public</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">send</span><span class="hljs-params">(<span class="hljs-variable">$to</span>, <span class="hljs-variable">$content</span>)</span>
+    {</span>
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">"send mail ...\n"</span>;
+    }
+}
+
+<span class="hljs-variable">$task</span> = <span class="hljs-keyword">new</span> Worker();
+<span class="hljs-variable">$task</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$task</span>)</span>
+{</span>
+    <span class="hljs-comment">// 10秒后发送一次邮件</span>
+    <span class="hljs-variable">$mail</span> = <span class="hljs-keyword">new</span> Mail();
+    <span class="hljs-variable">$to</span> = <span class="hljs-string">'workerman@workerman.net'</span>;
+    <span class="hljs-variable">$content</span> = <span class="hljs-string">'hello workerman'</span>;
+    Timer::add(<span class="hljs-number">10</span>, <span class="hljs-keyword">array</span>(<span class="hljs-variable">$mail</span>, <span class="hljs-string">'send'</span>), <span class="hljs-keyword">array</span>(<span class="hljs-variable">$to</span>, <span class="hljs-variable">$content</span>), <span class="hljs-keyword">false</span>);
+};
+
+<span class="hljs-comment">// 运行worker</span>
+Worker::runAll();
+</code></pre>
+<h3 id="4-">4、定时函数为类方法（类内部使用定时器）</h3>
+<pre><code class="lang-php"><span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+<span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Mail</span>
+{</span>
+    <span class="hljs-comment">// 注意，回调函数属性必须是public</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">send</span><span class="hljs-params">(<span class="hljs-variable">$to</span>, <span class="hljs-variable">$content</span>)</span>
+    {</span>
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">"send mail ...\n"</span>;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sendLater</span><span class="hljs-params">(<span class="hljs-variable">$to</span>, <span class="hljs-variable">$content</span>)</span>
+    {</span>
+        <span class="hljs-comment">// 回调的方法属于当前的类，则回调数组第一个元素为$this</span>
+        Timer::add(<span class="hljs-number">10</span>, <span class="hljs-keyword">array</span>(<span class="hljs-variable">$this</span>, <span class="hljs-string">'send'</span>), <span class="hljs-keyword">array</span>(<span class="hljs-variable">$to</span>, <span class="hljs-variable">$content</span>), <span class="hljs-keyword">false</span>);
+    }
+}
+
+<span class="hljs-variable">$task</span> = <span class="hljs-keyword">new</span> Worker();
+<span class="hljs-variable">$task</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$task</span>)</span>
+{</span>
+    <span class="hljs-comment">// 10秒后发送一次邮件</span>
+    <span class="hljs-variable">$mail</span> = <span class="hljs-keyword">new</span> Mail();
+    <span class="hljs-variable">$to</span> = <span class="hljs-string">'workerman@workerman.net'</span>;
+    <span class="hljs-variable">$content</span> = <span class="hljs-string">'hello workerman'</span>;
+    <span class="hljs-variable">$mail</span>-&gt;sendLater(<span class="hljs-variable">$to</span>, <span class="hljs-variable">$content</span>);
+};
+
+<span class="hljs-comment">// 运行worker</span>
+Worker::runAll();
+</code></pre>
+<h3 id="5-">5、定时函数为类的静态方法</h3>
+<pre><code class="lang-php"><span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+<span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Mail</span>
+{</span>
+    <span class="hljs-comment">// 注意这个是静态方法，回调函数属性也必须是public</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">send</span><span class="hljs-params">(<span class="hljs-variable">$to</span>, <span class="hljs-variable">$content</span>)</span>
+    {</span>
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">"send mail ...\n"</span>;
+    }
+}
+
+<span class="hljs-variable">$task</span> = <span class="hljs-keyword">new</span> Worker();
+<span class="hljs-variable">$task</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$task</span>)</span>
+{</span>
+    <span class="hljs-comment">// 10秒后发送一次邮件</span>
+    <span class="hljs-variable">$to</span> = <span class="hljs-string">'workerman@workerman.net'</span>;
+    <span class="hljs-variable">$content</span> = <span class="hljs-string">'hello workerman'</span>;
+    <span class="hljs-comment">// 定时调用类的静态方法</span>
+    Timer::add(<span class="hljs-number">10</span>, <span class="hljs-keyword">array</span>(<span class="hljs-string">'Mail'</span>, <span class="hljs-string">'send'</span>), <span class="hljs-keyword">array</span>(<span class="hljs-variable">$to</span>, <span class="hljs-variable">$content</span>), <span class="hljs-keyword">false</span>);
+};
+
+<span class="hljs-comment">// 运行worker</span>
+Worker::runAll();
+</code></pre>
+<h3 id="6-">6、定时函数为类的静态方法(带命名空间)</h3>
+<pre><code class="lang-php"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Task</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+<span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Mail</span>
+{</span>
+    <span class="hljs-comment">// 注意这个是静态方法，回调函数属性也必须是public</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">send</span><span class="hljs-params">(<span class="hljs-variable">$to</span>, <span class="hljs-variable">$content</span>)</span>
+    {</span>
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">"send mail ...\n"</span>;
+    }
+}
+
+<span class="hljs-variable">$task</span> = <span class="hljs-keyword">new</span> Worker();
+<span class="hljs-variable">$task</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$task</span>)</span>
+{</span>
+    <span class="hljs-comment">// 10秒后发送一次邮件</span>
+    <span class="hljs-variable">$to</span> = <span class="hljs-string">'workerman@workerman.net'</span>;
+    <span class="hljs-variable">$content</span> = <span class="hljs-string">'hello workerman'</span>;
+    <span class="hljs-comment">// 定时调用带命名空间的类的静态方法</span>
+    Timer::add(<span class="hljs-number">10</span>, <span class="hljs-keyword">array</span>(<span class="hljs-string">'\Task\Mail'</span>, <span class="hljs-string">'send'</span>), <span class="hljs-keyword">array</span>(<span class="hljs-variable">$to</span>, <span class="hljs-variable">$content</span>), <span class="hljs-keyword">false</span>);
+};
+
+<span class="hljs-comment">// 运行worker</span>
+Worker::runAll();
+</code></pre>
+<h3 id="7-use-timer_id-">7、定时器中销毁当前定时器（use闭包方式传递$timer_id）</h3>
+<pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+
+<span class="hljs-variable">$task</span> = <span class="hljs-keyword">new</span> Worker();
+<span class="hljs-variable">$task</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$task</span>)</span>
+{</span>
+    <span class="hljs-comment">// 计数</span>
+    <span class="hljs-variable">$count</span> = <span class="hljs-number">1</span>;
+    <span class="hljs-comment">// 要想$timer_id能正确传递到回调函数内部，$timer_id前面必须加地址符 &amp;</span>
+    <span class="hljs-variable">$timer_id</span> = Timer::add(<span class="hljs-number">1</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span><span class="hljs-title">use</span><span class="hljs-params">(&amp;<span class="hljs-variable">$timer_id</span>, &amp;<span class="hljs-variable">$count</span>)</span>
+    {</span>
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">"Timer run $count\n"</span>;
+        <span class="hljs-comment">// 运行10次后销毁当前定时器</span>
+        <span class="hljs-keyword">if</span>(<span class="hljs-variable">$count</span>++ &gt;= <span class="hljs-number">10</span>)
+        {
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">"Timer::del($timer_id)\n"</span>;
+            Timer::del(<span class="hljs-variable">$timer_id</span>);
+        }
+    });
+};
+
+<span class="hljs-comment">// 运行worker</span>
+Worker::runAll();
+</code></pre>
+<h3 id="8-timer_id-">8、定时器中销毁当前定时器（参数方式传递$timer_id）</h3>
+<pre><code class="lang-php"><span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+<span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Mail</span>
+{</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">send</span><span class="hljs-params">(<span class="hljs-variable">$to</span>, <span class="hljs-variable">$content</span>, <span class="hljs-variable">$timer_id</span>)</span>
+    {</span>
+        <span class="hljs-comment">// 临时给当前对象添加一个count属性，记录定时器运行次数</span>
+        <span class="hljs-variable">$this</span>-&gt;count = <span class="hljs-keyword">empty</span>(<span class="hljs-variable">$this</span>-&gt;count) ? <span class="hljs-number">1</span> : <span class="hljs-variable">$this</span>-&gt;count;
+        <span class="hljs-comment">// 运行10次后销毁当前定时器</span>
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">"send mail {$this-&gt;count}...\n"</span>;
+        <span class="hljs-keyword">if</span>(<span class="hljs-variable">$this</span>-&gt;count++ &gt;= <span class="hljs-number">10</span>)
+        {
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">"Timer::del($timer_id)\n"</span>;
+            Timer::del(<span class="hljs-variable">$timer_id</span>);
+        }
+    }
+}
+
+<span class="hljs-variable">$task</span> = <span class="hljs-keyword">new</span> Worker();
+<span class="hljs-variable">$task</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$task</span>)</span>
+{</span>
+    <span class="hljs-variable">$mail</span> = <span class="hljs-keyword">new</span> Mail();
+    <span class="hljs-comment">// 要想$timer_id能正确传递到回调函数内部，$timer_id前面必须加地址符 &amp;</span>
+    <span class="hljs-variable">$timer_id</span> = Timer::add(<span class="hljs-number">1</span>, <span class="hljs-keyword">array</span>(<span class="hljs-variable">$mail</span>, <span class="hljs-string">'send'</span>), <span class="hljs-keyword">array</span>(<span class="hljs-string">'to'</span>, <span class="hljs-string">'content'</span>, &amp;<span class="hljs-variable">$timer_id</span>));
+};
+
+<span class="hljs-comment">// 运行worker</span>
+Worker::runAll();
+</code></pre>
+<h3 id="9-">9、只在指定进程中设置定时器</h3>
+<p>一个worker实例有4个进程，只在id编号为0的进程上设置定时器。</p>
+<pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+
+<span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker();
+<span class="hljs-variable">$worker</span>-&gt;count = <span class="hljs-number">4</span>;
+<span class="hljs-variable">$worker</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$worker</span>)</span>
+{</span>
+    <span class="hljs-comment">// 只在id编号为0的进程上设置定时器，其它1、2、3号进程不设置定时器</span>
+    <span class="hljs-keyword">if</span>(<span class="hljs-variable">$worker</span>-&gt;id === <span class="hljs-number">0</span>)
+    {
+        Timer::add(<span class="hljs-number">1</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">"4个worker进程，只在0号进程设置定时器\n"</span>;
+        });
+    }
+};
 <span class="hljs-comment">// 运行worker</span>
 Worker::runAll();
 </code></pre>
