@@ -78,7 +78,7 @@
    * [追踪系统调用](debug/strace.md)
 * [高级应用](advanced/README.md)
    * [WebServer](advanced/webserver.md)
-   * [查看WorkerMan运行状态](advanced/status.md)
+   * [查看运行状态](advanced/status.md)
 * [附录](appendices/README.md)
    * [压力测试](appendices/stress-test.md)
    * [安装扩展](appendices/install-extension.md)
