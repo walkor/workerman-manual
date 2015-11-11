@@ -5,7 +5,7 @@
 int Connection::$id
 ```
 
-Each new connection is given its own unique id, this id is stored in the id.
+In one worker process each new connection is given its own unique id, this id is stored in the id.
 
 
 ## Examples
