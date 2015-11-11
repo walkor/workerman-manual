@@ -15,7 +15,7 @@ $webserver = new WebServer('http://0.0.0.0:8080');
 // 类似nginx配置中的root选项，添加域名与网站根目录的关联，可设置多个域名多个目录
 $webserver->addRoot('www.example.com', '/your/path/of/web/');
 // 设置开启多少进程
-$sebserver->count = 4;
+$webserver->count = 4;
 
 Worker::runAll();
 ```
