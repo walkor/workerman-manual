@@ -22,6 +22,13 @@
 ### 查看状态
 ```php yourfile.php status```
 
+### 强行杀死所有workerman进程
+
+``` （要求workerman版本>=3.2.2） ```
+
+```php yourfile.php kill```
+
+
 
 ## 什么是平滑重启？
 

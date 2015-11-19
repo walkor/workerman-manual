@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="11.7" data-basepath=".." data-revision="1445701424233">
+    <div class="book"  data-level="11.7" data-basepath=".." data-revision="1447918330034">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1388,7 +1388,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_22">
+                    <section class="normal" id="section-gitbook_749">
                     
                         <h1 id="workerman-">workerman启动失败</h1>
 <h2 id="-1">现象1</h2>
@@ -1398,9 +1398,12 @@ PHP Warning:  stream_socket_server(): unable to connect to tcp:<span class="hljs
 </code></pre>
 <p><strong>关键字</strong>： <code>Address already in use</code></p>
 <p><strong>失败原因1：</strong></p>
-<p>workerman已经在运行，无法再次启动。可以运行 php start.php restart 重新启动</p>
+<p>workerman已经在运行，无法再次启动。可以运行 <code>php start.php restart</code> 重新启动</p>
 <p><strong>失败原因2：</strong></p>
-<p>如果restart仍然报<code>Address already in use</code>，可能是由于workerman有残留进程，可以运行 <code>ps aux | grep start.php | awk &#39;{print $2}&#39; | xargs kill -9</code> 强行杀死进程</p>
+<p>如果restart仍然报<code>Address already in use</code>，一般是由于启动脚本找不到主进程pid文件导致的，workerman 3.2.2之前的版本主进程pid文件默认存储在<code>/tmp/</code>下，有些系统会定时清理<code>/tmp/</code>目录，导致无法启动。</p>
+<p>解决方法：</p>
+<p>方法1：升级workerman到3.2.2或以上版本，workerman3.2.2 版本不在将pid文件存储在<code>/tmp/</code>下，另外提供了<code>php xxx.php kill</code> 命令，方便强行杀死workerman进程。</p>
+<p>方法2：可以运行 <code>ps aux | grep start.php | awk &#39;{print $2}&#39; | xargs kill -9</code> 强行杀死进程。然后参考手册<a href="/worker-development/pid_file.html">pidFile</a>将pid文件存储在安全的地方。</p>
 <h2 id="-2">现象2</h2>
 <p>启动后报错类似如下：</p>
 <pre><code class="lang-php">PHP Warning:  stream_socket_server(): unable to connect to tcp:<span class="hljs-comment">//192.168.1.1:xxx (Cannot assign requested address) in /home/GatewayWorker/Workerman/Worker.php on line 1208</span>

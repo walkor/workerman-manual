@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="11.2" data-basepath=".." data-revision="1445701424233">
+    <div class="book"  data-level="11.2" data-basepath=".." data-revision="1447918330034">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1388,11 +1388,24 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_3">
+                    <section class="normal" id="section-gitbook_734">
                     
                         <h1 id="workerman-">WorkerMan支持哪些协议</h1>
 <p>WorkerMan在接口上支持各种协议，只要符合<code>ConnectionInterface</code>接口即可（参见定制通讯协议章节）。</p>
-<p>为了方便开发者，WorkerMan实现了HTTP协议、WebSocket协议以及非常简单的Text文本协议。开发者可以直接使用这些协议，不必再二次开发。如果这些协议都不满足需要，开发者可以参照定制协议章节实现自己的协议。</p>
+<p>为了方便开发者，WorkerMan提供了HTTP协议、WebSocket协议以及非常简单的Text文本协议。开发者可以直接使用这些协议，不必再二次开发。如果这些协议都不满足需要，开发者可以参照定制协议章节实现自己的协议。</p>
+<p>开发者也可以直接基于tcp或者udp协议。</p>
+<p>协议使用示例</p>
+<pre><code class="lang-php"><span class="hljs-comment">// http协议</span>
+<span class="hljs-variable">$worker1</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'http://0.0.0.0:1221'</span>);
+<span class="hljs-comment">// websocket协议</span>
+<span class="hljs-variable">$worker2</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'websocket://0.0.0.0:1222'</span>);
+<span class="hljs-comment">// text文本协议（telnet协议）</span>
+<span class="hljs-variable">$worker3</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'text://0.0.0.0:1223'</span>);
+<span class="hljs-comment">// 直接基于tcp传输</span>
+<span class="hljs-variable">$worker4</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'tcp://0.0.0.0:1224'</span>);
+<span class="hljs-comment">// 直接基于udp传输</span>
+<span class="hljs-variable">$worker5</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'udp://0.0.0.0:1225'</span>);
+</code></pre>
 
                     
                     </section>
