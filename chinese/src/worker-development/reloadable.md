@@ -1,7 +1,7 @@
 # reloadable
 ## 说明:
 ```php
-string Worker::$reloadable
+bool Worker::$reloadable
 ```
 
 设置当前Worker实例是否可以reload，即收到reload信号后是否退出重启。不设置默认为true，收到reload信号后自动重启进程。

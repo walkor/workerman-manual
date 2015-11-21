@@ -33,6 +33,7 @@
            * [stdoutFile ](worker-development/stdout_file.md)
            * [pidFile](worker-development/pid_file.md)
            * [globalEvent](worker-development/global-event.md)
+           * [reusePort](worker-development/reuse-port.md)
        * [回调接口](worker-development/callback.md)
            * [onWorkerStart](worker-development/on_worker_start.md)
            * [onWorkerStop](worker-development/on-worker-stop.md)
