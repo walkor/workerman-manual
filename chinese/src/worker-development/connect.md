@@ -2,7 +2,19 @@
 ```php
 void \Workerman\Connection\AsyncTcpConnection::connect()
 ```
-执行异步连接操作。此方法会立刻返回
+执行异步连接操作。此方法会立刻返回。
+
+注意：如果需要设置异步连接的onError回调，则应该在connect执行之前设置，否则onError回调可能无法被触发，例如下面的例子onError回调可能无法触发，无法捕获异步连接失败事件。
+
+```php
+$connection = new AsyncTcpConnection('tcp://baidu.com:81');
+// 执行连接的时候还没设置onError回调
+$connection->connect();
+$connection->onError = function($connection, $err_code, $err_msg)
+{
+    echo "$err_code, $err_msg";
+};
+```
 
 ### 参数
 无参数

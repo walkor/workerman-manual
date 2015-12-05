@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="7.4.2" data-basepath=".." data-revision="1449122902341">
+    <div class="book"  data-level="7.4.2" data-basepath=".." data-revision="1449324902939">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1399,12 +1399,21 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_335">
+                    <section class="normal" id="section-gitbook_423">
                     
                         <h1 id="connect">connect</h1>
 <pre><code class="lang-php">void \Workerman\Connection\AsyncTcpConnection::connect()
 </code></pre>
-<p>执行异步连接操作。此方法会立刻返回</p>
+<p>执行异步连接操作。此方法会立刻返回。</p>
+<p>注意：如果需要设置异步连接的onError回调，则应该在connect执行之前设置，否则onError回调可能无法被触发，例如下面的例子onError回调可能无法触发，无法捕获异步连接失败事件。</p>
+<pre><code class="lang-php"><span class="hljs-variable">$connection</span> = <span class="hljs-keyword">new</span> AsyncTcpConnection(<span class="hljs-string">'tcp://baidu.com:81'</span>);
+<span class="hljs-comment">// 执行连接的时候还没设置onError回调</span>
+<span class="hljs-variable">$connection</span>-&gt;connect();
+<span class="hljs-variable">$connection</span>-&gt;onError = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>, <span class="hljs-variable">$err_code</span>, <span class="hljs-variable">$err_msg</span>)</span>
+{</span>
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"$err_code, $err_msg"</span>;
+};
+</code></pre>
 <h3 id="-">参数</h3>
 <p>无参数</p>
 <h3 id="-">返回值</h3>
