@@ -35,4 +35,18 @@ PHP Warning:  stream_socket_server(): unable to connect to tcp://192.168.1.1:xxx
 
 启动脚本ip参数写错，不是本机ip，请填写本机ip机或者填写 ```0.0.0.0```（表示监听本机所有ip）即可解决
 
+## 现象3
+```php
+Waring stream_socket_server has been disabled for security reasons in ...
+```
+**失败原因：**
+
+stream_socket_server 函数被php.ini禁用
+
+**解决方法**
+
+1、运行```php --ini``` 找到php.ini文件
+
+2、打开php.ini找到disable_functions一项，将stream_socket_server禁用项删掉
+
 

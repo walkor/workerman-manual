@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="11.7" data-basepath=".." data-revision="1449324902939">
+    <div class="book"  data-level="11.7" data-basepath=".." data-revision="1449659472334">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1399,7 +1399,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_384">
+                    <section class="normal" id="section-gitbook_806">
                     
                         <h1 id="workerman-">workerman启动失败</h1>
 <h2 id="-1">现象1</h2>
@@ -1422,6 +1422,14 @@ PHP Warning:  stream_socket_server(): unable to connect to tcp:<span class="hljs
 <p><strong>关键字：</strong> <code>Cannot assign requested address</code></p>
 <p><strong>失败原因：</strong></p>
 <p>启动脚本ip参数写错，不是本机ip，请填写本机ip机或者填写 <code>0.0.0.0</code>（表示监听本机所有ip）即可解决</p>
+<h2 id="-3">现象3</h2>
+<pre><code class="lang-php">Waring stream_socket_server has been disabled <span class="hljs-keyword">for</span> security reasons in ...
+</code></pre>
+<p><strong>失败原因：</strong></p>
+<p>stream_socket_server 函数被php.ini禁用</p>
+<p><strong>解决方法</strong></p>
+<p>1、运行<code>php --ini</code> 找到php.ini文件</p>
+<p>2、打开php.ini找到disable_functions一项，将stream_socket_server禁用项删掉</p>
 
                     
                     </section>
