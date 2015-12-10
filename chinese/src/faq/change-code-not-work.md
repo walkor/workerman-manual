@@ -6,6 +6,8 @@ Workerman是常驻内存运行的，常驻内存可以避免重复读取磁盘�
 
 同时workerman提供一个监控文件更新的服务，该服务检测到有文件更新后会自动运行reload，从新载入PHP文件。开发者将其放入到项目中随着项目启动即可。
 
+注意：windows系统不支持reload，无法使用监控服务
+
 **文件监控服务下载地址：**
 
 1、无依赖版本：https://github.com/walkor/workerman-filemonitor

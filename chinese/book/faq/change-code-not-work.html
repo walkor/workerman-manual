@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="11.9" data-basepath=".." data-revision="1449659472334">
+    <div class="book"  data-level="11.9" data-basepath=".." data-revision="1449757340585">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1399,12 +1399,13 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_790">
+                    <section class="normal" id="section-gitbook_322">
                     
                         <h1 id="-">更改代码后不生效</h1>
 <p><strong>原因：</strong></p>
 <p>Workerman是常驻内存运行的，常驻内存可以避免重复读取磁盘、重复解释编译PHP，以便达到最高性能。所以更改业务代码后需要手动reload或者restart才能生效。</p>
 <p>同时workerman提供一个监控文件更新的服务，该服务检测到有文件更新后会自动运行reload，从新载入PHP文件。开发者将其放入到项目中随着项目启动即可。</p>
+<p>注意：windows系统不支持reload，无法使用监控服务</p>
 <p><strong>文件监控服务下载地址：</strong></p>
 <p>1、无依赖版本：<a href="https://github.com/walkor/workerman-filemonitor" target="_blank">https://github.com/walkor/workerman-filemonitor</a></p>
 <p>2、依赖inotify版本:<a href="https://github.com/walkor/workerman-filemonitor-inotify" target="_blank">https://github.com/walkor/workerman-filemonitor-inotify</a></p>
