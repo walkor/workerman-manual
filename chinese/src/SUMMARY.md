@@ -36,6 +36,7 @@
            * [reusePort](worker-development/reuse-port.md)
        * [回调接口](worker-development/callback.md)
            * [onWorkerStart](worker-development/on_worker_start.md)
+           * [onWorkerReload](worker-development/on-worker-reload.md)
            * [onWorkerStop](worker-development/on-worker-stop.md)
            * [onConnect](worker-development/on-connect.md)
            * [onMessage](worker-development/on-message.md)
