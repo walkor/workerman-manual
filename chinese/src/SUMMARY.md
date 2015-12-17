@@ -106,4 +106,6 @@
    * [终端关闭导致服务关闭](faq/ssh-close-and-workerman-stop.md)
    * [与Apache和Nginx的关系](faq/relationship-with-apache-nginx.md)
    * [传输加密-ssl/tsl](faq/ssl-support.md)
+   * [使用mysql、redis](faq/how-to-use-mysql-redis.md)
+   * [与其它框架整合](faq/work-with-other-framework.md)
 

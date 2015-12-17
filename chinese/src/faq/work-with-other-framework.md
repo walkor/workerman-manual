@@ -1,0 +1,27 @@
+# 如何与其它框架整合
+**问：**
+
+如何与其它mvc框架（thinkPHP、Yii等）整合？
+
+**答：**
+
+mvc框架专注于WEB应用开发，Workerman专注于Socket应用开发，一般来说二者之间没必要耦合在一起。
+
+**一般用户整合目的有三种：**
+
+1、想使用mvc框架中的一些类库，比如mysql、redis类等
+
+这种情况需要开发者足够熟悉mvc框架，能够从mvc框架中把自己需要的类库摘取出来放到Workerman下使用。
+
+2、开发者想使用mvc框架来开发业务逻辑，而Workerman仅作为Socket通讯通道
+
+一种方法可以在把业务逻辑封装在mvc框架中以http接口的形式开放出来，Workerman中通过curl调用这些接口完成业务逻辑的处理。
+
+另外一种方法是客户端以直接与mvc框架http通讯做业务逻辑处理，客户端同时也与Workerman保持Socket连接，当mvc框架中业务逻辑需要通过Socket与客户端通讯时，调用Workerman接口与客户端Socket通讯即可。如果采用这种方式，建议使用GatewayWorker框架，可以在任何项目中推送数据给客户端（见GatewayWorker手册其它项目推送消息一章）。
+
+3、开发者只是想把某个Workerman应用与现有的mvc项目结合起来，例如把Workerman聊天室与某个网站整合在一起
+
+以聊天室为例，聊天室分为客户端和websocket服务端，客户端是浏览器，浏览器渲染html页面并执行js脚本发起与Workerman的连接，这些html、js文件可以放到任意的服务器上运行，可以使用任意的mvc框架，可以使用任意的容器(nginx、apache等)，甚至可以在本地保存成html文件双击执行。也就是说客户端在哪里运行和Workerman没有直接的联系，Workerman的web页面部分完全可以剥离出去在其它容器中运行。
+
+所以网站与Workerman聊天室结合其实就是把聊天室的html+js放在现有网站中根据自己的需要修改下即可，Workerman服务端和网站是两套独立的系统，互不干扰，独立运行。
+

@@ -2,7 +2,7 @@
 
 ## 运行所需环境
 
-1、WorkerMan 要求运行在Linux环境下（centos、RedHat、Ubuntu、debian、mac os等）
+1、WorkerMan 要求运行在Linux环境下（centos、RedHat、Ubuntu、debian等）,也可以运行在mac os下
 
 2、安装有PHP-CLI(版本不小于5.3.3),并安装了pcntl、posix扩展
 
