@@ -349,8 +349,8 @@ echo fread($client, 8192),"\n";
 ```
 
 ### 客户端使用示例
-命令行中运行 ```php client.php <文件路径>```
+命令行中运行 ```php textclient.php <文件路径>```
 
-例如 ```php client.php abc.jpg```
+例如 ```php textclient.php abc.jpg```
 
 
