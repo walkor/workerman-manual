@@ -225,6 +225,11 @@ fwrite($client, $package);
 echo fread($client, 8192),"\n";
 ```
 
+### 客户端使用示例
+命令行中运行 ```php client.php <文件路径>```
+
+例如 ```php client.php abc.jpg```
+
 
 ## 例子四（使用文本协议上传文件）
 
@@ -343,6 +348,9 @@ fwrite($client, $package);
 echo fread($client, 8192),"\n";
 ```
 
+### 客户端使用示例
+命令行中运行 ```php client.php <文件路径>```
 
+例如 ```php client.php abc.jpg```
 
 
