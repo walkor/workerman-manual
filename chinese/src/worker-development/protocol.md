@@ -5,7 +5,7 @@
 string Connection::$protocol
 ```
 
-设置此链的应用层协议打包解包所使用的类
+设置当前连接的协议类
 
 
 ## 范例
