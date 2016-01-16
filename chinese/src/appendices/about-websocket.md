@@ -10,7 +10,7 @@ WebSocket和HTTP一样是一种应用层协议，都是基于TCP传输的，WebS
 WebSocket协议有一个握手的过程，握手时浏览器和服务端是以HTTP协议通信的，在Workerman中可以这样介入到握手过程。
 
 ```php
-$ws = new Worker('Websocket://0.0.0.0:8181');
+$ws = new Worker('websocket://0.0.0.0:8181');
 $ws->onConnect = function($connection)
 {
     $connection->onWebSocketConnect = function($connection , $http_header)
@@ -26,6 +26,23 @@ $ws->onConnect = function($connection)
     };
 };
 ```
+
+## WebSocket协议传输二进制数据
+websocket协议中在协议头中使用一个标记位来标记传输的是二进制数据还是utf8文本数据，浏览器会验证标记和传输的内容类型是否符合，如果不符合则会报错断开连接。
+
+所以服务端发送数据的时候需要根据传输的数据类型设置这个标记位，在Workerman中如果是普通utf8文本，则需要设置
+```php
+use Workerman\Protocols\Websocket;
+$connection->websocketType = Websocket::BINARY_TYPE_BLOB;
+```
+
+如果是二进制数据，则需要设置
+```php
+use Workerman\Protocols\Websocket;
+$connection->websocketType = Websocket::BINARY_TYPE_ARRAYBUFFER;
+```
+
+**注意**：如果没设置$connection->websocketType，则$connection->websocketType默认为BINARY_TYPE_BLOB（也就是utf8文本类型）。一般应用传输的都是utf8文本，例如传输的是json数据，所以不用手动设置$connection->websocketType。只有在传输二进制数据时（例如图片数据、protobuffer数据等）才要设置此属性为BINARY_TYPE_ARRAYBUFFER。
 
 
 

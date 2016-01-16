@@ -46,6 +46,8 @@
            * [onBufferFull](worker-development/on-buffer-full.md)
            * [onBufferDrain](worker-development/on-buffer-drain.md)
            * [onError](worker-development/on-error.md)
+       * [接口](worker-development/method)
+           * [listen](worker-development/listen.md)
    * [TcpConnection类](worker-development/connection-functions.md)
        * [属性](worker-development/connection-property.md)
            * [id](worker-development/id.md)
