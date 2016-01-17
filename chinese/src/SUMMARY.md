@@ -114,4 +114,5 @@
    * [传输加密-ssl/tsl](faq/ssl-support.md)
    * [使用mysql、redis](faq/how-to-use-mysql-redis.md)
    * [与其它框架整合](faq/work-with-other-framework.md)
+   * [禁用函数检查](faq/disable-function-check.md)
 
