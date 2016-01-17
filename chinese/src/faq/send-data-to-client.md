@@ -25,7 +25,7 @@ $worker->onMessage = function($connection, $data)use($worker)
        $worker->uidConnections[$connection->uid] = $connection;
        return $connection->send('login success, your uid is ' . $connection->uid);
     }
-    // 其它罗辑，针对某个uid发送 或者 全局广播
+    // 其它逻辑辑，针对某个uid发送 或者 全局广播
     // 假设消息格式为 uid:message 时是对 uid 发送 message
     // uid 为 all 时是全局广播
     list($recv_uid, $message) = explode(':', $data);
