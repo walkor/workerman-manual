@@ -1,14 +1,21 @@
 # listen
 ```php
-void \Workerman\Worker::listen(void)
+void Worker::listen(void)
 ```
-执行监听。
+用于实例化Worker后执行监听。
 
-此方法主要用于在Worker内部启动一个Worker进程监听某个端口。
+此方法主要用于在Worker进程启动后动态创建新的Worker实例，能够实现同一个进程监听多个端口，支持多种协议。
+
+例如一个http Worker启动后实例化一个websocket Worker，那么这个进程即能通过http协议访问，又能通过websocket协议访问。由于websocket Worker和http Worker在同一个进程中，所以它们可以访问共同的内存变量，共享所有socket连接。可以做到接收http请求，然后操作websocket客户端完成向客户端推送数据类似的效果。
+
+**注意：**
+
+使用Worker内部启动多个Worker实例特性时，Worker->count一般只能为1，也就是说无法多进程使用这个特性。原因是无法做到多个进程**重复监听**同一个端口，多个进程**重复监听**同一个端口会报```Address already in use```错误。
+
+然而在PHP 7这一限制被打破，如果您的PHP版本>=7.0，可以设置Worker->reusePort=true，workerman将利用PHP 7的SO_REUSEPORT特性做到多个进程**重复监听**同一个端口。
 
 ### 参数
 无参数
-
 
 
 ### 返回值
@@ -25,9 +32,9 @@ void \Workerman\Worker::listen(void)
 
 3、websocket Worker 与 text Worker是同一个进程，可以方便的共享客户端连接
 
-4、php后台通过text协议与text Worker通讯
+4、某个独立的php后台系统通过text协议与text Worker通讯
 
-5、text Worker向进程内共享的客户端连接以websocket协议推送数据
+5、text Worker操作websocket连接完成数据推送
 
 **代码及步骤**
 
@@ -40,9 +47,12 @@ require_once './Workerman/Autoloader.php';
 // 初始化一个worker容器，监听1234端口
 $worker = new Worker('websocket://0.0.0.0:1234');
 
-// 注意这里进程数必须设置为1，否则会报端口占用错误
+/*
+ * 注意这里进程数必须设置为1，否则会报端口占用错误
+ * (php 7可以设置进程数大于1，前提是$inner_text_worker->reusePort=true)
+ */
 $worker->count = 1;
-// worker进程启动后建立一个内部通讯端口
+// worker进程启动后创建一个text Worker以便打开一个内部通讯端口
 $worker->onWorkerStart = function($worker)
 {
     // 开启一个内部端口，方便内部系统推送数据，Text协议格式 文本+换行符
@@ -113,7 +123,7 @@ function sendMessageByUid($uid, $message)
     return false;
 }
 
-// 运行所有的worker（其实当前只定义了一个）
+// 运行所有的worker
 Worker::runAll();
 ```
 
@@ -135,7 +145,7 @@ ws.onmessage = function(e){
 后端推送消息的代码
 ```php
 // 建立socket连接到内部推送端口
-$client = stream_socket_client('tcp://127.0.0.1:5678', $errno, $errmsg, 1,  STREAM_CLIENT_CONNECT|STREAM_CLIENT_PERSISTENT);
+$client = stream_socket_client('tcp://127.0.0.1:5678', $errno, $errmsg, 1);
 // 推送的数据，包含uid字段，表示是给这个uid推送
 $data = array('uid'=>'uid1', 'percent'=>'88%');
 // 发送数据，注意5678端口是Text协议的端口，Text协议需要在数据末尾加上换行符

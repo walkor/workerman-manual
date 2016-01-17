@@ -28,9 +28,12 @@ $ws->onConnect = function($connection)
 ```
 
 ## WebSocket协议传输二进制数据
+
+websocket协议默认只能传输utf8文本，如果要传输二进制数据，请阅读以下部分。
+
 websocket协议中在协议头中使用一个标记位来标记传输的是二进制数据还是utf8文本数据，浏览器会验证标记和传输的内容类型是否符合，如果不符合则会报错断开连接。
 
-所以服务端发送数据的时候需要根据传输的数据类型设置这个标记位，在Workerman中如果是普通utf8文本，则需要设置
+所以服务端发送数据的时候需要根据传输的数据类型设置这个标记位，在Workerman中如果是普通utf8文本，则需要设置（默认就是此值，一般不用再手动设置）
 ```php
 use Workerman\Protocols\Websocket;
 $connection->websocketType = Websocket::BINARY_TYPE_BLOB;
