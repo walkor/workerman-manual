@@ -99,7 +99,7 @@ ws.onmessage = function(e) {
 
 3、通过调用http接口推送
 
-浏览器访问 http://127.0.0.1:4237/?to_worker_id=<worker_id>&to_connection_id=<connection_id>&content=<content> 完成推送
+浏览器访问 http://127.0.0.1:4237/?to_worker_id={$worker_id}&to_connection_id={$connection_id}&content={$content} 完成推送
 
-注意：把<worker_id>  <connection_id> 和<content> 换成实际值
+注意：把```{$worker_id}``` ```{$connection_id}``` 和```{$content}``` 换成实际值
 

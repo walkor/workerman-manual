@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="11.2" data-basepath=".." data-revision="1453130036068">
+    <div class="book"  data-level="11.2" data-basepath=".." data-revision="1453130357979">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1554,7 +1554,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_940">
+                    <section class="normal" id="section-gitbook_1145">
                     
                         <h1 id="-">例子</h1>
 <p>基于Worker的多进程(分布式集群)推送系统</p>
@@ -1646,8 +1646,8 @@ ws.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</
 };
 </code></pre>
 <p>3、通过调用http接口推送</p>
-<p>浏览器访问 <a href="http://127.0.0.1:4237/?to_worker_id=" target="_blank">http://127.0.0.1:4237/?to_worker_id=</a><worker_id>&amp;to_connection_id=<connection_id>&amp;content=<content> 完成推送</p>
-<p>注意：把<worker_id>  <connection_id> 和<content> 换成实际值</p>
+<p>浏览器访问 <a href="http://127.0.0.1:4237/?to_worker_id={$worker_id}&amp;to_connection_id={$connection_id}&amp;content={$content}" target="_blank">http://127.0.0.1:4237/?to_worker_id={$worker_id}&amp;to_connection_id={$connection_id}&amp;content={$content}</a> 完成推送</p>
+<p>注意：把<code>{$worker_id}</code> <code>{$connection_id}</code> 和<code>{$content}</code> 换成实际值</p>
 
                     
                     </section>
