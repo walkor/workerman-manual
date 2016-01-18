@@ -4,7 +4,7 @@
 启动后报错类似如下：
 ```php
 php start.php start
-PHP Warning:  stream_socket_server(): unable to connect to tcp://0.0.0.0:xxxx (Address already in use) in /home/workerman-chat/Workerman/Worker.php on line 1208
+PHP Warning:  stream_socket_server(): unable to connect to tcp://xx.xx.xx.xx:xxxx (Address already in use) in /home/workerman-chat/Workerman/Worker.php on line xxxx
 
 ```
 **关键字**： ```Address already in use```
@@ -27,7 +27,7 @@ workerman已经在运行，无法再次启动。可以运行 ```php start.php re
 ## 现象2
 启动后报错类似如下：
 ```php
-PHP Warning:  stream_socket_server(): unable to connect to tcp://192.168.1.1:xxx (Cannot assign requested address) in /home/GatewayWorker/Workerman/Worker.php on line 1208
+PHP Warning:  stream_socket_server(): unable to connect to tcp://xx.xx.xx.xx:xxx (Cannot assign requested address) in /home/GatewayWorker/Workerman/Worker.php on line xxxx
 ```
 **关键字：** ```Cannot assign requested address```
 
