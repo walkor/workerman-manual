@@ -1,12 +1,11 @@
-# 例子
+# 例子1
 基于Worker的多进程(分布式集群)推送系统
 
-```php
+start.php
 
+```php
 <?php
 use Workerman\Worker;
-use Workerman\Connection\AsyncTcpConnection;
-use Workerman\Connection\Connection;
 require_once './Workerman/Autoloader.php';
 require_once './Channel/src/Server.php';
 require_once './Channel/src/Client.php';

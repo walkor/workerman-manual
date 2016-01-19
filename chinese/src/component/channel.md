@@ -23,13 +23,18 @@ Channel/Client通过publish发布某个类型(主题)的消息
 
 Channel/Server收到publish的数据后会分发给对该类型(主题)关注(订阅)的Channel/Client
 
-Channel/Client通过设置onMessage回调，用来接收处理Channel/Server转发来的自己关注(订阅)的某种类型(主题)消息
+Channel/Client通过设置onMessage回调，用来接收处理Channel/Server转发来的消息
 
 Channel/Client只会收到自己关注(订阅)的消息，不会收到自己没有关注(订阅)的类型(主题)的消息
 
 
+## 下载安装
+可以使用composer安装，或者直接下载zip包https://github.com/walkor/Channel/archive/master.zip。
+
+文件目录可以根据需要放在任意位置，使用时能够require到文件src/Server.php 和src/Client.php 两个文件即可。注意require路径最好使用绝对路径。具体使用方法参考下面章节channelServer和channelClient的说明。
+
 
 ## 注意
-Channel只能在workerman包括基于workerman的框架(如GatewayWorker等)中使用
+Channel只能用在workerman环境，php-fpm环境下无法使用。
 
 
