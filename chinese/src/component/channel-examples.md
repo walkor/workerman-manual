@@ -69,7 +69,7 @@ Worker::runAll();
 ```
 
 ## 测试 （假设都是本机127.0.0.1运行）
-1、运行服务单
+1、运行服务端
 ```
  php start.php start
 Workerman[start.php] start in DEBUG mode
