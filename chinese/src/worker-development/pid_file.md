@@ -1,7 +1,7 @@
 # pidFile
 ## 说明:
 ```php
-static Event Worker::$pidFile
+static string Worker::$pidFile
 ```
 
 如果无特殊需要，建议不要设置此属性

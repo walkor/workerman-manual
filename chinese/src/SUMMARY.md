@@ -33,6 +33,7 @@
            * [daemonize](worker-development/daemonize.md)
            * [stdoutFile ](worker-development/stdout_file.md)
            * [pidFile](worker-development/pid_file.md)
+           * [logFile](worker-development/log-file.md)
            * [globalEvent](worker-development/global-event.md)
            * [reusePort](worker-development/reuse-port.md)
            * [protocol](worker-development/worker-protocol.md)
@@ -103,6 +104,7 @@
            * [onMessage回调](component/on-message.md)
            * [unsubscribe](component/unsubscribe.md)
        * [例子](component/channel-examples.md)
+   * [文件监控组件](component/file-monitor.md)
 * [常见问题](faq/README.md)
    * [运行多个WorkerMan](faq/running-concurent.md)
    * [支持哪些协议](faq/protocols.md)
@@ -125,4 +127,5 @@
    * [使用mysql、redis](faq/how-to-use-mysql-redis.md)
    * [与其它框架整合](faq/work-with-other-framework.md)
    * [禁用函数检查](faq/disable-function-check.md)
+   * [平滑重启原理](faq/reload-principle.md)
 

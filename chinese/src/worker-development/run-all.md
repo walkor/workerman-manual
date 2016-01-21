@@ -2,7 +2,11 @@
 ```php
 void Worker::runAll(void)
 ```
-运行所有Worker实例
+运行所有Worker实例。
+
+**注意：**
+
+Worker::runAll()执行后将永久阻塞，也就位于是Worker::runAll()后面的代码将不会被执行。所有Worker实例化应该都在Worker::runAll()前进行。
 
 ### 参数
 无参数
