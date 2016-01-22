@@ -81,8 +81,6 @@ Worker::runAll();
 以上例子可以针对uid推送，虽然是单进程，但是支持个10W在线是没问题的。
 
 
-注意这个例子注意只能单进程，多进程的话连接可能被分配到不同的进程，而不同的进程间是无法直接通讯的，不过可以建立一个中心worker进程中转消息实现多进程通讯。
+注意这个例子注意只能单进程，要支持多进程或者服务器集群的话需要Channel组件完成进程间通讯，开发也非常简单，可以参考[Channel组件集群推送例子](http://doc3.workerman.net/component/channel-examples.html)一节。
 
-**建议：**
-
-针对特定客户端推送数据推荐使用[GatewayWorker](http://www.workerman.net/gatewaydoc/)框架，使用Gateway::sendToClient或者Gateway::sendToUid即可。并且支持多进程，支持分布式部署，
+**如果希望在其它系统中推送消息给客户端，可以参考[在其它项目中推送](http://doc3.workerman.net/faq/push-in-other-project.html)一节**
