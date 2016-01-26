@@ -14,7 +14,7 @@ $worker->uidConnections = array();
 // 当有客户端发来消息时执行的回调函数
 $worker->onMessage = function($connection, $data)use($worker)
 {
-    // 判断当前客户端是否已经验证,既是否设置了uid
+    // 判断当前客户端是否已经验证,即是否设置了uid
     if(!isset($connection->uid))
     {
        // 没验证的话把第一个包当做uid（这里为了方便演示，没做真正的验证）
@@ -25,7 +25,7 @@ $worker->onMessage = function($connection, $data)use($worker)
        $worker->uidConnections[$connection->uid] = $connection;
        return $connection->send('login success, your uid is ' . $connection->uid);
     }
-    // 其它逻辑辑，针对某个uid发送 或者 全局广播
+    // 其它逻辑，针对某个uid发送 或者 全局广播
     // 假设消息格式为 uid:message 时是对 uid 发送 message
     // uid 为 all 时是全局广播
     list($recv_uid, $message) = explode(':', $data);
