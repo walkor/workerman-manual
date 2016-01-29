@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="7.2.4.3" data-basepath=".." data-revision="1453780390062">
+    <div class="book"  data-level="7.2.4.3" data-basepath=".." data-revision="1454074218735">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1676,7 +1676,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_104">
+                    <section class="normal" id="section-gitbook_838">
                     
                         <h1 id="listen">listen</h1>
 <pre><code class="lang-php">void Worker::listen(void)
@@ -1685,22 +1685,93 @@
 <p>此方法主要用于在Worker进程启动后动态创建新的Worker实例，能够实现同一个进程监听多个端口，支持多种协议。</p>
 <p>例如一个http Worker启动后实例化一个websocket Worker，那么这个进程即能通过http协议访问，又能通过websocket协议访问。由于websocket Worker和http Worker在同一个进程中，所以它们可以访问共同的内存变量，共享所有socket连接。可以做到接收http请求，然后操作websocket客户端完成向客户端推送数据类似的效果。</p>
 <p><strong>注意：</strong></p>
-<p>使用Worker内部启动多个Worker实例特性时，Worker-&gt;count一般只能为1，也就是说无法多进程使用这个特性。原因是无法做到多个进程<strong>重复监听</strong>同一个端口，多个进程<strong>重复监听</strong>同一个端口会报<code>Address already in use</code>错误。</p>
-<p>然而在PHP 7这一限制被打破，如果您的PHP版本&gt;=7.0，可以设置Worker-&gt;reusePort=true，workerman将利用PHP 7的SO_REUSEPORT特性做到多个进程<strong>重复监听</strong>同一个端口。</p>
-<h3 id="-">参数</h3>
-<p>无参数</p>
-<h3 id="-">返回值</h3>
-<p>无返回</p>
-<h3 id="-php-">示例 php后端及时推送消息给客户端</h3>
-<p><strong>原理：</strong></p>
-<p>1、建立一个websocket Worker，用来维持客户端长连接</p>
-<p>2、websocket Worker内部建立一个text Worker</p>
-<p>3、websocket Worker 与 text Worker是同一个进程，可以方便的共享客户端连接</p>
-<p>4、某个独立的php后台系统通过text协议与text Worker通讯</p>
-<p>5、text Worker操作websocket连接完成数据推送</p>
-<p><strong>代码及步骤</strong></p>
-<p>push.php</p>
-<pre><code class="lang-php"><span class="hljs-preprocessor">&lt;?php</span>
+<p>不要在多个子进程中实例化相同端口的Worker。例如A进程创建了监听2016端口的Worker，那么B进程就不能再创建监听2016端口的Worker，会报<code>Address already in use</code>错误。例如下面的代码是无法运行的。</p>
+<pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+
+<span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'text://0.0.0.0:2015'</span>);
+<span class="hljs-comment">// 4个进程</span>
+<span class="hljs-variable">$worker</span>-&gt;count = <span class="hljs-number">4</span>;
+<span class="hljs-comment">// 每个进程启动后在当前进程新增一个Worker监听</span>
+<span class="hljs-variable">$worker</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$worker</span>)</span>
+{</span>
+    <span class="hljs-comment">/**
+     * 4个进程启动的时候都创建2016端口的Worker
+     * 当执行到worker-&gt;listen()时会报Address already in use错误
+     * 如果worker-&gt;count=1则不会报错
+     */</span>
+    <span class="hljs-variable">$inner_worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'http://0.0.0.0:2016'</span>);
+    <span class="hljs-variable">$inner_worker</span>-&gt;onMessage = <span class="hljs-string">'on_message'</span>;
+    <span class="hljs-comment">// 执行监听。这里会报Address already in use错误</span>
+    <span class="hljs-variable">$inner_worker</span>-&gt;listen();
+};
+
+<span class="hljs-variable">$worker</span>-&gt;onMessage = <span class="hljs-string">'on_message'</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">on_message</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>, <span class="hljs-variable">$data</span>)</span>
+{</span>
+    <span class="hljs-variable">$connection</span>-&gt;send(<span class="hljs-string">"hello\n"</span>);
+}
+
+<span class="hljs-comment">// 运行worker</span>
+Worker::runAll();
+</code></pre>
+<p>然而这一限制在PHP 7被打破，如果您的PHP版本&gt;=7.0，可以设置Worker-&gt;reusePort=true，workerman将利用PHP 7的SO_REUSEPORT特性做到多个子进程创建相同端口的Worker。见下面的例子：</p>
+<pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+
+<span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'text://0.0.0.0:2015'</span>);
+<span class="hljs-comment">// 4个进程</span>
+<span class="hljs-variable">$worker</span>-&gt;count = <span class="hljs-number">4</span>;
+<span class="hljs-comment">// 每个进程启动后在当前进程新增一个Worker监听</span>
+<span class="hljs-variable">$worker</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$worker</span>)</span>
+{</span>
+    <span class="hljs-variable">$inner_worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'http://0.0.0.0:2016'</span>);
+    <span class="hljs-comment">// 设置端口复用，可以创建监听相同端口的Worker（需要PHP&gt;=7.0）</span>
+    <span class="hljs-variable">$inner_worker</span>-&gt;reusePort = <span class="hljs-keyword">true</span>;
+    <span class="hljs-variable">$inner_worker</span>-&gt;onMessage = <span class="hljs-string">'on_message'</span>;
+    <span class="hljs-comment">// 执行监听。正常监听不会报错</span>
+    <span class="hljs-variable">$inner_worker</span>-&gt;listen();
+};
+
+<span class="hljs-variable">$worker</span>-&gt;onMessage = <span class="hljs-string">'on_message'</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">on_message</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>, <span class="hljs-variable">$data</span>)</span>
+{</span>
+    <span class="hljs-variable">$connection</span>-&gt;send(<span class="hljs-string">"hello\n"</span>);
+}
+
+<span class="hljs-comment">// 运行worker</span>
+Worker::
+
+<span class="hljs-comment">### 参数</span>
+无参数
+
+
+<span class="hljs-comment">### 返回值</span>
+无返回
+
+
+<span class="hljs-comment">### 示例 php后端及时推送消息给客户端</span>
+
+**原理：**
+
+<span class="hljs-number">1</span>、建立一个websocket Worker，用来维持客户端长连接
+
+<span class="hljs-number">2</span>、websocket Worker内部建立一个text Worker
+
+<span class="hljs-number">3</span>、websocket Worker 与 text Worker是同一个进程，可以方便的共享客户端连接
+
+<span class="hljs-number">4</span>、某个独立的php后台系统通过text协议与text Worker通讯
+
+<span class="hljs-number">5</span>、text Worker操作websocket连接完成数据推送
+
+**代码及步骤**
+
+push.php
+
+```php
+<span class="hljs-preprocessor">&lt;?php</span>
 <span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
 <span class="hljs-comment">// 初始化一个worker容器，监听1234端口</span>

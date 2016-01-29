@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="7.2" data-basepath=".." data-revision="1453780390062">
+    <div class="book"  data-level="7.2" data-basepath=".." data-revision="1454074218735">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1676,12 +1676,12 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_136">
+                    <section class="normal" id="section-gitbook_870">
                     
                         <h1 id="worker-">Worker类</h1>
 <p>WorkerMan中有两个重要的类Worker与Connection。</p>
 <p>Worker类用于实现端口的监听，并可以设置客户端连接事件、连接上消息事件、连接断开事件的回调函数，从而实现业务处理。</p>
-<p>可以设置Worker实例的进程数（count属性），则会创建count个Worker进程同时监听相同的端口，并行的接收客户端连接，处理连接上的事件。</p>
+<p>可以设置Worker实例的进程数（count属性），Worker主进程会fork出count个子进程同时监听相同的端口，并行的接收客户端连接，处理连接上的事件。</p>
 
                     
                     </section>

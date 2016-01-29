@@ -10,9 +10,68 @@ void Worker::listen(void)
 
 **注意：**
 
-使用Worker内部启动多个Worker实例特性时，Worker->count一般只能为1，也就是说无法多进程使用这个特性。原因是无法做到多个进程**重复监听**同一个端口，多个进程**重复监听**同一个端口会报```Address already in use```错误。
+不要在多个子进程中实例化相同端口的Worker。例如A进程创建了监听2016端口的Worker，那么B进程就不能再创建监听2016端口的Worker，会报```Address already in use```错误。例如下面的代码是无法运行的。
 
-然而在PHP 7这一限制被打破，如果您的PHP版本>=7.0，可以设置Worker->reusePort=true，workerman将利用PHP 7的SO_REUSEPORT特性做到多个进程**重复监听**同一个端口。
+```php
+use Workerman\Worker;
+require_once './Workerman/Autoloader.php';
+
+$worker = new Worker('text://0.0.0.0:2015');
+// 4个进程
+$worker->count = 4;
+// 每个进程启动后在当前进程新增一个Worker监听
+$worker->onWorkerStart = function($worker)
+{
+    /**
+     * 4个进程启动的时候都创建2016端口的Worker
+     * 当执行到worker->listen()时会报Address already in use错误
+     * 如果worker->count=1则不会报错
+     */
+    $inner_worker = new Worker('http://0.0.0.0:2016');
+    $inner_worker->onMessage = 'on_message';
+    // 执行监听。这里会报Address already in use错误
+    $inner_worker->listen();
+};
+
+$worker->onMessage = 'on_message';
+
+function on_message($connection, $data)
+{
+    $connection->send("hello\n");
+}
+
+// 运行worker
+Worker::runAll();
+```
+
+然而这一限制在PHP 7被打破，如果您的PHP版本>=7.0，可以设置Worker->reusePort=true，workerman将利用PHP 7的SO_REUSEPORT特性做到多个子进程创建相同端口的Worker。见下面的例子：
+```php
+use Workerman\Worker;
+require_once './Workerman/Autoloader.php';
+
+$worker = new Worker('text://0.0.0.0:2015');
+// 4个进程
+$worker->count = 4;
+// 每个进程启动后在当前进程新增一个Worker监听
+$worker->onWorkerStart = function($worker)
+{
+    $inner_worker = new Worker('http://0.0.0.0:2016');
+    // 设置端口复用，可以创建监听相同端口的Worker（需要PHP>=7.0）
+    $inner_worker->reusePort = true;
+    $inner_worker->onMessage = 'on_message';
+    // 执行监听。正常监听不会报错
+    $inner_worker->listen();
+};
+
+$worker->onMessage = 'on_message';
+
+function on_message($connection, $data)
+{
+    $connection->send("hello\n");
+}
+
+// 运行worker
+Worker::
 
 ### 参数
 无参数
