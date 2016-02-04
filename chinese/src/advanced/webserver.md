@@ -7,6 +7,7 @@ WorkerMan自带了一个简单的Web服务器，同样也是基于Worker实现�
 在Applications/YourApp/start.php中添加
 
 ```php
+use \Workerman\Worker;
 use \Workerman\WebServer;
 require_once './Workerman/Autoloader.php';
 

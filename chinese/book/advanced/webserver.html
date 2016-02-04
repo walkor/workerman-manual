@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="9.1" data-basepath=".." data-revision="1454405104232">
+    <div class="book"  data-level="9.1" data-basepath=".." data-revision="1454577273521">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1063,9 +1063,9 @@
             
         </li>
     
-        <li class="chapter " data-level="11" data-path="component/README">
+        <li class="chapter " data-level="11" data-path="component/README.html">
             
-            <a href="../component/README">
+            <a href="../component/README.html">
                 <i class="fa fa-check"></i> <b>11.</b> 常用组件
             </a>
             
@@ -1603,7 +1603,7 @@
     
         <a href="../appendices/about-text.html" title="Text协议" class="chapter  " data-progress="10.5" style="left: 73.4375%;"></a>
     
-        <a href="../component/README" title="常用组件" class="chapter  " data-progress="11" style="left: 74.21875%;"></a>
+        <a href="../component/README.html" title="常用组件" class="chapter  " data-progress="11" style="left: 74.21875%;"></a>
     
         <a href="../component/channel.html" title="Channel分布式通讯组件" class="chapter  " data-progress="11.1" style="left: 75%;"></a>
     
@@ -1676,13 +1676,14 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_79">
+                    <section class="normal" id="section-gitbook_17">
                     
                         <h1 id="webserver">WebServer</h1>
 <p>WorkerMan自带了一个简单的Web服务器，同样也是基于Worker实现的。文件位置在Workerman/WebServer.php。这个WebServer开发的目的主要是为了方便运行一些简单的Web程序，例如workerman-todpole等web界面程序。</p>
 <h2 id="-">使用方法</h2>
 <p>在Applications/YourApp/start.php中添加</p>
-<pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">WebServer</span>;
+<pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">WebServer</span>;
 <span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
 
 <span class="hljs-comment">// 这里监听8080端口，如果要监听80端口，需要root权限，并且端口没有被其它程序占用</span>

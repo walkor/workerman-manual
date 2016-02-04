@@ -94,7 +94,7 @@
    * [Linux内核调优](appendices/kernel-optimization.md)
    * [WebSocket协议](appendices/about-websocket.md)
    * [Text协议](appendices/about-text.md)
-* [常用组件](component/README)
+* [常用组件](component/README.md)
    * [Channel分布式通讯组件](component/channel.md)
        * [channelServer](component/channel-server.md)
        * [channelClient](component/channel-client.md)
