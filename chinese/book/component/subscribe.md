@@ -1,17 +1,15 @@
-# connect
+# subscribe
+
 ```php
-void \Channel\Client::connect([string $listen_ip = '0.0.0.0', int $listen_port = 2206])
+void \Channel\Client::subscribe(string $subject)
 ```
-连接Channel/Server
+订阅某个主题的消息
 
 ### 参数
-``` listen_ip ```
+``` subject ```
 
-Channel/Server 监听的ip地址，不传默认是```0.0.0.0```，即监听本机所有网卡ip
+主题，类型为字符串
 
-``` listen_port ```
-
-Channel/Server监听的端口，不传默认是2206
 
 ### 返回值
 void
@@ -29,6 +27,7 @@ $http_worker = new Worker('http://0.0.0.0:4237');
 $http_worker->onWorkerStart = function()
 {
     Channel\Client::connect('127.0.0.1', 2206);
+    Channel\Client::subscribe('subject_of_interest');
 };
 
 Worker::runAll();

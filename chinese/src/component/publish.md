@@ -1,18 +1,18 @@
 # publish
 
 ```php
-void \Channel\Client::publish(string $subject, mixed $message)
+void \Channel\Client::publish(string $event_name, mixed $event_data)
 ```
-发布某个主题的消息，所有这个主题的订阅者会收到这条消息
+发布某个事件，所有这个事件的订阅者会收到这个事件并触发```on($event_name, $callback)```注册的回调```$callback```
 
 ### 参数
-``` subject ```
+``` $event_name ```
 
-主题
+发布的事件名称，可以是任意的字符串。如果事件没有任何订阅者，事件将被忽略。
 
-``` message ```
+``` $event_data ```
 
-消息内容，类型可以是数组或者字符串
+事件相关的数据，可以是数字、字符串或者数组
 
 ### 返回值
 void
@@ -33,8 +33,9 @@ $http_worker->onWorkerStart = function($http_worker)
 };
 $http_worker->onMessage = function($connection, $data)
 {
-    $message = array(1,2,3);
-    Channel\Client::publish('subject_of_interest', $message);
+    $event_name = 'user_login';
+    $event_data = array('uid'=>123, 'uname'=>'tom');
+    Channel\Client::publish($event_name, $event_data );
 };
 
 Worker::runAll();

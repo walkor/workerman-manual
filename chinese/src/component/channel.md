@@ -13,19 +13,19 @@ Channel是一个分布式通讯组件，用于完成进程间通讯或者服务�
 
 ## 原理
 
-Channel包含服务端Channel/Server，和客户端Channel/Client。
+Channel包含Channel/Server服务端和Channel/Client客户端
 
-Channel/Client通过connect接口连接Channel/Server并建立长连接
+Channel/Client通过connect接口连接Channel/Server并保持长连接
 
-Channel/Client通过subscribe接口告诉Channel/Server自己关注（订阅）哪些类型（主题）的消息
+Channel/Client通过调用on接口告诉Channel/Server自己关注哪些事件，并注册事件回调函数（回调发生在Channel/Client所在进程中）
 
-Channel/Client通过publish发布某个类型(主题)的消息
+Channel/Client通过publish接口向Channel/Server发布某个事件及事件相关的数据
 
-Channel/Server收到publish的数据后会分发给对该类型(主题)关注(订阅)的Channel/Client
+Channel/Server收事件及数据后会分发给关注这个事件的Channel/Client
 
-Channel/Client通过设置onMessage回调，用来接收处理Channel/Server转发来的消息
+Channel/Client收到事件及数据后触发on接口设置的回调
 
-Channel/Client只会收到自己关注(订阅)的消息，不会收到自己没有关注(订阅)的类型(主题)的消息
+Channel/Client只会收到自己关注事件并触发回调
 
 
 ## 下载安装
