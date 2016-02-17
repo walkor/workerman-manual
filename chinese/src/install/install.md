@@ -27,7 +27,7 @@ echo extension=libevent.so > /etc/php.d/libevent.ini
 
 4、命令行运行（此步骤是通过github下载WorkerMan主程序）
 ```shell
-git clone https://github.com/walkor/workerman
+git clone https://github.com/walkor/Workerman
 ```
 
 
@@ -55,7 +55,7 @@ echo extension=libevent.so > /etc/php5/cli/conf.d/libevent.ini
 
 4、命令行运行（此步骤是通过github下载WorkerMan主程序）
 ```shell
-git clone https://github.com/walkor/workerman
+git clone https://github.com/walkor/Workerman
 ```
 
 
