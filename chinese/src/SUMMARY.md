@@ -1,6 +1,7 @@
 # Summary
 
 * [版权信息](license/README.md)
+* [原理](principle/README.md)
 * [序言](preface/README.md)
 * [入门指引](getting-started/README.md)
    * [特性](getting-started/feature.md)
@@ -95,6 +96,9 @@
    * [WebSocket协议](appendices/about-websocket.md)
    * [Text协议](appendices/about-text.md)
 * [常用组件](component/README.md)
+   * [GlobalData变量共享组件](component/global-data.md)
+       * [GlobalData Server](component/global-data-server.md)
+       * [GlobalData Client](component/global-data-client.md)
    * [Channel分布式通讯组件](component/channel.md)
        * [channelServer](component/channel-server.md)
        * [channelClient](component/channel-client.md)
