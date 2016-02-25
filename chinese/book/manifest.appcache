@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# Revision 1456330297468
+# Revision 1456413017434
 
 CACHE:
 faq/protocols.html
@@ -42,8 +42,12 @@ component/channel-server.html
 component/channel.html
 component/connect.html
 component/file-monitor.html
+component/global-data-add.html
+component/global-data-cas.html
 component/channel-client.html
+component/global-data-increment.html
 component/global-data-server.html
+component/global-data.html
 component/on.html
 component/publish.html
 component/unsubscribe.html
@@ -69,8 +73,8 @@ principle/README.html
 protocols/README.html
 protocols/example.html
 protocols/how-protocols.html
+worker-development/name.html
 protocols/why-protocols.html
-worker-development/on-buffer-drain.html
 worker-development/README.html
 worker-development/add.html
 worker-development/async-tcp-connection.html
@@ -100,8 +104,9 @@ worker-development/listen.html
 worker-development/log-file.html
 worker-development/max-package-size.html
 worker-development/max-send-buffer-size.html
-worker-development/name.html
+worker-development/method.html
 worker-development/__construct.html
+worker-development/on-buffer-drain.html
 worker-development/on-buffer-full.html
 worker-development/on-close.html
 worker-development/on-connect.html
@@ -115,19 +120,19 @@ worker-development/pid_file.html
 worker-development/pipe.html
 worker-development/property.html
 worker-development/protocol.html
-worker-development/reloadable.html
 worker-development/resume-recv.html
 worker-development/reuse-port.html
+worker-development/reloadable.html
 worker-development/run-all.html
 worker-development/send.html
 worker-development/stdout_file.html
 worker-development/stop-all.html
+worker-development/timer-functions.html
 worker-development/timer-notice.html
 worker-development/transport.html
 worker-development/user.html
-worker-development/timer-functions.html
-worker-development/worker-construct.html
 worker-development/worker-development.html
+worker-development/worker-construct.html
 worker-development/worker-functions.html
 worker-development/worker-protocol.html
 worker-development/worker.html
