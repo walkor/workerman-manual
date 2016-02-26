@@ -1,4 +1,5 @@
 # Channel分布式通讯组件
+**``` (要求Workerman版本>=3.3.0) ```**
 
 源码地址：https://github.com/walkor/Channel
 

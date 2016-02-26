@@ -1,6 +1,6 @@
 # Channel组件服务端
 
-
+**``` (要求Workerman版本>=3.3.0) ```**
 
 # __construct
 ```php

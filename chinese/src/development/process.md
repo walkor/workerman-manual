@@ -55,7 +55,7 @@ function handle_close($connection)
 }
 
 // 创建一个文本协议的Worker监听2347接口
-$text_worker = new Worker("Text://0.0.0.0:2347");
+$text_worker = new Worker("text://0.0.0.0:2347");
 
 // 只启动1个进程，这样方便客户端之间传输数据
 $text_worker->count = 1;

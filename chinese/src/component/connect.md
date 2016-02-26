@@ -1,4 +1,5 @@
 # connect
+**``` (要求Workerman版本>=3.3.0) ```**
 ```php
 void \Channel\Client::connect([string $listen_ip = '0.0.0.0', int $listen_port = 2206])
 ```

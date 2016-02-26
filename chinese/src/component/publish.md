@@ -1,4 +1,5 @@
 # publish
+**``` (要求Workerman版本>=3.3.0) ```**
 
 ```php
 void \Channel\Client::publish(string $event_name, mixed $event_data)

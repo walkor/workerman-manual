@@ -19,7 +19,7 @@ require_once './Workerman/Autoloader.php';
 // 设置所有连接的默认应用层发送缓冲区大小
 TcpConnection::$defaultMaxSendBufferSize = 2*1024*1024;
 
-$worker = new Worker('Websocket://0.0.0.0:8484');
+$worker = new Worker('websocket://0.0.0.0:8484');
 $worker->onConnect = function($connection)
 {
     // 设置当前连接的应用层发送缓冲区大小，会覆盖掉默认值

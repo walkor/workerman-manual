@@ -14,7 +14,7 @@ use Workerman\Worker;
 use Workerman\Lib\Timer;
 require_once './Workerman/Autoloader.php';
 
-$worker = new Worker('Text://0.0.0.0:8484');
+$worker = new Worker('text://0.0.0.0:8484');
 // 进程启动时设置一个定时器，定时向所有客户端连接发送数据
 $worker->onWorkerStart = function($worker)
 {

@@ -14,7 +14,7 @@ use Workerman\Worker;
 require_once './Workerman/Autoloader.php';
 
 Worker::$daemonize = true;
-$worker = new Worker('Text://0.0.0.0:8484');
+$worker = new Worker('text://0.0.0.0:8484');
 $worker->onWorkerStart = function($worker)
 {
     echo "Worker start\n";

@@ -1,4 +1,5 @@
 # unsubscribe
+**``` (要求Workerman版本>=3.3.0) ```**
 
 ```php
 void \Channel\Client::unsubscribe(string $event_name)

@@ -14,7 +14,7 @@ Worker Connection::$worker
 use Workerman\Worker;
 require_once './Workerman/Autoloader.php';
 
-$worker = new Worker('Websocket://0.0.0.0:8484');
+$worker = new Worker('websocket://0.0.0.0:8484');
 
 // 当一个客户端发来数据时，转发给当前进程所维护的其它所有客户端
 $worker->onMessage = function($connection, $data)

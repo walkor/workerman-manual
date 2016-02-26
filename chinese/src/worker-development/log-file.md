@@ -22,7 +22,7 @@ require_once './Workerman/Autoloader.php';
 
 Worker::$logFile = '/tmp/workerman.log';
 
-$worker = new Worker('Text://0.0.0.0:8484');
+$worker = new Worker('text://0.0.0.0:8484');
 $worker->onWorkerStart = function($worker)
 {
     echo "Worker start";

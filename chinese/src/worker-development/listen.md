@@ -115,7 +115,7 @@ $worker->count = 1;
 $worker->onWorkerStart = function($worker)
 {
     // 开启一个内部端口，方便内部系统推送数据，Text协议格式 文本+换行符
-    $inner_text_worker = new Worker('Text://0.0.0.0:5678');
+    $inner_text_worker = new Worker('text://0.0.0.0:5678');
     $inner_text_worker->onMessage = function($connection, $buffer)
     {
         global $worker;

@@ -21,7 +21,7 @@ require_once './Workerman/Autoloader.php';
 // 设置每个连接接收的数据包最大为1024000字节
 TcpConnection::$maxPackageSize = 1024000;
 
-$worker = new Worker('Websocket://0.0.0.0:8484');
+$worker = new Worker('websocket://0.0.0.0:8484');
 $worker->onMessage = function($connection, $data)
 {
     $connection->send('hello');

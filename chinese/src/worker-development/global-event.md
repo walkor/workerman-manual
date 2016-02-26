@@ -15,7 +15,7 @@ use Workerman\Worker;
 use Workerman\Events\EventInterface;
 require_once './Workerman/Autoloader.php';
 
-$worker = new Worker('Text://0.0.0.0:8484');
+$worker = new Worker('text://0.0.0.0:8484');
 $worker->onWorkerStart = function($worker)
 {
     // 当进程收到SIGALRM信号时，打印输出一些信息

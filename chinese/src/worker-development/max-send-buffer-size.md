@@ -16,7 +16,7 @@ use Workerman\Worker;
 use Workerman\Protocols\TcpConnection;
 require_once './Workerman/Autoloader.php';
 
-$worker = new Worker('Websocket://0.0.0.0:8484');
+$worker = new Worker('websocket://0.0.0.0:8484');
 $worker->onConnect = function($connection)
 {
     // 设置当前连接的应用层发送缓冲区大小为102400字节
