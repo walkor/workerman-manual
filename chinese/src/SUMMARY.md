@@ -20,7 +20,6 @@
    * [如何定制协议](protocols/how-protocols.md)
    * [一些例子](protocols/example.md)
 * [基于Worker开发](worker-development/README.md)
-   * [适用范围](worker-development/worker-development.md)
    * [Worker类](worker-development/worker-functions.md)
        * [构造函数](worker-development/worker-construct.md)
        * [属性](worker-development/property.md)
