@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="13.2" data-basepath=".." data-revision="1456488176140">
+    <div class="book"  data-level="13.2" data-basepath=".." data-revision="1459607708509">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1754,7 +1754,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_1228">
+                    <section class="normal" id="section-gitbook_1072">
                     
                         <h1 id="-">安装扩展</h1>
 <h2 id="-">注意</h2>
@@ -1811,7 +1811,7 @@ Reading state information... Done
 <p><strong>说明：</strong></p>
 <p>使用apt或者yum安装PHP扩展会自动配置php.ini文件，安装完直接可用，十分方便。缺点是有些扩展在apt或者yum中没有对应的扩展安装包。</p>
 <h2 id="-pecl-">方法二、使用pecl安装</h2>
-<p>使用<code>`pecl install</code>命令安装扩展</p>
+<p>使用<code>pecl install</code>命令安装扩展</p>
 <p>1、<code>pecl install</code>安装</p>
 <pre><code>~# pecl install memcached
 downloading memcached-2.2.0.tgz ...
@@ -1819,7 +1819,7 @@ Starting to download memcached-2.2.0.tgz (70,449 bytes)
 ....
 </code></pre><p>2、配置php.ini</p>
 <p>通过运行 <code>php --ini</code>查找php.ini文件位置，然后在文件中添加<code>extension=memcached.so</code></p>
-<h2 id="-php-posix-">方法三、源码编译安装（一般是安装PHP自带的扩展，以安装posix扩展为例）</h2>
+<h2 id="-php-pcntl-">方法三、源码编译安装（一般是安装PHP自带的扩展，以安装pcntl扩展为例）</h2>
 <p>1、利用<code>php -v</code>命令查看当前的PHP Cli的版本</p>
 <pre><code class="lang-shell">~# php -v
 PHP 5.3.29-1~dotdeb.0 with Suhosin-Patch (cli) (built: Aug 14 2014 19:55:20)
@@ -1836,8 +1836,8 @@ php-5.3.29/README.WIN32-BUILD-SYSTEM
 php-5.3.29/netware/
 ...
 </code></pre>
-<p>4、进入源码中的ext/posix目录</p>
-<pre><code class="lang-shell">~# cd php-5.3.29/ext/posix/
+<p>4、进入源码中的ext/pcntl目录</p>
+<pre><code class="lang-shell">~# cd php-5.3.29/ext/pcntl/
 </code></pre>
 <p>5、运行 <code>phpize</code> 命令</p>
 <pre><code class="lang-shell">~# phpize
@@ -1854,7 +1854,7 @@ checking for egrep... /bin/grep -E
 </code></pre>
 <p>7、运行 <code>make</code> 命令</p>
 <pre><code class="lang-shell">~# make
-/bin/bash /tmp/php-5.3.29/ext/posix/libtool --mode=compile cc ...
+/bin/bash /tmp/php-5.3.29/ext/pcntl/libtool --mode=compile cc ...
 -I/usr/include/php5 -I/usr/include/php5/main -I/usr/include/php5/TSRM -I/usr/include/php5/Zend...
 ...
 </code></pre>
@@ -1863,7 +1863,7 @@ checking for egrep... /bin/grep -E
 Installing shared extensions:     /usr/lib/php5/20090626/
 </code></pre>
 <p>9、配置ini文件</p>
-<p>通过运行 <code>php --ini</code>查找php.ini文件位置，然后在文件中添加<code>extension=posix.so</code></p>
+<p>通过运行 <code>php --ini</code>查找php.ini文件位置，然后在文件中添加<code>extension=pcntl.so</code></p>
 <p><strong>说明：</strong>
 此方法一般用来安装PHP自带的扩展，例如posix扩展和pcntl扩展。除了用phpize编译某个扩展，也可以重新编译整个PHP，在编译时用参数添加扩展，例如在源码根目录运行</p>
 <pre><code class="lang-shell">~# ./configure --enable-pcntl --enable-posix ...

@@ -68,7 +68,7 @@ Reading state information... Done
 使用apt或者yum安装PHP扩展会自动配置php.ini文件，安装完直接可用，十分方便。缺点是有些扩展在apt或者yum中没有对应的扩展安装包。
 
 ## 方法二、使用pecl安装
-使用```pecl install``命令安装扩展
+使用```pecl install```命令安装扩展
 
 1、```pecl install```安装
 ```
@@ -81,7 +81,7 @@ Starting to download memcached-2.2.0.tgz (70,449 bytes)
 
 通过运行 ```php --ini```查找php.ini文件位置，然后在文件中添加```extension=memcached.so```
 
-## 方法三、源码编译安装（一般是安装PHP自带的扩展，以安装posix扩展为例）
+## 方法三、源码编译安装（一般是安装PHP自带的扩展，以安装pcntl扩展为例）
 1、利用```php -v```命令查看当前的PHP Cli的版本
 ```shell
 ~# php -v
@@ -103,9 +103,9 @@ php-5.3.29/README.WIN32-BUILD-SYSTEM
 php-5.3.29/netware/
 ...
 ```
-4、进入源码中的ext/posix目录
+4、进入源码中的ext/pcntl目录
 ```shell
-~# cd php-5.3.29/ext/posix/
+~# cd php-5.3.29/ext/pcntl/
 ```
 5、运行 ```phpize``` 命令
 ```shell
@@ -125,7 +125,7 @@ checking for egrep... /bin/grep -E
 7、运行 ```make``` 命令
 ```shell
 ~# make
-/bin/bash /tmp/php-5.3.29/ext/posix/libtool --mode=compile cc ...
+/bin/bash /tmp/php-5.3.29/ext/pcntl/libtool --mode=compile cc ...
 -I/usr/include/php5 -I/usr/include/php5/main -I/usr/include/php5/TSRM -I/usr/include/php5/Zend...
 ...
 ```
@@ -136,7 +136,7 @@ Installing shared extensions:     /usr/lib/php5/20090626/
 ```
 9、配置ini文件
 
-通过运行 ```php --ini```查找php.ini文件位置，然后在文件中添加```extension=posix.so```
+通过运行 ```php --ini```查找php.ini文件位置，然后在文件中添加```extension=pcntl.so```
 
 **说明：**
 此方法一般用来安装PHP自带的扩展，例如posix扩展和pcntl扩展。除了用phpize编译某个扩展，也可以重新编译整个PHP，在编译时用参数添加扩展，例如在源码根目录运行

@@ -12,7 +12,7 @@ Workerman是常驻内存运行的，常驻内存可以避免重复读取磁盘�
 
 1、无依赖版本：https://github.com/walkor/workerman-filemonitor
 
-2、依赖inotify版本:https://github.com/walkor/workerman-filemonitor-inotify
+2、依赖inotify版本：https://github.com/walkor/workerman-filemonitor-inotify (需要安装[inotify扩展](http://php.net/manual/zh/book.inotify.php))
 
 
 **两个版本区别：**

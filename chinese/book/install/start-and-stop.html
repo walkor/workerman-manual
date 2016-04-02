@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="5.3" data-basepath=".." data-revision="1456488176140">
+    <div class="book"  data-level="5.3" data-basepath=".." data-revision="1459607708509">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1754,26 +1754,26 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_1265">
+                    <section class="normal" id="section-gitbook_1106">
                     
                         <h1 id="-">启动与停止</h1>
 <p>注意Workerman启动停止等命令都是在命令行中完成的</p>
 <h3 id="-">启动</h3>
 <p>以debug（调试）方式启动</p>
-<p><code>php yourfile.php start</code></p>
+<p><code>php start.php start</code></p>
 <p>以daemon（守护进程）方式启动</p>
-<p><code>php yourfile.php start -d</code></p>
+<p><code>php start.php start -d</code></p>
 <h3 id="-">停止</h3>
-<p><code>php yourfile.php stop</code></p>
+<p><code>php start.php stop</code></p>
 <h3 id="-">重启</h3>
-<p><code>php yourfile.php restart</code></p>
+<p><code>php start.php restart</code></p>
 <h3 id="-">平滑重启</h3>
-<p><code>php yourfile.php reload</code></p>
+<p><code>php start.php reload</code></p>
 <h3 id="-">查看状态</h3>
-<p><code>php yourfile.php status</code></p>
+<p><code>php start.php status</code></p>
 <h3 id="-workerman-">强行杀死所有workerman进程</h3>
 <p><code>（要求workerman版本&gt;=3.2.2）</code></p>
-<p><code>php yourfile.php kill</code></p>
+<p><code>php start.php kill</code></p>
 <h2 id="debug-daemon-">debug和daemon方式区别</h2>
 <p>1、以debug方式启动，代码中echo、var_dump、print等打印函数会直接输出在终端</p>
 <p>2、以daemon方式启动，代码中echo、var_dump、print等打印会默认重定向到/dev/null文件，可以通过设置<code>Worker::$stdoutFile = &#39;/your/path/file&#39;;</code>来设置这个文件路径。</p>

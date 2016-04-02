@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="5.2" data-basepath=".." data-revision="1456488176140">
+    <div class="book"  data-level="5.2" data-basepath=".." data-revision="1459607708509">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1754,17 +1754,21 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_1264">
+                    <section class="normal" id="section-gitbook_1104">
                     
                         <h1 id="-">安装</h1>
-<p>WorkerMan实际上没有安装脚本，如果你的php环境已经装好，只需要把WorkerMan源代码下载下来即可运行。
-下载方法建议用Github clone，你也可以通过下载zip文件的方式下载WorkerMan代码程序。</p>
+<p>WorkerMan实际上没有安装脚本，如果你的PHP环境已经装好，只需要把WorkerMan源代码或者demo下载下来即可运行。</p>
+<p>可以使用以下脚本测试本机PHP环境是否满足WorkerMan运行要求。
+<code>curl -Ss http://www.workerman.net/check.php | php</code></p>
+<p>上面脚本如果全部显示ok，则代表满足WorkerMan要求，直接到<a href="http://www.workerman.net/" target="_blank">官网</a>下载例子即可运行。</p>
+<p>如果缺少某个扩展，请参考<a href="http://doc3.workerman.net/appendices/install-extension.html" target="_blank">附录-安装扩展</a>一节安装。</p>
+<p>如果没有PHP环境，请根据系统参考以下步骤安装。</p>
 <h2 id="-github-">通过Github安装</h2>
 <h3 id="centos-">centos系统安装教程</h3>
 <p>1、命令行运行（此步骤包含了安装php-cli主程序以及pcntl、posix、libevent扩展及github程序）</p>
 <pre><code class="lang-shell">yum install php-cli php-process git gcc php-devel php-pear libevent-devel
 </code></pre>
-<p>2、命令行运行（此步骤是通过pecl安装libevent扩展，如果失败请尝试按照 10.2 安装扩展 一节中使用源码phpize的方式安装。注意libevent扩展不是必须的，此步骤可以跳过）</p>
+<p>2、命令行运行（此步骤是通过pecl安装libevent扩展，如果失败请尝试按照安装扩展 一节中使用源码phpize的方式安装。注意libevent扩展不是必须的，此步骤可以跳过）</p>
 <pre><code class="lang-shell">pecl install channel://pecl.php.net/libevent-0.1.0
 </code></pre>
 <p>3、命令行运行（此步骤是配置libevent扩展的ini配置，如果不安装libevent此步骤跳过）</p>
@@ -1774,7 +1778,7 @@
 <p>4、命令行运行（此步骤是通过github下载WorkerMan主程序）</p>
 <pre><code class="lang-shell">git clone https://github.com/walkor/Workerman
 </code></pre>
-<h3 id="debian-ubuntu-root-sudo-">debian/ubuntu系统安装教程(如果不是root用户请用sudo 后面加命令)</h3>
+<h3 id="debian-ubuntu-">debian/ubuntu系统安装教程</h3>
 <p>1、命令行运行（此步骤包含了安装php-cli主程序、libevent扩展及github程序）</p>
 <pre><code class="lang-shell">apt-get install php5-cli git gcc php-pear php5-dev libevent-dev
 </code></pre>
@@ -1782,18 +1786,31 @@
 <pre><code class="lang-shell">pecl install channel://pecl.php.net/libevent-0.1.0
 </code></pre>
 <p>　  提示libevent installation [autodetect]: 时按回车</p>
-<p>3、命令行运行（此步骤是配置libevent扩展的ini配置，如果不安装libevent此步骤跳过）</p>
+<p>3、命令行运行（此步骤是配置libevent扩展的ini配置，写这个配置需要切换到root用户，如果不安装libevent此步骤跳过）</p>
 <pre><code class="lang-shell">echo extension=libevent.so &gt; /etc/php5/cli/conf.d/libevent.ini
 </code></pre>
 <p>4、命令行运行（此步骤是通过github下载WorkerMan主程序）</p>
 <pre><code class="lang-shell">git clone https://github.com/walkor/Workerman
 </code></pre>
-<h2 id="-zip-">下载ZIP文件安装</h2>
-<p>1、前提条件你本地安装了必要的运行环境，安装方法根据你的系统参考上面1-3步骤</p>
-<p>2、通过<a href="http://www.workerman.net/download/workermanzip" target="_blank">http://www.workerman.net/download/workermanzip</a> 连接下载WorkerMan</p>
+<h3 id="mac-os-">mac os 系统安装教程</h3>
+<p>mac系统自带PHP，但是可能缺少pcntl扩展。</p>
+<p>1、参考手册<a href="http://doc3.workerman.net/appendices/install-extension.html" target="_blank">附录-安装扩展</a>一节中方法三源码编译安装pcntl扩展。</p>
+<p>2、参考手册<a href="http://doc3.workerman.net/appendices/install-extension.html" target="_blank">附录-安装扩展</a>一节中方法四利用phpize安装libevent扩展（可省略）。</p>
+<p>3、通过<a href="http://www.workerman.net/download/workermanzip" target="_blank">http://www.workerman.net/download/workermanzip</a> 下载WorkerMan主程序，或者到<a href="http://www.workerman.net/" target="_blank">官网</a>下载例子运行。</p>
 <h2 id="libevent-">libevent扩展说明</h2>
-<p>libevent扩展不是必须的，当业务需要支撑上万并发连接时，推荐安装libevent，能够支持巨大的并发连接。如果业务并发连接比较低，例如5000并发连接，则可以不用安装。</p>
-
+<p><a href="http://php.net/manual/zh/book.libevent.php" target="_blank">libevent扩展</a>不是必须的，当业务需要支撑上万并发连接时，推荐安装libevent，能够支持巨大的并发连接。如果业务并发连接比较低，例如5000并发连接，则可以不用安装。</p>
+<p>如果无法安装<a href="http://php.net/manual/zh/book.libevent.php" target="_blank">libevent扩展</a>，可以用<a href="http://php.net/manual/zh/book.event.php" target="_blank">Event扩展</a>代替。</p>
+<p><strong>安装Event扩展方法如下：</strong></p>
+<p>注意：Event扩展也同样依赖libevent库，所以首先需要安装libevent-devel包(并非扩展)。</p>
+<p>centos系统</p>
+<pre><code>yum install libevent-devel
+pecl install event
+echo extension=event.so &gt; /etc/php.d/event.ini
+</code></pre><p>debian/ubuntu系统</p>
+<pre><code>apt-get install libevent-dev
+pecl install event
+echo extension=event.so &gt; /etc/php5/cli/conf.d/event.ini
+</code></pre>
                     
                     </section>
                 

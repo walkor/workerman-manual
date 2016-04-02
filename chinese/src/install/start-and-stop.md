@@ -6,29 +6,29 @@
 
 以debug（调试）方式启动
 
-```php yourfile.php start```
+```php start.php start```
 
 以daemon（守护进程）方式启动
 
-```php yourfile.php start -d```
+```php start.php start -d```
 
 ### 停止
-```php yourfile.php stop```
+```php start.php stop```
 
 ### 重启
-```php yourfile.php restart```
+```php start.php restart```
 
 ### 平滑重启
-```php yourfile.php reload```
+```php start.php reload```
 
 ### 查看状态
-```php yourfile.php status```
+```php start.php status```
 
 ### 强行杀死所有workerman进程
 
 ``` （要求workerman版本>=3.2.2） ```
 
-```php yourfile.php kill```
+```php start.php kill```
 
 ## debug和daemon方式区别
 
