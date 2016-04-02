@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="5.1" data-basepath=".." data-revision="1459607708509">
+    <div class="book"  data-level="5.1" data-basepath=".." data-revision="1459608092175">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1754,7 +1754,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_1105">
+                    <section class="normal" id="section-gitbook_1308">
                     
                         <h1 id="-">环境要求</h1>
 <h2 id="-">运行所需环境</h2>
@@ -1773,10 +1773,10 @@
 <p>pcntl扩展是PHP在Linux环境下进程控制的重要扩展，WorkerMan用到了其<a href="http://cn2.php.net/manual/zh/function.pcntl-fork.php" target="_blank">进程创建</a>、<a href="http://cn2.php.net/manual/zh/function.pcntl-signal.php" target="_blank">信号控制</a>、<a href="http://cn2.php.net/manual/zh/function.pcntl-alarm.php" target="_blank">定时器</a>、<a href="http://cn2.php.net/manual/zh/function.pcntl-waitpid.php" target="_blank">进程状态监控</a>等特性。此扩展win平台不支持。</p>
 <p>2、<a href="http://cn2.php.net/manual/zh/book.posix.php" target="_blank">posix扩展</a></p>
 <p>posix扩展使得PHP在Linux环境可以调用系统通过<a href="http://baike.baidu.com/view/209573.htm" target="_blank">POSIX标准</a>提供的接口。WorkerMan主要使用了其相关的接口实现了守护进程化、用户组控制等功能。此扩展win平台不支持。</p>
-<p>3、<a href="http://cn2.php.net/manual/en/book.libevent.php" target="_blank">libevent扩展</a></p>
-<p>libevent扩展使得PHP可以使用系统<a href="http://baike.baidu.com/view/1385104.htm" target="_blank">Epoll</a>、Kqueue等高级事件处理机制，能够显著提高WorkerMan在高并发连接时CPU利用率。在高并发长连接相关应用中非常重要。libevent扩展不是必须的，如果没安装，则默认使用PHP原生Select事件处理机制。</p>
+<p>3、<a href="http://cn2.php.net/manual/en/book.libevent.php" target="_blank">libevent扩展</a> 或者 <a href="http://php.net/manual/zh/book.event.php" target="_blank">Event扩展</a></p>
+<p>libevent扩展(或者event扩展)使得PHP可以使用系统<a href="http://baike.baidu.com/view/1385104.htm" target="_blank">Epoll</a>、Kqueue等高级事件处理机制，能够显著提高WorkerMan在高并发连接时CPU利用率。在高并发长连接相关应用中非常重要。libevent扩展(或者event扩展)不是必须的，如果没安装，则默认使用PHP原生Select事件处理机制。</p>
 <h2 id="-">如何安装扩展</h2>
-<p>参见 附录-安装扩展 章节</p>
+<p>参见 <a href="http://doc3.workerman.net/appendices/install-extension.html" target="_blank">附录-安装扩展</a> 章节</p>
 
                     
                     </section>
