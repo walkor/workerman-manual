@@ -39,6 +39,10 @@ echo extension=libevent.so > /etc/php.d/libevent.ini
 git clone https://github.com/walkor/Workerman
 ```
 
+5、参考[入门指引--简单开发实例部分](/getting-started/simple-example.html)写入口文件运行。<br>
+或者从[官网](http://www.workerman.net/)下载打包好的demo运行。
+
+
 ### debian/ubuntu系统安装教程
 
 1、命令行运行（此步骤包含了安装php-cli主程序、libevent扩展及github程序）
@@ -65,6 +69,9 @@ echo extension=libevent.so > /etc/php5/cli/conf.d/libevent.ini
 git clone https://github.com/walkor/Workerman
 ```
 
+5、参考[入门指引--简单开发实例部分](/getting-started/simple-example.html)写入口文件运行。<br>
+或者从[官网](http://www.workerman.net/)下载打包好的demo运行。
+
 ### mac os 系统安装教程
 mac系统自带PHP，但是可能缺少pcntl扩展。
 
@@ -83,6 +90,8 @@ mac系统自带PHP，但是可能缺少pcntl扩展。
 **安装Event扩展方法如下：**
 
 注意：Event扩展也同样依赖libevent库，所以首先需要安装libevent-devel包(并非扩展)。
+
+
 
 centos系统
 
