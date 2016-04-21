@@ -71,14 +71,8 @@ function on_message($connection, $data)
 }
 
 // 运行worker
-Worker::
-
-### 参数
-无参数
-
-
-### 返回值
-无返回
+Worker::runAll();
+```
 
 
 ### 示例 php后端及时推送消息给客户端

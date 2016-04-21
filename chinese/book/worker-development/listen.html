@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="8.1.4.3" data-basepath=".." data-revision="1461163210969">
+    <div class="book"  data-level="8.1.4.3" data-basepath=".." data-revision="1461250830680">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1754,7 +1754,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_548">
+                    <section class="normal" id="section-gitbook_1309">
                     
                         <h1 id="listen">listen</h1>
 <pre><code class="lang-php">void Worker::listen(void)
@@ -1820,36 +1820,18 @@ Worker::runAll();
 }
 
 <span class="hljs-comment">// 运行worker</span>
-Worker::
-
-<span class="hljs-comment">### 参数</span>
-无参数
-
-
-<span class="hljs-comment">### 返回值</span>
-无返回
-
-
-<span class="hljs-comment">### 示例 php后端及时推送消息给客户端</span>
-
-**原理：**
-
-<span class="hljs-number">1</span>、建立一个websocket Worker，用来维持客户端长连接
-
-<span class="hljs-number">2</span>、websocket Worker内部建立一个text Worker
-
-<span class="hljs-number">3</span>、websocket Worker 与 text Worker是同一个进程，可以方便的共享客户端连接
-
-<span class="hljs-number">4</span>、某个独立的php后台系统通过text协议与text Worker通讯
-
-<span class="hljs-number">5</span>、text Worker操作websocket连接完成数据推送
-
-**代码及步骤**
-
-push.php
-
-```php
-<span class="hljs-preprocessor">&lt;?php</span>
+Worker::runAll();
+</code></pre>
+<h3 id="-php-">示例 php后端及时推送消息给客户端</h3>
+<p><strong>原理：</strong></p>
+<p>1、建立一个websocket Worker，用来维持客户端长连接</p>
+<p>2、websocket Worker内部建立一个text Worker</p>
+<p>3、websocket Worker 与 text Worker是同一个进程，可以方便的共享客户端连接</p>
+<p>4、某个独立的php后台系统通过text协议与text Worker通讯</p>
+<p>5、text Worker操作websocket连接完成数据推送</p>
+<p><strong>代码及步骤</strong></p>
+<p>push.php</p>
+<pre><code class="lang-php"><span class="hljs-preprocessor">&lt;?php</span>
 <span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
 <span class="hljs-comment">// 初始化一个worker容器，监听1234端口</span>
