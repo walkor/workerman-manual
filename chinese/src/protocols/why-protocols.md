@@ -6,7 +6,7 @@
 传统PHP开发都是基于Web的，基本上都是HTTP协议，HTTP协议的解析处理都由WebServer独自承担了，所以开发者不会关心协议方面的事情。然而当我们需要基于非HTTP协议开发时，开发者就需要考虑协议的事情了。
 
 ## WorkerMan已经支持的协议
-WorkerMan目前已经支持HTTP、websocket、text协议(见附录说明)、frame协议(见附录说明)，需要基于这些协议通讯时可以直接使用，使用方法及时在初始化Worker时指定协议，例如
+WorkerMan目前已经支持HTTP、websocket、text协议(见附录说明)、frame协议(见附录说明)，ws协议(见附录说明)，需要基于这些协议通讯时可以直接使用，使用方法及时在初始化Worker时指定协议，例如
 ```php
 use Workerman\Worker;
 // websocket://0.0.0.0:2345 表明用websocket协议监听2345端口
