@@ -213,7 +213,7 @@ class MyTextProtocol
 
 ```php
 require_once './Workerman/Autoloader.php';
-use Workerman\Worker
+use Workerman\Worker;
 
 // #### MyTextProtocol worker ####
 $text_worker = new Worker("MyTextProtocol://0.0.0.0:5678");
