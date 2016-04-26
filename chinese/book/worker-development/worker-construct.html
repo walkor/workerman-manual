@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="8.1.1" data-basepath=".." data-revision="1461567323847">
+    <div class="book"  data-level="8.1.1" data-basepath=".." data-revision="1461682021988">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1798,7 +1798,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_320">
+                    <section class="normal" id="section-gitbook_138">
                     
                         <h1 id="-__construct">构造函数 __construct</h1>
 <h2 id="-">说明:</h2>
@@ -1961,10 +1961,10 @@ Protocols/MyTextProtocol.php（参照上面目录结构）</p>
 <p>2、使用MyTextProtocol协议监听处理请求</p>
 <p>参照上面最终目录结构创建test.php文件</p>
 <pre><code class="lang-php"><span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 
-// #### <span class="hljs-title">MyTextProtocol</span> <span class="hljs-title">worker</span> ####
-$<span class="hljs-title">text_worker</span> = <span class="hljs-title">new</span> <span class="hljs-title">Worker</span>("<span class="hljs-title">MyTextProtocol</span>://0.0.0.0:5678");
+<span class="hljs-comment">// #### MyTextProtocol worker ####</span>
+<span class="hljs-variable">$text_worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">"MyTextProtocol://0.0.0.0:5678"</span>);
 
 <span class="hljs-comment">/*
  * 收到一个完整的数据（结尾是换行）后，自动执行MyTextProtocol::decode('收到的数据')
