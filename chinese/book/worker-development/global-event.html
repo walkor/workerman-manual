@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="8.1.2.12" data-basepath=".." data-revision="1461745398784">
+    <div class="book"  data-level="8.1.2.12" data-basepath=".." data-revision="1461764728635">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1798,7 +1798,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_118">
+                    <section class="normal" id="section-gitbook_237">
                     
                         <h1 id="globalevent">globalEvent</h1>
 <h2 id="-">说明:</h2>
@@ -1810,9 +1810,10 @@
 <span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Events</span>\<span class="hljs-title">EventInterface</span>;
 <span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
 
-<span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'text://0.0.0.0:8484'</span>);
+<span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker();
 <span class="hljs-variable">$worker</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$worker</span>)</span>
 {</span>
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">'Pid is '</span> . posix_getpid() . <span class="hljs-string">"\n"</span>;
     <span class="hljs-comment">// 当进程收到SIGALRM信号时，打印输出一些信息</span>
     Worker::<span class="hljs-variable">$globalEvent</span>-&gt;add(SIGALRM, EventInterface::EV_SIGNAL, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>
     {</span>
@@ -1822,7 +1823,12 @@
 <span class="hljs-comment">// 运行worker</span>
 Worker::runAll();
 </code></pre>
-
+<h2 id="-">测试</h2>
+<p>Workerman启动后会输出当前进程pid(一个数字)。命令行运行</p>
+<pre><code>kill -SIGALRM $进程pid
+</code></pre><p>服务端会打印出</p>
+<pre><code>Get signal SIGALRM
+</code></pre>
                     
                     </section>
                 
