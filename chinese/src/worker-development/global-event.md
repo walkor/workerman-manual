@@ -32,7 +32,7 @@ Worker::runAll();
 ## 测试
 Workerman启动后会输出当前进程pid(一个数字)。命令行运行
 ```
-kill -SIGALRM $进程pid
+kill -SIGALRM 进程pid
 ```
 服务端会打印出
 ```
