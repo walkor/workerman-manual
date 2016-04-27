@@ -165,8 +165,8 @@ Worker::runAll();
 
 最终的目录结构
 ```
-├── Protocols              // 这次要创建的Protocols目录
-│   └── MyTextProtocol.php // 这次要创建的自定义协议文件
+├── Protocols              // 这是要创建的Protocols目录
+│   └── MyTextProtocol.php // 这是要创建的自定义协议文件
 ├── test.php  // 这次要创建的test脚本
 └── Workerman // Workerman源码目录，里面代码不要动
 ```

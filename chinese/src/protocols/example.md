@@ -169,7 +169,7 @@ class BinaryTransfer
 
 ```php
 use Workerman\Worker;
-require_once '/your/path/Workerman/Autoloader.php'
+require_once '/your/path/Workerman/Autoloader.php';
 
 $worker = new Worker('BinaryTransfer://0.0.0.0:8333');
 // 保存文件到tmp下
