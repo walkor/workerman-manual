@@ -30,7 +30,7 @@ Channel/Client只会收到自己关注事件并触发回调
 
 
 ## 下载安装
-可以使用composer安装，或者直接下载zip包https://github.com/walkor/Channel/archive/master.zip。
+可以使用composer安装，或者直接下载zip包https://github.com/walkor/Channel/archive/master.zip 。
 
 文件目录可以根据需要放在任意位置，使用时能够require到文件src/Server.php 和src/Client.php 两个文件即可。注意require路径最好使用绝对路径。具体使用方法参考下面章节channelServer和channelClient的说明。
 

@@ -1,8 +1,14 @@
 # GlobalData变量共享组件
 **``` (要求Workerman版本>=3.3.0) ```**
 
+源码地址：https://github.com/walkor/GlobalData
+
 ## 注意
 GlobalData需要Workerman版本>=3.3.0
+
+## 下载安装
+
+可以使用composer安装，或者直接下载zip包https://github.com/walkor/GlobalData/archive/master.zip 。
 
 ## 原理
 

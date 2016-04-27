@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="11.1" data-basepath=".." data-revision="1461682021988">
+    <div class="book"  data-level="11.1" data-basepath=".." data-revision="1461740363353">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1798,12 +1798,15 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_54">
+                    <section class="normal" id="section-gitbook_112">
                     
                         <h1 id="globaldata-">GlobalData变量共享组件</h1>
 <p><strong><code>(要求Workerman版本&gt;=3.3.0)</code></strong></p>
+<p>源码地址：<a href="https://github.com/walkor/GlobalData" target="_blank">https://github.com/walkor/GlobalData</a></p>
 <h2 id="-">注意</h2>
 <p>GlobalData需要Workerman版本&gt;=3.3.0</p>
+<h2 id="-">下载安装</h2>
+<p>可以使用composer安装，或者直接下载zip包<a href="https://github.com/walkor/GlobalData/archive/master.zip" target="_blank">https://github.com/walkor/GlobalData/archive/master.zip</a> 。</p>
 <h2 id="-">原理</h2>
 <p>利用PHP的<code>__set __get __isset __unset</code>魔术方法触发与GlobalData服务端通讯，实际变量存储在GlobalData服务端。例如当给客户端类设置一个不存在的属性时，会触发<code>__set</code>魔术方法，客户端类在<code>__set</code>方法中向GlobalData服务端发送请求，存入一个变量。当访问客户端类一个不存在的变量时，会触发类的<code>__get</code>方法，客户端会向GlobalData服务端发起请求，读取这个值，从而完成进程间变量共享。</p>
 <pre><code class="lang-php"><span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/../src/Client.php'</span>;
