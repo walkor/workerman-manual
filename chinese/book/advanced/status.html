@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="10.2" data-basepath=".." data-revision="1461740363353">
+    <div class="book"  data-level="10.2" data-basepath=".." data-revision="1461744826961">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1798,7 +1798,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_90">
+                    <section class="normal" id="section-gitbook_275">
                     
                         <h1 id="-">查看运行状态</h1>
 <p>运行 <code>php start.php status</code>
@@ -1839,8 +1839,8 @@ pid     memory  listening                worker_name           connections total
 <p>其中exit_status为0为正常退出，如果为其它值，代表进程是异常退出的，比如exit_status为65280，exit_count为60，代表业务代码有FatalError，导致进程退出60次，需要根据php的错误日志查找FatalError原因</p>
 <h2 id="process-status">PROCESS STATUS</h2>
 <p>pid：进程pid</p>
-<p>memory：该进程占用内存（不包括php自身可执行文件的占用的内存）</p>
-<p>listening：传输层协议及监听ip端口</p>
+<p>memory：该进程当前占用内存（不包括php自身可执行文件的占用的内存）</p>
+<p>listening：传输层协议及监听ip端口。none表示未监听任何端口。</p>
 <p>worker_name：该进程运行的服务服务名</p>
 <p>connections:该进程当前有多少个TCP连接，包括客户端连接和WorkerMan内部通讯的连接</p>
 <p>total_request：该进程接收多少请求，注意每个连接上可能有多个请求</p>

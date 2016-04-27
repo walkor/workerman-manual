@@ -57,9 +57,9 @@ WorkerMan的版本```version:3.0.3```
 
 pid：进程pid
 
-memory：该进程占用内存（不包括php自身可执行文件的占用的内存）
+memory：该进程当前占用内存（不包括php自身可执行文件的占用的内存）
 
-listening：传输层协议及监听ip端口
+listening：传输层协议及监听ip端口。none表示未监听任何端口。
 
 worker_name：该进程运行的服务服务名
 
