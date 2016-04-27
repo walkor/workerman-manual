@@ -15,9 +15,10 @@ use Workerman\Worker;
 use Workerman\Events\EventInterface;
 require_once './Workerman/Autoloader.php';
 
-$worker = new Worker('text://0.0.0.0:8484');
+$worker = new Worker();
 $worker->onWorkerStart = function($worker)
 {
+    echo 'Pid is ' . posix_getpid() . "\n";
     // 当进程收到SIGALRM信号时，打印输出一些信息
     Worker::$globalEvent->add(SIGALRM, EventInterface::EV_SIGNAL, function()
     {
@@ -27,3 +28,15 @@ $worker->onWorkerStart = function($worker)
 // 运行worker
 Worker::runAll();
 ```
+
+## 测试
+Workerman启动后会输出当前进程pid(一个数字)。命令行运行
+```
+kill -SIGALRM $进程pid
+```
+服务端会打印出
+```
+Get signal SIGALRM
+```
+
+
