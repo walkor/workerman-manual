@@ -6,7 +6,7 @@
 ```
 ---------------------------------------GLOBAL STATUS--------------------------------------------
 Workerman version:3.0.3          PHP version:5.3.29-1~dotdeb.0
-start time:2014-07-21 18:05:47   run 86 days 22 hours
+start time:2015-02-21 18:05:47   run 86 days 22 hours
 load average: 0, 0, 0
 3 workers       10 processes
 worker_name           exit_status     exit_count
@@ -42,7 +42,7 @@ WorkerMan的版本```version:3.0.3```
 
 ```3 workers```（3种进程，包括ChatGateway、ChatBusinessWorker、WebServer进程）
 
-```14 processes```(共14个进程)
+```10 processes```(共10个进程)
 
 ```worker_name```(worker进程名)
 
