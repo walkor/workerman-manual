@@ -7,6 +7,8 @@ int Worker::$count
 
 设置当前Worker实例启动多少个进程，不设置时默认为1。
 
+如何设置进程数，请参考[**这里**](/faq/processes-count.html) 。
+
 
 ## 范例
 
