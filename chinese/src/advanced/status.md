@@ -42,16 +42,24 @@ WorkerMan的版本```version:3.0.3```
 
 ```3 workers```（3种进程，包括ChatGateway、ChatBusinessWorker、WebServer进程）
 
-```10 processes```(共10个进程)
+``` 10 processes ```(共10个进程)
 
-```worker_name```(worker进程名)
+``` worker_name ```(worker进程名)
 
-```exit_status```（worker进程退出状态码）
+``` exit_status ```（worker进程退出状态码）
 
-```exit_count```（该状态码的退出次数）
+``` exit_count ```（该状态码的退出次数）
 
 
-其中exit_status为0为正常退出，如果为其它值，代表进程是异常退出的，比如exit_status为65280，exit_count为60，代表业务代码有FatalError，导致进程退出60次，需要根据php的错误日志查找FatalError原因
+一般来说exit_status为0表示为正常退出，如果为其它值，代表进程是异常退出的，并产生一条类似```WORKER EXIT UNEXPECTED```错误信息，错误信息会记录到[Worker::logFile](/worker-development/log-file.html)指定的文件中。
+
+**常见的exit_status及其含义如下：**
+
+* 0：表示正常退出，运行reload平滑重启后会出现值为0的退出码，是正常现象。注意在程序中调用exit或die也会导致退出码为0，并产生一条```WORKER EXIT UNEXPECTED```错误信息，workerman中不允许业务代码调用exit或者die语句。
+* 9：表示进程被SIGKILL信号杀死了。这个退出码主要发生在reload平滑重启时，导致这个退出码的原因是由于子进程没有在规定时间内响应主进程reload信号(例如mysql、curl等长时间阻塞等待或者业务死循环等)，被主进程强制使用SIGKILL信号杀死。注意，当在linux命令行中使用kill命令发送SIGKILL信号给子进程也会导致这个退出码。
+* 65280：导致这个退出码的原因是业务代码有致命错误，例如调用了不存在的函数、语法错误等，具体错误信息会记录到[Worker::logFile](/worker-development/log-file.html)指定的文件中，也可以在[php.ini](http://php.net/manual/zh/ini.list.php)中[error_log](http://php.net/manual/zh/errorfunc.configuration.php#ini.error-log)指定的文件中(如果有指定的话)找到。
+* 64000：导致这个退出码的原因是业务代码抛出了异常，但业务没有捕获这个异常，导致进程退出。如果workerman以debug方式运行时异常调用栈会打印到终端，daemon方式运行时异常调用栈会记录到[Worker::stdoutFile](/worker-development/stdout_file.html)指定的文件中。
+
 
 ## PROCESS STATUS
 

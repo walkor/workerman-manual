@@ -36,13 +36,13 @@
 
 ## debug和daemon方式区别
 
-1、以debug方式启动，代码中echo、var_dump、print等打印函数会直接输出在终端
+1、以debug方式启动，代码中echo、var_dump、print等打印函数会直接输出在终端。
 
 2、以daemon方式启动，代码中echo、var_dump、print等打印会默认重定向到/dev/null文件，可以通过设置```Worker::$stdoutFile = '/your/path/file';```来设置这个文件路径。
 
-3、以debug方式启动，终端关闭后workerman会随之关闭并退出
+3、以debug方式启动，终端关闭后workerman会随之关闭并退出。
 
-4、以daemon方式启动，终端关闭后workerman继续后台正常运行
+4、以daemon方式启动，终端关闭后workerman继续后台正常运行。
 
 
 

@@ -33,7 +33,7 @@ WorkerMan是常驻内存的运行机制，只要PHP文件被载入编译过一�
 同样的，在程序中避免使用exit、die语句，使用exit、die会导致进程退出。可以使用```\Workerman\Protocols\Http::end($msg)```函数替代exit、die函数。
 
 ### 4、HTTP相关函数的使用
-WorkerMan运行在PHP CLI模式下，PHP CLI模式下无法使用HTTP相关的函数，例如```header、setcookie、session_start```等函数，请使用```/Workerman/Protocols/Http.php```文件中的```header、setcookie、session_start```等方法替换。
+WorkerMan运行在PHP CLI模式下，PHP CLI模式下无法使用HTTP相关的函数，例如```header、setcookie、session_start```等函数，请使用```/Workerman/Protocols/Http.php```文件中的```header、setcookie、sessionStart```等方法替换。
 
 ### 5、Web入口文件
 WorkerMan的WebServer默认使用index.php作为Web入口文件，例如配置```$webserver->setRoot('www.example.com', '/home/www/');```，则www.example.com的入口文件为```/home/www/index.php```。当url访问的文件（包括静态文件和PHP文件）不存在时，会自动调用入口文件index.php
@@ -41,7 +41,7 @@ WorkerMan的WebServer默认使用index.php作为Web入口文件，例如配置``
 ### 6、可用的超全局变量
 可用的超全局变量有```$_SERVER、$_GET、$_POST、$_FILES、$_COOKIE、$_SESSION、$_REQUEST```。
 
-其中$_FILES结构类似
+其中HTTP文件上传$_FILES结构类似
 ```php
 var_export($_FILES);
 array(
