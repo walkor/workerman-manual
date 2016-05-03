@@ -31,7 +31,7 @@ $worker->onWorkerStart = function($worker)
         $message = $event_data['content'];
         if(!isset($worker->connections[$to_connection_id]))
         {
-            echo "connection not exsits\n";
+            echo "connection not exists\n";
             return;
         }
         $to_connection = $worker->connections[$to_connection_id];
@@ -102,7 +102,7 @@ Workerman[start.php] start in DEBUG mode
 Workerman version:3.2.7          PHP version:5.4.37
 ------------------------ WORKERS -------------------------------
 user          worker         listen                    processes status
-root          ChannelServer  text://0.0.0.0:2206        1         [OK]
+root          ChannelServer  frame://0.0.0.0:2206       1         [OK]
 root          pusher         websocket://0.0.0.0:4236   2         [OK]
 root          publisher      http://0.0.0.0:4237        1         [OK]
 ----------------------------------------------------------------

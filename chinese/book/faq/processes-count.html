@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="11.5" data-basepath=".." data-revision="1462108149678">
+    <div class="book"  data-level="11.5" data-basepath=".." data-revision="1462249278999">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1781,21 +1781,22 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_13">
+                    <section class="normal" id="section-gitbook_23">
                     
                         <h1 id="-">应该开启多少进程</h1>
 <h2 id="-">如何设置进程数</h2>
 <p>进程数是由<code>count</code>属性决定的，例如下面代码</p>
-<pre><code>use Workerman\Worker;
-require_once &#39;./Workerman/Autoloader.php&#39;;
+<pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
 
-$http_worker = new Worker(&quot;http://0.0.0.0:2345&quot;);
+<span class="hljs-variable">$http_worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">"http://0.0.0.0:2345"</span>);
 
-// ## 启动4个进程对外提供服务 ##
-$http_worker-&gt;count = 4;
+<span class="hljs-comment">// ## 启动4个进程对外提供服务 ##</span>
+<span class="hljs-variable">$http_worker</span>-&gt;count = <span class="hljs-number">4</span>;
 
 ...
-</code></pre><h2 id="-">进程数设置需要考虑以下条件</h2>
+</code></pre>
+<h2 id="-">进程数设置需要考虑以下条件</h2>
 <p>1、cpu核数</p>
 <p>2、内存大小</p>
 <p>3、业务属于IO密集型还是CPU密集型</p>

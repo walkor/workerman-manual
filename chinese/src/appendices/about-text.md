@@ -28,7 +28,7 @@ test.php
 
 ```php
 require_once './Workerman/Autoloader.php';
-use Workerman\Worker
+use Workerman\Worker;
 
 $text_worker = new Worker("text://0.0.0.0:5678");
 
@@ -54,7 +54,7 @@ root          none          myTextProtocol://0.0.0.0:5678   1         [OK]
 Press Ctrl-C to quit. Start success.
 ```
 
-载新打开一个终端，利用telnet测试（建议用linux系统的telnet）
+重新打开一个终端，利用telnet测试（建议用linux系统的telnet）
 
 假设是本机测试，
 终端执行 telnet 127.0.0.1 5678

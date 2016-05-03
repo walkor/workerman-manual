@@ -2,7 +2,7 @@
 
 ## 如何设置进程数
 进程数是由```count```属性决定的，例如下面代码
-```
+```php
 use Workerman\Worker;
 require_once './Workerman/Autoloader.php';
 
