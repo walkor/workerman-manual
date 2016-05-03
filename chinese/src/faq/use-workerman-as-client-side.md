@@ -11,7 +11,7 @@
 
 3、[workerman作为http客户端](/worker-development/__construct.html)
 
-5、[workerman作为http代理](https://github.com/walkor/php-http-proxy)
+4、[workerman作为http代理](https://github.com/walkor/php-http-proxy)
 
-4、[workerman作为socks5代理](https://github.com/walkor/php-socks5)
+5、[workerman作为socks5代理](https://github.com/walkor/php-socks5)
 
