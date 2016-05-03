@@ -7,9 +7,11 @@
 
 1、[workerman作为websocket客户端](/appendices/about-ws.html)
 
-2、[workerman作为mysql代理](worker-development/connect.html)
+2、[workerman作为mysql代理](/worker-development/connect.html)
 
-3、[workerman作为http代理](/worker-development/connect.html)
+3、[workerman作为http客户端](/worker-development/__construct.html)
+
+5、[workerman作为http代理](https://github.com/walkor/php-http-proxy)
 
 4、[workerman作为socks5代理](https://github.com/walkor/php-socks5)
 
