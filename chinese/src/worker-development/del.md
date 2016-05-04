@@ -17,6 +17,7 @@ boolean
 ```php
 use \Workerman\Worker;
 require_once './Workerman/Autoloader.php';
+use \Workerman\Lib\Timer;
 
 $task = new Worker();
 // 开启多少个进程运行定时任务，注意多进程并发问题
@@ -24,7 +25,7 @@ $task->count = 1;
 $task->onWorkerStart = function($task)
 {
     // 每2秒运行一次
-    $timer_id = \Workerman\Lib\Timer::add(2, function()
+    $timer_id = Timer::add(2, function()
     {
         echo "task run\n";
     });

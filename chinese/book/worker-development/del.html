@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="8.4.2" data-basepath=".." data-revision="1462281221168">
+    <div class="book"  data-level="8.4.2" data-basepath=".." data-revision="1462367703346">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1781,7 +1781,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_106">
+                    <section class="normal" id="section-gitbook_116">
                     
                         <h1 id="del">del</h1>
 <pre><code class="lang-php">boolean \Workerman\Lib\Timer::del(int <span class="hljs-variable">$timer_id</span>)
@@ -1795,6 +1795,7 @@
 <h3 id="-">示例</h3>
 <pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+<span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
 
 <span class="hljs-variable">$task</span> = <span class="hljs-keyword">new</span> Worker();
 <span class="hljs-comment">// 开启多少个进程运行定时任务，注意多进程并发问题</span>
@@ -1802,7 +1803,7 @@
 <span class="hljs-variable">$task</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$task</span>)</span>
 {</span>
     <span class="hljs-comment">// 每2秒运行一次</span>
-    <span class="hljs-variable">$timer_id</span> = \Workerman\Lib\Timer::add(<span class="hljs-number">2</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>
+    <span class="hljs-variable">$timer_id</span> = Timer::add(<span class="hljs-number">2</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>
     {</span>
         <span class="hljs-keyword">echo</span> <span class="hljs-string">"task run\n"</span>;
     });
