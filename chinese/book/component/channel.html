@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="10.2" data-basepath=".." data-revision="1462368681057">
+    <div class="book"  data-level="10.2" data-basepath=".." data-revision="1462371813525">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1781,7 +1781,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_274">
+                    <section class="normal" id="section-gitbook_423">
                     
                         <h1 id="channel-">Channel分布式通讯组件</h1>
 <p><strong><code>(要求Workerman版本&gt;=3.3.0)</code></strong></p>
@@ -1795,7 +1795,7 @@
 <p>Channel/Client通过connect接口连接Channel/Server并保持长连接</p>
 <p>Channel/Client通过调用on接口告诉Channel/Server自己关注哪些事件，并注册事件回调函数（回调发生在Channel/Client所在进程中）</p>
 <p>Channel/Client通过publish接口向Channel/Server发布某个事件及事件相关的数据</p>
-<p>Channel/Server收事件及数据后会分发给关注这个事件的Channel/Client</p>
+<p>Channel/Server接收事件及数据后会分发给关注这个事件的Channel/Client</p>
 <p>Channel/Client收到事件及数据后触发on接口设置的回调</p>
 <p>Channel/Client只会收到自己关注事件并触发回调</p>
 <h2 id="-">下载安装</h2>

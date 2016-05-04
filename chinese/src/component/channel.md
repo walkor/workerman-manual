@@ -22,7 +22,7 @@ Channel/Client通过调用on接口告诉Channel/Server自己关注哪些事件�
 
 Channel/Client通过publish接口向Channel/Server发布某个事件及事件相关的数据
 
-Channel/Server收事件及数据后会分发给关注这个事件的Channel/Client
+Channel/Server接收事件及数据后会分发给关注这个事件的Channel/Client
 
 Channel/Client收到事件及数据后触发on接口设置的回调
 
