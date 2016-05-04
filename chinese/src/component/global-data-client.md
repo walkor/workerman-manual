@@ -28,7 +28,8 @@ require_once __DIR__ . '/GlobalData/src/Client.php';
 
 $worker = new Worker('tcp://0.0.0.0:6636');
 // 进程启动时
-$worker->onWorkerStart = function(){
+$worker->onWorkerStart = function()
+{
     // 初始化一个全局的global data client
     global $global;
     $global = new \GlobalData\Client('127.0.0.1:2207');

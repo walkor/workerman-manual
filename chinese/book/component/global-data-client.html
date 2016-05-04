@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="10.1.2" data-basepath=".." data-revision="1462371813525">
+    <div class="book"  data-level="10.1.2" data-basepath=".." data-revision="1462372597293">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1781,7 +1781,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_419">
+                    <section class="normal" id="section-gitbook_567">
                     
                         <h1 id="globaldata-">GlobalData 组件客户端</h1>
 <p><strong><code>(要求Workerman版本&gt;=3.3.0)</code></strong></p>
@@ -1803,7 +1803,8 @@
 
 <span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'tcp://0.0.0.0:6636'</span>);
 <span class="hljs-comment">// 进程启动时</span>
-<span class="hljs-variable">$worker</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+<span class="hljs-variable">$worker</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>
+{</span>
     <span class="hljs-comment">// 初始化一个全局的global data client</span>
     <span class="hljs-keyword">global</span> <span class="hljs-variable">$global</span>;
     <span class="hljs-variable">$global</span> = <span class="hljs-keyword">new</span> \GlobalData\Client(<span class="hljs-string">'127.0.0.1:2207'</span>);
