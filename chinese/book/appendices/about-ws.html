@@ -30,7 +30,7 @@
 
 
         
-    <div class="book"  data-level="12.7" data-basepath=".." data-revision="1463207597588">
+    <div class="book"  data-level="12.7" data-basepath=".." data-revision="1463209265140">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1779,11 +1779,15 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_37">
+                    <section class="normal" id="section-gitbook_537">
                     
                         <h1 id="ws-">ws协议</h1>
 <p>workerman可以作为客户端通过ws协议发起websocket连接，连到远程websocket服务器，实现双向通讯。</p>
-<p>示例：</p>
+<p>注意：ws协议只能通过AsyncTcpConnection作为客户端使用，不能作为websocket服务端监听协议。也就是说以下写法是错误的。</p>
+<pre><code class="lang-php"><span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'ws://0.0.0.0:8080'</span>);
+</code></pre>
+<p>如果想workerman作为websocket服务端，请使用<a href="/appendices/about-websocket.html">websocket协议</a>。</p>
+<p><strong>ws作为websocket客户端协议示例：</strong></p>
 <pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Connection</span>\<span class="hljs-title">AsyncTcpConnection</span>;
 <span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;

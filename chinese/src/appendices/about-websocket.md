@@ -47,5 +47,9 @@ $connection->websocketType = Websocket::BINARY_TYPE_ARRAYBUFFER;
 
 **注意**：如果没设置$connection->websocketType，则$connection->websocketType默认为BINARY_TYPE_BLOB（也就是utf8文本类型）。一般应用传输的都是utf8文本，例如传输的是json数据，所以不用手动设置$connection->websocketType。只有在传输二进制数据时（例如图片数据、protobuffer数据等）才要设置此属性为BINARY_TYPE_ARRAYBUFFER。
 
+## 把workerman作为Websocket客户端
+可以利用[AsyncTcpConnection](/worker-development/__construct.html)配合[ws协议](/appendices/about-ws.html)让workerman作为websocket客户端连接远程websocket服务端，完成双向实时通讯。
+
+
 
 

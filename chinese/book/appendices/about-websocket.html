@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="12.4" data-basepath=".." data-revision="1463207597588">
+    <div class="book"  data-level="12.4" data-basepath=".." data-revision="1463209265140">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1781,7 +1781,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_36">
+                    <section class="normal" id="section-gitbook_536">
                     
                         <h1 id="websocket-">WebSocket协议</h1>
 <p>WebSocket protocol 是HTML5一种新的协议。它实现了浏览器与服务器全双工通信</p>
@@ -1817,6 +1817,8 @@
 <span class="hljs-variable">$connection</span>-&gt;websocketType = Websocket::BINARY_TYPE_ARRAYBUFFER;
 </code></pre>
 <p><strong>注意</strong>：如果没设置$connection-&gt;websocketType，则$connection-&gt;websocketType默认为BINARY_TYPE_BLOB（也就是utf8文本类型）。一般应用传输的都是utf8文本，例如传输的是json数据，所以不用手动设置$connection-&gt;websocketType。只有在传输二进制数据时（例如图片数据、protobuffer数据等）才要设置此属性为BINARY_TYPE_ARRAYBUFFER。</p>
+<h2 id="-workerman-websocket-">把workerman作为Websocket客户端</h2>
+<p>可以利用<a href="/worker-development/__construct.html">AsyncTcpConnection</a>配合<a href="/appendices/about-ws.html">ws协议</a>让workerman作为websocket客户端连接远程websocket服务端，完成双向实时通讯。</p>
 
                     
                     </section>
