@@ -2,7 +2,9 @@
 ```php
 int \Workerman\Lib\Timer::add(float $time_interval, callable $callback [,$args = array(), bool $persistent = true])
 ```
-定时执行某个函数或者类方法
+定时执行某个函数或者类方法。
+
+注意：定时器是在当前进程中运行的，workerman中不会创建新的进程或者线程去运行定时器。
 
 ### 参数
 ``` time_interval ```
