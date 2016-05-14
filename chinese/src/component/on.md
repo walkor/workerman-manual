@@ -47,7 +47,7 @@ $worker->onWorkerStart = function($worker)
     Channel\Client::connect('127.0.0.1', 2206);
     // 订阅broadcast事件，并注册事件回调
     Channel\Client::on('broadcast', function($event_data)use($worker){
-        // 向所当前worker进程的所有客户端广播消息
+        // 向当前worker进程的所有客户端广播消息
         foreach($worker->connections as $connection)
         {
             $connection->send($event_data);

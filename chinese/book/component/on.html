@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="10.2.2.2" data-basepath=".." data-revision="1462372597293">
+    <div class="book"  data-level="10.2.2.2" data-basepath=".." data-revision="1463204596193">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1781,7 +1781,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_579">
+                    <section class="normal" id="section-gitbook_64">
                     
                         <h1 id="on">on</h1>
 <p><strong><code>(要求Workerman版本&gt;=3.3.0)</code></strong></p>
@@ -1818,7 +1818,7 @@
     Channel\Client::connect(<span class="hljs-string">'127.0.0.1'</span>, <span class="hljs-number">2206</span>);
     <span class="hljs-comment">// 订阅broadcast事件，并注册事件回调</span>
     Channel\Client::on(<span class="hljs-string">'broadcast'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$event_data</span>)</span><span class="hljs-title">use</span><span class="hljs-params">(<span class="hljs-variable">$worker</span>)</span>{</span>
-        <span class="hljs-comment">// 向所当前worker进程的所有客户端广播消息</span>
+        <span class="hljs-comment">// 向当前worker进程的所有客户端广播消息</span>
         <span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$worker</span>-&gt;connections <span class="hljs-keyword">as</span> <span class="hljs-variable">$connection</span>)
         {
             <span class="hljs-variable">$connection</span>-&gt;send(<span class="hljs-variable">$event_data</span>);

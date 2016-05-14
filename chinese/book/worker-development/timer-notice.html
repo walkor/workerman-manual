@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="8.4.3" data-basepath=".." data-revision="1462372597293">
+    <div class="book"  data-level="8.4.3" data-basepath=".." data-revision="1463204596193">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1781,15 +1781,15 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_659">
+                    <section class="normal" id="section-gitbook_144">
                     
                         <h1 id="-">注意事项</h1>
 <h2 id="-">定时器使用注意事项</h2>
-<p>1、只能在<code>onXXXX</code>回调中添加定时器。全局的定时器推荐在<code>onWorkerStart</code>回调中设置，针对某个连接的定时器推荐在<code>onConnect</code>中设置。除非业务需要，<code>onMessage</code>中一般不适合设置定时器。</p>
+<p>1、只能在<code>onXXXX</code>回调中添加定时器。全局的定时器推荐在<code>onWorkerStart</code>回调中设置，针对某个连接的定时器推荐在<code>onConnect</code>中设置。</p>
 <p>2、添加的定时任务在当前进程执行，如果任务很重（特别是涉及到网络IO的任务），可能会导致该进程阻塞，暂时无法处理其它业务。所以最好将耗时的任务放到单独的进程运行，例如建立一个/多个Worker进程运行</p>
 <p>3、当一个任务没有在预期的时间运行完，这时又到了下一个运行周期，则会等待当前任务完成才会运行。也就是说当前进程的任务都是串行执行的，如果是多进程则进程间的任务运行是并行的。</p>
-<p>4、要考虑到多进程设置了定时任务造成并发问题</p>
-<p>5、可能会有1毫秒左右的误差</p>
+<p>4、需要注意多进程设置了定时任务造成并发问题。</p>
+<p>5、可能会有1毫秒左右的误差。</p>
 
                     
                     </section>
