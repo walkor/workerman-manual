@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="11.14" data-basepath=".." data-revision="1464017279569">
+    <div class="book"  data-level="11.14" data-basepath=".." data-revision="1464279600238">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1781,15 +1781,17 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_131">
+                    <section class="normal" id="section-gitbook_351">
                     
                         <h1 id="-">如何实现异步任务</h1>
 <p><strong>问：</strong></p>
 <p>如何异步处理繁重的业务，避免主业务被长时间阻塞。例如我要给1000用户发送邮件，这个过程很慢，可能要阻塞数秒，这个过程中因为主流程被阻塞，会影响后续的请求，如何将这样的繁重任务交给其它进程异步处理。</p>
 <p><strong>答:</strong></p>
-<p>可以在本机或者其它服务器甚至服务器集群预先建立一些任务进程处理繁重的业务，任务进程数可以开多一些，例如cpu的10倍。</p>
+<p>可以在本机或者其它服务器甚至服务器集群预先建立一些任务进程处理繁重的业务，任务进程数可以开多一些，例如cpu的10倍，然后调用方利用AsyncTcpConnection将数据异步发送给这些任务进程异步处理，异步得到处理结果。</p>
 <p>任务进程服务端</p>
-<pre><code class="lang-php"><span class="hljs-comment">// task worker，使用Text协议</span>
+<pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+<span class="hljs-comment">// task worker，使用Text协议</span>
 <span class="hljs-variable">$task_worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'Text://0.0.0.0:12345'</span>);
 <span class="hljs-comment">// task进程数可以根据需要多开一些</span>
 <span class="hljs-variable">$task_worker</span>-&gt;count = <span class="hljs-number">100</span>;
@@ -1806,29 +1808,39 @@
 Worker::runAll();
 </code></pre>
 <p>在workerman中调用</p>
-<pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Connection</span>\<span class="hljs-title">AsyncTcpConnection</span>;
+<pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Connection</span>\<span class="hljs-title">AsyncTcpConnection</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
 
-....
+<span class="hljs-comment">// websocket服务</span>
+<span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'websocket://0.0.0.0:8080'</span>);
 
-<span class="hljs-comment">// 与远程task服务建立异步链接，ip为远程task服务的ip，如果是本机就是127.0.0.1，如果是集群就是lvs的ip</span>
-<span class="hljs-variable">$task_connection</span> = <span class="hljs-keyword">new</span> AsyncTcpConnection(<span class="hljs-string">'Text://ip:12345'</span>);
-<span class="hljs-comment">// 任务及参数数据</span>
-<span class="hljs-variable">$task_data</span> = <span class="hljs-keyword">array</span>(
-    <span class="hljs-string">'function'</span> =&gt; <span class="hljs-string">'send_mail'</span>,
-    <span class="hljs-string">'args'</span>       =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-string">'from'</span>=&gt;<span class="hljs-string">'xxx'</span>, <span class="hljs-string">'to'</span>=&gt;<span class="hljs-string">'xxx'</span>, <span class="hljs-string">'contents'</span>=&gt;<span class="hljs-string">'xxx'</span>),
-);
-<span class="hljs-comment">// 发送数据</span>
-<span class="hljs-variable">$task_connection</span>-&gt;send(json_encode(<span class="hljs-variable">$task_data</span>));
-<span class="hljs-comment">// 异步获得结果</span>
-<span class="hljs-variable">$task_connection</span>-&gt;onMessage = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$task_connection</span>, <span class="hljs-variable">$task_result</span>)</span>
+<span class="hljs-variable">$worker</span>-&gt;onMessage = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$ws_connection</span>, <span class="hljs-variable">$message</span>)</span>
 {</span>
-     <span class="hljs-comment">// 结果</span>
-     var_dump(<span class="hljs-variable">$task_result</span>);
-     <span class="hljs-comment">// 获得结果后记得关闭链接</span>
-     <span class="hljs-variable">$task_connection</span>-&gt;close();
-};
-<span class="hljs-comment">// 执行异步链接</span>
-<span class="hljs-variable">$task_connection</span>-&gt;connect();
+    <span class="hljs-comment">// 与远程task服务建立异步链接，ip为远程task服务的ip，如果是本机就是127.0.0.1，如果是集群就是lvs的ip</span>
+    <span class="hljs-variable">$task_connection</span> = <span class="hljs-keyword">new</span> AsyncTcpConnection(<span class="hljs-string">'Text://ip:12345'</span>);
+    <span class="hljs-comment">// 任务及参数数据</span>
+    <span class="hljs-variable">$task_data</span> = <span class="hljs-keyword">array</span>(
+        <span class="hljs-string">'function'</span> =&gt; <span class="hljs-string">'send_mail'</span>,
+        <span class="hljs-string">'args'</span>       =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-string">'from'</span>=&gt;<span class="hljs-string">'xxx'</span>, <span class="hljs-string">'to'</span>=&gt;<span class="hljs-string">'xxx'</span>, <span class="hljs-string">'contents'</span>=&gt;<span class="hljs-string">'xxx'</span>),
+    );
+    <span class="hljs-comment">// 发送数据</span>
+    <span class="hljs-variable">$task_connection</span>-&gt;send(json_encode(<span class="hljs-variable">$task_data</span>));
+    <span class="hljs-comment">// 异步获得结果</span>
+    <span class="hljs-variable">$task_connection</span>-&gt;onMessage = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$task_connection</span>, <span class="hljs-variable">$task_result</span>)</span><span class="hljs-title">use</span><span class="hljs-params">(<span class="hljs-variable">$ws_connection</span>)</span>
+    {</span>
+         <span class="hljs-comment">// 结果</span>
+         var_dump(<span class="hljs-variable">$task_result</span>);
+         <span class="hljs-comment">// 获得结果后记得关闭异步链接</span>
+         <span class="hljs-variable">$task_connection</span>-&gt;close();
+         <span class="hljs-comment">// 通知对应的websocket客户端任务完成</span>
+         <span class="hljs-variable">$ws_connection</span>-&gt;send(<span class="hljs-string">'task complete'</span>);
+    };
+    <span class="hljs-comment">// 执行异步链接</span>
+    <span class="hljs-variable">$task_connection</span>-&gt;connect();
+}
+
+Worker::runAll();
 </code></pre>
 <p>这样，繁重的任务交给本机或者其它服务器的进程去做，任务完成后会异步收到结果，业务进程就不会阻塞了。</p>
 
