@@ -42,7 +42,7 @@ $worker = new Worker('websocket://0.0.0.0:8080');
 $worker->onMessage = function($ws_connection, $message)
 {
     // 与远程task服务建立异步链接，ip为远程task服务的ip，如果是本机就是127.0.0.1，如果是集群就是lvs的ip
-    $task_connection = new AsyncTcpConnection('Text://ip:12345');
+    $task_connection = new AsyncTcpConnection('Text://127.0.0.1:12345');
     // 任务及参数数据
     $task_data = array(
         'function' => 'send_mail',
