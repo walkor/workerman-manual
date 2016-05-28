@@ -12,8 +12,9 @@ $worker->count = 1;
 // 新增加一个属性，用来保存uid到connection的映射
 $worker->uidConnections = array();
 // 当有客户端发来消息时执行的回调函数
-$worker->onMessage = function($connection, $data)use($worker)
+$worker->onMessage = function($connection, $data)
 {
+    global $worker;
     // 判断当前客户端是否已经验证,即是否设置了uid
     if(!isset($connection->uid))
     {
@@ -42,7 +43,7 @@ $worker->onMessage = function($connection, $data)use($worker)
 };
 
 // 当有客户端连接断开时
-$worker->onClose = function($connection)use($worker)
+$worker->onClose = function($connection)
 {
     global $worker;
     if(isset($connection->uid))

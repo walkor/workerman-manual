@@ -10,7 +10,7 @@ void Worker::listen(void)
 
 **注意：**
 
-不要在多个子进程中实例化相同端口的Worker。例如A进程创建了监听2016端口的Worker，那么B进程就不能再创建监听2016端口的Worker，会报```Address already in use```错误。例如下面的代码是无法运行的。
+不要在多个子进程中实例化相同端口的Worker。例如A进程创建了监听2016端口的Worker，那么B进程就不能再创建监听2016端口的Worker，否则会报```Address already in use```错误。例如下面的代码是无法运行的。
 
 ```php
 use Workerman\Worker;
@@ -112,7 +112,6 @@ $worker->onWorkerStart = function($worker)
     $inner_text_worker = new Worker('text://0.0.0.0:5678');
     $inner_text_worker->onMessage = function($connection, $buffer)
     {
-        global $worker;
         // $data数组格式，里面有uid，表示向那个uid的页面推送数据
         $data = json_decode($buffer, true);
         $uid = $data['uid'];
@@ -127,8 +126,9 @@ $worker->onWorkerStart = function($worker)
 // 新增加一个属性，用来保存uid到connection的映射
 $worker->uidConnections = array();
 // 当有客户端发来消息时执行的回调函数
-$worker->onMessage = function($connection, $data)use($worker)
+$worker->onMessage = function($connection, $data)
 {
+    global $worker;
     // 判断当前客户端是否已经验证,既是否设置了uid
     if(!isset($connection->uid))
     {
@@ -143,7 +143,7 @@ $worker->onMessage = function($connection, $data)use($worker)
 };
 
 // 当有客户端连接断开时
-$worker->onClose = function($connection)use($worker)
+$worker->onClose = function($connection)
 {
     global $worker;
     if(isset($connection->uid))

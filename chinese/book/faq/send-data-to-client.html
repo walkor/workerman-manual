@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="11.12" data-basepath=".." data-revision="1464279679679">
+    <div class="book"  data-level="11.12" data-basepath=".." data-revision="1464402338304">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1781,7 +1781,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_514">
+                    <section class="normal" id="section-gitbook_43">
                     
                         <h1 id="workerman-">WorkerMan中如何向某个特定客户端发送数据</h1>
 <p>使用worker来做服务器，没有用GatewayWorker，如何实现向指定用户推送消息？</p>
@@ -1795,8 +1795,9 @@
 <span class="hljs-comment">// 新增加一个属性，用来保存uid到connection的映射</span>
 <span class="hljs-variable">$worker</span>-&gt;uidConnections = <span class="hljs-keyword">array</span>();
 <span class="hljs-comment">// 当有客户端发来消息时执行的回调函数</span>
-<span class="hljs-variable">$worker</span>-&gt;onMessage = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>, <span class="hljs-variable">$data</span>)</span><span class="hljs-title">use</span><span class="hljs-params">(<span class="hljs-variable">$worker</span>)</span>
+<span class="hljs-variable">$worker</span>-&gt;onMessage = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>, <span class="hljs-variable">$data</span>)</span>
 {</span>
+    <span class="hljs-keyword">global</span> <span class="hljs-variable">$worker</span>;
     <span class="hljs-comment">// 判断当前客户端是否已经验证,即是否设置了uid</span>
     <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$connection</span>-&gt;uid))
     {
@@ -1825,7 +1826,7 @@
 };
 
 <span class="hljs-comment">// 当有客户端连接断开时</span>
-<span class="hljs-variable">$worker</span>-&gt;onClose = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>)</span><span class="hljs-title">use</span><span class="hljs-params">(<span class="hljs-variable">$worker</span>)</span>
+<span class="hljs-variable">$worker</span>-&gt;onClose = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>)</span>
 {</span>
     <span class="hljs-keyword">global</span> <span class="hljs-variable">$worker</span>;
     <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$connection</span>-&gt;uid))
