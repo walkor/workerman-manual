@@ -1,13 +1,6 @@
-# connections
-## 说明:
-```php
-array Worker::$connections
-```
+# 如何广播数据
 
-此属性中存储了**当前进程**的所有的客户端连接，这在广播时非常有用。
-
-
-## 范例
+## 范例（定时广播）
 
 ```php
 use Workerman\Worker;
@@ -27,6 +20,26 @@ $worker->onWorkerStart = function($worker)
             $connection->send(time());
         }
     });
+};
+// 运行worker
+Worker::runAll();
+```
+
+## 范例（群聊）
+
+```php
+use Workerman\Worker;
+use Workerman\Lib\Timer;
+require_once './Workerman/Autoloader.php';
+
+$worker = new Worker('text://0.0.0.0:2020');
+// 客户端发来消息时，广播给其它用户
+$worker->onMessage = function($connection, $message)
+{
+    foreach($worker->connections as $connection)
+    {
+        $connection->send($message);
+    }
 };
 // 运行worker
 Worker::runAll();
