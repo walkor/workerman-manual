@@ -24,7 +24,7 @@ $http_worker->onMessage = function($connection, $data)
 Worker::runAll();
 ```
 
-**运行**
+**命令行运行**
 ```shell
 php http_test.php start
 
@@ -62,7 +62,7 @@ $ws_worker->onMessage = function($connection, $data)
 Worker::runAll();
 ```
 
-**运行**
+**命令行运行**
 ```shell
 php ws_test.php start
 
@@ -110,7 +110,7 @@ $tcp_worker->onMessage = function($connection, $data)
 Worker::runAll();
 ```
 
-**运行**
+**命令行运行**
 
 ```shell
 php tcp_test.php start
