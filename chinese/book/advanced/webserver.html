@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="8.5" data-basepath=".." data-revision="1467733194628">
+    <div class="book"  data-level="8.5" data-basepath=".." data-revision="1468124002438">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1792,7 +1792,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_33">
+                    <section class="normal" id="section-gitbook_150">
                     
                         <h1 id="webserver">WebServer</h1>
 <p>WorkerMan自带了一个简单的Web服务器，同样也是基于Worker实现的。文件位置在Workerman/WebServer.php。这个WebServer开发的目的主要是为了方便运行一些简单的Web程序，例如workerman-todpole等web界面程序。</p>
@@ -1806,6 +1806,7 @@
 <span class="hljs-variable">$webserver</span> = <span class="hljs-keyword">new</span> WebServer(<span class="hljs-string">'http://0.0.0.0:8080'</span>);
 <span class="hljs-comment">// 类似nginx配置中的root选项，添加域名与网站根目录的关联，可设置多个域名多个目录</span>
 <span class="hljs-variable">$webserver</span>-&gt;addRoot(<span class="hljs-string">'www.example.com'</span>, <span class="hljs-string">'/your/path/of/web/'</span>);
+<span class="hljs-variable">$webserver</span>-&gt;addRoot(<span class="hljs-string">'blog.example.com'</span>, <span class="hljs-string">'/your/path/of/blog/'</span>);
 <span class="hljs-comment">// 设置开启多少进程</span>
 <span class="hljs-variable">$webserver</span>-&gt;count = <span class="hljs-number">4</span>;
 
@@ -1824,7 +1825,7 @@ Worker::runAll();
 <p>WorkerMan的WebServer默认使用index.php作为Web入口文件，例如配置<code>$webserver-&gt;setRoot(&#39;www.example.com&#39;, &#39;/home/www/&#39;);</code>，则www.example.com的入口文件为<code>/home/www/index.php</code>。当url访问的文件（包括静态文件和PHP文件）不存在时，会自动调用入口文件index.php</p>
 <h3 id="6-">6、可用的超全局变量</h3>
 <p>可用的超全局变量有<code>$_SERVER、$_GET、$_POST、$_FILES、$_COOKIE、$_SESSION、$_REQUEST</code>。</p>
-<p>其中HTTP文件上传$_FILES结构类似</p>
+<p>注意HTTP文件上传中，WorkerMan的<code>$_FILES</code>结构与传统PHP中的<code>$_FILES</code>结构不同，WorkerMan中<code>$_FILES</code>结构类似</p>
 <pre><code class="lang-php">var_export(<span class="hljs-variable">$_FILES</span>);
 <span class="hljs-keyword">array</span>(
     <span class="hljs-number">0</span> =&gt; <span class="hljs-keyword">array</span>(
@@ -1847,6 +1848,7 @@ Worker::runAll();
     file_put_contents(<span class="hljs-string">'/tmp/'</span>.<span class="hljs-variable">$file_info</span>[<span class="hljs-string">'file_name'</span>], <span class="hljs-variable">$file_info</span>[<span class="hljs-string">'file_data'</span>]);
 }
 </code></pre>
+<p>WorkerMan中无法使用<code>move_uploaded_file() is_uploaded_file()</code>这些函数。</p>
 <h3 id="7-onworkerstart-onworkerstop-">7、可以设置onWorkerStart、onWorkerStop回调</h3>
 <p>可以设置onWorkerStart、onWorkerStop回调，做进程启动时全局初始化及进程退出（stop等命令）数据保存清理工作</p>
 

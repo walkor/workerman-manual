@@ -15,6 +15,7 @@ require_once './Workerman/Autoloader.php';
 $webserver = new WebServer('http://0.0.0.0:8080');
 // 类似nginx配置中的root选项，添加域名与网站根目录的关联，可设置多个域名多个目录
 $webserver->addRoot('www.example.com', '/your/path/of/web/');
+$webserver->addRoot('blog.example.com', '/your/path/of/blog/');
 // 设置开启多少进程
 $webserver->count = 4;
 
@@ -41,7 +42,7 @@ WorkerMan的WebServer默认使用index.php作为Web入口文件，例如配置``
 ### 6、可用的超全局变量
 可用的超全局变量有```$_SERVER、$_GET、$_POST、$_FILES、$_COOKIE、$_SESSION、$_REQUEST```。
 
-其中HTTP文件上传$_FILES结构类似
+注意HTTP文件上传中，WorkerMan的```$_FILES```结构与传统PHP中的```$_FILES```结构不同，WorkerMan中```$_FILES```结构类似
 ```php
 var_export($_FILES);
 array(
@@ -69,6 +70,8 @@ foreach($_FILES as $file_info)
 }
 
 ```
+
+WorkerMan中无法使用```move_uploaded_file() is_uploaded_file()```这些函数。
 
 ### 7、可以设置onWorkerStart、onWorkerStop回调
 可以设置onWorkerStart、onWorkerStop回调，做进程启动时全局初始化及进程退出（stop等命令）数据保存清理工作
