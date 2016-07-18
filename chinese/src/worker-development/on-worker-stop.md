@@ -12,6 +12,9 @@ callback Worker::$onWorkerStop
 
 即Worker对象
 
+## 注意
+如果业务代码发生致命错误(Fatal Error)或者进程被强行kill掉则不会触发onWorkerStop回调。
+
 ## 范例
 
 ```php

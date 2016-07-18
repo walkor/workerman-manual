@@ -1,21 +1,26 @@
-# __construct
+# __construct 方法
 ```php
 void \Workerman\Connection\AsyncTcpConnection::__construct(string $remote_address)
 ```
-创建一个异步连接对象
+创建一个异步连接对象。
+
+AsyncTcpConnection可以让Workerman作为客户端向远程服务端发起异步连接，并通过send接口和onMessage回调异步发送和处理连接上的数据。
 
 ### 参数
 ``` remote_address ```
 
 连接的地址，例如<br>
 ``` tcp://www.baidu.com:80 ```<br>
+``` ssl://www.baidu.com:443 ```<br>
 ``` ws://echo.websocket.org:80 ```<br>
 ``` frame://192.168.1.1:8080 ```<br>
 ``` text://192.168.1.1:8080 ```<br>
 
 注意：
 
-目前AsyncTcpConnection支持的协议有[tcp](http://baike.baidu.com/subview/32754/8048820.htm)、[ws](/appendices/about-ws.html)、[frame](/appendices/about-frame.html)、[text](/appendices/about-text.html)。
+目前AsyncTcpConnection支持的协议有[tcp](http://baike.baidu.com/subview/32754/8048820.htm)、[ssl](http://baike.baidu.com/view/525499.htm)、[ws](/appendices/about-ws.html)、[frame](/appendices/about-frame.html)、[text](/appendices/about-text.html)。
+
+其中[ssl](http://baike.baidu.com/view/525499.htm)要求Workerman>=3.3.4，并安装[openssl扩展](http://php.net/manual/zh/book.openssl.php)。
 
 目前不支持[http](http://baike.baidu.com/view/9472.htm)协议的AsyncTcpConnection。
 

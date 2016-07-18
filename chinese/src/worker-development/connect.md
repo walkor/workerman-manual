@@ -1,4 +1,4 @@
-# connect
+# connect 方法
 ```php
 void \Workerman\Connection\AsyncTcpConnection::connect()
 ```

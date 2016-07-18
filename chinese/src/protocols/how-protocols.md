@@ -7,7 +7,7 @@
 ## 一个例子
 
 ### 协议定义
-例如区分数据边界的标识为换行符"\n"（注意请求数据本身内部不能包含换行符），数据格式为Json，例如下面是一个符合这个规则的请求包。
+这里假设区分数据边界的标识为换行符"\n"（注意请求数据本身内部不能包含换行符），数据格式为Json，例如下面是一个符合这个规则的请求包。
 
 <pre>
 {"type":"message","content":"hello"}
@@ -137,6 +137,9 @@ interface ProtocolInterface
     public static function encode($data, ConnectionInterface $connection);
 }
 ```
+
+## 注意：
+Workerman中没有严格要求协议类必须基于ProtocolInterface实现，实际上协议类只要类包含了input、encode、decode三个静态方法即可。
 
 
 
