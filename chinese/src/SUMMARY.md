@@ -132,6 +132,7 @@
    * [为Flash开启843端口](faq/843-port-for-flash-socket-policy-file.md)
    * [如何广播数据](faq/how-to-broadcast.md)
    * [心跳](faq/heartbeat.md)
+   * [如何建立udp服务](faq/how-to-create-udp-service.md)
 * [附录](appendices/README.md)
    * [压力测试](appendices/stress-test.md)
    * [安装扩展](appendices/install-extension.md)
