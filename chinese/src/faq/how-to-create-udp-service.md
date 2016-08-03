@@ -11,4 +11,4 @@ $udp_worker->onMessage = function($connection, $data){
 Worker::runAll();
 ```
 
-注意：因为udp是连接的，所以udp服务没有onConnect和onClose事件。
+注意：因为udp是无连接的，所以udp服务没有onConnect和onClose事件。
