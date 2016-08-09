@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>附录 | WorkerMan 3.x 手册</title>
+        <title>监听ipv6地址 | WorkerMan 3.x 手册</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 0.5.2">
@@ -17,10 +17,10 @@
     
     
     
-    <link rel="next" href="../appendices/stress-test.html" />
+    <link rel="next" href="../appendices/README.html" />
     
     
-    <link rel="prev" href="../faq/ipv6.html" />
+    <link rel="prev" href="../faq/how-to-create-udp-service.html" />
     
 
         
@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="12" data-basepath=".." data-revision="1470756322703">
+    <div class="book"  data-level="11.29" data-basepath=".." data-revision="1470756322703">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1541,7 +1541,7 @@
             <div class="page-wrapper" tabindex="-1">
                 <div class="book-progress">
     <div class="bar">
-        <div class="inner" style="width: 95.07042253521126%;min-width: 94.36619718309859%;"></div>
+        <div class="inner" style="width: 89.43661971830986%;min-width: 88.73239436619718%;"></div>
     </div>
     <div class="chapters">
     
@@ -1801,21 +1801,21 @@
     
         <a href="../faq/ipv6.html" title="监听ipv6地址" class="chapter done " data-progress="11.29" style="left: 89.43661971830986%;"></a>
     
-        <a href="../faq/running-concurent.html" title="运行多个WorkerMan" class="chapter done " data-progress="11.3" style="left: 90.14084507042253%;"></a>
+        <a href="../faq/running-concurent.html" title="运行多个WorkerMan" class="chapter  " data-progress="11.3" style="left: 90.14084507042253%;"></a>
     
-        <a href="../faq/protocols.html" title="支持哪些协议" class="chapter done " data-progress="11.4" style="left: 90.84507042253522%;"></a>
+        <a href="../faq/protocols.html" title="支持哪些协议" class="chapter  " data-progress="11.4" style="left: 90.84507042253522%;"></a>
     
-        <a href="../faq/processes-count.html" title="如何设置进程数" class="chapter done " data-progress="11.5" style="left: 91.54929577464789%;"></a>
+        <a href="../faq/processes-count.html" title="如何设置进程数" class="chapter  " data-progress="11.5" style="left: 91.54929577464789%;"></a>
     
-        <a href="../faq/connection-status.html" title="查看当前客户端连接数" class="chapter done " data-progress="11.6" style="left: 92.25352112676056%;"></a>
+        <a href="../faq/connection-status.html" title="查看当前客户端连接数" class="chapter  " data-progress="11.6" style="left: 92.25352112676056%;"></a>
     
-        <a href="../faq/persistent-data-and-resources.html" title="对象和资源的持久化" class="chapter done " data-progress="11.7" style="left: 92.95774647887323%;"></a>
+        <a href="../faq/persistent-data-and-resources.html" title="对象和资源的持久化" class="chapter  " data-progress="11.7" style="left: 92.95774647887323%;"></a>
     
-        <a href="../faq/demo-not-work.html" title="例子无法工作" class="chapter done " data-progress="11.8" style="left: 93.66197183098592%;"></a>
+        <a href="../faq/demo-not-work.html" title="例子无法工作" class="chapter  " data-progress="11.8" style="left: 93.66197183098592%;"></a>
     
-        <a href="../faq/workerman-start-fail.html" title="启动失败" class="chapter done " data-progress="11.9" style="left: 94.36619718309859%;"></a>
+        <a href="../faq/workerman-start-fail.html" title="启动失败" class="chapter  " data-progress="11.9" style="left: 94.36619718309859%;"></a>
     
-        <a href="../appendices/README.html" title="附录" class="chapter done " data-progress="12" style="left: 95.07042253521126%;"></a>
+        <a href="../appendices/README.html" title="附录" class="chapter  " data-progress="12" style="left: 95.07042253521126%;"></a>
     
         <a href="../appendices/stress-test.html" title="压力测试" class="chapter  " data-progress="12.1" style="left: 95.77464788732394%;"></a>
     
@@ -1836,9 +1836,15 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_240">
+                    <section class="normal" id="section-gitbook_220">
                     
-                        <h1 id="-">附录</h1>
+                        <h1 id="ipv6">ipv6</h1>
+<p>问：如何让客户端即能通过ipv4地址访问，也能通过ipv6地址访问?</p>
+<p>答：在初始化容器的时候监听地址写<code>[::]</code>即可。</p>
+<p>例如</p>
+<pre><code class="lang-php"><span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'http://[::]:8080'</span>);
+<span class="hljs-variable">$gateway</span> = <span class="hljs-keyword">new</span> Gateway(<span class="hljs-string">'websocket://[::]:8081'</span>);
+</code></pre>
 
                     
                     </section>
@@ -1848,10 +1854,10 @@
         </div>
 
         
-        <a href="../faq/ipv6.html" class="navigation navigation-prev " aria-label="Previous page: 监听ipv6地址"><i class="fa fa-angle-left"></i></a>
+        <a href="../faq/how-to-create-udp-service.html" class="navigation navigation-prev " aria-label="Previous page: 如何建立udp服务"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../appendices/stress-test.html" class="navigation navigation-next " aria-label="Next page: 压力测试"><i class="fa fa-angle-right"></i></a>
+        <a href="../appendices/README.html" class="navigation navigation-next " aria-label="Next page: 附录"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
