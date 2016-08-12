@@ -15,8 +15,8 @@ boolean
 
 ### 示例
 ```php
-use \Workerman\Worker;
 require_once './Workerman/Autoloader.php';
+use \Workerman\Worker;
 use \Workerman\Lib\Timer;
 
 $task = new Worker();
@@ -34,6 +34,32 @@ $task->onWorkerStart = function($task)
     {
         Timer::del($timer_id);
     }, array($timer_id), false);
+};
+
+// 运行worker
+Worker::runAll();
+```
+
+### 实例(定时器回调中删除当前定时器)
+```php
+require_once './Workerman/Autoloader.php';
+use \Workerman\Worker;
+use \Workerman\Lib\Timer;
+
+$task = new Worker();
+$task->onWorkerStart = function($task)
+{
+    // 注意，回调里面使用当前定时器id必须使用引用(&)的方式引入
+    $timer_id = Timer::add(1, function()use(&$timer_id)
+    {
+        static $i = 0;
+        echo $i++."\n";
+        // 运行10次后删除定时器
+        if($i === 10)
+        {
+            Timer::del($timer_id);
+        }
+    });
 };
 
 // 运行worker

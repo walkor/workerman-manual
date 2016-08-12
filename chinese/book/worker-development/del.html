@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="8.4.2" data-basepath=".." data-revision="1470756322703">
+    <div class="book"  data-level="8.4.2" data-basepath=".." data-revision="1471011951656">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1836,7 +1836,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_308">
+                    <section class="normal" id="section-gitbook_361">
                     
                         <h1 id="del">del</h1>
 <pre><code class="lang-php">boolean \Workerman\Lib\Timer::del(int <span class="hljs-variable">$timer_id</span>)
@@ -1848,8 +1848,8 @@
 <h3 id="-">返回值</h3>
 <p>boolean</p>
 <h3 id="-">示例</h3>
-<pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
-<span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+<pre><code class="lang-php"><span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+<span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
 
 <span class="hljs-variable">$task</span> = <span class="hljs-keyword">new</span> Worker();
@@ -1867,6 +1867,30 @@
     {</span>
         Timer::del(<span class="hljs-variable">$timer_id</span>);
     }, <span class="hljs-keyword">array</span>(<span class="hljs-variable">$timer_id</span>), <span class="hljs-keyword">false</span>);
+};
+
+<span class="hljs-comment">// 运行worker</span>
+Worker::runAll();
+</code></pre>
+<h3 id="-">实例(定时器回调中删除当前定时器)</h3>
+<pre><code class="lang-php"><span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+<span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
+
+<span class="hljs-variable">$task</span> = <span class="hljs-keyword">new</span> Worker();
+<span class="hljs-variable">$task</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$task</span>)</span>
+{</span>
+    <span class="hljs-comment">// 注意，回调里面使用当前定时器id必须使用引用(&amp;)的方式引入</span>
+    <span class="hljs-variable">$timer_id</span> = Timer::add(<span class="hljs-number">1</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span><span class="hljs-title">use</span><span class="hljs-params">(&amp;<span class="hljs-variable">$timer_id</span>)</span>
+    {</span>
+        <span class="hljs-keyword">static</span> <span class="hljs-variable">$i</span> = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-variable">$i</span>++.<span class="hljs-string">"\n"</span>;
+        <span class="hljs-comment">// 运行10次后删除定时器</span>
+        <span class="hljs-keyword">if</span>(<span class="hljs-variable">$i</span> === <span class="hljs-number">10</span>)
+        {
+            Timer::del(<span class="hljs-variable">$timer_id</span>);
+        }
+    });
 };
 
 <span class="hljs-comment">// 运行worker</span>
