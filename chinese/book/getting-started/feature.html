@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="4.1" data-basepath=".." data-revision="1471415679439">
+    <div class="book"  data-level="4.1" data-basepath=".." data-revision="1471416221256">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1836,7 +1836,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_286">
+                    <section class="normal" id="section-gitbook_432">
                     
                         <h1 id="workerman-">WorkerMan的特性</h1>
 <h3 id="1-php-">1、纯PHP开发</h3>
@@ -1849,13 +1849,12 @@
 <p>很多时候需要PHP应用程序要与客户端保持长连接，比如聊天室、游戏等，但是传统的PHP容器（apache、nginx、php-fpm）很难做到这一点。 使用WorkerMan，只要服务端业务不主动调用关闭连接接口，便可以使用PHP长连接。WorkerMan单个进程可以支持上万的并发连接，多进程则支持数十万的甚至百万并发连接。</p>
 <h3 id="5-">5、支持各种应用层协议</h3>
 <p>WorkerMan接口上支持各种应用层协议，包括自定义协议。在WorkerMan中更换协议同样非常简单，同样只是配置一个字段，协议自动切换，业务代码零改动，甚至可以开启多个不同协议的端口，满足不同的客户端需求。</p>
-<p>WorkerMan相关应用中已经用到的协议有统计监控系统（HTTP协议、自定义Statistic二进制协议）、 WorkerMan-chat\WorkerMan-Todpole\WorkerMan-Flapyy-Bird（Websocket协议）、WorkerMan-thrift-rcp（Thrift协议）、WorkerMan-json-rpc（自定义json协议）。以上应用中的协议可以拿来直接用， 或者开发者选择使用自己的协议。</p>
 <h3 id="6-">6、支持高并发</h3>
 <p>WorkerMan支持Libevent事件轮询库（需要安装Libevent扩展）， 使用Libevent在高并发时性能非常卓越，如果没有安装Libevent则使用PHP内置的Select相关系统调用，性能也同样非常强悍。</p>
 <h3 id="7-">7、支持服务平滑重启</h3>
 <p>当需要重启服务时（例如发布版本），我们不希望正在处理用户请求的进程被立刻终止，更不希望重启的那一刻导致客户端通讯失败。WorkerMan提供了平滑重启功能，能够保障服务平滑升级，不影响客户端的使用。</p>
 <h3 id="8-">8、支持文件更新检测及自动加载</h3>
-<p>在开发过程中，我们希望在我们改动代码后能够立刻生效，以便查看结果。WorkerMan提供了文件检测及自动加载组件，只要文件有更新，WorkerMan会自动运行reload，以便加载新的文件，使之生效。</p>
+<p>在开发过程中，我们希望在我们改动代码后能够立刻生效，以便查看结果。WorkerMan提供了<a href="/component/file-monitor.html">文件检测及自动加载组件</a>，只要文件有更新，WorkerMan会自动运行reload，以便加载新的文件，使之生效。</p>
 <h3 id="9-">9、支持以指定用户运行子进程</h3>
 <p>因为子进程是实际处理用户请求的进程，为了安全考虑，子进程不能有太高的权限，所以WorkerMan支持设置子运行进程运行的用户，使你的服务器更加安全。</p>
 <h3 id="10-">10、支持对象或者资源永久保持</h3>
