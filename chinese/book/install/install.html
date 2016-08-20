@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="5.2" data-basepath=".." data-revision="1471416221256">
+    <div class="book"  data-level="5.2" data-basepath=".." data-revision="1471667817031">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1836,7 +1836,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_435">
+                    <section class="normal" id="section-gitbook_85">
                     
                         <h1 id="-">安装</h1>
 <p>WorkerMan实际上没有安装脚本，如果你的PHP环境已经装好，只需要把WorkerMan源代码或者demo下载下来即可运行。</p>
@@ -1848,7 +1848,7 @@
 <h2 id="-github-">通过Github安装</h2>
 <h3 id="centos-">centos系统安装教程</h3>
 <p>1、命令行运行（此步骤包含了安装php-cli主程序以及pcntl、posix、libevent扩展及github程序）</p>
-<pre><code class="lang-shell">yum install php-cli php-process git gcc php-devel php-pear libevent-devel
+<pre><code class="lang-shell">yum install php-cli php-process git gcc php-devel php-pear libevent-devel -y
 </code></pre>
 <p>2、命令行运行（此步骤是通过pecl安装libevent扩展，如果失败请尝试按照安装扩展 一节中使用源码phpize的方式安装。注意libevent扩展不是必须的，此步骤可以跳过）</p>
 <pre><code class="lang-shell">pecl install channel://pecl.php.net/libevent-0.1.0
@@ -1864,7 +1864,7 @@
 或者从<a href="http://www.workerman.net/" target="_blank">官网</a>下载打包好的demo运行。</p>
 <h3 id="debian-ubuntu-">debian/ubuntu系统安装教程</h3>
 <p>1、命令行运行（此步骤包含了安装php-cli主程序、libevent扩展及github程序）</p>
-<pre><code class="lang-shell">apt-get install php5-cli git gcc php-pear php5-dev libevent-dev
+<pre><code class="lang-shell">apt-get install php5-cli git gcc php-pear php5-dev libevent-dev -y
 </code></pre>
 <p>2、命令行运行（此步骤是通过pecl安装libevent扩展，如果失败请尝试按照 4.1 环境要求 一节中使用源码phpize的方式安装。注意libevent扩展不是必须的，此步骤可以跳过）</p>
 <pre><code class="lang-shell">pecl install channel://pecl.php.net/libevent-0.1.0

@@ -17,7 +17,7 @@ WorkerMan实际上没有安装脚本，如果你的PHP环境已经装好，只�
 
 1、命令行运行（此步骤包含了安装php-cli主程序以及pcntl、posix、libevent扩展及github程序）
 ```shell
-yum install php-cli php-process git gcc php-devel php-pear libevent-devel
+yum install php-cli php-process git gcc php-devel php-pear libevent-devel -y
 ```
 
 
@@ -47,7 +47,7 @@ git clone https://github.com/walkor/Workerman
 
 1、命令行运行（此步骤包含了安装php-cli主程序、libevent扩展及github程序）
 ```shell
-apt-get install php5-cli git gcc php-pear php5-dev libevent-dev
+apt-get install php5-cli git gcc php-pear php5-dev libevent-dev -y
 ```
 
 
