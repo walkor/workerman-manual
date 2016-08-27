@@ -19,7 +19,7 @@ windows用户需要使用windows版本的workerman，windows版本不依赖任�
 
 1、命令行运行（此步骤包含了安装php-cli主程序以及pcntl、posix、libevent库及git程序）
 ```shell
-yum install php-cli php-process git gcc php-devel php-pear libevent-devel libcurl3-openssl-dev -y
+yum install php-cli php-process git gcc php-devel php-pear libevent-devel -y
 ```
 
 
@@ -33,7 +33,7 @@ pecl install event
 ```shell
 echo extension=event.so > /etc/php.d/event.ini
 ```
-如果有安装提示一直按回车即可
+注意提示：```Include libevent OpenSSL support [yes] :``` 时输入```no```回车，其它直接敲回车就行
 
 
 4、命令行运行（此步骤是通过github下载WorkerMan主程序）
@@ -49,7 +49,7 @@ git clone https://github.com/walkor/Workerman
 
 1、命令行运行（此步骤包含了安装php-cli主程序、libevent库及git程序）
 ```shell
-apt-get install php5-cli git gcc php-pear php5-dev libevent-dev openssl openssl-devel -y
+apt-get install php5-cli git gcc php-pear php5-dev libevent-dev -y
 ```
 
 
@@ -57,7 +57,7 @@ apt-get install php5-cli git gcc php-pear php5-dev libevent-dev openssl openssl-
 ```shell
 pecl install event
 ```
-　  如果有安装提示一直按回车即可
+注意提示：```Include libevent OpenSSL support [yes] :``` 时输入```no```回车，其它直接敲回车就行
 
 
 3、命令行运行（此步骤是配置Event扩展的ini配置，如果不安装Event扩展此步骤跳过）
