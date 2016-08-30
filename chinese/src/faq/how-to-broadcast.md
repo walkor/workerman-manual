@@ -34,7 +34,7 @@ require_once './Workerman/Autoloader.php';
 
 $worker = new Worker('text://0.0.0.0:2020');
 // 客户端发来消息时，广播给其它用户
-$worker->onMessage = function($connection, $message)
+$worker->onMessage = function($connection, $message)use($worker)
 {
     foreach($worker->connections as $connection)
     {

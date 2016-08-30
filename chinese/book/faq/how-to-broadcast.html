@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="11.26" data-basepath=".." data-revision="1472311120358">
+    <div class="book"  data-level="11.26" data-basepath=".." data-revision="1472530729634">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1836,7 +1836,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_695">
+                    <section class="normal" id="section-gitbook_24">
                     
                         <h1 id="-">如何广播数据</h1>
 <h2 id="-">范例（定时广播）</h2>
@@ -1868,7 +1868,7 @@ Worker::runAll();
 
 <span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'text://0.0.0.0:2020'</span>);
 <span class="hljs-comment">// 客户端发来消息时，广播给其它用户</span>
-<span class="hljs-variable">$worker</span>-&gt;onMessage = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>, <span class="hljs-variable">$message</span>)</span>
+<span class="hljs-variable">$worker</span>-&gt;onMessage = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>, <span class="hljs-variable">$message</span>)</span><span class="hljs-title">use</span><span class="hljs-params">(<span class="hljs-variable">$worker</span>)</span>
 {</span>
     <span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$worker</span>-&gt;connections <span class="hljs-keyword">as</span> <span class="hljs-variable">$connection</span>)
     {
