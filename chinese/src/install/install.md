@@ -27,13 +27,13 @@ yum install php-cli php-process git gcc php-devel php-pear libevent-devel -y
 ```shell
 pecl install event
 ```
+注意提示：```Include libevent OpenSSL support [yes] :``` 时输入```no```回车，其它直接敲回车就行
 
 
 3、命令行运行（此步骤是配置Event扩展的ini配置，如果不安装Event扩展此步骤跳过）
 ```shell
 echo extension=event.so > /etc/php.d/event.ini
 ```
-注意提示：```Include libevent OpenSSL support [yes] :``` 时输入```no```回车，其它直接敲回车就行
 
 
 4、命令行运行（此步骤是通过github下载WorkerMan主程序）

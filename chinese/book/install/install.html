@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="5.2" data-basepath=".." data-revision="1472700856602">
+    <div class="book"  data-level="5.2" data-basepath=".." data-revision="1472709573913">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1836,7 +1836,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_88">
+                    <section class="normal" id="section-gitbook_237">
                     
                         <h1 id="-">安装</h1>
 <p>WorkerMan实际上没有安装脚本，如果你的PHP环境已经装好，只需要把WorkerMan源代码或者demo下载下来即可运行。</p>
@@ -1854,10 +1854,10 @@
 <p>2、命令行运行（此步骤是通过pecl安装Event扩展。注意Event扩展不是必须的，开发环境或者并发连接数不超过1000的此步骤可以跳过）</p>
 <pre><code class="lang-shell">pecl install event
 </code></pre>
+<p>注意提示：<code>Include libevent OpenSSL support [yes] :</code> 时输入<code>no</code>回车，其它直接敲回车就行</p>
 <p>3、命令行运行（此步骤是配置Event扩展的ini配置，如果不安装Event扩展此步骤跳过）</p>
 <pre><code class="lang-shell">echo extension=event.so &gt; /etc/php.d/event.ini
 </code></pre>
-<p>注意提示：<code>Include libevent OpenSSL support [yes] :</code> 时输入<code>no</code>回车，其它直接敲回车就行</p>
 <p>4、命令行运行（此步骤是通过github下载WorkerMan主程序）</p>
 <pre><code class="lang-shell">git clone https://github.com/walkor/Workerman
 </code></pre>
