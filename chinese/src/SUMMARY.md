@@ -114,6 +114,7 @@
    * [对象和资源的持久化](faq/persistent-data-and-resources.md)
    * [例子无法工作](faq/demo-not-work.md)
    * [启动失败](faq/workerman-start-fail.md)
+   * [停止失败](faq/stop-fail.md)
    * [支持多少并发](faq/how-many-connections.md)
    * [更改代码后不生效](faq/change-code-not-work.md)
    * [向某个客户端发送数据](faq/send-data-to-client.md)
