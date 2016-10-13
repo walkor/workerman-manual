@@ -75,13 +75,32 @@ git clone https://github.com/walkor/Workerman
 或者从[官网](http://www.workerman.net/)下载打包好的demo运行。
 
 ### mac os 系统安装教程
-mac系统自带PHP，但是可能缺少pcntl扩展。
+**方法1：**mac系统自带PHP，但是可能缺少```pcntl```扩展。
 
-1、参考手册[附录-安装扩展](http://doc3.workerman.net/appendices/install-extension.html)一节中方法三源码编译安装pcntl扩展。
+1、参考手册[附录-安装扩展](http://doc3.workerman.net/appendices/install-extension.html)一节中方法三源码编译安装```pcntl```扩展。
 
-2、参考手册[附录-安装扩展](http://doc3.workerman.net/appendices/install-extension.html)一节中方法四利用phpize安装Event扩展（可省略）。
+2、参考手册[附录-安装扩展](http://doc3.workerman.net/appendices/install-extension.html)一节中方法四利用phpize安装```Event```扩展（可省略）。
 
 3、通过http://www.workerman.net/download/workermanzip 下载WorkerMan主程序，或者到[官网](http://www.workerman.net/)下载例子运行。
+
+**方法二：**通过```brew```命令安装php及对应扩展
+
+1、命令行运行以下命令安装```brew```工具(如果已经安装过```brew```可以跳过此步骤)
+```
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+
+2、命令行运行以下命令安装```php7```
+```
+brew install php70
+```
+
+3、命令行运行以下命令安装```event```扩展
+```
+brew install php70-event
+```
+
+5、通过http://www.workerman.net/download/workermanzip 下载WorkerMan主程序，或者到[官网](http://www.workerman.net/)下载例子运行
 
 
 ## Event扩展说明
