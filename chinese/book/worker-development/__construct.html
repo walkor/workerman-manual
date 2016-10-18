@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="8.3.1" data-basepath=".." data-revision="1476345538460">
+    <div class="book"  data-level="8.3.1" data-basepath=".." data-revision="1476802351700">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1858,29 +1858,33 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_778">
+                    <section class="normal" id="section-gitbook_1171">
                     
                         <h1 id="__construct-">__construct 方法</h1>
-<pre><code class="lang-php">void \Workerman\Connection\AsyncTcpConnection::__construct(string <span class="hljs-variable">$remote_address</span>)
+<pre><code class="lang-php">void \Workerman\Connection\AsyncTcpConnection::__construct(string <span class="hljs-variable">$remote_address</span>, <span class="hljs-variable">$context_option</span> = <span class="hljs-keyword">null</span>)
 </code></pre>
 <p>创建一个异步连接对象。</p>
 <p>AsyncTcpConnection可以让Workerman作为客户端向远程服务端发起异步连接，并通过send接口和onMessage回调异步发送和处理连接上的数据。</p>
-<h3 id="-">参数</h3>
-<p><code>remote_address</code></p>
+<h2 id="-">参数</h2>
+<p>参数:<code>remote_address</code></p>
 <p>连接的地址，例如<br>
 <code>tcp://www.baidu.com:80</code><br>
 <code>ssl://www.baidu.com:443</code><br>
 <code>ws://echo.websocket.org:80</code><br>
 <code>frame://192.168.1.1:8080</code><br>
 <code>text://192.168.1.1:8080</code><br></p>
-<p>注意：</p>
+<p><br>
+参数:<code>$context_option</code></p>
+<p><code>此参数要求（workerman &gt;= 3.3.5）</code></p>
+<p>用来设置socket上下文，例如利用<code>bindto</code>设置以哪个(网卡)ip和端口访问外部网络，设置ssl证书等。</p>
+<p>参考 <a href="http://php.net/manual/en/function.stream-context-create.php" target="_blank">stream_context_create</a>、 <a href="http://php.net/manual/zh/context.socket.php" target="_blank">套接字上下文选项</a>、<a href="http://php.net/manual/zh/context.ssl.php" target="_blank">SSL 上下文选项</a></p>
+<h2 id="-">注意</h2>
 <p>目前AsyncTcpConnection支持的协议有<a href="http://baike.baidu.com/subview/32754/8048820.htm" target="_blank">tcp</a>、<a href="http://baike.baidu.com/view/525499.htm" target="_blank">ssl</a>、<a href="/appendices/about-ws.html">ws</a>、<a href="/appendices/about-frame.html">frame</a>、<a href="/appendices/about-text.html">text</a>。</p>
 <p>其中<a href="http://baike.baidu.com/view/525499.htm" target="_blank">ssl</a>要求Workerman&gt;=3.3.4，并安装<a href="http://php.net/manual/zh/book.openssl.php" target="_blank">openssl扩展</a>。</p>
-<p>目前不支持<a href="http://baike.baidu.com/view/9472.htm" target="_blank">http</a>协议的AsyncTcpConnection。</p>
+<p><strong>注意：</strong>目前不支持<a href="http://baike.baidu.com/view/9472.htm" target="_blank">http</a>协议的AsyncTcpConnection。</p>
 <p>可以用<code>new AsyncTcpConnection(&#39;ws://...&#39;)</code>像浏览器一样在workerman里发起websocket连接远程websocket服务器，见<a href="/appendices/about-ws.html">示例</a>。但是不能以 <code>new AsyncTcpConnection(&#39;websocket://...&#39;)</code>的形式在workerman里发起websocket连接。</p>
-<h3 id="-">返回值</h3>
-<p>无返回值</p>
-<h3 id="-">示例</h3>
+<h2 id="-">示例</h2>
+<h3 id="-1-http-">示例 1、异步访问外部http服务</h3>
 <pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Connection</span>\<span class="hljs-title">AsyncTcpConnection</span>;
 <span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
@@ -1912,6 +1916,85 @@
 };
 
 <span class="hljs-comment">// 运行worker</span>
+Worker::runAll();
+</code></pre>
+<h3 id="-2-websocket-ip-">示例 2、异步访问外部websocket服务，并设置以哪个本地ip及端口访问</h3>
+<pre><code class="lang-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Connection</span>\<span class="hljs-title">AsyncTcpConnection</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/../Workerman/Autoloader.php'</span>;
+
+<span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker();
+
+<span class="hljs-variable">$worker</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$worker</span>)</span>{</span>
+    <span class="hljs-comment">// 设置访问对方主机的本地ip及端口(每个socket连接都会占用一个本地端口)</span>
+    <span class="hljs-variable">$context_option</span> = <span class="hljs-keyword">array</span>(
+        <span class="hljs-string">'socket'</span> =&gt; <span class="hljs-keyword">array</span>(
+            <span class="hljs-comment">// ip必须是本机网卡ip，并且能访问对方主机，否则无效</span>
+            <span class="hljs-string">'bindto'</span> =&gt; <span class="hljs-string">'114.215.84.87:2333'</span>,
+        ),
+    );
+
+    <span class="hljs-variable">$con</span> = <span class="hljs-keyword">new</span> AsyncTcpConnection(<span class="hljs-string">'ws://echo.websocket.org:80'</span>, <span class="hljs-variable">$context_option</span>);
+
+    <span class="hljs-variable">$con</span>-&gt;onConnect = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$con</span>)</span> {</span>
+        <span class="hljs-variable">$con</span>-&gt;send(<span class="hljs-string">'hello'</span>);
+    };
+
+    <span class="hljs-variable">$con</span>-&gt;onMessage = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$con</span>, <span class="hljs-variable">$data</span>)</span> {</span>
+        <span class="hljs-keyword">echo</span> <span class="hljs-variable">$data</span>;
+    };
+
+    <span class="hljs-variable">$con</span>-&gt;connect();
+};
+
+Worker::runAll();
+</code></pre>
+<h3 id="-3-wss-ssl-">示例 3、异步访问外部wss端口，并设置本地ssl证书</h3>
+<pre><code class="lang-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Connection</span>\<span class="hljs-title">AsyncTcpConnection</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/../Workerman/Autoloader.php'</span>;
+
+<span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker();
+
+<span class="hljs-variable">$worker</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$worker</span>)</span>{</span>
+    <span class="hljs-comment">// 设置访问对方主机的本地ip及端口以及ssl证书</span>
+    <span class="hljs-variable">$context_option</span> = <span class="hljs-keyword">array</span>(
+        <span class="hljs-string">'socket'</span> =&gt; <span class="hljs-keyword">array</span>(
+            <span class="hljs-comment">// ip必须是本机网卡ip，并且能访问对方主机，否则无效</span>
+            <span class="hljs-string">'bindto'</span> =&gt; <span class="hljs-string">'114.215.84.87:2333'</span>,
+        ),
+        <span class="hljs-comment">// ssl选项，参考http://php.net/manual/zh/context.ssl.php</span>
+        <span class="hljs-string">'ssl'</span> =&gt; <span class="hljs-keyword">array</span>(
+            <span class="hljs-comment">// 本地证书路径。 必须是 PEM 格式，并且包含本地的证书及私钥。</span>
+            <span class="hljs-string">'local_cert'</span>        =&gt; <span class="hljs-string">'/your/path/to/pemfile'</span>,
+            <span class="hljs-comment">// local_cert 文件的密码。</span>
+            <span class="hljs-string">'passphrase'</span>        =&gt; <span class="hljs-string">'your_pem_passphrase'</span>,
+            <span class="hljs-comment">// 是否允许自签名证书。</span>
+            <span class="hljs-string">'allow_self_signed'</span> =&gt; <span class="hljs-keyword">true</span>,
+            <span class="hljs-comment">// 是否需要验证 SSL 证书。</span>
+            <span class="hljs-string">'verify_peer'</span>       =&gt; <span class="hljs-keyword">false</span>
+        )
+    );
+
+    <span class="hljs-comment">// ssl需要访问443端口</span>
+    <span class="hljs-variable">$con</span> = <span class="hljs-keyword">new</span> AsyncTcpConnection(<span class="hljs-string">'ws://echo.websocket.org:443'</span>, <span class="hljs-variable">$context_option</span>);
+
+    <span class="hljs-comment">// 设置以ssl加密方式访问</span>
+    <span class="hljs-variable">$con</span>-&gt;transport = <span class="hljs-string">'ssl'</span>;
+
+    <span class="hljs-variable">$con</span>-&gt;onConnect = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$con</span>)</span> {</span>
+        <span class="hljs-variable">$con</span>-&gt;send(<span class="hljs-string">'hello'</span>);
+    };
+
+    <span class="hljs-variable">$con</span>-&gt;onMessage = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$con</span>, <span class="hljs-variable">$data</span>)</span> {</span>
+        <span class="hljs-keyword">echo</span> <span class="hljs-variable">$data</span>;
+    };
+
+    <span class="hljs-variable">$con</span>-&gt;connect();
+};
+
 Worker::runAll();
 </code></pre>
 

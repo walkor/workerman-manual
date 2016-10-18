@@ -1,4 +1,5 @@
 # transport属性
+```要求（workerman >= 3.3.4）```
 
 设置传输属性，可选值为 [tcp](http://baike.baidu.com/subview/32754/8048820.htm) 和 [ssl](http://baike.baidu.com/view/525499.htm)，默认是tcp。
 
