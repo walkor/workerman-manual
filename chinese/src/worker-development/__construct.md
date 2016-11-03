@@ -1,6 +1,6 @@
 # __construct 方法
 ```php
-void \Workerman\Connection\AsyncTcpConnection::__construct(string $remote_address, $context_option = null)
+void AsyncTcpConnection::__construct(string $remote_address, $context_option = null)
 ```
 创建一个异步连接对象。
 

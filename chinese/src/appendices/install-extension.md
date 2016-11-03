@@ -14,7 +14,7 @@ pcntl
 ```
 
 ## 如何确定PHP Cli 的php.ini文件的位置
-当我们安装扩展时，可能需要手动配置php.ini文件，把扩展加进去，所以要确认PHP Cli的php.ini文件的位置。可以运行```php --ini```查找PHP Cli的ini文件位置，结果类似如下：
+当我们安装扩展时，可能需要手动配置php.ini文件，把扩展加进去，所以要确认PHP Cli的php.ini文件的位置。可以运行```php --ini```查找PHP Cli的ini文件位置，结果类似如下(各个系统显示结果会有差异)：
 ```shell
 ~# php --ini
 Configuration File (php.ini) Path: /etc/php5/cli

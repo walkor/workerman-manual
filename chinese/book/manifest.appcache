@@ -1,11 +1,11 @@
 CACHE MANIFEST
-# Revision 1476802351701
+# Revision 1478187497805
 
 CACHE:
-faq/async-task.html
-faq/about-send-fail.html
-faq/843-port-for-flash-socket-policy-file.html
 faq/processes-count.html
+faq/843-port-for-flash-socket-policy-file.html
+faq/about-send-fail.html
+faq/async-task.html
 faq/change-code-not-work.html
 faq/close-unauthed-connections.html
 faq/connection-status.html
@@ -17,24 +17,25 @@ faq/how-to-broadcast.html
 faq/how-to-create-udp-service.html
 faq/how-to-use-mysql-redis.html
 faq/ipv6.html
+faq/persistent-data-and-resources.html
+faq/README.html
 faq/protocols.html
 faq/push-in-other-project.html
-faq/README.html
-faq/persistent-data-and-resources.html
-faq/running-concurent.html
-faq/send-data-to-client.html
 faq/relationship-with-apache-nginx.html
 faq/reload-principle.html
+faq/running-concurent.html
+faq/secure-websocket-server.html
+faq/send-data-to-client.html
 faq/socketio-support.html
+faq/ssh-close-and-workerman-stop.html
+faq/ssl-support.html
 faq/stop-fail.html
 faq/support-multi-thread.html
-faq/ssl-support.html
-faq/ssh-close-and-workerman-stop.html
 faq/use-workerman-as-client-side.html
 faq/windows-to-linux.html
-index.html
 faq/work-with-other-framework.html
 faq/workerman-start-fail.html
+index.html
 advanced/status.html
 advanced/webserver.html
 appendices/README.html
@@ -48,8 +49,8 @@ appendices/stress-test.html
 component/global-data-client.html
 component/README.html
 component/channel-examples.html
-component/channel-server.html
 component/channel.html
+component/channel-server.html
 component/connect.html
 component/file-monitor.html
 component/global-data-add.html
@@ -78,13 +79,13 @@ install/install.html
 install/requirement.html
 install/start-and-stop.html
 license/README.html
+preface/README.html
 principle/README.html
 protocols/README.html
 protocols/example.html
-preface/README.html
 protocols/how-protocols.html
 protocols/why-protocols.html
-worker-development/method.html
+worker-development/name.html
 worker-development/README.html
 worker-development/add.html
 worker-development/async-tcp-connection-transport.html
@@ -99,10 +100,11 @@ worker-development/connection-on-buffer-drain.html
 worker-development/connection-on-buffer-full.html
 worker-development/connection-on-close.html
 worker-development/connection-on-error.html
-worker-development/connections.html
 worker-development/connection-on-message.html
 worker-development/connection-property.html
+worker-development/connections.html
 worker-development/count.html
+worker-development/daemonize.html
 worker-development/default-max-send-buffer-size.html
 worker-development/del.html
 worker-development/destroy.html
@@ -111,12 +113,11 @@ worker-development/get-remote-port.html
 worker-development/global-event.html
 worker-development/id.html
 worker-development/listen.html
-worker-development/daemonize.html
+worker-development/log-file.html
 worker-development/max-package-size.html
 worker-development/max-send-buffer-size.html
-worker-development/log-file.html
+worker-development/method.html
 worker-development/__construct.html
-worker-development/name.html
 worker-development/on-buffer-drain.html
 worker-development/on-buffer-full.html
 worker-development/on-close.html
@@ -129,8 +130,9 @@ worker-development/on_worker_start.html
 worker-development/pause-recv.html
 worker-development/pid_file.html
 worker-development/pipe.html
-worker-development/property.html
 worker-development/protocol.html
+worker-development/property.html
+worker-development/reconnect.html
 worker-development/reloadable.html
 worker-development/resume-recv.html
 worker-development/reuse-port.html

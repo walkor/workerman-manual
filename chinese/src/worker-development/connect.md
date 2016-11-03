@@ -1,6 +1,6 @@
 # connect 方法
 ```php
-void \Workerman\Connection\AsyncTcpConnection::connect()
+void AsyncTcpConnection::connect()
 ```
 执行异步连接操作。此方法会立刻返回。
 
