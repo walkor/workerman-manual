@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="11.32" data-basepath=".." data-revision="1478187497803">
+    <div class="book"  data-level="11.32" data-basepath=".." data-revision="1478507007891">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1880,7 +1880,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_1241">
+                    <section class="normal" id="section-gitbook_45">
                     
                         <h1 id="-wss-">创建wss服务</h1>
 <p><strong>问：</strong></p>
@@ -1888,6 +1888,10 @@
 <p><strong>答：</strong></p>
 <p>可以利用nginx作为ssl的透明代理，实现wss转换成ws或者https转换成http转发到Workerman。</p>
 <p>nginx作为ssl透明代理的配置参考如下，此配置同样适用于其它ssl加密的协议，包括https。</p>
+<h2 id="nginx-">nginx配置</h2>
+<p>要求：</p>
+<p>1:nginx版本必须大于1.9.0</p>
+<p>2:编译的时候必须加上这两个参数　–with-stream –with-stream_ssl_module</p>
 <pre><code>stream {
     upstream stream_backend {
          server backend1.example.com:8282;

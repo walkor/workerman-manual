@@ -14,6 +14,14 @@
 
 以下是nginx作为通用的ssl/tsl代理的配置示例，适用于包括wss和https在内的各种加密协议。
 
+
+## nginx配置
+要求：
+
+1:nginx版本必须大于1.9.0
+
+2:编译的时候必须加上这两个参数　–with-stream –with-stream_ssl_module
+
 ```
 stream {
     upstream stream_backend {

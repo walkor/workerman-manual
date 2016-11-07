@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="11.21" data-basepath=".." data-revision="1478187497803">
+    <div class="book"  data-level="11.21" data-basepath=".." data-revision="1478507007891">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1880,7 +1880,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_1245">
+                    <section class="normal" id="section-gitbook_49">
                     
                         <h1 id="-ssl-tsl">传输加密-ssl/tsl</h1>
 <p><strong>问：</strong></p>
@@ -1890,6 +1890,10 @@
 <p>在Workerman前增加一层Nginx或者STunnel的ssl/tsl代理，让Nginx或者STunnel负责加解密数据，在Workerman和客户端之间转发数据，即可非常方便的实现ssl/tsl加密传输。</p>
 <p>当然开发者也可以基于某些加解密算法实现一套自己的加解密机制。</p>
 <p>以下是nginx作为通用的ssl/tsl代理的配置示例，适用于包括wss和https在内的各种加密协议。</p>
+<h2 id="nginx-">nginx配置</h2>
+<p>要求：</p>
+<p>1:nginx版本必须大于1.9.0</p>
+<p>2:编译的时候必须加上这两个参数　–with-stream –with-stream_ssl_module</p>
 <pre><code>stream {
     upstream stream_backend {
          server backend1.example.com:8282;

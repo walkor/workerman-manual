@@ -11,6 +11,12 @@ Workerman如何创建一个wss服务(或https服务)，使得客户端可以用�
 
 nginx作为ssl透明代理的配置参考如下，此配置同样适用于其它ssl加密的协议，包括https。
 
+## nginx配置
+要求：
+
+1:nginx版本必须大于1.9.0
+
+2:编译的时候必须加上这两个参数　–with-stream –with-stream_ssl_module
 
 ```
 stream {
