@@ -48,10 +48,6 @@ $worker = new Worker();
 $worker->onWorkerStart = function($worker){
     // 设置访问对方主机的本地ip及端口以及ssl证书
     $context_option = array(
-        'socket' => array(
-            // ip必须是本机网卡ip，并且能访问对方主机，否则无效
-            'bindto' => '114.215.84.87:2333',
-        ),
         // ssl选项，参考http://php.net/manual/zh/context.ssl.php
         'ssl' => array(
             // 本地证书路径。 必须是 PEM 格式，并且包含本地的证书及私钥。
