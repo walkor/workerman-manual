@@ -27,7 +27,7 @@ stream {
     }
 
     server {
-        listen                443 ssl;
+        listen                1234 ssl;
         proxy_pass            stream_backend;
 
         ssl_certificate       /etc/ssl/certs/server.crt;
