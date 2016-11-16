@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="15.25" data-basepath=".." data-revision="1478596334868">
+    <div class="book"  data-level="15.25" data-basepath=".." data-revision="1479288353976">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1874,7 +1874,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_60">
+                    <section class="normal" id="section-gitbook_582">
                     
                         <h1 id="-">如何广播数据</h1>
 <h2 id="-">范例（定时广播）</h2>
@@ -1882,7 +1882,9 @@
 <span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
 <span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
 
-<span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'text://0.0.0.0:2020'</span>);
+<span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'websocket://0.0.0.0:2020'</span>);
+<span class="hljs-comment">// 这个例子中进程数必须为1</span>
+<span class="hljs-variable">$worker</span>-&gt;count = <span class="hljs-number">1</span>;
 <span class="hljs-comment">// 进程启动时设置一个定时器，定时向所有客户端连接发送数据</span>
 <span class="hljs-variable">$worker</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$worker</span>)</span>
 {</span>
@@ -1904,7 +1906,9 @@ Worker::runAll();
 <span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
 <span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
 
-<span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'text://0.0.0.0:2020'</span>);
+<span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'websocket://0.0.0.0:2020'</span>);
+<span class="hljs-comment">// 这个例子中进程数必须为1</span>
+<span class="hljs-variable">$worker</span>-&gt;count = <span class="hljs-number">1</span>;
 <span class="hljs-comment">// 客户端发来消息时，广播给其它用户</span>
 <span class="hljs-variable">$worker</span>-&gt;onMessage = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>, <span class="hljs-variable">$message</span>)</span><span class="hljs-title">use</span><span class="hljs-params">(<span class="hljs-variable">$worker</span>)</span>
 {</span>
@@ -1916,6 +1920,14 @@ Worker::runAll();
 <span class="hljs-comment">// 运行worker</span>
 Worker::runAll();
 </code></pre>
+<h2 id="-">说明：</h2>
+<p><strong>单进程：</strong><br>
+以上例子只能<strong>单进程</strong>（<code>$worker-&gt;count=1</code>），因为多进程时多个客户端可能连接到不同的进程中，进程间的客户端是隔离的，无法直接通讯，也就是A进程中无法<strong>直接</strong>操作B进程的客户端connection对象发送数据。(要做到这点，需要进程间通讯，比如可以使用Channel组件)。</p>
+<p><strong>建议用GatewayWorker</strong><br>
+在workerman基础上开发的GatewayWoker框架提供了更方便推送机制，包括组播、广播等，可以设置多进程甚至可以多服务器部署，如果需要给客户端推送数据，建议使用GatewayWorker框架。</p>
+<p>GatewayWorker手册地址 <a href="http://www.workerman.net/gatewaydoc/" target="_blank">http://www.workerman.net/gatewaydoc/</a><br>
+GatewayWorker下载地址(linux版本) <a href="http://www.workerman.net/download/GatewayWorker.zip" target="_blank">http://www.workerman.net/download/GatewayWorker.zip</a><br>
+GatewayWorker下载地址(windows版本) <a href="http://www.workerman.net/download/GatewayWorker-for-win.zip" target="_blank">http://www.workerman.net/download/GatewayWorker-for-win.zip</a></p>
 
                     
                     </section>
