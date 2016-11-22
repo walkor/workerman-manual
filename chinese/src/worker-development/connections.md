@@ -4,7 +4,15 @@
 array Worker::$connections
 ```
 
-此属性中存储了**当前进程**的所有的客户端连接，这在广播时非常有用。
+格式为
+```php
+array(id=>connection, id=>connection, ...)```
+
+此属性中存储了**当前进程**的所有的客户端连接对象，其中id为connection的id编号，详情见手册[TcpConnection的id属性](/worker-development/id.html)。
+
+```$connections``` 在广播时或者根据连接id获得连接对象非常有用。
+
+如果得知connection的编号为```$id```，可以很方便的通过```$worker->connections[$id]```获得对应的connection对象，从而操作对应的socket连接，例如通过```$worker->connections[$id]->send('...')``` 发送数据。
 
 
 ## 范例

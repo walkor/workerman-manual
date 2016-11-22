@@ -17,8 +17,10 @@
     
     
     
+    <link rel="next" href="../appendices/kernel-optimization.html" />
     
-    <link rel="prev" href="../appendices/about-frame.html" />
+    
+    <link rel="prev" href="../appendices/about-websocket.html" />
     
 
         
@@ -30,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="16.7" data-basepath=".." data-revision="1479290089762">
+    <div class="book"  data-level="16.5" data-basepath=".." data-revision="1479826934435">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1521,28 +1523,37 @@
             
         </li>
     
-        <li class="chapter " data-level="16.5" data-path="appendices/about-text.html">
-            
-            <a href="../appendices/about-text.html">
-                <i class="fa fa-check"></i> <b>16.5.</b> text协议
-            </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="16.6" data-path="appendices/about-frame.html">
-            
-            <a href="../appendices/about-frame.html">
-                <i class="fa fa-check"></i> <b>16.6.</b> frame协议
-            </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="16.7" data-path="appendices/about-ws.html">
+        <li class="chapter " data-level="16.5" data-path="appendices/about-ws.html">
             
             <a href="../appendices/about-ws.html">
-                <i class="fa fa-check"></i> <b>16.7.</b> ws协议
+                <i class="fa fa-check"></i> <b>16.5.</b> ws协议
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.6" data-path="appendices/kernel-optimization.html">
+            
+            <a href="../appendices/kernel-optimization.html">
+                <i class="fa fa-check"></i> <b>16.6.</b> Linux内核调优
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.7" data-path="appendices/about-text.html">
+            
+            <a href="../appendices/about-text.html">
+                <i class="fa fa-check"></i> <b>16.7.</b> text协议
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.8" data-path="appendices/about-frame.html">
+            
+            <a href="../appendices/about-frame.html">
+                <i class="fa fa-check"></i> <b>16.8.</b> frame协议
             </a>
             
             
@@ -1569,7 +1580,7 @@
             <div class="page-wrapper" tabindex="-1">
                 <div class="book-progress">
     <div class="bar">
-        <div class="inner" style="width: 100%;min-width: 99.31506849315069%;"></div>
+        <div class="inner" style="width: 97.94520547945206%;min-width: 97.26027397260275%;"></div>
     </div>
     <div class="chapters">
     
@@ -1857,26 +1868,27 @@
     
         <a href="../appendices/install-extension.html" title="安装扩展" class="chapter done " data-progress="16.2" style="left: 96.57534246575342%;"></a>
     
-        <a href="../appendices/kernel-optimization.html" title="Linux内核调优" class="chapter done " data-progress="16.3" style="left: 97.26027397260275%;"></a>
+        <a href="../appendices/about-websocket.html" title="websocket协议" class="chapter done " data-progress="16.4" style="left: 97.26027397260275%;"></a>
     
-        <a href="../appendices/about-websocket.html" title="websocket协议" class="chapter done " data-progress="16.4" style="left: 97.94520547945206%;"></a>
+        <a href="../appendices/about-ws.html" title="ws协议" class="chapter done " data-progress="16.5" style="left: 97.94520547945206%;"></a>
     
-        <a href="../appendices/about-text.html" title="text协议" class="chapter done " data-progress="16.5" style="left: 98.63013698630137%;"></a>
+        <a href="../appendices/kernel-optimization.html" title="Linux内核调优" class="chapter  " data-progress="16.6" style="left: 98.63013698630137%;"></a>
     
-        <a href="../appendices/about-frame.html" title="frame协议" class="chapter done " data-progress="16.6" style="left: 99.31506849315069%;"></a>
+        <a href="../appendices/about-text.html" title="text协议" class="chapter  " data-progress="16.7" style="left: 99.31506849315069%;"></a>
     
-        <a href="../appendices/about-ws.html" title="ws协议" class="chapter done " data-progress="16.7" style="left: 100%;"></a>
+        <a href="../appendices/about-frame.html" title="frame协议" class="chapter  " data-progress="16.8" style="left: 100%;"></a>
     
     </div>
 </div>
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_1161">
+                    <section class="normal" id="section-gitbook_580">
                     
                         <h1 id="ws-">ws协议</h1>
+<p>目前Workerman的ws协议版本为13</p>
 <p>workerman可以作为客户端通过ws协议发起websocket连接，连到远程websocket服务器，实现双向通讯。</p>
-<p>注意：ws协议只能通过AsyncTcpConnection作为客户端使用，不能作为websocket服务端监听协议。也就是说以下写法是错误的。</p>
+<p><code>注意：ws协议只能通过AsyncTcpConnection作为客户端使用，不能作为websocket服务端监听协议。也就是说以下写法是错误的。</code></p>
 <pre><code class="lang-php"><span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'ws://0.0.0.0:8080'</span>);
 </code></pre>
 <p>如果想workerman作为websocket服务端，请使用<a href="/appendices/about-websocket.html">websocket协议</a>。</p>
@@ -1920,8 +1932,10 @@ Worker::runAll();
         </div>
 
         
-        <a href="../appendices/about-frame.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: frame协议"><i class="fa fa-angle-left"></i></a>
+        <a href="../appendices/about-websocket.html" class="navigation navigation-prev " aria-label="Previous page: websocket协议"><i class="fa fa-angle-left"></i></a>
         
+        
+        <a href="../appendices/kernel-optimization.html" class="navigation navigation-next " aria-label="Next page: Linux内核调优"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

@@ -1,4 +1,5 @@
 # WebSocket协议
+目前Workerman的WebSocke协议版本为13
 
 WebSocket protocol 是HTML5一种新的协议。它实现了浏览器与服务器全双工通信
 

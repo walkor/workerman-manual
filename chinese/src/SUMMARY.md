@@ -143,7 +143,8 @@
    * [安装扩展](appendices/install-extension.md)
    * [Linux内核调优](appendices/kernel-optimization.md)
    * [websocket协议](appendices/about-websocket.md)
+   * [ws协议](appendices/about-ws.md)
+   * [Linux内核调优](appendices/kernel-optimization.md)
    * [text协议](appendices/about-text.md)
    * [frame协议](appendices/about-frame.md)
-   * [ws协议](appendices/about-ws.md)
 

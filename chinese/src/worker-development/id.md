@@ -10,6 +10,9 @@ int Connection::$id
 注意：workerman是多进程的，每个进程内部会维护一个自增的connection id，所以多个进程之间的connecion id会有重复。
 如果想要不重复的connection id 可以根据需要给connection->id重新赋值，例如加上worker->id前缀。
 
+## 参见
+[Worker的connections属性](/worker-development/connections.html)
+
 
 ## 范例
 
