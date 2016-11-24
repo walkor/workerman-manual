@@ -33,7 +33,7 @@ int \Workerman\Lib\Timer::add(float $time_interval, callable $callback [,$args =
 ```php
 use \Workerman\Worker;
 use \Workerman\Lib\Timer;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 $task = new Worker();
 // 开启多少个进程运行定时任务，注意多进程并发问题
@@ -54,9 +54,9 @@ Worker::runAll();
 
 ### 2、定时函数为普通函数
 ```php
-require_once './Workerman/Autoloader.php';
 use \Workerman\Worker;
 use \Workerman\Lib\Timer;
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 // 普通的函数
 function send_mail($to, $content)
@@ -79,9 +79,9 @@ Worker::runAll();
 
 ### 3、定时函数为类的方法
 ```php
-require_once './Workerman/Autoloader.php';
 use \Workerman\Worker;
 use \Workerman\Lib\Timer;
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 class Mail
 {
@@ -108,9 +108,9 @@ Worker::runAll();
 
 ### 4、定时函数为类方法（类内部使用定时器）
 ```php
-require_once './Workerman/Autoloader.php';
 use \Workerman\Worker;
 use \Workerman\Lib\Timer;
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 class Mail
 {
@@ -143,9 +143,9 @@ Worker::runAll();
 
 ### 5、定时函数为类的静态方法
 ```php
-require_once './Workerman/Autoloader.php';
 use \Workerman\Worker;
 use \Workerman\Lib\Timer;
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 class Mail
 {
@@ -173,9 +173,9 @@ Worker::runAll();
 ### 6、定时函数为类的静态方法(带命名空间)
 ```php
 namespace Task;
-require_once './Workerman/Autoloader.php';
 use \Workerman\Worker;
 use \Workerman\Lib\Timer;
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 class Mail
 {
@@ -204,7 +204,7 @@ Worker::runAll();
 ```php
 use \Workerman\Worker;
 use \Workerman\Lib\Timer;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 $task = new Worker();
 $task->onWorkerStart = function($task)
@@ -230,9 +230,9 @@ Worker::runAll();
 
 ### 8、定时器中销毁当前定时器（参数方式传递$timer_id）
 ```php
-require_once './Workerman/Autoloader.php';
 use \Workerman\Worker;
 use \Workerman\Lib\Timer;
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 class Mail
 {
@@ -269,7 +269,7 @@ Worker::runAll();
 ```php
 use Workerman\Worker;
 use Workerman\Lib\Timer;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 $worker = new Worker();
 $worker->count = 4;

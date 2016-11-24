@@ -11,6 +11,7 @@ WebSocket和HTTP一样是一种应用层协议，都是基于TCP传输的，WebS
 WebSocket协议有一个握手的过程，握手时浏览器和服务端是以HTTP协议通信的，在Workerman中可以这样介入到握手过程。
 
 ```php
+...
 $ws = new Worker('websocket://0.0.0.0:8181');
 $ws->onConnect = function($connection)
 {

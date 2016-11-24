@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="8.2.1" data-basepath=".." data-revision="1479826934435">
+    <div class="book"  data-level="8.2.1" data-basepath=".." data-revision="1479956126478">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1883,7 +1883,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_687">
+                    <section class="normal" id="section-gitbook_504">
                     
                         <h1 id="id">id</h1>
 <p>要求<code>（workerman &gt;= 3.2.1）</code></p>
@@ -1897,7 +1897,7 @@
 <p>进程编号id的分配是基于每个worker实例的。每个worker实例都从0开始给自己的进程编号，所以worker实例间进程编号会有重复，但是一个worker实例中的进程编号不会重复。例如下面的例子：</p>
 <pre><code class="lang-php"><span class="hljs-preprocessor">&lt;?php</span>
 <span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
-<span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
 
 <span class="hljs-comment">// worker实例1有4个进程，进程id编号将分别为0、1、2、3</span>
 <span class="hljs-variable">$worker1</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'tcp://0.0.0.0:8585'</span>);

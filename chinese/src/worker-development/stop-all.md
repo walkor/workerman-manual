@@ -26,7 +26,7 @@ start.php
 ```php
 <?php
 use Workerman\Worker;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 // 每个进程最多执行1000个请求
 define('MAX_REQUEST', 1000);

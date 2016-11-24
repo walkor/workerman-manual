@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="8.2.10" data-basepath=".." data-revision="1479826934435">
+    <div class="book"  data-level="8.2.10" data-basepath=".." data-revision="1479956126478">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1883,7 +1883,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_667">
+                    <section class="normal" id="section-gitbook_485">
                     
                         <h1 id="pidfile">pidFile</h1>
 <h2 id="-">说明:</h2>
@@ -1895,7 +1895,7 @@
 <p>如果不设置，WorkerMan默认会在与Workerman目录平行的位置（注意workerman3.2.3之前版本默认在<code>sys_get_temp_dir()</code>下）自动生成一个pid文件，并且为了避免启动多个WorkerMan实例导致pid冲突，WorkerMan生成pid文件包含了当前WorkerMan的路径</p>
 <h2 id="-">范例</h2>
 <pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
-<span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
 
 Worker::<span class="hljs-variable">$pidFile</span> = <span class="hljs-string">'/var/run/workerman.pid'</span>;
 

@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="15.15" data-basepath=".." data-revision="1479826934435">
+    <div class="book"  data-level="15.15" data-basepath=".." data-revision="1479956126478">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1883,7 +1883,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_545">
+                    <section class="normal" id="section-gitbook_361">
                     
                         <h1 id="-">如何实现异步任务</h1>
 <p><strong>问：</strong></p>
@@ -1892,7 +1892,7 @@
 <p>可以在本机或者其它服务器甚至服务器集群预先建立一些任务进程处理繁重的业务，任务进程数可以开多一些，例如cpu的10倍，然后调用方利用AsyncTcpConnection将数据异步发送给这些任务进程异步处理，异步得到处理结果。</p>
 <p>任务进程服务端</p>
 <pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
-<span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
 <span class="hljs-comment">// task worker，使用Text协议</span>
 <span class="hljs-variable">$task_worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'Text://0.0.0.0:12345'</span>);
 <span class="hljs-comment">// task进程数可以根据需要多开一些</span>
@@ -1912,7 +1912,7 @@ Worker::runAll();
 <p>在workerman中调用</p>
 <pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Connection</span>\<span class="hljs-title">AsyncTcpConnection</span>;
-<span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
 
 <span class="hljs-comment">// websocket服务</span>
 <span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'websocket://0.0.0.0:8080'</span>);

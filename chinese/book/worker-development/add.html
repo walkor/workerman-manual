@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="11.1" data-basepath=".." data-revision="1479826934435">
+    <div class="book"  data-level="11.1" data-basepath=".." data-revision="1479956126478">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1883,7 +1883,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_626">
+                    <section class="normal" id="section-gitbook_443">
                     
                         <h1 id="add">add</h1>
 <pre><code class="lang-php">int \Workerman\Lib\Timer::add(float <span class="hljs-variable">$time_interval</span>, callable <span class="hljs-variable">$callback</span> [,<span class="hljs-variable">$args</span> = <span class="hljs-keyword">array</span>(), bool <span class="hljs-variable">$persistent</span> = <span class="hljs-keyword">true</span>])
@@ -1905,7 +1905,7 @@
 <h4 id="1-">1、定时函数为匿名函数（闭包）</h4>
 <pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
-<span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
 
 <span class="hljs-variable">$task</span> = <span class="hljs-keyword">new</span> Worker();
 <span class="hljs-comment">// 开启多少个进程运行定时任务，注意多进程并发问题</span>
@@ -1924,9 +1924,9 @@
 Worker::runAll();
 </code></pre>
 <h3 id="2-">2、定时函数为普通函数</h3>
-<pre><code class="lang-php"><span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
-<span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
 
 <span class="hljs-comment">// 普通的函数</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">send_mail</span><span class="hljs-params">(<span class="hljs-variable">$to</span>, <span class="hljs-variable">$content</span>)</span>
@@ -1947,9 +1947,9 @@ Worker::runAll();
 Worker::runAll();
 </code></pre>
 <h3 id="3-">3、定时函数为类的方法</h3>
-<pre><code class="lang-php"><span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
-<span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Mail</span>
 {</span>
@@ -1974,9 +1974,9 @@ Worker::runAll();
 Worker::runAll();
 </code></pre>
 <h3 id="4-">4、定时函数为类方法（类内部使用定时器）</h3>
-<pre><code class="lang-php"><span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
-<span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Mail</span>
 {</span>
@@ -2007,9 +2007,9 @@ Worker::runAll();
 Worker::runAll();
 </code></pre>
 <h3 id="5-">5、定时函数为类的静态方法</h3>
-<pre><code class="lang-php"><span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
-<span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Mail</span>
 {</span>
@@ -2035,9 +2035,9 @@ Worker::runAll();
 </code></pre>
 <h3 id="6-">6、定时函数为类的静态方法(带命名空间)</h3>
 <pre><code class="lang-php"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Task</span>;
-<span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
 <span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Mail</span>
 {</span>
@@ -2064,7 +2064,7 @@ Worker::runAll();
 <h3 id="7-use-timer_id-">7、定时器中销毁当前定时器（use闭包方式传递$timer_id）</h3>
 <pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
-<span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
 
 <span class="hljs-variable">$task</span> = <span class="hljs-keyword">new</span> Worker();
 <span class="hljs-variable">$task</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$task</span>)</span>
@@ -2088,9 +2088,9 @@ Worker::runAll();
 Worker::runAll();
 </code></pre>
 <h3 id="8-timer_id-">8、定时器中销毁当前定时器（参数方式传递$timer_id）</h3>
-<pre><code class="lang-php"><span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
-<span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Mail</span>
 {</span>
@@ -2123,7 +2123,7 @@ Worker::runAll();
 <p>一个worker实例有4个进程，只在id编号为0的进程上设置定时器。</p>
 <pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
-<span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
 
 <span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker();
 <span class="hljs-variable">$worker</span>-&gt;count = <span class="hljs-number">4</span>;

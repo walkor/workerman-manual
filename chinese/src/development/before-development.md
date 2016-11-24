@@ -70,7 +70,7 @@ TCP是一种面向连接的、可靠的、基于IP的传输层协议。TCP传输
 
 例如下面的代码
 ```php
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 use Workerman\Worker;
 
 // 运行在主进程

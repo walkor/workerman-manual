@@ -20,7 +20,7 @@ int Worker::$id
 ```php
 <?php
 use Workerman\Worker;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 // worker实例1有4个进程，进程id编号将分别为0、1、2、3
 $worker1 = new Worker('tcp://0.0.0.0:8585');

@@ -27,7 +27,7 @@ text协议可以使用telnet客户端调试，例如下面的例子。
 test.php
 
 ```php
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 use Workerman\Worker;
 
 $text_worker = new Worker("text://0.0.0.0:5678");

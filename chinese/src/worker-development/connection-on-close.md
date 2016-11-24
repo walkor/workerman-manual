@@ -10,7 +10,7 @@ callback Connection::$onClose
 
 ```php
 use Workerman\Worker;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 $worker = new Worker('websocket://0.0.0.0:8484');
 // 当有链接事件时触发
@@ -30,6 +30,8 @@ Worker::runAll();
 
 ```php
 use Workerman\Worker;
+require_once __DIR__ . '/Workerman/Autoloader.php';
+
 $worker = new Worker('websocket://0.0.0.0:8484');
 // 设置所有连接的onclose回调
 $worker->onClose = function($connection)

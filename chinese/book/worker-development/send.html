@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="9.3.1" data-basepath=".." data-revision="1479826934435">
+    <div class="book"  data-level="9.3.1" data-basepath=".." data-revision="1479956126478">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1883,7 +1883,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_676">
+                    <section class="normal" id="section-gitbook_493">
                     
                         <h1 id="send">send</h1>
 <h2 id="-">说明:</h2>
@@ -1906,7 +1906,7 @@
 <p>例如聊天系统可以用这样的确认机制。把每条消息都存入数据库，每条消息都有一个是否已读字段。客户端每收到一条消息向服务端发送一个确认包，服务端将对应消息置为已读。当客户端连接到服务端时（一般是用户登录或者断线重连），查询数据库是否有未读的消息，有的话发给客户端，同样客户端收到消息后通知服务端已读。这样可以保证每个消息对方都能收到。当然开发者也可以用自己的确认逻辑。</p>
 <h2 id="-">范例</h2>
 <pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
-<span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
 
 <span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'websocket://0.0.0.0:8484'</span>);
 <span class="hljs-variable">$worker</span>-&gt;onMessage = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>, <span class="hljs-variable">$data</span>)</span>

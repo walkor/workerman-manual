@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="14.2.1" data-basepath=".." data-revision="1479826934435">
+    <div class="book"  data-level="14.2.1" data-basepath=".." data-revision="1479956126478">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1883,7 +1883,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_588">
+                    <section class="normal" id="section-gitbook_405">
                     
                         <h1 id="channel-">Channel组件服务端</h1>
 <p><strong><code>(要求Workerman版本&gt;=3.3.0)</code></strong></p>
@@ -1898,8 +1898,8 @@
 <p>监听的端口，不传默认是2206</p>
 <h2 id="-">例子</h2>
 <pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
-<span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
-<span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Channel/src/Server.php'</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Channel/src/Server.php'</span>;
 
 <span class="hljs-comment">// 不传参数默认是监听0.0.0.0:2206</span>
 <span class="hljs-variable">$channel_server</span> = <span class="hljs-keyword">new</span> Channel\Server();

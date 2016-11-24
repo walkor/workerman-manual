@@ -10,7 +10,7 @@
 ## 心跳示例
 ```php
 <?php
-require_once '/your/path/Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 use Workerman\Worker;
 use Workerman\Lib\Timer;
 

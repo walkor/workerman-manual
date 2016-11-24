@@ -15,9 +15,9 @@ boolean
 
 ### 示例
 ```php
-require_once './Workerman/Autoloader.php';
 use \Workerman\Worker;
 use \Workerman\Lib\Timer;
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 $task = new Worker();
 // 开启多少个进程运行定时任务，注意多进程并发问题
@@ -42,9 +42,9 @@ Worker::runAll();
 
 ### 实例(定时器回调中删除当前定时器)
 ```php
-require_once './Workerman/Autoloader.php';
 use \Workerman\Worker;
 use \Workerman\Lib\Timer;
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 $task = new Worker();
 $task->onWorkerStart = function($task)

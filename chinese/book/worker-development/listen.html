@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="8.4.3" data-basepath=".." data-revision="1479826934435">
+    <div class="book"  data-level="8.4.3" data-basepath=".." data-revision="1479956126478">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1883,7 +1883,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_652">
+                    <section class="normal" id="section-gitbook_468">
                     
                         <h1 id="listen">listen</h1>
 <pre><code class="lang-php">void Worker::listen(void)
@@ -1894,7 +1894,7 @@
 <p><strong>注意：</strong></p>
 <p>如果PHP版本&lt;=7.0，则不支持在多个子进程中实例化相同端口的Worker。例如A进程创建了监听2016端口的Worker，那么B进程就不能再创建监听2016端口的Worker，否则会报<code>Address already in use</code>错误。例如下面的代码是无法运行的。</p>
 <pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
-<span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
 
 <span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'text://0.0.0.0:2015'</span>);
 <span class="hljs-comment">// 4个进程</span>

@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="6.1" data-basepath=".." data-revision="1479826934435">
+    <div class="book"  data-level="6.1" data-basepath=".." data-revision="1479956126478">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1883,7 +1883,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_606">
+                    <section class="normal" id="section-gitbook_423">
                     
                         <h1 id="-">开发前必读</h1>
 <p>使用WorkerMan开发应用，你需要了解以下内容：</p>
@@ -1933,7 +1933,7 @@
 <h2 id="-">三、区分主进程和子进程</h2>
 <p>有必要注意下代码是运行在主进程还是子进程，一般来说在<code>Worker::runAll();</code>以前运行的代码都是在主进程运行的。</p>
 <p>例如下面的代码</p>
-<pre><code class="lang-php"><span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+<pre><code class="lang-php"><span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
 <span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 
 <span class="hljs-comment">// 运行在主进程</span>

@@ -5,7 +5,7 @@
 ```php
 <?php
 use Workerman\Worker;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 // 创建一个Worker监听2345端口，使用http协议通讯
 $http_worker = new Worker("http://0.0.0.0:2345");
@@ -43,7 +43,7 @@ php http_test.php start
 ```php
 <?php
 use Workerman\Worker;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 // 创建一个Worker监听2346端口，使用websocket协议通讯
 $ws_worker = new Worker("websocket://0.0.0.0:2346");
@@ -91,7 +91,7 @@ ws.onmessage = function(e) {
 ```php
 <?php
 use Workerman\Worker;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 // 创建一个Worker监听2347端口，不使用任何应用层协议
 $tcp_worker = new Worker("tcp://0.0.0.0:2347");

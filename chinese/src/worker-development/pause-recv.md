@@ -15,7 +15,7 @@ void Connection::pauseRecv(void)
 
 ```php
 use Workerman\Worker;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 $worker = new Worker('websocket://0.0.0.0:8484');
 $worker->onConnect = function($connection)

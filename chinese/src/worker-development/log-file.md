@@ -18,7 +18,7 @@ static string Worker::$logFile
 
 ```php
 use Workerman\Worker;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 Worker::$logFile = '/tmp/workerman.log';
 

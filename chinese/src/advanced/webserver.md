@@ -9,7 +9,7 @@ WorkerMan自带了一个简单的Web服务器，同样也是基于Worker实现�
 ```php
 use \Workerman\Worker;
 use \Workerman\WebServer;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 // 这里监听8080端口，如果要监听80端口，需要root权限，并且端口没有被其它程序占用
 $webserver = new WebServer('http://0.0.0.0:8080');

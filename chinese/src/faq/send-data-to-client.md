@@ -4,7 +4,7 @@
 ```php
 <?php
 use Workerman\Worker;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 // 初始化一个worker容器，监听1234端口
 $worker = new Worker('websocket://workerman.net:1234');
 // 进程数设置为1

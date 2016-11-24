@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="10.1" data-basepath=".." data-revision="1479826934435">
+    <div class="book"  data-level="10.1" data-basepath=".." data-revision="1479956126478">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1883,7 +1883,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_656">
+                    <section class="normal" id="section-gitbook_473">
                     
                         <h1 id="__construct-">__construct 方法</h1>
 <pre><code class="lang-php">void AsyncTcpConnection::__construct(string <span class="hljs-variable">$remote_address</span>, <span class="hljs-variable">$context_option</span> = <span class="hljs-keyword">null</span>)
@@ -1912,7 +1912,7 @@
 <h3 id="-1-http-">示例 1、异步访问外部http服务</h3>
 <pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Connection</span>\<span class="hljs-title">AsyncTcpConnection</span>;
-<span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
 
 <span class="hljs-variable">$task</span> = <span class="hljs-keyword">new</span> Worker();
 <span class="hljs-comment">// 进程启动时异步建立一个到www.baidu.com连接对象，并发送数据获取数据</span>
@@ -1947,7 +1947,7 @@ Worker::runAll();
 <pre><code class="lang-php"><span class="hljs-preprocessor">&lt;?php</span>
 <span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Connection</span>\<span class="hljs-title">AsyncTcpConnection</span>;
-<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/../Workerman/Autoloader.php'</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
 
 <span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker();
 

@@ -20,7 +20,7 @@ array(id=>connection, id=>connection, ...)```
 ```php
 use Workerman\Worker;
 use Workerman\Lib\Timer;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 $worker = new Worker('text://0.0.0.0:2020');
 // 进程启动时设置一个定时器，定时向所有客户端连接发送数据

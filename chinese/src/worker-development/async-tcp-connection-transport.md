@@ -14,7 +14,7 @@ transport为 [ssl](http://baike.baidu.com/view/525499.htm) 时，要求PHP必须
 ```php
 use \Workerman\Worker;
 use \Workerman\Connection\AsyncTcpConnection;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 $task = new Worker();
 // 进程启动时异步建立一个到www.baidu.com连接对象，并发送数据获取数据

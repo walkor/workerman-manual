@@ -20,8 +20,8 @@ void
 ```php
 <?php
 use Workerman\Worker;
-require_once './Workerman/Autoloader.php';
-require_once './Channel/src/Client.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
+require_once __DIR__ . '/Channel/src/Client.php';
 
 $http_worker = new Worker('http://0.0.0.0:4237');
 $http_worker->onWorkerStart = function()

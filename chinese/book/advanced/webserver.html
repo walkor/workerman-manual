@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="12" data-basepath=".." data-revision="1479826934435">
+    <div class="book"  data-level="12" data-basepath=".." data-revision="1479956126478">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1883,7 +1883,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_576">
+                    <section class="normal" id="section-gitbook_393">
                     
                         <h1 id="webserver">WebServer</h1>
 <p>WorkerMan自带了一个简单的Web服务器，同样也是基于Worker实现的。文件位置在Workerman/WebServer.php。这个WebServer开发的目的主要是为了方便运行一些简单的Web程序，例如workerman-todpole等web界面程序。</p>
@@ -1891,7 +1891,7 @@
 <p>在Applications/YourApp/start.php中添加</p>
 <pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">WebServer</span>;
-<span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
 
 <span class="hljs-comment">// 这里监听8080端口，如果要监听80端口，需要root权限，并且端口没有被其它程序占用</span>
 <span class="hljs-variable">$webserver</span> = <span class="hljs-keyword">new</span> WebServer(<span class="hljs-string">'http://0.0.0.0:8080'</span>);

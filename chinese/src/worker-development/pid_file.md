@@ -17,7 +17,7 @@ static string Worker::$pidFile
 
 ```php
 use Workerman\Worker;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 Worker::$pidFile = '/var/run/workerman.pid';
 

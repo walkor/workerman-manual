@@ -20,7 +20,7 @@ $worker = new Worker('http://0.0.0.0:8686');
 
 ```php
 use Workerman\Worker;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 $worker = new Worker('tcp://0.0.0.0:8686');
 $worker->protocol = 'Workerman\\Protocols\\Http';
@@ -40,7 +40,7 @@ Worker::runAll();
 
 ```php
 use Workerman\Worker;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 /**
  * 首先会查看用户是否有自定义\Protocols\Http协议类，

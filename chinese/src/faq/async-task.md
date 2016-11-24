@@ -11,7 +11,7 @@
 任务进程服务端
 ```php
 use Workerman\Worker;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 // task worker，使用Text协议
 $task_worker = new Worker('Text://0.0.0.0:12345');
 // task进程数可以根据需要多开一些
@@ -34,7 +34,7 @@ Worker::runAll();
 ```php
 use Workerman\Worker;
 use \Workerman\Connection\AsyncTcpConnection;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 // websocket服务
 $worker = new Worker('websocket://0.0.0.0:8080');

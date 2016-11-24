@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="16.4" data-basepath=".." data-revision="1479826934435">
+    <div class="book"  data-level="16.4" data-basepath=".." data-revision="1479956126478">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1883,7 +1883,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_579">
+                    <section class="normal" id="section-gitbook_397">
                     
                         <h1 id="websocket-">WebSocket协议</h1>
 <p>目前Workerman的WebSocke协议版本为13</p>
@@ -1892,7 +1892,8 @@
 <p>WebSocket和HTTP一样是一种应用层协议，都是基于TCP传输的，WebSocket本身和Socket并没有多大关系，更不能等同。</p>
 <h2 id="websocket-">WebSocket协议握手</h2>
 <p>WebSocket协议有一个握手的过程，握手时浏览器和服务端是以HTTP协议通信的，在Workerman中可以这样介入到握手过程。</p>
-<pre><code class="lang-php"><span class="hljs-variable">$ws</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'websocket://0.0.0.0:8181'</span>);
+<pre><code class="lang-php">...
+<span class="hljs-variable">$ws</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'websocket://0.0.0.0:8181'</span>);
 <span class="hljs-variable">$ws</span>-&gt;onConnect = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>)</span>
 {</span>
     <span class="hljs-variable">$connection</span>-&gt;onWebSocketConnect = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$connection</span> , <span class="hljs-variable">$http_header</span>)</span>

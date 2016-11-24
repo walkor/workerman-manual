@@ -23,7 +23,7 @@ start.php
 ```php
 <?php
 use Workerman\Worker;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 $http_worker = new Worker("http://0.0.0.0:2345");
 $http_worker->onMessage = function($connection, $data)
@@ -73,7 +73,7 @@ start_websocket.php
 ```php
 <?php
 use Workerman\Worker;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 $ws_worker = new Worker('websocket://0.0.0.0:4567');
 $ws_worker->onMessage = function($connection, $data)

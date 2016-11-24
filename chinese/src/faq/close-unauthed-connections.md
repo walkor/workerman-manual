@@ -9,6 +9,7 @@
 
 ```php
 use Workerman\Lib\Timer;
+require_once __DIR__ . '/Workerman/Autoloader.php';
 $worker = new Worker('xxx://x.x.x.x:x');
 $worker->onConnect = function($connection)
 {

@@ -8,9 +8,9 @@ start.php
 ```php
 <?php
 use Workerman\Worker;
-require_once './Workerman/Autoloader.php';
-require_once './Channel/src/Server.php';
-require_once './Channel/src/Client.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
+require_once __DIR__ . '/Channel/src/Server.php';
+require_once __DIR__ . '/Channel/src/Client.php';
 
 // 初始化一个Channel服务端
 $channel_server = new Channel\Server('0.0.0.0', 2206);

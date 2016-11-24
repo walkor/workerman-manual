@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="15.13" data-basepath=".." data-revision="1479826934435">
+    <div class="book"  data-level="15.13" data-basepath=".." data-revision="1479956126478">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1883,13 +1883,13 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_564">
+                    <section class="normal" id="section-gitbook_379">
                     
                         <h1 id="workerman-">WorkerMan中如何向某个特定客户端发送数据</h1>
 <p>使用worker来做服务器，没有用GatewayWorker，如何实现向指定用户推送消息？</p>
 <pre><code class="lang-php"><span class="hljs-preprocessor">&lt;?php</span>
 <span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
-<span class="hljs-keyword">require_once</span> <span class="hljs-string">'./Workerman/Autoloader.php'</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
 <span class="hljs-comment">// 初始化一个worker容器，监听1234端口</span>
 <span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'websocket://workerman.net:1234'</span>);
 <span class="hljs-comment">// 进程数设置为1</span>

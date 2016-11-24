@@ -18,7 +18,7 @@ bool Worker::$reusePort
 
 ```php
 use Workerman\Worker;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 $worker = new Worker('websocket://0.0.0.0:8484');
 $worker->count = 4;
@@ -34,7 +34,7 @@ Worker::runAll();
 ## 范例2：workerman多端口(多协议)监听
 ```php
 use Workerman\Worker;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 $worker = new Worker('text://0.0.0.0:2015');
 $worker->count = 4;

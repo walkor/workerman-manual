@@ -17,7 +17,7 @@ void Connection::pipe(TcpConnection $target_connection)
 <?php
 use Workerman\Worker;
 use Workerman\Connection\AsyncTcpConnection;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 $worker = new Worker('tcp://0.0.0.0:8483');
 $worker->count = 12;

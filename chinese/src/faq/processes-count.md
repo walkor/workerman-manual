@@ -4,7 +4,7 @@
 进程数是由```count```属性决定的，例如下面代码
 ```php
 use Workerman\Worker;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 $http_worker = new Worker("http://0.0.0.0:2345");
 

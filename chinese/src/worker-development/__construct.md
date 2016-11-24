@@ -43,7 +43,7 @@ AsyncTcpConnection可以让Workerman作为客户端向远程服务端发起异�
 ```php
 use \Workerman\Worker;
 use \Workerman\Connection\AsyncTcpConnection;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 $task = new Worker();
 // 进程启动时异步建立一个到www.baidu.com连接对象，并发送数据获取数据
@@ -80,7 +80,7 @@ Worker::runAll();
 <?php
 use Workerman\Worker;
 use Workerman\Connection\AsyncTcpConnection;
-require_once __DIR__ . '/../Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 $worker = new Worker();
 

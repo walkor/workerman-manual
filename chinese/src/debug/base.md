@@ -11,7 +11,7 @@ WorkerMan3.0有两种运行模式，调试模式以及daemon运行模式
 
 ```php
 use Workerman\Worker;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 // 将屏幕打印输出到Worker::$stdoutFile指定的文件中
 Worker::$stdoutFile = '/tmp/stdout.log';

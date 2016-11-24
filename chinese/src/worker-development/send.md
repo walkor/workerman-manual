@@ -38,7 +38,7 @@ send返回```true```，仅仅代表数据已经成功写入到该连接的操作
 
 ```php
 use Workerman\Worker;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 $worker = new Worker('websocket://0.0.0.0:8484');
 $worker->onMessage = function($connection, $data)

@@ -12,7 +12,7 @@ callback Connection::$onMessage
 
 ```php
 use Workerman\Worker;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 $worker = new Worker('websocket://0.0.0.0:8484');
 // 当有客户端连接事件时
@@ -33,7 +33,7 @@ Worker::runAll();
 
 ```php
 use Workerman\Worker;
-require_once './Workerman/Autoloader.php';
+require_once __DIR__ . '/Workerman/Autoloader.php';
 
 $worker = new Worker('websocket://0.0.0.0:8484');
 // 直接设置所有连接的onMessage回调
