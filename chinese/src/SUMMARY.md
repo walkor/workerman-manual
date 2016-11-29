@@ -108,7 +108,7 @@
        * [react/mysql](component/reactmysql.md)
    * [异步redis组件](component/async-redis.md)
        * [clue/redis-react](component/clueredis-react.md)
-   * [异步dns组件](component/dns-components)
+   * [异步dns组件](component/dns-components.md)
        * [react/dns](component/reactdns.md)
 * [常见问题](faq/README.md)
    * [是否支持多线程](faq/support-multi-thread.md)

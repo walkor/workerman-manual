@@ -8,6 +8,7 @@ composer require clue/redis-react
 ## 示例：
 
 ```php
+<?php
 require_once __DIR__ . '/vendor/autoload.php';
 use Clue\React\Redis\Factory;
 use Clue\React\Redis\Client;
