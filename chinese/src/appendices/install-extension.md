@@ -1,9 +1,9 @@
 # 安装扩展
 ## 注意
-与Apache+PHP或者Nginx+PHP的运行模式不同，WorkerMan是基于命令行 [PHP Cli](http://php.net/manual/zh/features.commandline.php) 运行的，使用的是不同的PHP可执行程序，使用的php.ini文件也可能不同。所以在网页中打印```phpinfo()```看到安装了某个扩展，不代表命令行的PHP Cli也安装了对应的扩展。
+与Apache+PHP或者Nginx+PHP的运行模式不同，WorkerMan是基于PHP命令行 [PHP CLI](http://php.net/manual/zh/features.commandline.php) 运行的，使用的是不同的PHP可执行程序，使用的php.ini文件也可能不同。所以在网页中打印```phpinfo()```看到安装了某个扩展，不代表命令行的PHP CLI也安装了对应的扩展。
 
-## 如何确定PHP Cli安装了哪些扩展
-运行 ```php -m``` 会列出命令行 PHP Cli 已经安装的扩展，结果类似如下：
+## 如何确定PHP CLI安装了哪些扩展
+运行 ```php -m``` 会列出命令行 PHP CLI 已经安装的扩展，结果类似如下：
 ```shell
 ~# php -m
 [PHP Modules]
@@ -13,8 +13,8 @@ pcntl
 ...
 ```
 
-## 如何确定PHP Cli 的php.ini文件的位置
-当我们安装扩展时，可能需要手动配置php.ini文件，把扩展加进去，所以要确认PHP Cli的php.ini文件的位置。可以运行```php --ini```查找PHP Cli的ini文件位置，结果类似如下(各个系统显示结果会有差异)：
+## 如何确定PHP CLI 的php.ini文件的位置
+当我们安装扩展时，可能需要手动配置php.ini文件，把扩展加进去，所以要确认PHP CLI的php.ini文件的位置。可以运行```php --ini```查找PHP CLI的ini文件位置，结果类似如下(各个系统显示结果会有差异)：
 ```shell
 ~# php --ini
 Configuration File (php.ini) Path: /etc/php5/cli
@@ -29,7 +29,7 @@ Additional .ini files parsed:      /etc/php5/cli/conf.d/apc.ini,
 ...
 ```
 
-# 给PHP Cli安装扩展（安装memcached扩展为例）
+# 给PHP CLI安装扩展（安装memcached扩展为例）
 ## 方法一、使用apt或者yum命令安装
 如果PHP是通过 apt 或者 yum 命令安装的，则扩展也可以通过 apt 或者 yum 安装
 
@@ -82,7 +82,7 @@ Starting to download memcached-2.2.0.tgz (70,449 bytes)
 通过运行 ```php --ini```查找php.ini文件位置，然后在文件中添加```extension=memcached.so```
 
 ## 方法三、源码编译安装（一般是安装PHP自带的扩展，以安装pcntl扩展为例）
-1、利用```php -v```命令查看当前的PHP Cli的版本
+1、利用```php -v```命令查看当前的PHP CLI的版本
 ```shell
 ~# php -v
 PHP 5.3.29-1~dotdeb.0 with Suhosin-Patch (cli) (built: Aug 14 2014 19:55:20)

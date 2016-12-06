@@ -152,12 +152,12 @@
    * [workerman作为客户端](faq/use-workerman-as-client-side.md)
    * [作为ws/wss客户端](faqas-wss-client.md)
 * [附录](appendices/README.md)
+   * [Linux内核调优](appendices/kernel-optimization.md)
    * [压力测试](appendices/stress-test.md)
    * [安装扩展](appendices/install-extension.md)
    * [Linux内核调优](appendices/kernel-optimization.md)
    * [websocket协议](appendices/about-websocket.md)
    * [ws协议](appendices/about-ws.md)
-   * [Linux内核调优](appendices/kernel-optimization.md)
    * [text协议](appendices/about-text.md)
    * [frame协议](appendices/about-frame.md)
 

@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="5.2" data-basepath=".." data-revision="1481000893623">
+    <div class="book"  data-level="5.2" data-basepath=".." data-revision="1481039579847">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1640,55 +1640,55 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="16.1" data-path="appendices/stress-test.html">
+        <li class="chapter " data-level="16.1" data-path="appendices/kernel-optimization.html">
+            
+            <a href="../appendices/kernel-optimization.html">
+                <i class="fa fa-check"></i> <b>16.1.</b> Linux内核调优
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.2" data-path="appendices/stress-test.html">
             
             <a href="../appendices/stress-test.html">
-                <i class="fa fa-check"></i> <b>16.1.</b> 压力测试
+                <i class="fa fa-check"></i> <b>16.2.</b> 压力测试
             </a>
             
             
         </li>
     
-        <li class="chapter " data-level="16.2" data-path="appendices/install-extension.html">
+        <li class="chapter " data-level="16.3" data-path="appendices/install-extension.html">
             
             <a href="../appendices/install-extension.html">
-                <i class="fa fa-check"></i> <b>16.2.</b> 安装扩展
+                <i class="fa fa-check"></i> <b>16.3.</b> 安装扩展
             </a>
             
             
         </li>
     
-        <li class="chapter " data-level="16.3" data-path="appendices/kernel-optimization.html">
+        <li class="chapter " data-level="16.4" data-path="appendices/kernel-optimization.html">
             
             <a href="../appendices/kernel-optimization.html">
-                <i class="fa fa-check"></i> <b>16.3.</b> Linux内核调优
+                <i class="fa fa-check"></i> <b>16.4.</b> Linux内核调优
             </a>
             
             
         </li>
     
-        <li class="chapter " data-level="16.4" data-path="appendices/about-websocket.html">
+        <li class="chapter " data-level="16.5" data-path="appendices/about-websocket.html">
             
             <a href="../appendices/about-websocket.html">
-                <i class="fa fa-check"></i> <b>16.4.</b> websocket协议
+                <i class="fa fa-check"></i> <b>16.5.</b> websocket协议
             </a>
             
             
         </li>
     
-        <li class="chapter " data-level="16.5" data-path="appendices/about-ws.html">
+        <li class="chapter " data-level="16.6" data-path="appendices/about-ws.html">
             
             <a href="../appendices/about-ws.html">
-                <i class="fa fa-check"></i> <b>16.5.</b> ws协议
-            </a>
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="16.6" data-path="appendices/kernel-optimization.html">
-            
-            <a href="../appendices/kernel-optimization.html">
-                <i class="fa fa-check"></i> <b>16.6.</b> Linux内核调优
+                <i class="fa fa-check"></i> <b>16.6.</b> ws协议
             </a>
             
             
@@ -2043,15 +2043,15 @@
     
         <a href="../appendices/README.html" title="附录" class="chapter  " data-progress="16" style="left: 95.59748427672956%;"></a>
     
-        <a href="../appendices/stress-test.html" title="压力测试" class="chapter  " data-progress="16.1" style="left: 96.22641509433963%;"></a>
+        <a href="../appendices/stress-test.html" title="压力测试" class="chapter  " data-progress="16.2" style="left: 96.22641509433963%;"></a>
     
-        <a href="../appendices/install-extension.html" title="安装扩展" class="chapter  " data-progress="16.2" style="left: 96.85534591194968%;"></a>
+        <a href="../appendices/install-extension.html" title="安装扩展" class="chapter  " data-progress="16.3" style="left: 96.85534591194968%;"></a>
     
-        <a href="../appendices/about-websocket.html" title="websocket协议" class="chapter  " data-progress="16.4" style="left: 97.48427672955975%;"></a>
+        <a href="../appendices/kernel-optimization.html" title="Linux内核调优" class="chapter  " data-progress="16.4" style="left: 97.48427672955975%;"></a>
     
-        <a href="../appendices/about-ws.html" title="ws协议" class="chapter  " data-progress="16.5" style="left: 98.11320754716981%;"></a>
+        <a href="../appendices/about-websocket.html" title="websocket协议" class="chapter  " data-progress="16.5" style="left: 98.11320754716981%;"></a>
     
-        <a href="../appendices/kernel-optimization.html" title="Linux内核调优" class="chapter  " data-progress="16.6" style="left: 98.74213836477988%;"></a>
+        <a href="../appendices/about-ws.html" title="ws协议" class="chapter  " data-progress="16.6" style="left: 98.74213836477988%;"></a>
     
         <a href="../appendices/about-text.html" title="text协议" class="chapter  " data-progress="16.7" style="left: 99.37106918238993%;"></a>
     
@@ -2062,26 +2062,64 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_252">
+                    <section class="normal" id="section-gitbook_1686">
                     
-                        <h1 id="-">安装</h1>
-<p>WorkerMan实际上没有安装脚本，如果你的PHP环境已经装好，只需要把WorkerMan源代码或者demo下载下来即可运行。</p>
-<p>windows用户需要使用windows版本的workerman，windows版本不依赖任何扩展，只需要配置好php环境变量即可，windows版本及注意事项参见<a href="http://www.workerman.net/windows" target="_blank"><strong>这里</strong></a>。</p>
+                        <h1 id="-">安装说明</h1>
+<p>WorkerMan实际上就是一个PHP代码包，如果你的PHP环境已经装好，只需要把WorkerMan源代码或者demo下载下来即可运行。</p>
+<h1 id="windows-">windows用户（必读）</h1>
+<p>windows用户需要使用windows版本的workerman，windows版本workerman本身<strong>不依赖任何扩展</strong>，只需要配置好PHP环境变量即可，<strong>windows版本workerman安装及注意事项参见<a href="http://www.workerman.net/windows" target="_blank">windows用户必看</a>。</strong></p>
+<p><strong>本页面以下本内容不适用于windows版本workerman，windows用户请忽略。</strong></p>
+<h1 id="-">环境检测</h1>
 <p>可以使用以下脚本测试本机PHP环境是否满足WorkerMan运行要求。
 <code>curl -Ss http://www.workerman.net/check.php | php</code></p>
 <p>上面脚本如果全部显示ok，则代表满足WorkerMan要求，直接到<a href="http://www.workerman.net/" target="_blank">官网</a>下载例子即可运行。</p>
-<p>如果缺少某个扩展，请参考<a href="http://doc3.workerman.net/appendices/install-extension.html" target="_blank">附录-安装扩展</a>一节安装。</p>
-<p>如果没有PHP环境，请根据系统参考以下步骤安装。</p>
-<h2 id="-github-">通过Github安装</h2>
+<p>（注意：检测脚本中没有检测event扩展或者libevent扩展，如果业务并发连接数大于1024建议安装event扩展或者libevent扩展，安装方法参照下面说明）</p>
+<h1 id="-php-">已有PHP环境安装缺失扩展</h1>
+<h2 id="-pcntl-posix-">安装pcntl和posix扩展：</h2>
+<p><strong>centos系统</strong><br>
+如果php是通过yum安装的，则命令行运行 <code>yum install php-process</code>即可安装pcntl和posix扩展。</p>
+<p>如果安装失败或者php本身不是用yum安装的请参考手册<a href="http://doc3.workerman.net/appendices/install-extension.html" target="_blank">附录-安装扩展</a>一节中方法三源码编译安装。</p>
+<p><strong>debian/ubuntu/mac os系统</strong><br>
+参考手册<a href="http://doc3.workerman.net/appendices/install-extension.html" target="_blank">附录-安装扩展</a>一节中方法三源码编译安装。</p>
+<h2 id="-event-libevent-">安装event或者libevent扩展：</h2>
+<p>为了能支持更大的并发连接数，建议安装event扩展或者libevent扩展(二者作用相同，二选一即可)。以Event为例，安装方法如下:</p>
+<p><strong>centos系统安装</strong></p>
+<p>1、命令行运行（安装event扩展依赖的libevent-devel包）</p>
+<pre><code class="lang-shell">yum install libevent-devel -y
+</code></pre>
+<p>2、命令行运行（安装event扩展）</p>
+<pre><code class="lang-shell">pecl install event
+</code></pre>
+<p>注意提示：<code>Include libevent OpenSSL support [yes] :</code> 时输入<code>no</code>回车，其它直接敲回车就行</p>
+<p>如果安装失败请跳过以下步骤，尝试安装libevent扩展，见本页面底部。</p>
+<p>3、命令行运行（如果ini文件位置不对，可以通过运行<code>php --ini</code>找到实际加载的ini文件路径）</p>
+<pre><code class="lang-shell">echo extension=event.so &gt; /etc/php.d/event.ini
+</code></pre>
+<p><strong>debian/ubuntu系统安装</strong></p>
+<p>1、命令行运行（安装event扩展依赖的libevent-dev包）</p>
+<pre><code class="lang-shell">apt-get libevent-dev -y
+</code></pre>
+<p>2、命令行运行（安装event扩展）</p>
+<pre><code class="lang-shell">pecl install event
+</code></pre>
+<p>注意提示：<code>Include libevent OpenSSL support [yes] :</code> 时输入<code>no</code>回车，其它直接敲回车就行</p>
+<p>如果安装失败请跳过以下步骤，尝试安装libevent扩展，见本页面底部。</p>
+<p>3、命令行运行(需要切换到root用户。如果ini文件位置不对，可以通过运行<code>php --ini</code>找到实际加载的ini文件路径)</p>
+<pre><code class="lang-shell">echo extension=event.so &gt; /etc/php5/cli/conf.d/event.ini
+</code></pre>
+<h3 id="mac-os-">mac os 系统安装教程</h3>
+<p>mac 系统一般作为开发机，不必安装event扩展。</p>
+<h2 id="-php-">全新系统安装（全新安装PHP+扩展）</h2>
 <h3 id="centos-">centos系统安装教程</h3>
 <p>1、命令行运行（此步骤包含了安装php-cli主程序以及pcntl、posix、libevent库及git程序）</p>
 <pre><code class="lang-shell">yum install php-cli php-process git gcc php-devel php-pear libevent-devel -y
 </code></pre>
-<p>2、命令行运行（此步骤是通过pecl安装Event扩展。注意Event扩展不是必须的，开发环境或者并发连接数不超过1000的此步骤可以跳过）</p>
+<p>2、命令行运行（安装event扩展）</p>
 <pre><code class="lang-shell">pecl install event
 </code></pre>
 <p>注意提示：<code>Include libevent OpenSSL support [yes] :</code> 时输入<code>no</code>回车，其它直接敲回车就行</p>
-<p>3、命令行运行（此步骤是配置Event扩展的ini配置，如果不安装Event扩展此步骤跳过）</p>
+<p>如果安装失败请跳过以下步骤3，尝试安装libevent扩展，见本页面底部。</p>
+<p>3、命令行运行（此步骤是配置Event扩展的ini配置，如果ini文件位置不对，可以通过运行<code>php --ini</code>找到实际加载的ini文件路径）</p>
 <pre><code class="lang-shell">echo extension=event.so &gt; /etc/php.d/event.ini
 </code></pre>
 <p>4、命令行运行（此步骤是通过github下载WorkerMan主程序）</p>
@@ -2093,11 +2131,12 @@
 <p>1、命令行运行（此步骤包含了安装php-cli主程序、libevent库及git程序）</p>
 <pre><code class="lang-shell">apt-get install php5-cli git gcc php-pear php5-dev libevent-dev -y
 </code></pre>
-<p>2、命令行运行（此步骤是通过pecl安装Event扩展。注意Event扩展不是必须的，开发环境或者并发连接数不超过1000的此步骤可以跳过）</p>
+<p>2、命令行运行（安装event扩展）</p>
 <pre><code class="lang-shell">pecl install event
 </code></pre>
 <p>注意提示：<code>Include libevent OpenSSL support [yes] :</code> 时输入<code>no</code>回车，其它直接敲回车就行</p>
-<p>3、命令行运行（此步骤是配置Event扩展的ini配置，如果不安装Event扩展此步骤跳过）</p>
+<p>如果安装失败请跳过以下步骤3，尝试安装libevent扩展，见本页面底部。</p>
+<p>3、命令行运行（需要切换到root用户。此步骤是配置Event扩展的ini配置，如果ini文件位置不对，可以通过运行<code>php --ini</code>找到实际加载的ini文件路径）</p>
 <pre><code class="lang-shell">echo extension=event.so &gt; /etc/php5/cli/conf.d/event.ini
 </code></pre>
 <p>4、命令行运行（此步骤是通过github下载WorkerMan主程序）</p>
