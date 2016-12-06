@@ -12,8 +12,7 @@ composer require react/child-process
 require_once __DIR__ . '/vendor/autoload.php';
 use Workerman\Worker;
 
-$worker = new Worker();
-
+$worker = new Worker('tcp://127.0.0.1:1234');
 
 $worker->onWorkerStart = function() {
     $loop    = Worker::getEventLoop();
