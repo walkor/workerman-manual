@@ -1,7 +1,7 @@
 # 简单的开发实例
 
 ## 实例一、使用HTTP协议对外提供Web服务
-**创建http_test.php文件**
+**创建http_test.php文件（位置任意，能引用到Workerman/Autoloader.php即可，下同）**
 ```php
 <?php
 use Workerman\Worker;
@@ -24,7 +24,7 @@ $http_worker->onMessage = function($connection, $data)
 Worker::runAll();
 ```
 
-**命令行运行**
+**命令行运行（windows用户用 [cmd命令行](http://baike.baidu.com/item/%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E7%AC%A6?fromtitle=CMD&fromid=1193011&type=syn)，下同）**
 ```shell
 php http_test.php start
 
@@ -36,6 +36,8 @@ php http_test.php start
 假设服务端ip为127.0.0.1
 
 在浏览器中访问url http://127.0.0.1:2345
+
+非127.0.0.1访问
 
 
 ## 实例二、使用WebSocket协议对外提供服务
@@ -117,7 +119,7 @@ php tcp_test.php start
 
 ```
 
-**测试**
+**测试：命令行运行**
 ```shell
 telnet 127.0.0.1 2347
 Trying 127.0.0.1...

@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="4.2" data-basepath=".." data-revision="1481039579847">
+    <div class="book"  data-level="4.2" data-basepath=".." data-revision="1481197630808">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -2062,11 +2062,11 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_1684">
+                    <section class="normal" id="section-gitbook_165">
                     
                         <h1 id="-">简单的开发实例</h1>
 <h2 id="-http-web-">实例一、使用HTTP协议对外提供Web服务</h2>
-<p><strong>创建http_test.php文件</strong></p>
+<p><strong>创建http_test.php文件（位置任意，能引用到Workerman/Autoloader.php即可，下同）</strong></p>
 <pre><code class="lang-php"><span class="hljs-preprocessor">&lt;?php</span>
 <span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
@@ -2087,12 +2087,13 @@
 <span class="hljs-comment">// 运行worker</span>
 Worker::runAll();
 </code></pre>
-<p><strong>命令行运行</strong></p>
+<p><strong>命令行运行（windows用户用 <a href="http://baike.baidu.com/item/%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E7%AC%A6?fromtitle=CMD&amp;fromid=1193011&amp;type=syn" target="_blank">cmd命令行</a>，下同）</strong></p>
 <pre><code class="lang-shell">php http_test.php start
 </code></pre>
 <p><strong>测试</strong></p>
 <p>假设服务端ip为127.0.0.1</p>
 <p>在浏览器中访问url <a href="http://127.0.0.1:2345" target="_blank">http://127.0.0.1:2345</a></p>
+<p>非127.0.0.1访问</p>
 <h2 id="-websocket-">实例二、使用WebSocket协议对外提供服务</h2>
 <p><strong>创建ws_test.php文件</strong></p>
 <pre><code class="lang-php"><span class="hljs-preprocessor">&lt;?php</span>
@@ -2156,7 +2157,7 @@ Worker::runAll();
 <p><strong>命令行运行</strong></p>
 <pre><code class="lang-shell">php tcp_test.php start
 </code></pre>
-<p><strong>测试</strong></p>
+<p><strong>测试：命令行运行</strong></p>
 <pre><code class="lang-shell">telnet 127.0.0.1 2347
 Trying 127.0.0.1...
 Connected to 127.0.0.1.
