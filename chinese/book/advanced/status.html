@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="13.2" data-basepath=".." data-revision="1481197630808">
+    <div class="book"  data-level="13.2" data-basepath=".." data-revision="1482312541298">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -2062,7 +2062,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_114">
+                    <section class="normal" id="section-gitbook_484">
                     
                         <h1 id="-">查看运行状态</h1>
 <p>运行 <code>php start.php status</code>
@@ -2111,11 +2111,11 @@ pid     memory  listening                worker_name           connections total
 <h2 id="process-status">PROCESS STATUS</h2>
 <p>pid：进程pid</p>
 <p>memory：该进程当前占用内存（不包括php自身可执行文件的占用的内存）</p>
-<p>listening：传输层协议及监听ip端口。none表示未监听任何端口。</p>
-<p>worker_name：该进程运行的服务服务名</p>
-<p>connections:该进程当前有多少个TCP连接，包括客户端连接和WorkerMan内部通讯的连接</p>
-<p>total_request：该进程接收多少请求，注意每个连接上可能有多个请求</p>
-<p>send_fail：该进程向客户端发送数据失败次数，失败原因一般为客户端连接断开，此项不为0一般属于正常状态</p>
+<p>listening：传输层协议及监听ip端口。如果不监听任何端口则显示none。参见<a href="/worker-development/worker-construct.html">Worker类构造函数</a></p>
+<p>worker_name：该进程运行的服务服务名，见<a href="/worker-development/name.html">Worker类name属性</a></p>
+<p>connections:该进程当前有多少个TCP连接对象实例。注意：每个客户端连接是一个<a href="/worker-development/connection-functions.html">TcpConnection</a>连接对象实例，同时每个<a href="/worker-development/__construct.html">AsyncTcpConnection</a>连接也是一个连接对象实例，所以connections的计数不一定与客户端连接数相等，例如GatewayWorker中Gateway进程的connections计数包含了客户端连接数和Gateway与Worker内部通讯连接数。</p>
+<p>total_request：表示该进程从启动到现在一共接收了多少个请求</p>
+<p>send_fail：该进程向客户端发送数据失败次数，失败原因一般为客户端连接断开，此项不为0一般属于正常状态，参见<a href="/faq/about-send-fail.html">手册常见问题send_fail原因</a></p>
 <p>throw_exception：该进程内业务未捕获的异常数量</p>
 <h2 id="-">原理</h2>
 <p>status脚本运行后，主进程会向所有worker进程发送一个<code>SIGUSR2</code>信号，随后status脚本进入100毫秒的睡眠阶段，以便等待各个worker进程状态统计结果。这时空闲的worker进程收到<code>SIGUSR2</code>信号后会立刻向特定的磁盘文件写入自己的运行状态（连接数、请求数等等），而正在处理业务逻辑的worker进程，则会等待业务逻辑处理完毕才会去写入自己的状态信息。sleep100毫秒后，status脚本开始读取磁盘中的状态文件，并展示结果到控制台。</p>

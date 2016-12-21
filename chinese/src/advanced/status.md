@@ -67,15 +67,15 @@ pid：进程pid
 
 memory：该进程当前占用内存（不包括php自身可执行文件的占用的内存）
 
-listening：传输层协议及监听ip端口。none表示未监听任何端口。
+listening：传输层协议及监听ip端口。如果不监听任何端口则显示none。参见[Worker类构造函数](/worker-development/worker-construct.html)
 
-worker_name：该进程运行的服务服务名
+worker_name：该进程运行的服务服务名，见[Worker类name属性](/worker-development/name.html)
 
-connections:该进程当前有多少个TCP连接，包括客户端连接和WorkerMan内部通讯的连接
+connections:该进程当前有多少个TCP连接对象实例。注意：每个客户端连接是一个[TcpConnection](/worker-development/connection-functions.html)连接对象实例，同时每个[AsyncTcpConnection](/worker-development/__construct.html)连接也是一个连接对象实例，所以connections的计数不一定与客户端连接数相等，例如GatewayWorker中Gateway进程的connections计数包含了客户端连接数和Gateway与Worker内部通讯连接数。
 
-total_request：该进程接收多少请求，注意每个连接上可能有多个请求
+total_request：表示该进程从启动到现在一共接收了多少个请求
 
-send_fail：该进程向客户端发送数据失败次数，失败原因一般为客户端连接断开，此项不为0一般属于正常状态
+send_fail：该进程向客户端发送数据失败次数，失败原因一般为客户端连接断开，此项不为0一般属于正常状态，参见[手册常见问题send_fail原因](/faq/about-send-fail.html)
 
 throw_exception：该进程内业务未捕获的异常数量
 
