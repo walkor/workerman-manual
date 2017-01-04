@@ -28,11 +28,7 @@
 ### 查看状态
 ```php start.php status```
 
-### 强行杀死所有workerman进程
 
-``` （要求workerman版本>=3.2.2） ```
-
-```php start.php kill```
 
 ## debug和daemon方式区别
 
