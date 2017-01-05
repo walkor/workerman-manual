@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>创建wss或者https服务 | WorkerMan 3.x 手册</title>
+        <title>创建wss服务 | WorkerMan 3.x 手册</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 0.5.2">
@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="15.31" data-basepath=".." data-revision="1483586728658">
+    <div class="book"  data-level="15.31" data-basepath=".." data-revision="1483630601443">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1601,7 +1601,7 @@
         <li class="chapter " data-level="15.31" data-path="faq/secure-websocket-server.html">
             
             <a href="../faq/secure-websocket-server.html">
-                <i class="fa fa-check"></i> <b>15.31.</b> 创建wss或者https服务
+                <i class="fa fa-check"></i> <b>15.31.</b> 创建wss服务
             </a>
             
             
@@ -2014,7 +2014,7 @@
     
         <a href="../faq/ssl-support.html" title="传输加密-ssl/tsl" class="chapter done " data-progress="15.30" style="left: 89.30817610062893%;"></a>
     
-        <a href="../faq/secure-websocket-server.html" title="创建wss或者https服务" class="chapter done " data-progress="15.31" style="left: 89.937106918239%;"></a>
+        <a href="../faq/secure-websocket-server.html" title="创建wss服务" class="chapter done " data-progress="15.31" style="left: 89.937106918239%;"></a>
     
         <a href="../faq/use-workerman-as-client-side.html" title="workerman作为客户端" class="chapter  " data-progress="15.32" style="left: 90.56603773584905%;"></a>
     
@@ -2053,39 +2053,57 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_79">
+                    <section class="normal" id="section-gitbook_542">
                     
                         <h1 id="-wss-">创建wss服务</h1>
 <p><strong>问：</strong></p>
-<p>Workerman如何创建一个wss服务(或https服务)，使得客户端可以用过wss协议(或https协议)来连接通讯。</p>
+<p>Workerman如何创建一个wss服务，使得客户端可以用过wss协来连接通讯，比如在微信小程序中连接服务端。</p>
 <p><strong>答：</strong></p>
-<p>可以利用nginx作为ssl的透明代理，实现wss转换成ws或者https转换成http转发到Workerman。</p>
-<p>nginx作为ssl透明代理的配置参考如下，此配置同样适用于其它ssl加密的协议，包括https。</p>
-<h2 id="nginx-">nginx配置</h2>
-<p>要求：</p>
-<p>1:nginx版本必须大于1.9.0 (通过<code>nginx -V</code>命令查看版本)</p>
-<p>2:编译的时候必须加上这两个参数　–with-stream –with-stream_ssl_module (通过<code>nginx -V</code>命令查看当前nginx的编译参数)</p>
-<pre><code>stream {
-    upstream stream_backend {
-         server backend1.example.com:8282;
-         server backend2.example.com:8282;
-         server backend3.example.com:8282;
-    }
+<p>可以利用nginx作为ssl的代理。通讯原理及流程是：</p>
+<p>1、客户端发起wss连接连到nginx</p>
+<p>2、nginx将wss协议的数据转换成ws协议并转发到Workerman</p>
+<p>3、Workerman收到数据后做业务逻辑处理</p>
+<p>4、Workerman给客户端发送消息时，则是相反的过程，数据经过nginx转换成wss协议然后发给客户端</p>
+<h2 id="nginx-">nginx配置参考</h2>
+<p><strong>前提条件及准备工作：</strong></p>
+<p>1、假设Workerman监听的是8282端口(websocket协议)</p>
+<p>2、已经申请了证书（pem/crt文件及key文件）放在了/etc/nginx/conf.d/ssl下</p>
+<p>3、打算利用nginx开启4431端口对外提供wss代理服务（端口可以根据需要修改）</p>
+<p><strong>nginx配置类似如下</strong>：</p>
+<pre><code>server {
+  listen 4431;
 
-    server {
-        listen                1234 ssl;
-        proxy_pass            stream_backend;
+  ssl on;
+  ssl_certificate /etc/nginx/conf.d/ssl/server.pem;
+  ssl_certificate_key /etc/nginx/conf.d/ssl/laychat/server.key;
+  ssl_session_timeout 5m;
+  ssl_session_cache shared:SSL:50m;
+  ssl_protocols SSLv3 SSLv2 TLSv1 TLSv1.1 TLSv1.2;
+  ssl_ciphers ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;
 
-        ssl_certificate       /etc/ssl/certs/server.crt;
-        ssl_certificate_key   /etc/ssl/certs/server.key;
-        ssl_protocols         SSLv3 TLSv1 TLSv1.1 TLSv1.2;
-        ssl_ciphers           HIGH:!aNULL:!MD5;
-        ssl_session_cache     shared:SSL:20m;
-        ssl_session_timeout   4h;
-        ssl_handshake_timeout 30s;
-     }
+  location /
+  {
+    proxy_pass http://127.0.0.1:8282;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection &quot;upgrade&quot;;
+  }
 }
+</code></pre><p><strong>测试</strong></p>
+<p>打开chrome浏览器，按F12打开调试控制台，在Console一栏输入(或者把下面代码放入到html页面用js运行)</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// 证书是会检查域名的，请使用域名连接</span>
+ws = <span class="hljs-keyword">new</span> WebSocket(<span class="hljs-string">"wss://域名:4431"</span>);
+ws.onopen = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+    alert(<span class="hljs-string">"连接成功"</span>);
+    ws.send(<span class="hljs-string">'tom'</span>);
+    alert(<span class="hljs-string">"给服务端发送一个字符串：tom"</span>);
+};
+ws.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span> {</span>
+    alert(<span class="hljs-string">"收到服务端的消息："</span> + e.data);
+};
 </code></pre>
+<p><code>注意：如果出现无法访问的情况，请检查服务器防火墙。</code></p>
+
                     
                     </section>
                 
