@@ -14,9 +14,9 @@ nginx作为ssl透明代理的配置参考如下，此配置同样适用于其它
 ## nginx配置
 要求：
 
-1:nginx版本必须大于1.9.0
+1:nginx版本必须大于1.9.0 (通过```nginx -V```命令查看版本)
 
-2:编译的时候必须加上这两个参数　–with-stream –with-stream_ssl_module
+2:编译的时候必须加上这两个参数　–with-stream –with-stream_ssl_module (通过```nginx -V```命令查看当前nginx的编译参数)
 
 ```
 stream {
