@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="15.31" data-basepath=".." data-revision="1484031618849">
+    <div class="book"  data-level="15.31" data-basepath=".." data-revision="1484233579733">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -2053,7 +2053,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_30">
+                    <section class="normal" id="section-gitbook_939">
                     
                         <h1 id="-wss-">创建wss服务</h1>
 <p><strong>问：</strong></p>
@@ -2087,6 +2087,7 @@
     proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection &quot;Upgrade&quot;;
+    proxy_set_header X-Real-IP $remote_addr;
   }
 }
 </code></pre><p><strong>测试</strong></p>
@@ -2103,6 +2104,49 @@ ws.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</
 };
 </code></pre>
 <p><code>注意：如果出现无法访问的情况，请检查服务器防火墙。</code></p>
+<h2 id="-nginx-wss-ip-">透过nginx wss代理如何获取客户端真实ip ?</h2>
+<p>使用nginx作为wss代理，nginx实际上充当了workerman的客户端，所以在workerman上获取的客户端ip为nginx服务器的ip，并非实际的客户端ip。如何获取客户端真实ip可以参考下面的方法。</p>
+<p><strong>原理：</strong></p>
+<p>nginx将客户端真实ip通过http header传递进来，即上面nginx配置中location里的<code>proxy_set_header X-Real-IP $remote_addr;</code>设置。workerman通过读取这个header值，将此值保存到<code>$connection对象里</code>，(GatewayWorker可以保存到<code>$_SESSION</code>变量里)，使用的时候直接读取变量即可。</p>
+<p><strong>workerman从nginx设置的header里读取客户端ip</strong></p>
+<pre><code class="lang-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/../Workerman/Autoloader.php'</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'websocket://0.0.0.0:7272'</span>);
+
+<span class="hljs-comment">// 客户端练上来时，即完成TCP三次握手后的回调</span>
+<span class="hljs-variable">$worker</span>-&gt;onConnect = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>)</span> {</span>
+   <span class="hljs-comment">/**
+    * 客户端websocket握手时的回调onWebSocketConnect
+    * 在onWebSocketConnect回调中获得nginx通过http头中的X_REAL_IP值
+    */</span>
+   <span class="hljs-variable">$connection</span>-&gt;onWebSocketConnect = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>)</span>{</span>
+       <span class="hljs-comment">/**
+        * connection对象本没有realIP属性，这里给connection对象动态添加个realIP属性
+        * 记住php对象是可以动态添加属性的，你也可以用自己喜欢的属性名
+        *、
+       $connection-&gt;realIP = $_SERVER['HTTP_X_REAL_IP'];
+   };
+};
+$worker-&gt;onMessage = function($connection, $data)
+{
+    // 当使用客户端真实ip时，直接使用$connection-&gt;realIP即可
+    $connection-&gt;send($connection-&gt;realIP);
+};
+Worker::runAll();</span>
+</code></pre>
+<p><strong>GatewayWorker从nginx设置的header里获取客户端ip</strong></p>
+<p>在start_gateway.php加上下面的代码</p>
+<pre><code class="lang-php"><span class="hljs-variable">$gateway</span>-&gt;onConnect = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>)</span>
+{</span>
+    <span class="hljs-variable">$connection</span>-&gt;onWebSocketConnect = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$connection</span> , <span class="hljs-variable">$http_header</span>)</span>
+    {</span>
+        <span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">'realIP'</span>] = <span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">'HTTP_X_REAL_IP'</span>];
+    };
+};
+</code></pre>
+<p>代码加完后需要重启GatewayWorker。</p>
+<p>这样就可以在Events.php中通过<code>$_SESSION[&#39;realIP&#39;]</code>得到客户端的真实ip了</p>
 
                     
                     </section>

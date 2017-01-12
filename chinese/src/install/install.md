@@ -57,7 +57,7 @@ echo extension=event.so > /etc/php.d/event.ini
 
 1、命令行运行（安装event扩展依赖的libevent-dev包）
 ```shell
-apt-get libevent-dev -y
+apt-get install libevent-dev -y
 ```
 
 2、命令行运行（安装event扩展）

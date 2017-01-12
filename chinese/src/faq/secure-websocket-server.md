@@ -47,6 +47,7 @@ server {
     proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "Upgrade";
+    proxy_set_header X-Real-IP $remote_addr;
   }
 }
 ```
@@ -70,3 +71,55 @@ ws.onmessage = function(e) {
 
 ``` 注意：如果出现无法访问的情况，请检查服务器防火墙。 ```
 
+## 透过nginx wss代理如何获取客户端真实ip ?
+使用nginx作为wss代理，nginx实际上充当了workerman的客户端，所以在workerman上获取的客户端ip为nginx服务器的ip，并非实际的客户端ip。如何获取客户端真实ip可以参考下面的方法。
+
+**原理：**
+
+nginx将客户端真实ip通过http header传递进来，即上面nginx配置中location里的```proxy_set_header X-Real-IP $remote_addr;```设置。workerman通过读取这个header值，将此值保存到```$connection对象里```，(GatewayWorker可以保存到```$_SESSION```变量里)，使用的时候直接读取变量即可。
+
+**workerman从nginx设置的header里读取客户端ip**
+
+```php
+<?php
+require_once __DIR__ . '/../Workerman/Autoloader.php';
+use Workerman\Worker;
+$worker = new Worker('websocket://0.0.0.0:7272');
+
+// 客户端练上来时，即完成TCP三次握手后的回调
+$worker->onConnect = function($connection) {
+   /**
+    * 客户端websocket握手时的回调onWebSocketConnect
+    * 在onWebSocketConnect回调中获得nginx通过http头中的X_REAL_IP值
+    */
+   $connection->onWebSocketConnect = function($connection){
+       /**
+        * connection对象本没有realIP属性，这里给connection对象动态添加个realIP属性
+        * 记住php对象是可以动态添加属性的，你也可以用自己喜欢的属性名
+        *、
+       $connection->realIP = $_SERVER['HTTP_X_REAL_IP'];
+   };
+};
+$worker->onMessage = function($connection, $data)
+{
+    // 当使用客户端真实ip时，直接使用$connection->realIP即可
+    $connection->send($connection->realIP);
+};
+Worker::runAll();
+```
+
+**GatewayWorker从nginx设置的header里获取客户端ip**
+
+在start_gateway.php加上下面的代码
+```php
+$gateway->onConnect = function($connection)
+{
+    $connection->onWebSocketConnect = function($connection , $http_header)
+    {
+        $_SESSION['realIP'] = $_SERVER['HTTP_X_REAL_IP'];
+    };
+};
+```
+代码加完后需要重启GatewayWorker。
+
+这样就可以在Events.php中通过```$_SESSION['realIP']```得到客户端的真实ip了
