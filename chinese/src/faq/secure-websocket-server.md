@@ -96,7 +96,7 @@ $worker->onConnect = function($connection) {
        /**
         * connection对象本没有realIP属性，这里给connection对象动态添加个realIP属性
         * 记住php对象是可以动态添加属性的，你也可以用自己喜欢的属性名
-        *、
+        */
        $connection->realIP = $_SERVER['HTTP_X_REAL_IP'];
    };
 };

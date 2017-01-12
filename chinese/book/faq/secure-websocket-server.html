@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="15.31" data-basepath=".." data-revision="1484233579733">
+    <div class="book"  data-level="15.31" data-basepath=".." data-revision="1484233962315">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -2053,7 +2053,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_939">
+                    <section class="normal" id="section-gitbook_1102">
                     
                         <h1 id="-wss-">创建wss服务</h1>
 <p><strong>问：</strong></p>
@@ -2124,16 +2124,16 @@ ws.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</
        <span class="hljs-comment">/**
         * connection对象本没有realIP属性，这里给connection对象动态添加个realIP属性
         * 记住php对象是可以动态添加属性的，你也可以用自己喜欢的属性名
-        *、
-       $connection-&gt;realIP = $_SERVER['HTTP_X_REAL_IP'];
+        */</span>
+       <span class="hljs-variable">$connection</span>-&gt;realIP = <span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">'HTTP_X_REAL_IP'</span>];
    };
 };
-$worker-&gt;onMessage = function($connection, $data)
-{
-    // 当使用客户端真实ip时，直接使用$connection-&gt;realIP即可
-    $connection-&gt;send($connection-&gt;realIP);
+<span class="hljs-variable">$worker</span>-&gt;onMessage = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>, <span class="hljs-variable">$data</span>)</span>
+{</span>
+    <span class="hljs-comment">// 当使用客户端真实ip时，直接使用$connection-&gt;realIP即可</span>
+    <span class="hljs-variable">$connection</span>-&gt;send(<span class="hljs-variable">$connection</span>-&gt;realIP);
 };
-Worker::runAll();</span>
+Worker::runAll();
 </code></pre>
 <p><strong>GatewayWorker从nginx设置的header里获取客户端ip</strong></p>
 <p>在start_gateway.php加上下面的代码</p>
