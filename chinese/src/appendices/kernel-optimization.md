@@ -17,7 +17,7 @@ fs.file-max = 6815744
 #防火墙跟踪表的大小。注意：如果防火墙没开则会提示error: "net.netfilter.nf_conntrack_max" is an unknown key，忽略即可
 net.netfilter.nf_conntrack_max = 2621440
 ```
-运行 ```sysctl -p```即可生效
+运行 ```sysctl -p```即可生效。
 
 **说明：**
 
