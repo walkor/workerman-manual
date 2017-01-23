@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="16.1" data-basepath=".." data-revision="1484233962315">
+    <div class="book"  data-level="16.1" data-basepath=".." data-revision="1485164145038">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -2053,19 +2053,25 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_1122">
+                    <section class="normal" id="section-gitbook_229">
                     
                         <h1 id="linux-">Linux内核调优</h1>
-<h2 id="-">网络</h2>
-<p>调整linux内核参数以便满足高并发访问，解决大量time_wait占用太多本地端口导致的 <code>Cannot assign requested address</code> 问题。</p>
-<p>客户端与服务端每建立一个连接，客户端一侧都会占用一个本地端口（假设没有启用SO_REUSEADDR选项），本地端口数量是有限制的（默认是<code>net.ipv4.ip_local_port_range=32768    61000</code>），也就是说在没设置socket的SO_REUSEADDR选项时，一台Linux服务器作为<strong>客户端</strong>（<strong><code>注意是作为客户端</code></strong>）默认只能建立大概3万个TCP连接（服务端没有这个限制），可以更改<code>net.ipv4.ip_local_port_range</code>增大作为客户端可发起的并发连接数，但最多不会超过65535个（服务端没有这个限制）。</p>
-<p>当Linux服务器作为客户端频繁建立TCP短连接时，本地会可能会产生很多TIME_WAIT状态的连接，客户端侧的TIME_WAIT状态的连接会占用一个本地端口直到达到2MSL（最长分解生命期）的时间，这样会导致本地端口被暂时占用，当短连接建立速度过快时（例如做压测时），会导致<code>Cannot assign requested address</code>错误，解决办法有几种，比如像下面这样设置端口复用（复用TIME_WAIT状态的连接）。</p>
 <p>打开文件 /etc/sysctl.conf，增加以下设置</p>
-<pre><code class="lang-shell">net.ipv4.tcp_timestamps = 1
-net.ipv4.tcp_tw_reuse = 1
-net.ipv4.tcp_tw_recycle = 1
-</code></pre>
-<p>运行 <code>sysctl -p</code>即可生效</p>
+<pre><code>#该参数设置系统的TIME_WAIT的数量，如果超过默认值则会被立即清除
+net.ipv4.tcp_max_tw_buckets = 20000
+#定义了系统中每一个端口最大的监听队列的长度，这是个全局的参数
+net.core.somaxconn = 65535
+#对于还未获得对方确认的连接请求，可保存在队列中的最大数目
+net.ipv4.tcp_max_syn_backlog = 262144
+#在每个网络接口接收数据包的速率比内核处理这些包的速率快时，允许送到队列的数据包的最大数目
+net.core.netdev_max_backlog = 30000
+#能够更快地回收TIME-WAIT套接字。此选项会导致处于NAT网络的客户端超时，建议为0
+net.ipv4.tcp_tw_recycle = 0
+#系统所有进程一共可以打开的文件数量
+fs.file-max = 6815744
+#防火墙跟踪表的大小。注意：如果防火墙没开则会提示error: &quot;net.netfilter.nf_conntrack_max&quot; is an unknown key，忽略即可
+net.netfilter.nf_conntrack_max = 2621440
+</code></pre><p>运行 <code>sysctl -p</code>即可生效</p>
 <p><strong>说明：</strong></p>
 <p>/etc/sysctl.conf 可设置的选项很多，其它选项可以根据自己的环境需要进行设置</p>
 <h2 id="-">打开文件数</h2>
