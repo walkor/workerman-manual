@@ -149,6 +149,7 @@
    * [关闭未认证连接](faq/close-unauthed-connections.md)
    * [传输加密-ssl/tsl](faq/ssl-support.md)
    * [创建wss服务](faq/secure-websocket-server.md)
+   * [创建https服务](faq/secure-http-server.md)
    * [workerman作为客户端](faq/use-workerman-as-client-side.md)
    * [作为ws/wss客户端](faqas-wss-client.md)
 * [附录](appendices/README.md)
