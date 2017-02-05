@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="7.3" data-basepath=".." data-revision="1485312644082">
+    <div class="book"  data-level="7.3" data-basepath=".." data-revision="1486277956249">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -2064,7 +2064,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_195">
+                    <section class="normal" id="section-gitbook_2020">
                     
                         <h1 id="-">一些例子</h1>
 <h2 id="-">例子一</h2>
@@ -2093,7 +2093,7 @@
             <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
         }
         <span class="hljs-comment">// 返回包长，包长包含 头部数据长度+包体长度</span>
-        <span class="hljs-variable">$total_len</span> = base_convert(<span class="hljs-variable">$recv_buffer</span>, <span class="hljs-number">10</span>, <span class="hljs-number">10</span>);
+        <span class="hljs-variable">$total_len</span> = base_convert(substr(<span class="hljs-variable">$recv_buffer</span>, <span class="hljs-number">0</span>, <span class="hljs-number">10</span>), <span class="hljs-number">10</span>, <span class="hljs-number">10</span>);
         <span class="hljs-keyword">return</span> <span class="hljs-variable">$total_len</span>;
     }
 

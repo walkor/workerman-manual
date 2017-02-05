@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="15.30" data-basepath=".." data-revision="1485312644082">
+    <div class="book"  data-level="15.30" data-basepath=".." data-revision="1486277956249">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -2064,41 +2064,42 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_128">
+                    <section class="normal" id="section-gitbook_1952">
                     
                         <h1 id="-ssl-tsl">传输加密-ssl/tsl</h1>
 <p><strong>问：</strong></p>
 <p>如何保证和Workerman之间通讯安全？</p>
 <p><strong>答：</strong></p>
-<p>实际上通讯安全属于应用层解决的问题，比较方便的做法是增加一层ssl/tsl协议，比如浏览器的wss、https协议都是基于ssl/tsl加密传输的，非常安全。</p>
-<p>在Workerman前增加一层Nginx或者STunnel的ssl/tsl代理，让Nginx或者STunnel负责加解密数据，在Workerman和客户端之间转发数据，即可非常方便的实现ssl/tsl加密传输。</p>
+<p>比较方便的做法是在通讯协议之上增加一层<a href="http://baike.baidu.com/item/ssl" target="_blank">SSL</a>加密层，比如wss、<a href="http://baike.baidu.com/item/https" target="_blank">https</a>协议都是基于<a href="http://baike.baidu.com/item/ssl" target="_blank">SSL</a>加密传输的，非常安全。Workerman自身支持<a href="http://baike.baidu.com/item/ssl" target="_blank">SSL</a>(<code>需要Workerman&gt;=3.3.7</code>)，只需要设置下属性即可开启SSL。</p>
 <p>当然开发者也可以基于某些加解密算法实现一套自己的加解密机制。</p>
-<p>以下是nginx作为通用的ssl/tsl代理的配置示例，适用于包括wss和https在内的各种加密协议。</p>
-<h2 id="nginx-">nginx配置</h2>
-<p>要求：</p>
-<p>1:nginx版本必须大于1.9.0</p>
-<p>2:编译的时候必须加上这两个参数　–with-stream –with-stream_ssl_module</p>
-<pre><code>stream {
-    upstream stream_backend {
-         server backend1.example.com:8282;
-         server backend2.example.com:8282;
-         server backend3.example.com:8282;
-    }
+<h2 id="workerman-ssl-">Workerman开启ssl方法如下：</h2>
+<p><strong>准备工作：</strong></p>
+<p>1、Workerman版本不小于3.3.7</p>
+<p>2、PHP安装了openssl扩展</p>
+<p>3、已经申请了证书（pem/crt文件及key文件）放在了/etc/nginx/conf.d/ssl下</p>
+<p><strong>代码：</strong></p>
+<pre><code class="lang-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 
-    server {
-        listen                1234 ssl;
-        proxy_pass            stream_backend;
+<span class="hljs-comment">// 证书最好是申请的证书</span>
+<span class="hljs-variable">$context</span> = <span class="hljs-keyword">array</span>(
+    <span class="hljs-string">'ssl'</span> =&gt; <span class="hljs-keyword">array</span>(
+        <span class="hljs-string">'local_cert'</span> =&gt; <span class="hljs-string">'/etc/nginx/conf.d/ssl/server.pem'</span>, <span class="hljs-comment">// 也可以是crt文件</span>
+        <span class="hljs-string">'local_pk'</span>   =&gt; <span class="hljs-string">'/etc/nginx/conf.d/ssl/server.key'</span>,
+    )
+);
+<span class="hljs-comment">// 这里设置的是websocket协议，也可以http协议或者其它协议</span>
+<span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'http://0.0.0.0:443'</span>, <span class="hljs-variable">$context</span>);
+<span class="hljs-comment">// 设置transport开启ssl</span>
+<span class="hljs-variable">$worker</span>-&gt;transport = <span class="hljs-string">'ssl'</span>;
+<span class="hljs-variable">$worker</span>-&gt;onMessage = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$con</span>, <span class="hljs-variable">$msg</span>)</span> {</span>
+    <span class="hljs-variable">$con</span>-&gt;send(<span class="hljs-string">'ok'</span>);
+};
 
-        ssl_certificate       /etc/ssl/certs/server.crt;
-        ssl_certificate_key   /etc/ssl/certs/server.key;
-        ssl_protocols         SSLv3 TLSv1 TLSv1.1 TLSv1.2;
-        ssl_ciphers           HIGH:!aNULL:!MD5;
-        ssl_session_cache     shared:SSL:20m;
-        ssl_session_timeout   4h;
-        ssl_handshake_timeout 30s;
-     }
-}
+Worker::runAll();
 </code></pre>
+
                     
                     </section>
                 

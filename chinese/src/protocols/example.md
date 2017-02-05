@@ -29,7 +29,7 @@ class XmlProtocol
             return 0;
         }
         // 返回包长，包长包含 头部数据长度+包体长度
-        $total_len = base_convert($recv_buffer, 10, 10);
+        $total_len = base_convert(substr($recv_buffer, 0, 10), 10, 10);
         return $total_len;
     }
 

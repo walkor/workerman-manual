@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="15.31" data-basepath=".." data-revision="1485312644082">
+    <div class="book"  data-level="15.31" data-basepath=".." data-revision="1486277956249">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -2064,15 +2064,64 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_124">
+                    <section class="normal" id="section-gitbook_1948">
                     
                         <h1 id="-wss-">创建wss服务</h1>
 <p><strong>问：</strong></p>
 <p>Workerman如何创建一个wss服务，使得客户端可以用过wss协来连接通讯，比如在微信小程序中连接服务端。</p>
 <p><strong>答：</strong></p>
-<p>可以利用nginx作为ssl的代理。通讯原理及流程是：</p>
+<p>wss协议实际是<a href="http://baike.baidu.com/item/WebSocket" target="_blank">websocket</a>+<a href="http://baike.baidu.com/item/ssl" target="_blank">SSL</a>，就是在websocket协议上加入<a href="http://baike.baidu.com/item/ssl" target="_blank">SSL</a>层，类似<a href="http://baike.baidu.com/item/https" target="_blank">https</a>(<a href="http://baike.baidu.com/item/http" target="_blank">http</a>+<a href="http://baike.baidu.com/item/ssl" target="_blank">SSL</a>)。Workerman支持<a href="http://baike.baidu.com/item/WebSocket" target="_blank">websocket</a>+<a href="http://baike.baidu.com/item/ssl" target="_blank">SSL</a>协议，同时也支持<a href="http://baike.baidu.com/item/ssl" target="_blank">SSL</a>(<code>需要Workerman版本&gt;=3.3.7</code>)，
+所以只需要在<a href="http://baike.baidu.com/item/WebSocket" target="_blank">websocket</a>协议的基础上开启<a href="http://baike.baidu.com/item/ssl" target="_blank">SSL</a>即可支持wss协议。</p>
+<h2 id="workerman-ssl">Workerman开启SSL</h2>
+<p><strong>准备工作：</strong></p>
+<p>1、Workerman版本不小于3.3.7</p>
+<p>2、PHP安装了openssl扩展</p>
+<p>3、已经申请了证书（pem/crt文件及key文件）放在了/etc/nginx/conf.d/ssl下</p>
+<p><strong>代码：</strong></p>
+<pre><code class="lang-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+
+<span class="hljs-comment">// 证书最好是申请的证书</span>
+<span class="hljs-variable">$context</span> = <span class="hljs-keyword">array</span>(
+    <span class="hljs-string">'ssl'</span> =&gt; <span class="hljs-keyword">array</span>(
+        <span class="hljs-string">'local_cert'</span> =&gt; <span class="hljs-string">'/etc/nginx/conf.d/ssl/server.pem'</span>, <span class="hljs-comment">// 也可以是crt文件</span>
+        <span class="hljs-string">'local_pk'</span>   =&gt; <span class="hljs-string">'/etc/nginx/conf.d/ssl/server.key'</span>,
+    )
+);
+<span class="hljs-comment">// 这里设置的是websocket协议</span>
+<span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'http://0.0.0.0:4431'</span>, <span class="hljs-variable">$context</span>);
+<span class="hljs-comment">// 设置transport开启ssl，websocket+ssl即wss</span>
+<span class="hljs-variable">$worker</span>-&gt;transport = <span class="hljs-string">'ssl'</span>;
+<span class="hljs-variable">$worker</span>-&gt;onMessage = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$con</span>, <span class="hljs-variable">$msg</span>)</span> {</span>
+    <span class="hljs-variable">$con</span>-&gt;send(<span class="hljs-string">'ok'</span>);
+};
+
+Worker::runAll();
+</code></pre>
+<p>通过以上的代码，Workerman就监听了wss协议，客户端就可以通过wss协议来连接workerman实现安全即时通讯了。</p>
+<p><strong>测试</strong></p>
+<p>打开chrome浏览器，按F12打开调试控制台，在Console一栏输入(或者把下面代码放入到html页面用js运行)</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// 证书是会检查域名的，请使用域名连接</span>
+ws = <span class="hljs-keyword">new</span> WebSocket(<span class="hljs-string">"wss://域名:4431"</span>);
+ws.onopen = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+    alert(<span class="hljs-string">"连接成功"</span>);
+    ws.send(<span class="hljs-string">'tom'</span>);
+    alert(<span class="hljs-string">"给服务端发送一个字符串：tom"</span>);
+};
+ws.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span> {</span>
+    alert(<span class="hljs-string">"收到服务端的消息："</span> + e.data);
+};
+</code></pre>
+<p><strong>注意：</strong></p>
+<p>1、wss端口只能通过wss协议访问，ws无法访问wss端口。</p>
+<p>2、证书一般是与域名绑定的，所以测试的时候请使用域名，不要使用ip。</p>
+<p>3、如果出现无法访问的情况，请检查服务器防火墙。</p>
+<h2 id="-nginx-ssl-">利用nginx作为SSL的代理。</h2>
+<p>除了用Workerman自身的SSL，也可以利用nginx作为SSL代理实现wss。</p>
+<p>通讯原理及流程是：</p>
 <p>1、客户端发起wss连接连到nginx</p>
-<p>2、nginx将wss协议的数据转换成ws协议并转发到Workerman</p>
+<p>2、nginx将wss协议的数据转换成ws协议并转发到Workerman的websocket协议端口</p>
 <p>3、Workerman收到数据后做业务逻辑处理</p>
 <p>4、Workerman给客户端发送消息时，则是相反的过程，数据经过nginx转换成wss协议然后发给客户端</p>
 <h2 id="nginx-">nginx配置参考</h2>
@@ -2101,21 +2150,7 @@
     proxy_set_header X-Real-IP $remote_addr;
   }
 }
-</code></pre><p><strong>测试</strong></p>
-<p>打开chrome浏览器，按F12打开调试控制台，在Console一栏输入(或者把下面代码放入到html页面用js运行)</p>
-<pre><code class="lang-javascript"><span class="hljs-comment">// 证书是会检查域名的，请使用域名连接</span>
-ws = <span class="hljs-keyword">new</span> WebSocket(<span class="hljs-string">"wss://域名:4431"</span>);
-ws.onopen = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
-    alert(<span class="hljs-string">"连接成功"</span>);
-    ws.send(<span class="hljs-string">'tom'</span>);
-    alert(<span class="hljs-string">"给服务端发送一个字符串：tom"</span>);
-};
-ws.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span> {</span>
-    alert(<span class="hljs-string">"收到服务端的消息："</span> + e.data);
-};
-</code></pre>
-<p><code>注意：如果出现无法访问的情况，请检查服务器防火墙。</code></p>
-<h2 id="-nginx-wss-ip-">透过nginx wss代理如何获取客户端真实ip ?</h2>
+</code></pre><h2 id="-nginx-wss-ip-">透过nginx wss代理如何获取客户端真实ip ?</h2>
 <p>使用nginx作为wss代理，nginx实际上充当了workerman的客户端，所以在workerman上获取的客户端ip为nginx服务器的ip，并非实际的客户端ip。如何获取客户端真实ip可以参考下面的方法。</p>
 <p><strong>原理：</strong></p>
 <p>nginx将客户端真实ip通过http header传递进来，即上面nginx配置中location里的<code>proxy_set_header X-Real-IP $remote_addr;</code>设置。workerman通过读取这个header值，将此值保存到<code>$connection对象里</code>，(GatewayWorker可以保存到<code>$_SESSION</code>变量里)，使用的时候直接读取变量即可。</p>

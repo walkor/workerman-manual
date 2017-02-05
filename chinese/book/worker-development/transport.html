@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="8.2.6" data-basepath=".." data-revision="1485312644082">
+    <div class="book"  data-level="8.2.6" data-basepath=".." data-revision="1486277956249">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -2064,14 +2064,15 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_255">
+                    <section class="normal" id="section-gitbook_2078">
                     
                         <h1 id="transport">transport</h1>
 <h2 id="-">说明:</h2>
 <pre><code class="lang-php">string Worker::<span class="hljs-variable">$transport</span>
 </code></pre>
-<p>设置当前Worker实例所使用的传输层协议，目前只支持两种，tcp和udp。不设置默认为tcp。</p>
-<h2 id="-">范例</h2>
+<p>设置当前Worker实例所使用的传输层协议，目前只支持3种(tcp、udp、ssl)。不设置默认为tcp。</p>
+<p><code>注意：ssl需要Workerman版本&gt;=3.3.7</code></p>
+<h2 id="-1">范例 1</h2>
 <pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
 
@@ -2083,6 +2084,28 @@
     <span class="hljs-variable">$connection</span>-&gt;send(<span class="hljs-string">'Hello'</span>);
 };
 <span class="hljs-comment">// 运行worker</span>
+Worker::runAll();
+</code></pre>
+<h2 id="-2">范例 2</h2>
+<pre><code class="lang-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+
+<span class="hljs-comment">// 证书最好是申请的证书</span>
+<span class="hljs-variable">$context</span> = <span class="hljs-keyword">array</span>(
+    <span class="hljs-string">'ssl'</span> =&gt; <span class="hljs-keyword">array</span>(
+        <span class="hljs-string">'local_cert'</span> =&gt; <span class="hljs-string">'/etc/nginx/conf.d/ssl/server.pem'</span>, <span class="hljs-comment">// 也可以是crt文件</span>
+        <span class="hljs-string">'local_pk'</span>   =&gt; <span class="hljs-string">'/etc/nginx/conf.d/ssl/server.key'</span>,
+    )
+);
+<span class="hljs-comment">// 这里设置的是websocket协议</span>
+<span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'http://0.0.0.0:4431'</span>, <span class="hljs-variable">$context</span>);
+<span class="hljs-comment">// 设置transport开启ssl，websocket+ssl即wss</span>
+<span class="hljs-variable">$worker</span>-&gt;transport = <span class="hljs-string">'ssl'</span>;
+<span class="hljs-variable">$worker</span>-&gt;onMessage = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$con</span>, <span class="hljs-variable">$msg</span>)</span> {</span>
+    <span class="hljs-variable">$con</span>-&gt;send(<span class="hljs-string">'ok'</span>);
+};
+
 Worker::runAll();
 </code></pre>
 

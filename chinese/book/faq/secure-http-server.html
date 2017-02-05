@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="15.32" data-basepath=".." data-revision="1485312644082">
+    <div class="book"  data-level="15.32" data-basepath=".." data-revision="1486277956249">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -2064,18 +2064,55 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_123">
+                    <section class="normal" id="section-gitbook_1947">
                     
                         <h1 id="-https-">创建https服务</h1>
 <p><strong>问：</strong></p>
-<p>Workerman如何创建一个https服务，使得客户端可以用过https协来连接通讯。</p>
+<p>Workerman如何创建一个<a href="http://baike.baidu.com/item/https" target="_blank">https</a>服务，使得客户端可以用过<a href="http://baike.baidu.com/item/https" target="_blank">https</a>协来连接通讯。</p>
 <p><strong>答：</strong></p>
-<p>可以利用nginx作为ssl的代理。通讯原理及流程是：</p>
+<p><a href="http://baike.baidu.com/item/https" target="_blank">https</a>协议实际是<a href="http://baike.baidu.com/item/http" target="_blank">http</a>+<a href="http://baike.baidu.com/item/ssl" target="_blank">SSL</a>，就是在<a href="http://baike.baidu.com/item/http" target="_blank">http</a>协议上加入<a href="http://baike.baidu.com/item/ssl" target="_blank">SSL</a>层。Workerman支持<a href="http://baike.baidu.com/item/http" target="_blank">http</a>协议，同时也支持<a href="http://baike.baidu.com/item/ssl" target="_blank">SSL</a>(<code>需要Workerman版本&gt;=3.3.7</code>)，
+所以只需要在<a href="http://baike.baidu.com/item/http" target="_blank">http</a>协议的基础上开启<a href="http://baike.baidu.com/item/ssl" target="_blank">SSL</a>即可支持<a href="http://baike.baidu.com/item/https" target="_blank">https</a>协议。</p>
+<h2 id="workerman-ssl">Workerman开启SSL</h2>
+<p><strong>准备工作：</strong></p>
+<p>1、Workerman版本不小于3.3.7</p>
+<p>2、PHP安装了openssl扩展</p>
+<p>3、已经申请了证书（pem/crt文件及key文件）放在了/etc/nginx/conf.d/ssl下</p>
+<pre><code class="lang-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+
+<span class="hljs-comment">// 证书最好是申请的证书</span>
+<span class="hljs-variable">$context</span> = <span class="hljs-keyword">array</span>(
+    <span class="hljs-string">'ssl'</span> =&gt; <span class="hljs-keyword">array</span>(
+        <span class="hljs-string">'local_cert'</span> =&gt; <span class="hljs-string">'/etc/nginx/conf.d/ssl/server.pem'</span>, <span class="hljs-comment">// 也可以是crt文件</span>
+        <span class="hljs-string">'local_pk'</span>   =&gt; <span class="hljs-string">'/etc/nginx/conf.d/ssl/server.key'</span>,
+    )
+);
+<span class="hljs-comment">// 这里设置的是http协议</span>
+<span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'http://0.0.0.0:443'</span>, <span class="hljs-variable">$context</span>);
+<span class="hljs-comment">// 设置transport开启ssl，变成http+SSL即https</span>
+<span class="hljs-variable">$worker</span>-&gt;transport = <span class="hljs-string">'ssl'</span>;
+<span class="hljs-variable">$worker</span>-&gt;onMessage = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$con</span>, <span class="hljs-variable">$msg</span>)</span> {</span>
+    <span class="hljs-variable">$con</span>-&gt;send(<span class="hljs-string">'ok'</span>);
+};
+
+Worker::runAll();
+</code></pre>
+<p>通过Workerman以上的代码就创建了https服务，客户端就可以通过https协议来连接workerman实现安全加密通讯了。</p>
+<p><strong>测试：</strong></p>
+<p>浏览器地址栏输入<code>https://域名:4431</code>访问。</p>
+<p><strong>注意：</strong></p>
+<p>1、https端口必须用https协议访问，http协议无法访问。</p>
+<p>2、证书一般是与域名绑定的，所以测试的时候请使用域名，不要使用ip。</p>
+<p>3、如果使用https无法访问请检查服务器防火墙。</p>
+<h2 id="-nginx-ssl-">利用nginx作为ssl的代理</h2>
+<p>除了用Workerman自身的SSL，也可以利用nginx作为SSL代理实现https。</p>
+<p>通讯原理及流程是：</p>
 <p>1、客户端发起https连接连到nginx</p>
-<p>2、nginx将https协议的数据转换成http协议并转发到Workerman</p>
+<p>2、nginx将https协议的数据转换成http协议并转发到Workerman的http端口</p>
 <p>3、Workerman收到数据后做业务逻辑处理，返回http协议的数据给nginx</p>
 <p>4、nginx再将http协议的数据转换成https，转发给客户端</p>
-<h2 id="nginx-">nginx配置参考</h2>
+<h3 id="nginx-">nginx配置参考</h3>
 <p><strong>前提条件及准备工作：</strong></p>
 <p>1、假设Workerman监听的是80端口(http协议)</p>
 <p>2、已经申请了证书（pem/crt文件及key文件）放在了/etc/nginx/conf.d/ssl下</p>
