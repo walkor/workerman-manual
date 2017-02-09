@@ -19,6 +19,13 @@ PHP Warning:  stream_socket_server(): unable to connect to tcp://xx.xx.xx.xx:xxx
 
 如果不能停止对应端口的程序，可以通过更换workerman的端口解决。
 
+如果是Workerman占用的端口，又无法通过stop命令停止(一般是丢失pid文件或者主进程被开发者kill了导致)，可以通过运行以下两个命令杀死Workerman进程。
+
+```
+killall php
+ps aux|grep WorkerMan|awk '{print $2}'|xargs kill -9
+```
+
 
 
 ## 现象2

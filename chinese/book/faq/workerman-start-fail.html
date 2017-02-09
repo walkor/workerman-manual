@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="15.9" data-basepath=".." data-revision="1486277956249">
+    <div class="book"  data-level="15.9" data-basepath=".." data-revision="1486653361037">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -2064,7 +2064,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_1958">
+                    <section class="normal" id="section-gitbook_243">
                     
                         <h1 id="workerman-">workerman启动失败</h1>
 <h2 id="-1">现象1</h2>
@@ -2078,7 +2078,10 @@ PHP Warning:  stream_socket_server(): unable to connect to tcp:<span class="hljs
 <p>可以通过命令<code>netstat -anp | grep 端口号</code>来找出哪个程序占用了端口。
 然后停止对应的程序释放端口解决。</p>
 <p>如果不能停止对应端口的程序，可以通过更换workerman的端口解决。</p>
-<h2 id="-2">现象2</h2>
+<p>如果是Workerman占用的端口，又无法通过stop命令停止(一般是丢失pid文件或者主进程被开发者kill了导致)，可以通过运行以下两个命令杀死Workerman进程。</p>
+<pre><code>killall php
+ps aux|grep WorkerMan|awk &#39;{print $2}&#39;|xargs kill -9
+</code></pre><h2 id="-2">现象2</h2>
 <p>启动后报错类似如下：</p>
 <pre><code class="lang-php">PHP Warning:  stream_socket_server(): unable to connect to tcp:<span class="hljs-comment">//xx.xx.xx.xx:xxx (Cannot assign requested address) in /home/GatewayWorker/Workerman/Worker.php on line xxxx</span>
 </code></pre>
