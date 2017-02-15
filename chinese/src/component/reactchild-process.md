@@ -1,4 +1,5 @@
 # react/child-process
+**``` (要求Workerman版本>=3.3.6) ```**
 
 ## 安装：
 ```

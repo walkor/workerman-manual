@@ -1,4 +1,5 @@
 # react/stomp
+**``` (要求Workerman版本>=3.3.6) ```**
 
 STOMP是一个通讯协议。它是支持大多数消息队列如RabbitMQ、Apollo等。
 

@@ -1,4 +1,5 @@
 # react/dns
+**``` (要求Workerman版本>=3.3.6) ```**
 ## 安装：
 ```
 composer require react/dns
