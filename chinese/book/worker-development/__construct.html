@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="10.1" data-basepath=".." data-revision="1487144375336">
+    <div class="book"  data-level="10.1" data-basepath=".." data-revision="1487225949430">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -2075,7 +2075,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_163">
+                    <section class="normal" id="section-gitbook_174">
                     
                         <h1 id="__construct-">__construct 方法</h1>
 <pre><code class="lang-php">void AsyncTcpConnection::__construct(string <span class="hljs-variable">$remote_address</span>, <span class="hljs-variable">$context_option</span> = <span class="hljs-keyword">null</span>)
@@ -2097,8 +2097,9 @@
 <p>参考 <a href="http://php.net/manual/en/function.stream-context-create.php" target="_blank">stream_context_create</a>、 <a href="http://php.net/manual/zh/context.socket.php" target="_blank">套接字上下文选项</a>、<a href="http://php.net/manual/zh/context.ssl.php" target="_blank">SSL 上下文选项</a></p>
 <h2 id="-">注意</h2>
 <p>目前AsyncTcpConnection支持的协议有<a href="http://baike.baidu.com/subview/32754/8048820.htm" target="_blank">tcp</a>、<a href="http://baike.baidu.com/view/525499.htm" target="_blank">ssl</a>、<a href="/appendices/about-ws.html">ws</a>、<a href="/appendices/about-frame.html">frame</a>、<a href="/appendices/about-text.html">text</a>。</p>
+<p>同时支持自定义协议，参见<a href="/protocols/how-protocols.html">如何自定义协议</a></p>
 <p>其中<a href="http://baike.baidu.com/view/525499.htm" target="_blank">ssl</a>要求Workerman&gt;=3.3.4，并安装<a href="http://php.net/manual/zh/book.openssl.php" target="_blank">openssl扩展</a>。</p>
-<p><strong>注意：</strong>目前不支持<a href="http://baike.baidu.com/view/9472.htm" target="_blank">http</a>协议的AsyncTcpConnection。</p>
+<p>目前不支持<a href="http://baike.baidu.com/view/9472.htm" target="_blank">http</a>协议的AsyncTcpConnection。</p>
 <p>可以用<code>new AsyncTcpConnection(&#39;ws://...&#39;)</code>像浏览器一样在workerman里发起websocket连接远程websocket服务器，见<a href="/appendices/about-ws.html">示例</a>。但是不能以 <code>new AsyncTcpConnection(&#39;websocket://...&#39;)</code>的形式在workerman里发起websocket连接。</p>
 <h2 id="-">示例</h2>
 <h3 id="-1-http-">示例 1、异步访问外部http服务</h3>
