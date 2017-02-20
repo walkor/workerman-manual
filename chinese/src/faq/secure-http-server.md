@@ -29,8 +29,9 @@ use Workerman\Worker;
 // 证书最好是申请的证书
 $context = array(
     'ssl' => array(
-        'local_cert' => '/etc/nginx/conf.d/ssl/server.pem', // 也可以是crt文件
-        'local_pk'   => '/etc/nginx/conf.d/ssl/server.key',
+        'local_cert'  => '/etc/nginx/conf.d/ssl/server.pem', // 也可以是crt文件
+        'local_pk'    => '/etc/nginx/conf.d/ssl/server.key',
+        'verify_peer' => false,
     )
 );
 // 这里设置的是http协议

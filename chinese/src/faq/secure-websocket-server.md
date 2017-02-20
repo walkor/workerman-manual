@@ -33,8 +33,9 @@ use Workerman\Worker;
 $context = array(
     'ssl' => array(
         // 使用绝对路径
-        'local_cert' => '/etc/nginx/conf.d/ssl/server.pem', // 也可以是crt文件
-        'local_pk'   => '/etc/nginx/conf.d/ssl/server.key',
+        'local_cert'  => '/etc/nginx/conf.d/ssl/server.pem', // 也可以是crt文件
+        'local_pk'    => '/etc/nginx/conf.d/ssl/server.key',
+        'verify_peer' => false,
     )
 );
 // 这里设置的是websocket协议
