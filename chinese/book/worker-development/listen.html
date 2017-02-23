@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="8.4.3" data-basepath=".." data-revision="1487591472619">
+    <div class="book"  data-level="8.4.3" data-basepath=".." data-revision="1487837462434">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -2075,7 +2075,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_247">
+                    <section class="normal" id="section-gitbook_149">
                     
                         <h1 id="listen">listen</h1>
 <pre><code class="lang-php">void Worker::listen(void)
@@ -2084,11 +2084,11 @@
 <p>此方法主要用于在Worker进程启动后动态创建新的Worker实例，能够实现同一个进程监听多个端口，支持多种协议。</p>
 <p>例如一个http Worker启动后实例化一个websocket Worker，那么这个进程即能通过http协议访问，又能通过websocket协议访问。由于websocket Worker和http Worker在同一个进程中，所以它们可以访问共同的内存变量，共享所有socket连接。可以做到接收http请求，然后操作websocket客户端完成向客户端推送数据类似的效果。</p>
 <p><strong>注意：</strong></p>
-<p>如果PHP版本&lt;=7.0，则不支持在多个子进程中实例化相同端口的Worker。例如A进程创建了监听2016端口的Worker，那么B进程就不能再创建监听2016端口的Worker，否则会报<code>Address already in use</code>错误。例如下面的代码是无法运行的。</p>
+<p>如果PHP版本&lt;=7.0，则不支持在多个子进程中实例化相同端口的Worker。例如A进程创建了监听2016端口的Worker，那么B进程就不能再创建监听2016端口的Worker，否则会报<code>Address already in use</code>错误。例如下面的代码是<code>无法</code>运行的。</p>
 <pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
 
-<span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'text://0.0.0.0:2015'</span>);
+<span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker();
 <span class="hljs-comment">// 4个进程</span>
 <span class="hljs-variable">$worker</span>-&gt;count = <span class="hljs-number">4</span>;
 <span class="hljs-comment">// 每个进程启动后在当前进程新增一个Worker监听</span>
