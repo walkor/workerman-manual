@@ -1,6 +1,9 @@
-# react/mysql
+# 异步react/mysql
 
 **``` (要求Workerman版本>=3.3.6) ```**
+
+## 注意:
+此组件是第三方组件，可能会有潜在的bug，建议使用Workerman\MySQL组件。
 
 ## 安装：
 ```
