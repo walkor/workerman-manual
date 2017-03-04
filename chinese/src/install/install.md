@@ -5,11 +5,10 @@ WorkerMan实际上就是一个PHP代码包，如果你的PHP环境已经装好�
 
 windows用户需要使用windows版本的workerman，windows版本workerman本身**不依赖任何扩展**，只需要配置好PHP环境变量即可，**windows版本workerman安装及注意事项参见[windows用户必看](http://www.workerman.net/windows)。**
 
-**本页面以下本内容不适用于windows版本workerman，windows用户请忽略。**
+``` ===本页面以下仅适用于Linux版本workerman，windows用户请忽略=== ```
 
-
-# 环境检测
-可以使用以下脚本测试本机PHP环境是否满足WorkerMan运行要求。
+# Linux系统环境检测
+Linux系统可以使用以下脚本测试本机PHP环境是否满足WorkerMan运行要求。
 ```curl -Ss http://www.workerman.net/check.php | php```
 
 上面脚本如果全部显示ok，则代表满足WorkerMan要求，直接到[官网](http://www.workerman.net/)下载例子即可运行。
@@ -35,12 +34,13 @@ windows用户需要使用windows版本的workerman，windows版本workerman本�
 
 **centos系统安装**
 
-1、命令行运行（安装event扩展依赖的libevent-devel包）
+1、安装event扩展依赖的libevent-devel包，命令行运行
 ```shell
 yum install libevent-devel -y
 ```
 
-2、命令行运行（安装event扩展）
+2、安装event扩展，命令行运行<br>
+(event扩展要求PHP>=5.4，PHP5.3用户请安装libevent扩展，见本页面底部)
 ```shell
 pecl install event
 ```
@@ -55,12 +55,13 @@ echo extension=event.so > /etc/php.d/event.ini
 
 **debian/ubuntu系统安装**
 
-1、命令行运行（安装event扩展依赖的libevent-dev包）
+1、安装event扩展依赖的libevent-dev包，命令行运行
 ```shell
 apt-get install libevent-dev -y
 ```
 
-2、命令行运行（安装event扩展）
+2、安装event扩展，命令行运行<br>
+(注意：event扩展要求PHP>=5.4，PHP5.3用户请安装libevent扩展，见本页面底部)）
 ```shell
 pecl install event
 ```
@@ -87,8 +88,8 @@ mac 系统一般作为开发机，不必安装event扩展。
 yum install php-cli php-process git gcc php-devel php-pear libevent-devel -y
 ```
 
-
-2、命令行运行（安装event扩展）
+2、安装event扩展，命令行运行<br>
+(注意：event扩展要求PHP>=5.4，PHP5.3用户请安装libevent扩展，见本页面底部)
 ```shell
 pecl install event
 ```
@@ -97,7 +98,7 @@ pecl install event
 如果安装失败请跳过以下步骤3，尝试安装libevent扩展，见本页面底部。
 
 
-3、命令行运行（此步骤是配置Event扩展的ini配置，如果ini文件位置不对，可以通过运行```php --ini```找到实际加载的ini文件路径）
+3、命令行运行（此步骤是配置event扩展的ini配置，如果ini文件位置不对，可以通过运行```php --ini```找到实际加载的ini文件路径）
 ```shell
 echo extension=event.so > /etc/php.d/event.ini
 ```
@@ -119,8 +120,8 @@ git clone https://github.com/walkor/Workerman
 apt-get install php5-cli git gcc php-pear php5-dev libevent-dev -y
 ```
 
-
-2、命令行运行（安装event扩展）
+2、安装event扩展，命令行运行<br>
+(注意：event扩展要求PHP>=5.4，PHP5.3用户请安装libevent扩展，见本页面底部)
 ```shell
 pecl install event
 ```
@@ -148,7 +149,7 @@ git clone https://github.com/walkor/Workerman
 
 1、参考手册[附录-安装扩展](http://doc3.workerman.net/appendices/install-extension.html)一节中方法三源码编译安装```pcntl```扩展。
 
-2、参考手册[附录-安装扩展](http://doc3.workerman.net/appendices/install-extension.html)一节中方法四利用phpize安装```Event```扩展（可省略）。
+2、参考手册[附录-安装扩展](http://doc3.workerman.net/appendices/install-extension.html)一节中方法四利用phpize安装```event```扩展（可省略）。
 
 3、通过http://www.workerman.net/download/workermanzip 下载WorkerMan主程序，或者到[官网](http://www.workerman.net/)下载例子运行。
 
@@ -169,7 +170,7 @@ brew install php70
 brew install php70-event
 ```
 
-4、通过http://www.workerman.net/download/workermanzip 下载WorkerMan主程序，或者到[官网](http://www.workerman.net/)下载例子运行
+4、到[官网](http://www.workerman.net/)下载例子运行
 
 
 ## Event扩展说明
@@ -177,7 +178,7 @@ brew install php70-event
 
 如果无法安装[Event扩展](http://php.net/manual/zh/book.event.php)，可以用[libevent扩展](http://php.net/manual/zh/book.libevent.php)代替，注意目前libevent扩展不支持php7，php7用户只能使用Event扩展。
 
-**安装libevnet扩展方法如下：**
+### 安装libevnet扩展方法如下：
 
 注意：libevnet扩展也同样依赖libevent库，所以首先需要安装libevent-devel包(并非扩展)。
 

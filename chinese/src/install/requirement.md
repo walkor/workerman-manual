@@ -1,15 +1,26 @@
 # 环境要求
 
-## 运行所需环境
+## Windows用户
+Windows用户只能使用windows版本的Workerman(```Workerman-for-win```)。
 
-1、WorkerMan 要求运行在Linux环境下（centos、RedHat、Ubuntu、debian等）,也可以运行在mac os下。windows版本及注意事项参见[**这里**](http://www.workerman.net/windows)。
+1、需要PHP>=5.3.3，并配置好PHP的环境变量。
 
-2、安装有PHP-CLI(版本不小于5.4)，并安装了pcntl、posix扩展
+2、Windows版本的Workerman不依赖任何扩展。
 
-3、建议安装event或者libevent扩展，但不是必须的
+3、安装使用以及注意事项参见[**这里**](http://www.workerman.net/windows)。
 
-## 环境检查脚本
-可以运行以下脚本检查本地环境是否满足WorkerMan要求
+``` ====本页面以下只适用于Linux用户，Windows用户请忽略。 ====```
+
+
+## Linux用户(含Mac OS)
+Linux用户只能使用Linux版本的Workerman。
+
+1、安装PHP>=5.3.3，并安装了pcntl、posix扩展
+
+2、建议安装event或者libevent扩展，但不是必须的（注意event扩展需要PHP>=5.4）
+
+### Linux环境检查脚本
+Linux用户可以运行以下脚本检查本地环境是否满足WorkerMan要求
 
 ```curl -Ss http://www.workerman.net/check.php | php```
 
@@ -21,7 +32,7 @@
 
 ### 关于PHP-CLI
 
-WorkerMan是以[PHP命令行](http://php.net/manual/zh/features.commandline.php)的模式运行的，所以需要安装PHP-CLI。
+WorkerMan是基于[PHP命令行(PHP-CLI)](http://php.net/manual/zh/features.commandline.php)模式运行的。PHP-CLI与PHP-FPM或者Apache的MOD-PHP是独立的可执行程序，它们之间并不冲突也不会有相互依赖，完全独立。
 
 ### 关于WorkerMan依赖的扩展
 

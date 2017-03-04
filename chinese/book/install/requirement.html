@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="5.1" data-basepath=".." data-revision="1488615641985">
+    <div class="book"  data-level="5.1" data-basepath=".." data-revision="1488640900883">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -2086,21 +2086,27 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_1805">
+                    <section class="normal" id="section-gitbook_3401">
                     
                         <h1 id="-">环境要求</h1>
-<h2 id="-">运行所需环境</h2>
-<p>1、WorkerMan 要求运行在Linux环境下（centos、RedHat、Ubuntu、debian等）,也可以运行在mac os下。windows版本及注意事项参见<a href="http://www.workerman.net/windows" target="_blank"><strong>这里</strong></a>。</p>
-<p>2、安装有PHP-CLI(版本不小于5.4)，并安装了pcntl、posix扩展</p>
-<p>3、建议安装event或者libevent扩展，但不是必须的</p>
-<h2 id="-">环境检查脚本</h2>
-<p>可以运行以下脚本检查本地环境是否满足WorkerMan要求</p>
+<h2 id="windows-">Windows用户</h2>
+<p>Windows用户只能使用windows版本的Workerman(<code>Workerman-for-win</code>)。</p>
+<p>1、需要PHP&gt;=5.3.3，并配置好PHP的环境变量。</p>
+<p>2、Windows版本的Workerman不依赖任何扩展。</p>
+<p>3、安装使用以及注意事项参见<a href="http://www.workerman.net/windows" target="_blank"><strong>这里</strong></a>。</p>
+<p><code>====本页面以下只适用于Linux用户，Windows用户请忽略。 ====</code></p>
+<h2 id="linux-mac-os-">Linux用户(含Mac OS)</h2>
+<p>Linux用户只能使用Linux版本的Workerman。</p>
+<p>1、安装PHP&gt;=5.3.3，并安装了pcntl、posix扩展</p>
+<p>2、建议安装event或者libevent扩展，但不是必须的（注意event扩展需要PHP&gt;=5.4）</p>
+<h3 id="linux-">Linux环境检查脚本</h3>
+<p>Linux用户可以运行以下脚本检查本地环境是否满足WorkerMan要求</p>
 <p><code>curl -Ss http://www.workerman.net/check.php | php</code></p>
 <p>如果脚本中全部提示ok，则代表满足WorkerMan运行环境</p>
 <p>（注意：检测脚本中没有检测event扩展或者libevent扩展，如果并发连接数大于1024建议安装event扩展或者libevent扩展，安装方法参见下一节）</p>
 <h2 id="-">详细说明</h2>
 <h3 id="-php-cli">关于PHP-CLI</h3>
-<p>WorkerMan是以<a href="http://php.net/manual/zh/features.commandline.php" target="_blank">PHP命令行</a>的模式运行的，所以需要安装PHP-CLI。</p>
+<p>WorkerMan是基于<a href="http://php.net/manual/zh/features.commandline.php" target="_blank">PHP命令行(PHP-CLI)</a>模式运行的。PHP-CLI与PHP-FPM或者Apache的MOD-PHP是独立的可执行程序，它们之间并不冲突也不会有相互依赖，完全独立。</p>
 <h3 id="-workerman-">关于WorkerMan依赖的扩展</h3>
 <p>1、<a href="http://cn2.php.net/manual/zh/book.pcntl.php" target="_blank">pcntl扩展</a></p>
 <p>pcntl扩展是PHP在Linux环境下进程控制的重要扩展，WorkerMan用到了其<a href="http://cn2.php.net/manual/zh/function.pcntl-fork.php" target="_blank">进程创建</a>、<a href="http://cn2.php.net/manual/zh/function.pcntl-signal.php" target="_blank">信号控制</a>、<a href="http://cn2.php.net/manual/zh/function.pcntl-alarm.php" target="_blank">定时器</a>、<a href="http://cn2.php.net/manual/zh/function.pcntl-waitpid.php" target="_blank">进程状态监控</a>等特性。此扩展win平台不支持。</p>
