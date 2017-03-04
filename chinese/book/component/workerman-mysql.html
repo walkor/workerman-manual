@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="14.4.1" data-basepath=".." data-revision="1488615183382">
+    <div class="book"  data-level="14.4.1" data-basepath=".." data-revision="1488615641985">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -2086,7 +2086,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_1623">
+                    <section class="normal" id="section-gitbook_1789">
                     
                         <h1 id="workerman-mysql">Workerman/MySQL</h1>
 <h2 id="-">说明</h2>
@@ -2111,8 +2111,9 @@ yum install php-mysql
 <p>可以通过composer安装，命令行运行以下命令(composer源在国外，安装过程可能会非常慢)。</p>
 <pre><code>composer require workerman/mysql
 </code></pre><p>上面命令成功后会生成vendor目录，然后在项目中引入vendor下的autoload.php。</p>
-<pre><code>require_once __DIR__ . &#39;/vendor/autoload.php&#39;;
-</code></pre><p><strong>方法2：</strong></p>
+<pre><code class="lang-php"><span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/vendor/autoload.php'</span>;
+</code></pre>
+<p><strong>方法2：</strong></p>
 <p><a href="https://github.com/walkor/mysql/archive/master.zip" target="_blank">下载源码</a>，解压后的目录放到自己项目中(位置任意)，直接require源文件。</p>
 <pre><code class="lang-php"><span class="hljs-keyword">require_once</span> <span class="hljs-string">'/your/path/of/mysql-master/src/Connection.php'</span>;
 </code></pre>

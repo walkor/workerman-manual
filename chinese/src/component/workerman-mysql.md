@@ -43,7 +43,7 @@ composer require workerman/mysql
 ```
 
 上面命令成功后会生成vendor目录，然后在项目中引入vendor下的autoload.php。
-```
+```php
 require_once __DIR__ . '/vendor/autoload.php';
 ```
 
