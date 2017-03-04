@@ -3,7 +3,7 @@
 ## 说明
 常驻内存的程序在使用mysql时经常会遇到```mysql gone away```的错误，这个是由于程序与mysql的连接长时间没有通讯，连接被mysql服务端踢掉导致。本数据库类可以解决这个问题，当发生```mysql gone away```错误时，会自动重试一次。
 
-## 提示
+## 依赖的扩展
 该mysql类依赖[pdo](http://php.net/manual/zh/book.pdo.php)和[pdo_mysql](http://php.net/manual/zh/ref.pdo-mysql.php)两个扩展，缺少扩展会报```Undefined class constant 'MYSQL_ATTR_INIT_COMMAND' in ....```错误。
 
 命令行运行```php -m```会列出所有php cli已安装的扩展，如果没有pdo 或者 pdo_mysql，请自行安装。
@@ -33,6 +33,29 @@ apt-get install php7.0-mysql
 
 如果以上方法无法安装，请参考[workerman手册-附录-扩展安装-方法三源码编译安装](http://doc3.workerman.net/appendices/install-extension.html)。
 
+## 安装 Workerman/MySQL
+**方法1：**
+
+可以通过composer安装，命令行运行以下命令(composer源在国外，安装过程可能会非常慢)。
+
+```
+composer require workerman/mysql
+```
+
+上面命令成功后会生成vendor目录，然后在项目中引入vendor下的autoload.php。
+```
+require_once __DIR__ . '/vendor/autoload.php';
+```
+
+**方法2：**
+
+[下载源码](https://github.com/walkor/mysql/archive/master.zip)，解压后的目录放到自己项目中(位置任意)，直接require源文件。
+
+```php
+require_once '/your/path/of/mysql-master/src/Connection.php';
+```
+
+
 ## 注意
 强烈建议在onWorkerStart回调中初始化数据库连接，避免在```Worker::runAll();```运行前就初始化连接，在```Worker::runAll();```运行前初始化的连接属于主进程，子进程会继承这个连接，主进程和子进程共用相同的数据库连接会导致的错误。
 
@@ -40,6 +63,7 @@ apt-get install php7.0-mysql
 ```php
 use Workerman\Worker;
 require_once __DIR__ . '/Workerman/Autoloader.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 $worker = new Worker('websocket://0.0.0.0:8484');
 $worker->onWorkerStart = function($worker)

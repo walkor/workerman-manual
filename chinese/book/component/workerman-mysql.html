@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>react/zmq | WorkerMan 3.x 手册</title>
+        <title>workerman/mysql | WorkerMan 3.x 手册</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 0.5.2">
@@ -17,10 +17,10 @@
     
     
     
-    <link rel="next" href="../component/reactstomp.html" />
+    <link rel="next" href="../component/reactmysql.html" />
     
     
-    <link rel="prev" href="../component/async-message-queue-components.html" />
+    <link rel="prev" href="../component/mysql.html" />
     
 
         
@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="14.8.1" data-basepath=".." data-revision="1488615183382">
+    <div class="book"  data-level="14.4.1" data-basepath=".." data-revision="1488615183382">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1751,7 +1751,7 @@
             <div class="page-wrapper" tabindex="-1">
                 <div class="book-progress">
     <div class="bar">
-        <div class="inner" style="width: 70.98765432098766%;min-width: 70.37037037037037%;"></div>
+        <div class="inner" style="width: 65.4320987654321%;min-width: 64.81481481481481%;"></div>
     </div>
     <div class="chapters">
     
@@ -1969,23 +1969,23 @@
     
         <a href="../component/workerman-mysql.html" title="workerman/mysql" class="chapter done " data-progress="14.4.1" style="left: 65.4320987654321%;"></a>
     
-        <a href="../component/reactmysql.html" title="异步react/mysql" class="chapter done " data-progress="14.4.2" style="left: 66.04938271604938%;"></a>
+        <a href="../component/reactmysql.html" title="异步react/mysql" class="chapter  " data-progress="14.4.2" style="left: 66.04938271604938%;"></a>
     
-        <a href="../component/async-redis.html" title="异步redis组件" class="chapter done " data-progress="14.5" style="left: 66.66666666666667%;"></a>
+        <a href="../component/async-redis.html" title="异步redis组件" class="chapter  " data-progress="14.5" style="left: 66.66666666666667%;"></a>
     
-        <a href="../component/clueredis-react.html" title="clue/redis-react" class="chapter done " data-progress="14.5.1" style="left: 67.28395061728395%;"></a>
+        <a href="../component/clueredis-react.html" title="clue/redis-react" class="chapter  " data-progress="14.5.1" style="left: 67.28395061728395%;"></a>
     
-        <a href="../component/dns-components.html" title="异步dns组件" class="chapter done " data-progress="14.6" style="left: 67.90123456790124%;"></a>
+        <a href="../component/dns-components.html" title="异步dns组件" class="chapter  " data-progress="14.6" style="left: 67.90123456790124%;"></a>
     
-        <a href="../component/reactdns.html" title="react/dns" class="chapter done " data-progress="14.6.1" style="left: 68.51851851851852%;"></a>
+        <a href="../component/reactdns.html" title="react/dns" class="chapter  " data-progress="14.6.1" style="left: 68.51851851851852%;"></a>
     
-        <a href="../component/async-http-components.html" title="异步HTTP组件" class="chapter done " data-progress="14.7" style="left: 69.1358024691358%;"></a>
+        <a href="../component/async-http-components.html" title="异步HTTP组件" class="chapter  " data-progress="14.7" style="left: 69.1358024691358%;"></a>
     
-        <a href="../component/reacthttp-client.html" title="react/http-client" class="chapter done " data-progress="14.7.1" style="left: 69.75308641975309%;"></a>
+        <a href="../component/reacthttp-client.html" title="react/http-client" class="chapter  " data-progress="14.7.1" style="left: 69.75308641975309%;"></a>
     
-        <a href="../component/async-message-queue-components.html" title="异步消息队列组件" class="chapter done " data-progress="14.8" style="left: 70.37037037037037%;"></a>
+        <a href="../component/async-message-queue-components.html" title="异步消息队列组件" class="chapter  " data-progress="14.8" style="left: 70.37037037037037%;"></a>
     
-        <a href="../component/reactzmq.html" title="react/zmq" class="chapter done " data-progress="14.8.1" style="left: 70.98765432098766%;"></a>
+        <a href="../component/reactzmq.html" title="react/zmq" class="chapter  " data-progress="14.8.1" style="left: 70.98765432098766%;"></a>
     
         <a href="../component/reactstomp.html" title="react/stomp" class="chapter  " data-progress="14.8.2" style="left: 71.60493827160494%;"></a>
     
@@ -2086,42 +2086,130 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_1618">
+                    <section class="normal" id="section-gitbook_1623">
                     
-                        <h1 id="react-zmq">react/zmq</h1>
-<p><strong><code>(要求Workerman版本&gt;=3.3.6)</code></strong></p>
-<h2 id="-">安装：</h2>
-<pre><code>composer require react/zmq
-</code></pre><h2 id="-">示例：</h2>
-<pre><code class="lang-php"><span class="hljs-preprocessor">&lt;?php</span>
+                        <h1 id="workerman-mysql">Workerman/MySQL</h1>
+<h2 id="-">说明</h2>
+<p>常驻内存的程序在使用mysql时经常会遇到<code>mysql gone away</code>的错误，这个是由于程序与mysql的连接长时间没有通讯，连接被mysql服务端踢掉导致。本数据库类可以解决这个问题，当发生<code>mysql gone away</code>错误时，会自动重试一次。</p>
+<h2 id="-">依赖的扩展</h2>
+<p>该mysql类依赖<a href="http://php.net/manual/zh/book.pdo.php" target="_blank">pdo</a>和<a href="http://php.net/manual/zh/ref.pdo-mysql.php" target="_blank">pdo_mysql</a>两个扩展，缺少扩展会报<code>Undefined class constant &#39;MYSQL_ATTR_INIT_COMMAND&#39; in ....</code>错误。</p>
+<p>命令行运行<code>php -m</code>会列出所有php cli已安装的扩展，如果没有pdo 或者 pdo_mysql，请自行安装。</p>
+<p><strong>centos系统</strong></p>
+<pre><code>yum install php-pdo
+yum install php-mysql
+</code></pre><p>如果找不到包名，请尝试用<code>yum search php mysql</code>查找</p>
+<p><strong>ubuntu/debian系统</strong></p>
+<p>PHP5.x</p>
+<pre><code>apt-get install php5-mysql
+</code></pre><p>PHP7.x</p>
+<pre><code>apt-get install php7.0-mysql
+</code></pre><p>如果找不到包名，请尝试用<code>apt-cache search php mysql</code>查找</p>
+<p><strong>以上方法无法安装？</strong></p>
+<p>如果以上方法无法安装，请参考<a href="http://doc3.workerman.net/appendices/install-extension.html" target="_blank">workerman手册-附录-扩展安装-方法三源码编译安装</a>。</p>
+<h2 id="-workerman-mysql">安装 Workerman/MySQL</h2>
+<p><strong>方法1：</strong></p>
+<p>可以通过composer安装，命令行运行以下命令(composer源在国外，安装过程可能会非常慢)。</p>
+<pre><code>composer require workerman/mysql
+</code></pre><p>上面命令成功后会生成vendor目录，然后在项目中引入vendor下的autoload.php。</p>
+<pre><code>require_once __DIR__ . &#39;/vendor/autoload.php&#39;;
+</code></pre><p><strong>方法2：</strong></p>
+<p><a href="https://github.com/walkor/mysql/archive/master.zip" target="_blank">下载源码</a>，解压后的目录放到自己项目中(位置任意)，直接require源文件。</p>
+<pre><code class="lang-php"><span class="hljs-keyword">require_once</span> <span class="hljs-string">'/your/path/of/mysql-master/src/Connection.php'</span>;
+</code></pre>
+<h2 id="-">注意</h2>
+<p>强烈建议在onWorkerStart回调中初始化数据库连接，避免在<code>Worker::runAll();</code>运行前就初始化连接，在<code>Worker::runAll();</code>运行前初始化的连接属于主进程，子进程会继承这个连接，主进程和子进程共用相同的数据库连接会导致的错误。</p>
+<h2 id="-">示例</h2>
+<pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
 <span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/vendor/autoload.php'</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 
-<span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'text://0.0.0.0:6161'</span>);
-
-<span class="hljs-variable">$worker</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
-    <span class="hljs-keyword">global</span>   <span class="hljs-variable">$pull</span>;
-    <span class="hljs-variable">$loop</span>    = Worker::getEventLoop();
-    <span class="hljs-variable">$context</span> = <span class="hljs-keyword">new</span> React\ZMQ\Context(<span class="hljs-variable">$loop</span>);
-    <span class="hljs-variable">$pull</span>    = <span class="hljs-variable">$context</span>-&gt;getSocket(ZMQ::SOCKET_PULL);
-    <span class="hljs-variable">$pull</span>-&gt;bind(<span class="hljs-string">'tcp://127.0.0.1:5555'</span>);
-
-    <span class="hljs-variable">$pull</span>-&gt;on(<span class="hljs-string">'error'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(<span class="hljs-variable">$e</span>)</span> {</span>
-        var_dump(<span class="hljs-variable">$e</span>-&gt;getMessage());
-    });
-
-    <span class="hljs-variable">$pull</span>-&gt;on(<span class="hljs-string">'message'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(<span class="hljs-variable">$msg</span>)</span> {</span>
-        <span class="hljs-keyword">echo</span> <span class="hljs-string">"Received: $msg\n"</span>;
-    });
+<span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'websocket://0.0.0.0:8484'</span>);
+<span class="hljs-variable">$worker</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$worker</span>)</span>
+{</span>
+    <span class="hljs-comment">// 将db实例存储在全局变量中(也可以存储在某类的静态成员中)</span>
+    <span class="hljs-keyword">global</span> <span class="hljs-variable">$db</span>;
+    <span class="hljs-variable">$db</span> = <span class="hljs-keyword">new</span> Workerman\MySQL\Connection(<span class="hljs-string">'host'</span>, <span class="hljs-string">'port'</span>, <span class="hljs-string">'user'</span>, <span class="hljs-string">'password'</span>, <span class="hljs-string">'db_name'</span>);
 };
-
+<span class="hljs-variable">$worker</span>-&gt;onMessage = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>, <span class="hljs-variable">$data</span>)</span>
+{</span>
+    <span class="hljs-comment">// 通过全局变量获得db实例</span>
+    <span class="hljs-keyword">global</span> <span class="hljs-variable">$db</span>;
+    <span class="hljs-comment">// 执行SQL</span>
+    <span class="hljs-variable">$all_tables</span> = <span class="hljs-variable">$mysql</span>-&gt;query(<span class="hljs-string">'show tables'</span>);
+    <span class="hljs-variable">$connection</span>-&gt;send(json_encode(<span class="hljs-variable">$all_tables</span>));
+};
+<span class="hljs-comment">// 运行worker</span>
 Worker::runAll();
 </code></pre>
-<h2 id="-">文档：</h2>
-<p><a href="https://github.com/reactphp/zmq" target="_blank">https://github.com/reactphp/zmq</a></p>
-<h2 id="-">注意：</h2>
-<p>1、所有的异步编码必须在<code>onXXX</code>回调中编写</p>
-<p>2、异步客户端需要的<code>$loop</code>变量请使用<code>Worker::getEventLoop();</code>返回值</p>
+<h2 id="-mysql-connection-">具体MySQL/Connection用法</h2>
+<pre><code class="lang-php"><span class="hljs-comment">// 初始化db连接</span>
+<span class="hljs-variable">$db</span> = <span class="hljs-keyword">new</span> Workerman\MySQL\Connection(<span class="hljs-string">'host'</span>, <span class="hljs-string">'port'</span>, <span class="hljs-string">'user'</span>, <span class="hljs-string">'password'</span>, <span class="hljs-string">'db_name'</span>);
+
+<span class="hljs-comment">// 获取所有数据</span>
+<span class="hljs-variable">$db</span>-&gt;select(<span class="hljs-string">'ID,Sex'</span>)-&gt;from(<span class="hljs-string">'Persons'</span>)-&gt;where(<span class="hljs-string">'sex= :sex'</span>)-&gt;bindValues(<span class="hljs-keyword">array</span>(<span class="hljs-string">'sex'</span>=&gt;<span class="hljs-string">'M'</span>))-&gt;query();
+<span class="hljs-comment">//等价于</span>
+<span class="hljs-variable">$db</span>-&gt;select(<span class="hljs-string">'ID,Sex'</span>)-&gt;from(<span class="hljs-string">'Persons'</span>)-&gt;where(<span class="hljs-string">"sex= 'F' "</span>)-&gt;query();
+<span class="hljs-comment">//等价于</span>
+<span class="hljs-variable">$db</span>-&gt;query(<span class="hljs-string">"SELECT ID,Sex FROM `Persons` WHERE sex='M'"</span>);
+
+
+<span class="hljs-comment">// 获取一行数据</span>
+<span class="hljs-variable">$db</span>-&gt;select(<span class="hljs-string">'ID,Sex'</span>)-&gt;from(<span class="hljs-string">'Persons'</span>)-&gt;where(<span class="hljs-string">'sex= :sex'</span>)-&gt;bindValues(<span class="hljs-keyword">array</span>(<span class="hljs-string">'sex'</span>=&gt;<span class="hljs-string">'M'</span>))-&gt;row();
+<span class="hljs-comment">//等价于</span>
+<span class="hljs-variable">$db</span>-&gt;select(<span class="hljs-string">'ID,Sex'</span>)-&gt;from(<span class="hljs-string">'Persons'</span>)-&gt;where(<span class="hljs-string">"sex= 'F' "</span>)-&gt;row();
+<span class="hljs-comment">//等价于</span>
+<span class="hljs-variable">$db</span>-&gt;row(<span class="hljs-string">"SELECT ID,Sex FROM `Persons` WHERE sex='M'"</span>);
+
+
+<span class="hljs-comment">// 获取一列数据</span>
+<span class="hljs-variable">$db</span>-&gt;select(<span class="hljs-string">'ID'</span>)-&gt;from(<span class="hljs-string">'Persons'</span>)-&gt;where(<span class="hljs-string">'sex= :sex'</span>)-&gt;bindValues(<span class="hljs-keyword">array</span>(<span class="hljs-string">'sex'</span>=&gt;<span class="hljs-string">'M'</span>))-&gt;column();
+<span class="hljs-comment">//等价于</span>
+<span class="hljs-variable">$db</span>-&gt;select(<span class="hljs-string">'ID'</span>)-&gt;from(<span class="hljs-string">'Persons'</span>)-&gt;where(<span class="hljs-string">"sex= 'F' "</span>)-&gt;column();
+<span class="hljs-comment">//等价于</span>
+<span class="hljs-variable">$db</span>-&gt;column(<span class="hljs-string">"SELECT `ID` FROM `Persons` WHERE sex='M'"</span>);
+
+<span class="hljs-comment">// 获取单个值</span>
+<span class="hljs-variable">$db</span>-&gt;select(<span class="hljs-string">'ID,Sex'</span>)-&gt;from(<span class="hljs-string">'Persons'</span>)-&gt;where(<span class="hljs-string">'sex= :sex'</span>)-&gt;bindValues(<span class="hljs-keyword">array</span>(<span class="hljs-string">'sex'</span>=&gt;<span class="hljs-string">'M'</span>))-&gt;single();
+<span class="hljs-comment">//等价于</span>
+<span class="hljs-variable">$db</span>-&gt;select(<span class="hljs-string">'ID,Sex'</span>)-&gt;from(<span class="hljs-string">'Persons'</span>)-&gt;where(<span class="hljs-string">"sex= 'F' "</span>)-&gt;single();
+<span class="hljs-comment">//等价于</span>
+<span class="hljs-variable">$db</span>-&gt;single(<span class="hljs-string">"SELECT ID,Sex FROM `Persons` WHERE sex='M'"</span>);
+
+<span class="hljs-comment">// 复杂查询</span>
+<span class="hljs-variable">$db</span>-&gt;select(<span class="hljs-string">'*'</span>)-&gt;from(<span class="hljs-string">'table1'</span>)-&gt;innerJoin(<span class="hljs-string">'table2'</span>,<span class="hljs-string">'table1.uid = table2.uid'</span>)-&gt;where(<span class="hljs-string">'age &gt; :age'</span>)-&gt;groupBy(<span class="hljs-keyword">array</span>(<span class="hljs-string">'aid'</span>))-&gt;having(<span class="hljs-string">'foo="foo"'</span>)-&gt;orderByASC<span class="hljs-comment">/*orderByDESC*/</span>(<span class="hljs-keyword">array</span>(<span class="hljs-string">'did'</span>))
+-&gt;limit(<span class="hljs-number">10</span>)-&gt;offset(<span class="hljs-number">20</span>)-&gt;bindValues(<span class="hljs-keyword">array</span>(<span class="hljs-string">'age'</span> =&gt; <span class="hljs-number">13</span>));
+<span class="hljs-comment">// 等价于</span>
+<span class="hljs-variable">$db</span>-&gt;query(SELECT * FROM `table1` INNER JOIN `table2` ON `table1`.`uid` = `table2`.`uid`
+WHERE age &gt; <span class="hljs-number">13</span> GROUP BY aid HAVING foo=<span class="hljs-string">"foo"</span> ORDER BY did LIMIT <span class="hljs-number">10</span> OFFSET <span class="hljs-number">20</span>“);
+
+<span class="hljs-comment">// 插入</span>
+<span class="hljs-variable">$insert_id</span> = <span class="hljs-variable">$db</span>-&gt;insert(<span class="hljs-string">'Persons'</span>)-&gt;cols(<span class="hljs-keyword">array</span>(
+    <span class="hljs-string">'Firstname'</span>=&gt;<span class="hljs-string">'abc'</span>,
+    <span class="hljs-string">'Lastname'</span>=&gt;<span class="hljs-string">'efg'</span>,
+    <span class="hljs-string">'Sex'</span>=&gt;<span class="hljs-string">'M'</span>,
+    <span class="hljs-string">'Age'</span>=&gt;<span class="hljs-number">13</span>))-&gt;query();
+等价于
+<span class="hljs-variable">$insert_id</span> = <span class="hljs-variable">$db</span>-&gt;query(<span class="hljs-string">"INSERT INTO `Persons` ( `Firstname`,`Lastname`,`Sex`,`Age`)
+VALUES ( 'abc', 'efg', 'M', 13)"</span>);
+
+<span class="hljs-comment">// 更新</span>
+<span class="hljs-variable">$row_count</span> = <span class="hljs-variable">$db</span>-&gt;update(<span class="hljs-string">'Persons'</span>)-&gt;cols(<span class="hljs-keyword">array</span>(<span class="hljs-string">'sex'</span>))-&gt;where(<span class="hljs-string">'ID=1'</span>)
+-&gt;bindValue(<span class="hljs-string">'sex'</span>, <span class="hljs-string">'F'</span>)-&gt;query();
+<span class="hljs-comment">// 等价于</span>
+<span class="hljs-variable">$row_count</span> = <span class="hljs-variable">$db</span>-&gt;update(<span class="hljs-string">'Persons'</span>)-&gt;cols(<span class="hljs-keyword">array</span>(<span class="hljs-string">'sex'</span>=&gt;<span class="hljs-string">'F'</span>))-&gt;where(<span class="hljs-string">'ID=1'</span>)-&gt;query();
+<span class="hljs-comment">// 等价于</span>
+<span class="hljs-variable">$row_count</span> = <span class="hljs-variable">$db</span>-&gt;query(<span class="hljs-string">"UPDATE `Persons` SET `sex` = 'F' WHERE ID=1"</span>);
+
+<span class="hljs-comment">// 删除</span>
+<span class="hljs-variable">$row_count</span> = <span class="hljs-variable">$db</span>-&gt;delete(<span class="hljs-string">'Persons'</span>)-&gt;where(<span class="hljs-string">'ID=9'</span>)-&gt;query();
+<span class="hljs-comment">// 等价于</span>
+<span class="hljs-variable">$row_count</span> = <span class="hljs-variable">$db</span>-&gt;query(<span class="hljs-string">"DELETE FROM `Persons` WHERE ID=9"</span>);
+
+<span class="hljs-comment">// 事务</span>
+<span class="hljs-variable">$db</span>-&gt;beginTrans();
+....
+<span class="hljs-variable">$db</span>-&gt;commitTrans(); <span class="hljs-comment">// or $db-&gt;rollBackTrans();</span>
+</code></pre>
 
                     
                     </section>
@@ -2131,10 +2219,10 @@ Worker::runAll();
         </div>
 
         
-        <a href="../component/async-message-queue-components.html" class="navigation navigation-prev " aria-label="Previous page: 异步消息队列组件"><i class="fa fa-angle-left"></i></a>
+        <a href="../component/mysql.html" class="navigation navigation-prev " aria-label="Previous page: MySQL组件"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../component/reactstomp.html" class="navigation navigation-next " aria-label="Next page: react/stomp"><i class="fa fa-angle-right"></i></a>
+        <a href="../component/reactmysql.html" class="navigation navigation-next " aria-label="Next page: 异步react/mysql"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
