@@ -77,7 +77,7 @@ $worker->onMessage = function($connection, $data)
     // 通过全局变量获得db实例
     global $db;
     // 执行SQL
-    $all_tables = $mysql->query('show tables');
+    $all_tables = $db->query('show tables');
     $connection->send(json_encode($all_tables));
 };
 // 运行worker
