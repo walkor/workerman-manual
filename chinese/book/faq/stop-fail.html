@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="15.10" data-basepath=".." data-revision="1488887072201">
+    <div class="book"  data-level="15.10" data-basepath=".." data-revision="1489134049834">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -2086,7 +2086,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_50">
+                    <section class="normal" id="section-gitbook_273">
                     
                         <h1 id="-">停止失败</h1>
 <h2 id="-">现象：</h2>
@@ -2095,11 +2095,11 @@
 <p><strong>第一种可能性：</strong><br>
 前提是以debug方式启动的workerman，开发者在终端按了<code>ctrl z</code>给workerman发送了<code>SIGSTOP</code>信号，导致workerman进入后台并挂起(暂停)，所以无法响应stop命令(<code>SIGINT</code>信号)。</p>
 <p><strong>解决：</strong><br>
-在启动workerman的终端输入<code>fg</code>(发送<code>SIGCONT</code>信号)然后回车，将workerman切回前台运行，按<code>ctrl c</code>(发送<code>SIGINT</code>信号)停止workerman。
-<br>
-<br>
-<br>
-<br>
+在启动workerman的终端输入<code>fg</code>(发送<code>SIGCONT</code>信号)然后回车，将workerman切回前台运行，按<code>ctrl c</code>(发送<code>SIGINT</code>信号)停止workerman。</p>
+<p>如果无法停止，尝试运行以下两条命令</p>
+<pre><code>killall -9 php
+</code></pre><pre><code>ps aux|grep WorkerMan|awk &#39;{print $2}&#39;|xargs kill -9
+</code></pre><p><br>
 <strong>第二种可能性：</strong><br>
 运行stop的用户和workerman启动用户不一致，即stop用户没有权限停止workerman。</p>
 <p><strong>解决：</strong>

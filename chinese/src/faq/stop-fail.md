@@ -10,9 +10,14 @@
 
 **解决：**<br>
 在启动workerman的终端输入```fg```(发送```SIGCONT```信号)然后回车，将workerman切回前台运行，按```ctrl c```(发送```SIGINT```信号)停止workerman。
-<br>
-<br>
-<br>
+
+如果无法停止，尝试运行以下两条命令
+```
+killall -9 php
+```
+```
+ps aux|grep WorkerMan|awk '{print $2}'|xargs kill -9
+```
 <br>
 **第二种可能性：**<br>
 运行stop的用户和workerman启动用户不一致，即stop用户没有权限停止workerman。

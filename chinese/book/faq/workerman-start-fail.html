@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="15.9" data-basepath=".." data-revision="1488887072201">
+    <div class="book"  data-level="15.9" data-basepath=".." data-revision="1489134049834">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -2086,7 +2086,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_47">
+                    <section class="normal" id="section-gitbook_277">
                     
                         <h1 id="workerman-">workerman启动失败</h1>
 <h2 id="-1">现象1</h2>
@@ -2109,7 +2109,9 @@ ps aux|grep WorkerMan|awk &#39;{print $2}&#39;|xargs kill -9
 </code></pre>
 <p><strong>关键字：</strong> <code>Cannot assign requested address</code></p>
 <p><strong>失败原因：</strong></p>
-<p>启动脚本ip参数写错，不是本机ip，请填写本机ip机或者填写 <code>0.0.0.0</code>（表示监听本机所有ip）即可解决</p>
+<p>启动脚本ip参数写错，不是本机ip，请填写本机ip机或者填写 <code>0.0.0.0</code>（表示监听本机所有ip）即可解决。</p>
+<p><strong>提示</strong>：Linux系统可以通过命令 <code>ifconfig</code>查看本机所有网卡ip。<br>
+如果您是腾讯云用户，注意您的公网ip实际是代理服务器ip，公网ip并不属于你的服务器，所以无法通过公网ip绑定，但是可以通过0.0.0.0来绑定。</p>
 <h2 id="-3">现象3</h2>
 <pre><code class="lang-php">Waring stream_socket_server has been disabled <span class="hljs-keyword">for</span> security reasons in ...
 </code></pre>
