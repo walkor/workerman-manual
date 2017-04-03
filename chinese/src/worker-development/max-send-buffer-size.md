@@ -13,7 +13,7 @@ int Connection::$maxSendBufferSize
 
 ```php
 use Workerman\Worker;
-use Workerman\Protocols\TcpConnection;
+use Workerman\Connection\TcpConnection;
 require_once __DIR__ . '/Workerman/Autoloader.php';
 
 $worker = new Worker('websocket://0.0.0.0:8484');

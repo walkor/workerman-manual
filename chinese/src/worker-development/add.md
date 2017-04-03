@@ -36,7 +36,7 @@ use \Workerman\Lib\Timer;
 require_once __DIR__ . '/Workerman/Autoloader.php';
 
 $task = new Worker();
-// 开启多少个进程运行定时任务，注意多进程并发问题
+// 开启多少个进程运行定时任务，注意业务是否在多进程有并发问题
 $task->count = 1;
 $task->onWorkerStart = function($task)
 {
@@ -52,7 +52,94 @@ $task->onWorkerStart = function($task)
 Worker::runAll();
 ```
 
-### 2、定时函数为普通函数
+### 2、只在指定进程中设置定时器
+
+一个worker实例有4个进程，只在id编号为0的进程上设置定时器。
+
+```php
+use Workerman\Worker;
+use Workerman\Lib\Timer;
+require_once __DIR__ . '/Workerman/Autoloader.php';
+
+$worker = new Worker();
+$worker->count = 4;
+$worker->onWorkerStart = function($worker)
+{
+    // 只在id编号为0的进程上设置定时器，其它1、2、3号进程不设置定时器
+    if($worker->id === 0)
+    {
+        Timer::add(1, function(){
+            echo "4个worker进程，只在0号进程设置定时器\n";
+        });
+    }
+};
+// 运行worker
+Worker::runAll();
+```
+
+### 3、定时函数为匿名函数，利用闭包传递参数
+```php
+use \Workerman\Worker;
+use \Workerman\Lib\Timer;
+require_once __DIR__ . '/Workerman/Autoloader.php';
+
+$ws_worker = new Worker('websocket://0.0.0.0:8080');
+$ws_worker->count = 8;
+// 连接建立时给对应连接设置定时器
+$ws_worker->onConnect = function($connection)
+{
+    // 每10秒执行一次
+    $time_interval = 10;
+    $connect_time = time();
+    // 给connection对象临时添加一个timer_id属性保存定时器id
+    $connection->timer_id = Timer::add($time_interval, function()use($connection, $connect_time)
+    {
+         $connection->send($connect_time);
+    });
+};
+// 连接关闭时，删除对应连接的定时器
+$ws_worker->onClose = function($connection)
+{
+    // 删除定时器
+    Timer::del($connection->timer_id);
+};
+
+// 运行worker
+Worker::runAll();
+```
+
+### 4、定时器函数为匿名函数，利用定时器接口传递参数
+```php
+use \Workerman\Worker;
+use \Workerman\Lib\Timer;
+require_once __DIR__ . '/Workerman/Autoloader.php';
+
+$ws_worker = new Worker('websocket://0.0.0.0:8080');
+$ws_worker->count = 8;
+// 连接建立时给对应连接设置定时器
+$ws_worker->onConnect = function($connection)
+{
+    // 每10秒执行一次
+    $time_interval = 10;
+    $connect_time = time();
+    // 给connection对象临时添加一个timer_id属性保存定时器id
+    $connection->timer_id = Timer::add($time_interval, function()
+    {
+         $connection->send($connect_time);
+    }, array($connection, $connect_time));
+};
+// 连接关闭时，删除对应连接的定时器
+$ws_worker->onClose = function($connection)
+{
+    // 删除定时器
+    Timer::del($connection->timer_id);
+};
+
+// 运行worker
+Worker::runAll();
+```
+
+### 5、定时函数为普通函数
 ```php
 use \Workerman\Worker;
 use \Workerman\Lib\Timer;
@@ -77,7 +164,7 @@ $task->onWorkerStart = function($task)
 Worker::runAll();
 ```
 
-### 3、定时函数为类的方法
+### 6、定时函数为类的方法
 ```php
 use \Workerman\Worker;
 use \Workerman\Lib\Timer;
@@ -106,7 +193,7 @@ $task->onWorkerStart = function($task)
 Worker::runAll();
 ```
 
-### 4、定时函数为类方法（类内部使用定时器）
+### 7、定时函数为类方法（类内部使用定时器）
 ```php
 use \Workerman\Worker;
 use \Workerman\Lib\Timer;
@@ -141,7 +228,7 @@ $task->onWorkerStart = function($task)
 Worker::runAll();
 ```
 
-### 5、定时函数为类的静态方法
+### 8、定时函数为类的静态方法
 ```php
 use \Workerman\Worker;
 use \Workerman\Lib\Timer;
@@ -170,7 +257,7 @@ $task->onWorkerStart = function($task)
 Worker::runAll();
 ```
 
-### 6、定时函数为类的静态方法(带命名空间)
+### 9、定时函数为类的静态方法(带命名空间)
 ```php
 namespace Task;
 use \Workerman\Worker;
@@ -200,7 +287,7 @@ $task->onWorkerStart = function($task)
 Worker::runAll();
 ```
 
-### 7、定时器中销毁当前定时器（use闭包方式传递$timer_id）
+### 10、定时器中销毁当前定时器（use闭包方式传递$timer_id）
 ```php
 use \Workerman\Worker;
 use \Workerman\Lib\Timer;
@@ -228,7 +315,7 @@ $task->onWorkerStart = function($task)
 Worker::runAll();
 ```
 
-### 8、定时器中销毁当前定时器（参数方式传递$timer_id）
+### 11、定时器中销毁当前定时器（参数方式传递$timer_id）
 ```php
 use \Workerman\Worker;
 use \Workerman\Lib\Timer;
@@ -262,27 +349,4 @@ $task->onWorkerStart = function($task)
 Worker::runAll();
 ```
 
-### 9、只在指定进程中设置定时器
 
-一个worker实例有4个进程，只在id编号为0的进程上设置定时器。
-
-```php
-use Workerman\Worker;
-use Workerman\Lib\Timer;
-require_once __DIR__ . '/Workerman/Autoloader.php';
-
-$worker = new Worker();
-$worker->count = 4;
-$worker->onWorkerStart = function($worker)
-{
-    // 只在id编号为0的进程上设置定时器，其它1、2、3号进程不设置定时器
-    if($worker->id === 0)
-    {
-        Timer::add(1, function(){
-            echo "4个worker进程，只在0号进程设置定时器\n";
-        });
-    }
-};
-// 运行worker
-Worker::runAll();
-```

@@ -42,7 +42,7 @@ $context = array(
     )
 );
 // 这里设置的是websocket协议
-$worker = new Worker('http://0.0.0.0:4431', $context);
+$worker = new Worker('websocket://0.0.0.0:4431', $context);
 // 设置transport开启ssl，websocket+ssl即wss
 $worker->transport = 'ssl';
 $worker->onMessage = function($con, $msg) {

@@ -13,7 +13,7 @@ static int Connection::$defaultMaxSendBufferSize
 
 ```php
 use Workerman\Worker;
-use Workerman\Protocols\TcpConnection;
+use Workerman\Connection\TcpConnection;
 require_once __DIR__ . '/Workerman/Autoloader.php';
 
 // 设置所有连接的默认应用层发送缓冲区大小

@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="11.1" data-basepath=".." data-revision="1489134049834">
+    <div class="book"  data-level="11.1" data-basepath=".." data-revision="1491226388525">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -2086,7 +2086,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_344">
+                    <section class="normal" id="section-gitbook_1061">
                     
                         <h1 id="add">add</h1>
 <pre><code class="lang-php">int \Workerman\Lib\Timer::add(float <span class="hljs-variable">$time_interval</span>, callable <span class="hljs-variable">$callback</span> [,<span class="hljs-variable">$args</span> = <span class="hljs-keyword">array</span>(), bool <span class="hljs-variable">$persistent</span> = <span class="hljs-keyword">true</span>])
@@ -2111,7 +2111,7 @@
 <span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
 
 <span class="hljs-variable">$task</span> = <span class="hljs-keyword">new</span> Worker();
-<span class="hljs-comment">// 开启多少个进程运行定时任务，注意多进程并发问题</span>
+<span class="hljs-comment">// 开启多少个进程运行定时任务，注意业务是否在多进程有并发问题</span>
 <span class="hljs-variable">$task</span>-&gt;count = <span class="hljs-number">1</span>;
 <span class="hljs-variable">$task</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$task</span>)</span>
 {</span>
@@ -2126,7 +2126,86 @@
 <span class="hljs-comment">// 运行worker</span>
 Worker::runAll();
 </code></pre>
-<h3 id="2-">2、定时函数为普通函数</h3>
+<h3 id="2-">2、只在指定进程中设置定时器</h3>
+<p>一个worker实例有4个进程，只在id编号为0的进程上设置定时器。</p>
+<pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
+
+<span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker();
+<span class="hljs-variable">$worker</span>-&gt;count = <span class="hljs-number">4</span>;
+<span class="hljs-variable">$worker</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$worker</span>)</span>
+{</span>
+    <span class="hljs-comment">// 只在id编号为0的进程上设置定时器，其它1、2、3号进程不设置定时器</span>
+    <span class="hljs-keyword">if</span>(<span class="hljs-variable">$worker</span>-&gt;id === <span class="hljs-number">0</span>)
+    {
+        Timer::add(<span class="hljs-number">1</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">"4个worker进程，只在0号进程设置定时器\n"</span>;
+        });
+    }
+};
+<span class="hljs-comment">// 运行worker</span>
+Worker::runAll();
+</code></pre>
+<h3 id="3-">3、定时函数为匿名函数，利用闭包传递参数</h3>
+<pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
+
+<span class="hljs-variable">$ws_worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'websocket://0.0.0.0:8080'</span>);
+<span class="hljs-variable">$ws_worker</span>-&gt;count = <span class="hljs-number">8</span>;
+<span class="hljs-comment">// 连接建立时给对应连接设置定时器</span>
+<span class="hljs-variable">$ws_worker</span>-&gt;onConnect = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>)</span>
+{</span>
+    <span class="hljs-comment">// 每10秒执行一次</span>
+    <span class="hljs-variable">$time_interval</span> = <span class="hljs-number">10</span>;
+    <span class="hljs-variable">$connect_time</span> = time();
+    <span class="hljs-comment">// 给connection对象临时添加一个timer_id属性保存定时器id</span>
+    <span class="hljs-variable">$connection</span>-&gt;timer_id = Timer::add(<span class="hljs-variable">$time_interval</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span><span class="hljs-title">use</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>, <span class="hljs-variable">$connect_time</span>)</span>
+    {</span>
+         <span class="hljs-variable">$connection</span>-&gt;send(<span class="hljs-variable">$connect_time</span>);
+    });
+};
+<span class="hljs-comment">// 连接关闭时，删除对应连接的定时器</span>
+<span class="hljs-variable">$ws_worker</span>-&gt;onClose = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>)</span>
+{</span>
+    <span class="hljs-comment">// 删除定时器</span>
+    Timer::del(<span class="hljs-variable">$connection</span>-&gt;timer_id);
+};
+
+<span class="hljs-comment">// 运行worker</span>
+Worker::runAll();
+</code></pre>
+<h3 id="4-">4、定时器函数为匿名函数，利用定时器接口传递参数</h3>
+<pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
+<span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
+<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
+
+<span class="hljs-variable">$ws_worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'websocket://0.0.0.0:8080'</span>);
+<span class="hljs-variable">$ws_worker</span>-&gt;count = <span class="hljs-number">8</span>;
+<span class="hljs-comment">// 连接建立时给对应连接设置定时器</span>
+<span class="hljs-variable">$ws_worker</span>-&gt;onConnect = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>)</span>
+{</span>
+    <span class="hljs-comment">// 每10秒执行一次</span>
+    <span class="hljs-variable">$time_interval</span> = <span class="hljs-number">10</span>;
+    <span class="hljs-variable">$connect_time</span> = time();
+    <span class="hljs-comment">// 给connection对象临时添加一个timer_id属性保存定时器id</span>
+    <span class="hljs-variable">$connection</span>-&gt;timer_id = Timer::add(<span class="hljs-variable">$time_interval</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>
+    {</span>
+         <span class="hljs-variable">$connection</span>-&gt;send(<span class="hljs-variable">$connect_time</span>);
+    }, <span class="hljs-keyword">array</span>(<span class="hljs-variable">$connection</span>, <span class="hljs-variable">$connect_time</span>));
+};
+<span class="hljs-comment">// 连接关闭时，删除对应连接的定时器</span>
+<span class="hljs-variable">$ws_worker</span>-&gt;onClose = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$connection</span>)</span>
+{</span>
+    <span class="hljs-comment">// 删除定时器</span>
+    Timer::del(<span class="hljs-variable">$connection</span>-&gt;timer_id);
+};
+
+<span class="hljs-comment">// 运行worker</span>
+Worker::runAll();
+</code></pre>
+<h3 id="5-">5、定时函数为普通函数</h3>
 <pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
 <span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
@@ -2149,7 +2228,7 @@ Worker::runAll();
 <span class="hljs-comment">// 运行worker</span>
 Worker::runAll();
 </code></pre>
-<h3 id="3-">3、定时函数为类的方法</h3>
+<h3 id="6-">6、定时函数为类的方法</h3>
 <pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
 <span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
@@ -2176,7 +2255,7 @@ Worker::runAll();
 <span class="hljs-comment">// 运行worker</span>
 Worker::runAll();
 </code></pre>
-<h3 id="4-">4、定时函数为类方法（类内部使用定时器）</h3>
+<h3 id="7-">7、定时函数为类方法（类内部使用定时器）</h3>
 <pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
 <span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
@@ -2209,7 +2288,7 @@ Worker::runAll();
 <span class="hljs-comment">// 运行worker</span>
 Worker::runAll();
 </code></pre>
-<h3 id="5-">5、定时函数为类的静态方法</h3>
+<h3 id="8-">8、定时函数为类的静态方法</h3>
 <pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
 <span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
@@ -2236,7 +2315,7 @@ Worker::runAll();
 <span class="hljs-comment">// 运行worker</span>
 Worker::runAll();
 </code></pre>
-<h3 id="6-">6、定时函数为类的静态方法(带命名空间)</h3>
+<h3 id="9-">9、定时函数为类的静态方法(带命名空间)</h3>
 <pre><code class="lang-php"><span class="hljs-keyword">namespace</span> <span class="hljs-title">Task</span>;
 <span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
@@ -2264,7 +2343,7 @@ Worker::runAll();
 <span class="hljs-comment">// 运行worker</span>
 Worker::runAll();
 </code></pre>
-<h3 id="7-use-timer_id-">7、定时器中销毁当前定时器（use闭包方式传递$timer_id）</h3>
+<h3 id="10-use-timer_id-">10、定时器中销毁当前定时器（use闭包方式传递$timer_id）</h3>
 <pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
 <span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
@@ -2290,7 +2369,7 @@ Worker::runAll();
 <span class="hljs-comment">// 运行worker</span>
 Worker::runAll();
 </code></pre>
-<h3 id="8-timer_id-">8、定时器中销毁当前定时器（参数方式传递$timer_id）</h3>
+<h3 id="11-timer_id-">11、定时器中销毁当前定时器（参数方式传递$timer_id）</h3>
 <pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
 <span class="hljs-keyword">use</span> \<span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
 <span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
@@ -2319,27 +2398,6 @@ Worker::runAll();
     <span class="hljs-variable">$timer_id</span> = Timer::add(<span class="hljs-number">1</span>, <span class="hljs-keyword">array</span>(<span class="hljs-variable">$mail</span>, <span class="hljs-string">'send'</span>), <span class="hljs-keyword">array</span>(<span class="hljs-string">'to'</span>, <span class="hljs-string">'content'</span>, &amp;<span class="hljs-variable">$timer_id</span>));
 };
 
-<span class="hljs-comment">// 运行worker</span>
-Worker::runAll();
-</code></pre>
-<h3 id="9-">9、只在指定进程中设置定时器</h3>
-<p>一个worker实例有4个进程，只在id编号为0的进程上设置定时器。</p>
-<pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Lib</span>\<span class="hljs-title">Timer</span>;
-<span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
-
-<span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker();
-<span class="hljs-variable">$worker</span>-&gt;count = <span class="hljs-number">4</span>;
-<span class="hljs-variable">$worker</span>-&gt;onWorkerStart = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$worker</span>)</span>
-{</span>
-    <span class="hljs-comment">// 只在id编号为0的进程上设置定时器，其它1、2、3号进程不设置定时器</span>
-    <span class="hljs-keyword">if</span>(<span class="hljs-variable">$worker</span>-&gt;id === <span class="hljs-number">0</span>)
-    {
-        Timer::add(<span class="hljs-number">1</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
-            <span class="hljs-keyword">echo</span> <span class="hljs-string">"4个worker进程，只在0号进程设置定时器\n"</span>;
-        });
-    }
-};
 <span class="hljs-comment">// 运行worker</span>
 Worker::runAll();
 </code></pre>

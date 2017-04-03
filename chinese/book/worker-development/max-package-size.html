@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="9.1.6" data-basepath=".." data-revision="1489134049834">
+    <div class="book"  data-level="9.1.6" data-basepath=".." data-revision="1491226388525">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -2086,7 +2086,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_371">
+                    <section class="normal" id="section-gitbook_1088">
                     
                         <h1 id="maxpackagesize">maxPackageSize</h1>
 <h2 id="-">说明:</h2>
@@ -2096,7 +2096,7 @@
 <p>如果发来的数据包解析(协议类的input方法返回值)得到包长大于<code>Connection::$maxPackageSize</code>，则会视为非法数据，连接会断开。</p>
 <h2 id="-">范例</h2>
 <pre><code class="lang-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Worker</span>;
-<span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Protocols</span>\<span class="hljs-title">TcpConnection</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Workerman</span>\<span class="hljs-title">Connection</span>\<span class="hljs-title">TcpConnection</span>;
 <span class="hljs-keyword">require_once</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/Workerman/Autoloader.php'</span>;
 
 <span class="hljs-comment">// 设置每个连接接收的数据包最大为1024000字节</span>

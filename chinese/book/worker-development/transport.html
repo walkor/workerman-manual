@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="8.2.6" data-basepath=".." data-revision="1489134049834">
+    <div class="book"  data-level="8.2.6" data-basepath=".." data-revision="1491226388525">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -2086,7 +2086,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_399">
+                    <section class="normal" id="section-gitbook_1116">
                     
                         <h1 id="transport">transport</h1>
 <h2 id="-">说明:</h2>
@@ -2121,7 +2121,7 @@ Worker::runAll();
     )
 );
 <span class="hljs-comment">// 这里设置的是websocket协议</span>
-<span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'http://0.0.0.0:4431'</span>, <span class="hljs-variable">$context</span>);
+<span class="hljs-variable">$worker</span> = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'websocket://0.0.0.0:4431'</span>, <span class="hljs-variable">$context</span>);
 <span class="hljs-comment">// 设置transport开启ssl，websocket+ssl即wss</span>
 <span class="hljs-variable">$worker</span>-&gt;transport = <span class="hljs-string">'ssl'</span>;
 <span class="hljs-variable">$worker</span>-&gt;onMessage = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(<span class="hljs-variable">$con</span>, <span class="hljs-variable">$msg</span>)</span> {</span>

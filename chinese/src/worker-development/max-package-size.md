@@ -15,7 +15,7 @@ static int Connection::$maxPackageSize
 
 ```php
 use Workerman\Worker;
-use Workerman\Protocols\TcpConnection;
+use Workerman\Connection\TcpConnection;
 require_once __DIR__ . '/Workerman/Autoloader.php';
 
 // 设置每个连接接收的数据包最大为1024000字节
