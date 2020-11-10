@@ -28,7 +28,7 @@ require_once './Workerman/Autoloader.php';
 
 $webserver = new WebServer('http://0.0.0.0:80');
 $webserver->addRoot('www.example.com', '/your/path/of/web/');
-$sebserver->count = 4;
+$webserver->count = 4;
 
 // Run all workers
 Worker::runAll();
