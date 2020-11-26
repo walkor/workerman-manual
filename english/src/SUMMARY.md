@@ -20,6 +20,7 @@
            * [connections](worker-development/connections.md)
            * [daemonize](worker-development/daemonize.md)
            * [stdoutFile ](worker-development/stdout_file.md)
+           * [logFile](worker-development/log_file.md)
            * [pidFile](worker-development/pid_file.md)
            * [globalEvent](worker-development/global-event.md)
        * [Callbacks](worker-development/callback.md)
