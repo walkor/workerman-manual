@@ -1,7 +1,0 @@
-# Connection类提供的接口
-
-WorkerMan中有两个重要的类Worker与Connection。
-
-每个客户端连接对应一个Connection对象，可以设置对象的onMessage、onClose等回调，同时提供了向客户端发送数据send接口与关闭连接close接口，以及其它一些必要的接口。
-
-可以说Worker是一个监听容器，负责接受客户端连接，并把连接包装成connection对象式提供给开发者操作。

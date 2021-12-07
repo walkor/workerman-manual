@@ -1,4 +1,0 @@
-# AsyncTcpConnection
-
-AsyncTcpConnection Extends TcpConnection
-

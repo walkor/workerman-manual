@@ -1,2 +1,0 @@
-# WebServer
-WebServer extends Worker
