@@ -6,7 +6,7 @@ void Connection::close(mixed $data = '')
 
 Sends a FIN packet.
 
-```$connection->onClose``` will be called when send buffer is mepty.
+```$connection->onClose``` will be called when send buffer is empty.
 
 ## Parameters
 
