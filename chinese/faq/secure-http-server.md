@@ -30,9 +30,10 @@ require_once __DIR__ . '/vendor/autoload.php';
 // 证书最好是申请的证书
 $context = array(
     'ssl' => array(
-        'local_cert'  => '/etc/nginx/conf.d/ssl/server.pem', // 也可以是crt文件
-        'local_pk'    => '/etc/nginx/conf.d/ssl/server.key',
-        'verify_peer' => false,
+        'local_cert'        => '/etc/nginx/conf.d/ssl/server.pem', // 也可以是crt文件
+        'local_pk'          => '/etc/nginx/conf.d/ssl/server.key',
+        'verify_peer'       => false,
+        'allow_self_signed' => true, //如果是自签名证书需要开启此选项
     )
 );
 // 这里设置的是http协议
