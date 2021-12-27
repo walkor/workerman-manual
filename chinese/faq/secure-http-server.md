@@ -10,12 +10,13 @@ Workerman如何创建一个[https](https://baike.baidu.com/item/https)服务，�
 [https](https://baike.baidu.com/item/https)协议实际是[http](https://baike.baidu.com/item/http)+[SSL](https://baike.baidu.com/item/ssl)，就是在[http](https://baike.baidu.com/item/http)协议上加入[SSL](https://baike.baidu.com/item/ssl)层。Workerman支持[http](https://baike.baidu.com/item/http)协议，同时也支持[SSL](https://baike.baidu.com/item/ssl)(```需要Workerman版本>=3.3.7```)，
 所以只需要在[http](https://baike.baidu.com/item/http)协议的基础上开启[SSL](https://baike.baidu.com/item/ssl)即可支持[https](https://baike.baidu.com/item/https)协议。
 
-## Workerman开启SSL
+让workerman支持https有两种通用方案，一种是workerman直接开启SSL，另外一种是用nginx代理SSL。两种方案选其一即可，不可同时设置。
 
+## Workerman开启SSL
 
 **准备工作：**
 
-1、Workerman版本不小于3.3.7
+1、Workerman版本>=3.3.7
 
 2、PHP安装了openssl扩展
 
@@ -62,11 +63,12 @@ Worker::runAll();
 3、如果使用https无法访问请检查服务器防火墙。
 
 
-
-
 ## 利用nginx作为ssl的代理
 
 除了用Workerman自身的SSL，也可以利用nginx作为SSL代理实现https。
+
+> **注意**
+> nginx代理SSL和Workerman设置SSL二选一，不能同时开启。
 
 通讯原理及流程是：
 

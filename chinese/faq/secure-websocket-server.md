@@ -15,7 +15,7 @@ wss协议实际是[websocket](https://baike.baidu.com/item/WebSocket)+[SSL](http
 
 **准备工作：**
 
-1、Workerman版本不小于3.3.7
+1、Workerman版本>=3.3.7
 
 2、PHP安装了openssl扩展
 
@@ -83,9 +83,12 @@ ws.onmessage = function(e) {
 5、此方法要求PHP版本>=5.6，因为微信小程序要求tls1.2，而PHP5.6以下版本不支持tls1.2。
 
 
-## 方法二、利用nginx/apache代理wss
+## 方法二、利用nginx/apache代理SSL
 
-除了用Workerman自身的SSL，也可以利用nginx/apache作为wss代理转发给workerman（注意此方法workerman部分千万不要设置ssl，否则将无法连接）。
+除了用Workerman自身的SSL，也可以利用nginx/apache作为wss代理转发给workerman
+
+> **注意**
+> nginx/apache代理SSL和Workerman设置SSL二选一，不能同时开启。
 
 通讯原理及流程是：
 
