@@ -105,8 +105,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 $worker = new Worker('websocket://0.0.0.0:1234');
 
 /*
- * 注意这里进程数必须设置为1，否则会报端口占用错误
- * (php 7可以设置进程数大于1，前提是$inner_text_worker->reusePort=true)
+ * 注意这里进程数必须设置为1
  */
 $worker->count = 1;
 // worker进程启动后创建一个text Worker以便打开一个内部通讯端口
