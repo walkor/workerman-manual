@@ -35,7 +35,7 @@ $http_worker = new Worker("http://0.0.0.0:2345");
 $http_worker->onMessage = 'on_message';
 
 // 普通函数
-function on_mesage(TcpConnection $connection, Request $request)
+function on_message(TcpConnection $connection, Request $request)
 {
     // 向浏览器发送hello world
     $connection->send('hello world');
