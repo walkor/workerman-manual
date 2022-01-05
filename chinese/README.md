@@ -35,7 +35,7 @@ Workerman的一些应用方向如下：
 例如 [GatewayWorker](https://www.workerman.net/doc/gateway-worker)，[PHPSocket.IO](https://www.workerman.net/phpsocket_io)，[http代理](https://github.com/walkor/php-http-proxy)，[sock5代理](https://github.com/walkor/php-socks5)，[分布式通讯组件](https://github.com/walkor/Channel)，[分布式变量共享组件](https://github.com/walkor/GlobalData)，[消息队列](https://github.com/walkor/workerman-queue)、DNS服务器、WebServer、CDN服务器、FTP服务器等等
 
 7、组件
-例如[异步redis](components/workerman-redis.md)，[异步http客户端](components/workerman-http-client.md)，[异步消息队列组件](components/react-zmq.md)，[物联网mqtt客户端](components/workemran-mqtt.md)，消息队列 [workerman/redis-queue](components/workerman-redis-queue.md) 、 [workerman/stomp](components/workerman-stomp.md)、[workerman/rabbitmq](components/workerman-rabbitmq.md)  ，[文件监控组件](components/file-monitor.md)，还有很多第三方开发的组件框架等等
+例如[异步redis](components/workerman-redis.md)，[异步http客户端](components/workerman-http-client.md)，[物联网mqtt客户端](components/workerman-mqtt.md)，消息队列 [workerman/redis-queue](components/workerman-redis-queue.md) 、 [workerman/stomp](components/workerman-stomp.md)、[workerman/rabbitmq](components/workerman-rabbitmq.md)  ，[文件监控组件](components/file-monitor.md)，还有很多第三方开发的组件框架等等
 
 显然传统的mvc框架很难实现以上的功能，所以也就是workerman诞生的原因。
 
