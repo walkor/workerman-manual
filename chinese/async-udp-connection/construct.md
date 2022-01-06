@@ -22,6 +22,7 @@ AsyncUdpConnection可以让Workerman作为客户端与远程服务端传输udp�
 use Workerman\Worker;
 use Workerman\Connection\AsyncUdpConnection;
 use Workerman\Lib\Timer;
+require_once __DIR__ . '/vendor/autoload.php';
 
 $worker = new Worker('udp://0.0.0.0:1234');
 $worker->onWorkerStart = function(){
