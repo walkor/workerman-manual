@@ -203,6 +203,7 @@ use Workerman\Worker;
 use Workerman\Connection\TcpConnection;
 use Workerman\Protocols\Http\Request;
 use Workerman\Protocols\Http\Response;
+use Workerman\Protocols\Http\Chunk;
 require_once __DIR__ . '/vendor/autoload.php';
 
 $worker = new Worker('http://0.0.0.0:8080');
