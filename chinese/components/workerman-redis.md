@@ -59,7 +59,7 @@ $redis->get('key', function ($result, $redis){
     $redis->set('key2', 'value2', function ($result) {
         var_dump($result);
     });
-})
+});
 ```
 > 为了节省篇幅，后面一些例子没有设置回调函数。
 
@@ -71,9 +71,9 @@ $redis = new Client('redis://127.0.0.1:6379');
 // 带回调
 $redis = new Client('redis://127.0.0.1:6379', [
     'connect_timeout' => 10 // 设置连接超时10秒，不设置默认5秒
-], function ($success) {
+], function ($success, $redis) {
     // 连接结果回调
-    if (!$cuccess) echo $redis->error();
+    if (!$success) echo $redis->error();
 });
 ```
 
@@ -258,10 +258,10 @@ $redis->incrByFloat('key1', 1.5, function ($result) {
 如果值包含错误的类型，或字符串类型的值不能表示为数字，那么返回false。
 成功则返回减少后的数值。
 ```php
-$redis->incr('key1', function ($result) {
+$redis->decr('key1', function ($result) {
     var_dump($result);
 }); 
-$redis->incrBy('key1', 10, function ($result) {
+$redis->decrBy('key1', 10, function ($result) {
     var_dump($result);
 }); 
 ```
@@ -638,7 +638,7 @@ $redis->hLen('h', function ($result) {
 返回被成功删除字段的数量，不包括被忽略的字段。如果key不是hash则返回false。
 
 ```php
-redis->hDel('h', 'key1');
+$redis->hDel('h', 'key1');
 ```
 
 ### **hKeys**
