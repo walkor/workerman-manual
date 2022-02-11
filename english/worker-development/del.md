@@ -1,7 +1,7 @@
 # del
 ## Description:
 ```php
-boolean \Workerman\Lib\Timer::del(int $timer_id)
+boolean \workerman\Timer::del(int $timer_id)
 ```
 Stops a Timer.
 
@@ -23,7 +23,7 @@ require_once './Workerman/Autoloader.php';
 $task = new Worker();
 $task->onWorkerStart = function($task)
 {
-    $timer_id = \Workerman\Lib\Timer::add(2, function()
+    $timer_id = \workerman\Timer::add(2, function()
     {
         echo "task run\n";
     });

@@ -63,7 +63,7 @@ worker2->id=1
 
 ```php
 use Workerman\Worker;
-use Workerman\Lib\Timer;
+use workerman\Timer;
 require_once __DIR__ . '/vendor/autoload.php';
 
 $worker = new Worker('tcp://0.0.0.0:8585');

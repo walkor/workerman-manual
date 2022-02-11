@@ -24,7 +24,7 @@ array(id=>connection, id=>connection, ...)
 
 ```php
 use Workerman\Worker;
-use Workerman\Lib\Timer;
+use workerman\Timer;
 require_once __DIR__ . '/vendor/autoload.php';
 
 $worker = new Worker('text://0.0.0.0:2020');

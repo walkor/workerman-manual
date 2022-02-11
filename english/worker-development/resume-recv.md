@@ -18,7 +18,7 @@ No value is returned.
 
 ```php
 use Workerman\Worker;
-use Workerman\Lib\Timer;
+use workerman\Timer;
 require_once './Workerman/Autoloader.php';
 
 $worker = new Worker('websocket://0.0.0.0:8484');

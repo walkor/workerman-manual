@@ -1,6 +1,6 @@
 # del
 ```php
-boolean \Workerman\Lib\Timer::del(int $timer_id)
+boolean \workerman\Timer::del(int $timer_id)
 ```
 删除某个定时器
 
