@@ -3,7 +3,7 @@
 1、可以用定时器定时推送数据
 ```php
 use Workerman\Worker;
-use workerman\Timer;
+use Workerman\Timer;
 use Workerman\Connection\TcpConnection;
 require_once __DIR__ . '/vendor/autoload.php';
 

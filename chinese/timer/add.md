@@ -1,6 +1,6 @@
 # add
 ```php
-int \workerman\Timer::add(float $time_interval, callable $callback [,$args = array(), bool $persistent = true])
+int \Workerman\Timer::add(float $time_interval, callable $callback [,$args = array(), bool $persistent = true])
 ```
 定时执行某个函数或者类方法。
 

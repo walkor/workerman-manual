@@ -1,7 +1,7 @@
 # add
 ## Description:
 ```php
-int \workerman\Timer::add(float $time_interval, callable $callback [,$args = array(), bool $persistent = true])
+int \Workerman\Timer::add(float $time_interval, callable $callback [,$args = array(), bool $persistent = true])
 ```
 To schedule execution of a callback after/every ```$time_interval``` seconds. Returns a timerId for possible use with Timer::del(). Optionally you can also pass arguments to the callback.
 
@@ -39,7 +39,7 @@ $task = new Worker();
 $task->onWorkerStart = function($task)
 {
     $time_interval = 2.5;
-    \workerman\Timer::add($time_interval, function()
+    \Workerman\Timer::add($time_interval, function()
     {
         echo "task run\n";
     });
