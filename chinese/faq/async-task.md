@@ -65,7 +65,7 @@ $worker->onMessage = function(TcpConnection $ws_connection, $message)
     };
     // 执行异步连接
     $task_connection->connect();
-}
+};
 
 Worker::runAll();
 ```
