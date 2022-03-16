@@ -2,8 +2,16 @@
 
 为了让系统能够支持更大的并发，除了必须[安装event扩展(或libevent扩展)](../install/install.md)之外，优化linux内核也是**重中之重**，以下优化**每一项**都非常非常重要，请务必按逐一完成。
 
+**参数解释：** 
+
+> **max-file**: 表示**系统级别**的能够打开的文件句柄的数量。是针对整个OS而言，并不是针对用户的。
+> 
+> **ulimit -n**: 表示控制**进程级别**能够打开的文件句柄的数量。针对当前`shell`的当前用户及其启动的进程的可用文件句柄控制。
+
+查看**系统级别**能够打开的文件句柄的数量： `cat /pro/sys/fs/file-max`
+
 打开文件 /etc/sysctl.conf，增加以下设置
-```
+```conf
 #该参数设置系统的TIME_WAIT的数量，如果超过默认值则会被立即清除
 net.ipv4.tcp_max_tw_buckets = 20000
 #定义了系统中每一个端口最大的监听队列的长度，这是个全局的参数
@@ -19,7 +27,7 @@ fs.file-max = 6815744
 #防火墙跟踪表的大小。注意：如果防火墙没开则会提示error: "net.netfilter.nf_conntrack_max" is an unknown key，忽略即可
 net.netfilter.nf_conntrack_max = 2621440
 ```
-运行 ```sysctl -p```即可生效。
+运行 `sysctl -p` 即刻生效。
 
 **说明：**
 
