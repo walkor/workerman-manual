@@ -7,5 +7,5 @@
 workerman 在php框架中各项指标均名列前茅，性能高于传统框架约10-200倍。
 
 ## 压力测试需要安装event扩展并优化linux内核参数
-参见 [附录-内核调优](kernel-optimization.md)章节
+参见 [附录-内核调优](kernel-optimization.md)章节。
 
