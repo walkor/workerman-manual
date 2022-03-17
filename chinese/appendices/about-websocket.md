@@ -1,13 +1,15 @@
 # WebSocket协议
-目前Workerman的WebSocke协议版本为13
 
-WebSocket protocol 是HTML5一种新的协议。它实现了浏览器与服务器全双工通信
+目前Workerman的**WebSocke协议版本为13**。
+
+WebSocket protocol 是HTML5一种新的协议。它实现了浏览器与服务器全双工通信。
 
 ## WebSocket与TCP关系
 
 WebSocket和HTTP一样是一种应用层协议，都是基于TCP传输的，WebSocket本身和Socket并没有多大关系，更不能等同。
 
 ## WebSocket协议握手
+
 WebSocket协议有一个握手的过程，握手时浏览器和服务端是以HTTP协议通信的，在Workerman中可以这样介入到握手过程。
 
 ```php

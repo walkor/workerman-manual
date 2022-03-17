@@ -1,8 +1,8 @@
 # ws协议
 
-目前Workerman的ws协议版本为13
+目前Workerman的**ws协议版本为13**。
 
-workerman可以作为客户端通过ws协议发起websocket连接，连到远程websocket服务器，实现双向通讯。
+workerman可以作为客户端，通过ws协议发起websocket连接，连到远程websocket服务器，实现双向通讯。
 
 **注意：**ws协议只能通过AsyncTcpConnection作为客户端使用，不能作为websocket服务端监听协议。也就是说以下写法是错误的。 
 
@@ -10,9 +10,10 @@ workerman可以作为客户端通过ws协议发起websocket连接，连到远程
 $worker = new Worker('ws://0.0.0.0:8080');
 ```
 
-如果想workerman作为websocket服务端，请使用[websocket协议](about-websocket.md)。
+如果想用workerman作为websocket服务端，请使用[websocket协议](about-websocket.md)。
 
 **ws作为websocket客户端协议示例：**
+
 ```php
 use Workerman\Worker;
 use Workerman\Connection\AsyncTcpConnection;
