@@ -9,16 +9,18 @@ PHP Warning:  stream_socket_server(): unable to connect to tcp://xx.xx.xx.xx:xxx
 ```
 **关键字**： ```Address already in use```
 
-**失败原因：**
+**根本原因**: 端口被占用，无法启动。
 
-端口被占用，无法启动。
+#### 解决方案1
+
 
 可以通过命令```netstat -anp | grep 端口号```来找出哪个程序占用了端口。
 然后停止对应的程序释放端口解决。
 
-
+#### 解决方案2
 如果不能停止对应端口的程序，可以通过更换workerman的端口解决。
 
+#### 解决方案3
 如果是Workerman占用的端口，又无法通过stop命令停止(一般是丢失pid文件或者主进程被开发者kill了导致)，可以通过运行以下两个命令杀死Workerman进程。
 
 ```
@@ -26,7 +28,13 @@ killall php
 ps aux|grep WorkerMan|awk '{print $2}'|xargs kill -9
 ```
 
+#### 解决方案4
+
 如果确实没有程序监听这个端口，那么可能是开发者在workerman里设置了两个或两个以上的监听，并且监听的端口相同导致，请开发者自行检查启动脚本是否监听了相同的端口。
+
+#### 解决方案5
+
+检查程序是否开启了reusePort，关闭reusePort试下。
 
 
 
