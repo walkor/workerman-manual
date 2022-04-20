@@ -7,7 +7,7 @@ Workerman是一款纯PHP开发的开源高性能的PHP 应用容器。
 
 Workerman不是重复造轮子，它不是一个MVC框架，而是一个更底层更通用的服务框架，你可以用它开发tcp代理、梯子代理、做游戏服务器、邮件服务器、ftp服务器、甚至开发一个php版本的redis、php版本的数据库、php版本的nginx、php版本的php-fpm等等。Workerman可以说是PHP领域的一次创新，让开发者彻底摆脱了PHP只能做WEB的束缚。
 
-实际上Workerman类似一个PHP版本的nginx，核心也是多进程+Epoll+非阻塞IO。Workerman每个进程能维持上万并发连接。由于本身常住内存，不依赖Apache、nginx、php-fpm这些容器，拥有超高的性能。同时支持TCP、UDP、UNIXSOCKET，支持长连接，支持Websocket、HTTP、WSS、HTTPS等通讯协议以及各种自定义协议。拥有定时器、异步socket客户端、异步Redis、异步Http、异步消息队列等众多高性能组件。
+实际上Workerman类似一个PHP版本的nginx，核心也是多进程+Epoll+非阻塞IO。Workerman每个进程能维持上万并发连接。由于本身常驻内存，不依赖Apache、nginx、php-fpm这些容器，拥有超高的性能。同时支持TCP、UDP、UNIXSOCKET，支持长连接，支持Websocket、HTTP、WSS、HTTPS等通讯协议以及各种自定义协议。拥有定时器、异步socket客户端、异步Redis、异步Http、异步消息队列等众多高性能组件。
 
 ## Workerman的一些应用方向
 Workerman不同于传统MVC框架，Workerman不仅可以用于Web开发，同时还有更广阔的应用领域，例如即时通讯类、物联网、游戏、服务治理、其它服务器或者中间件，这无疑大大提高了PHP开发者的视野。目前这些领域的PHP开发者奇缺，如果想在PHP领域有自己的技术优势，不满足于每天的增删改查工作，或者想向架构师方向或者技术大牛的方向发展，Workerman都是非常值得学习的框架。建议开发者不仅会用，而且能基于Workerman开发出属于自己的开源项目，提升技能增加自己的影响力，比如[Beanbun多进程网络爬虫框架](https://github.com/kiddyuchina/Beanbun)就是一个很好的例子，刚刚上线不久就获得众多好评。
@@ -51,7 +51,7 @@ Workerman拥有完善的文档+权威的主页+活跃的社区+数个千人QQ群
 Workerman已经开源数年，被很多上市公司大规模使用，超级稳定。有些服务2年多没重启过仍然在飞速运行。没有coredump、没有内存泄漏、没有bug。
 
 ### **高性能**
-Workerman因为常住内存，本身不依赖apache/nginx/php-fpm，没有容器到PHP的通讯开销，没有每个请求初始化一切又销毁一切的开销，具有超高的性能，比起传统的MVC框架，性能要高数十倍，PHP7下通过ab压力测试QPS甚至高于单独的nginx。
+Workerman因为常驻内存，本身不依赖apache/nginx/php-fpm，没有容器到PHP的通讯开销，没有每个请求初始化一切又销毁一切的开销，具有超高的性能，比起传统的MVC框架，性能要高数十倍，PHP7下通过ab压力测试QPS甚至高于单独的nginx。
 
 ### **分布式**
 现在早已经不是单枪匹马的时代了，单台服务器性能再强悍也有极限，分布式多服务器部署才是王道。Workerman直接提供了一套长连接分布式通讯方案[GatewayWorker框架](https://doc2.workerman.net)，加服务器只需要简单配置下然后启动即可，业务代码零更改，系统承载能力成倍增加。如果你是开发TCP长连接应用，建议直接用[GatewayWorker](https://doc2.workerman.net)，它是对Workerman的一个包装，针对长连接应用提供了更丰富的接口以及强悍的分布式处理能力。
