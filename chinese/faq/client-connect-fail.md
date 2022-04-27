@@ -23,6 +23,14 @@
 5、如果客户端使用了域名连接，域名可能指向了错误的服务器ip
 6、客户端访问的ip是服务器内网ip，并且客户端和服务端不在一个局域网
 
+## cannot assign requested address (无法分配请求地址)
+**作为客户端时**，每发起一个连接需要占用本地一个临时端口，一台服务器默认可用临时端口大概在2-3万，如果向特定服务器发起的连接数超过这个值后将无法分配可用端口，会产生这个错误。
+可以通过更改内核参数`/etc/sysctl.conf` 中的 `net.ipv4.ip_local_port_range` 来增加本地临时端口数量，例如设置成`10000 65535`(本地端口范围设置成10000 65535，也就是本地端口数增加到55535个)，运行`sysctl -p`生效。
+另外连接断开后连接变成TIME_WAIT状态，仍然会占用对应本地端口一段时间，也就是短时间内发起大量(超过2-3w)短连接也会报`Cannot assign requested address`，如果是这种情况可以通过设置内核快速回收TIME_WAIT来解决，参考[内核调优](https://www.workerman.net/doc/workerman/appendices/kernel-optimization.html)。
+
+> **注意**
+> 本地端口数限制仅限于客户端，服务端没有本地端口限制，只要资源足够，服务端维持连接数量可以看作是无限。
+
 ## 其它报错
 如果发生的报错不是```connection refuse``` 和 ```connection timeout```则一般是以下原因：
 
