@@ -53,7 +53,7 @@ $webserver->addRoot(...
  ...
 ```
 
-启动时就可以像这样，直接启动两个脚本，（在[windows cmd命令行](https://baike.baidu.com/view/756438.htm)中运行）
+启动时就可以像这样，直接启动三个脚本，（在[windows cmd命令行](https://baike.baidu.com/view/756438.htm)中运行）
 
 ```
    php start_socket_server.php start_websocket_server.php start_webserver.php
