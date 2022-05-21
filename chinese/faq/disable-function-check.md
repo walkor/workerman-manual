@@ -3,6 +3,13 @@
 使用这个脚本检查是否有禁用函数。命令行运行```curl -Ss https://www.workerman.net/check | php```
 
 如果有提示```Function 函数名 may be disabled. Please check disable_functions in php.ini```说明workerman依赖的函数被禁用，需要在php.ini中解除禁用才能正常使用workerman。
+解除禁用参考如下两种方法任选其一即可。
+
+## 方法一：脚本解除
+
+执行脚本 `curl -Ss https://www.workerman.net/fix | php` 以解除禁用
+
+## 方法二：手动解除
 
 **步骤如下：**
 
