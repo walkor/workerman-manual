@@ -3,7 +3,7 @@
 ## Windows用户
 workerman从3.5.3版本开始已经能够同时支持linux系统和windows系统。
 
-1、需要PHP>=5.3.3，并配置好PHP的环境变量。
+1、需要PHP>=5.4，并配置好PHP的环境变量。
 
 2、Windows版本的Workerman不依赖任何扩展。
 
@@ -17,9 +17,9 @@ workerman从3.5.3版本开始已经能够同时支持linux系统和windows系统
 ## Linux用户(含Mac OS)
 Linux用户只能使用Linux版本的Workerman。
 
-1、安装PHP>=5.3.3，并安装了pcntl、posix扩展
+1、安装PHP>=5.4，并安装了pcntl、posix扩展
 
-2、建议安装event或者libevent扩展，但不是必须的（注意event扩展需要PHP>=5.4）
+2、建议安装event扩展，但不是必须的（注意event扩展需要PHP>=5.4）
 
 ### Linux环境检查脚本
 Linux用户可以运行以下脚本检查本地环境是否满足WorkerMan要求
@@ -28,7 +28,7 @@ Linux用户可以运行以下脚本检查本地环境是否满足WorkerMan要求
 
 如果脚本中全部提示ok，则代表满足WorkerMan运行环境
 
-（注意：检测脚本中没有检测event扩展或者libevent扩展，如果并发连接数大于1024建议安装event扩展或者libevent扩展，安装方法参见下一节）
+（注意：检测脚本中没有检测event扩展，如果并发连接数大于1024建议安装event扩展，安装方法参见下一节）
 
 ## 详细说明
 
@@ -48,7 +48,7 @@ posix扩展使得PHP在Linux环境可以调用系统通过[POSIX标准](https://
 
 3、 [Event扩展](https://php.net/manual/zh/book.event.php) 或者 [libevent扩展](https://cn2.php.net/manual/en/book.libevent.php) 
 
-libevent扩展(或者event扩展)使得PHP可以使用系统[Epoll](https://baike.baidu.com/view/1385104.htm)、Kqueue等高级事件处理机制，能够显著提高WorkerMan在高并发连接时CPU利用率。在高并发长连接相关应用中非常重要。libevent扩展(或者event扩展)不是必须的，如果没安装，则默认使用PHP原生Select事件处理机制。
+event扩展使得PHP可以使用系统[Epoll](https://baike.baidu.com/view/1385104.htm)、Kqueue等高级事件处理机制，能够显著提高WorkerMan在高并发连接时CPU利用率。在高并发长连接相关应用中非常重要。libevent扩展(或者event扩展)不是必须的，如果没安装，则默认使用PHP原生Select事件处理机制。
 
 
 ## 如何安装扩展

@@ -7,7 +7,7 @@
 ```shell
 ~# php -m
 [PHP Modules]
-libevent
+event
 posix
 pcntl
 ...
@@ -17,15 +17,12 @@ pcntl
 当我们安装扩展时，可能需要手动配置php.ini文件，把扩展加进去，所以要确认PHP CLI的php.ini文件的位置。可以运行```php --ini```查找PHP CLI的ini文件位置，结果类似如下(各个系统显示结果会有差异)：
 ```shell
 ~# php --ini
-Configuration File (php.ini) Path: /etc/php5/cli
-Loaded Configuration File:         /etc/php5/cli/php.ini
-Scan for additional .ini files in: /etc/php5/cli/conf.d
-Additional .ini files parsed:      /etc/php5/cli/conf.d/apc.ini,
-/etc/php5/cli/conf.d/libevent.ini,
-/etc/php5/cli/conf.d/memcached.ini,
-/etc/php5/cli/conf.d/mysql.ini,
-/etc/php5/cli/conf.d/pdo.ini,
-/etc/php5/cli/conf.d/pdo_mysql.ini
+Configuration File (php.ini) Path: /etc/php8/cli
+Loaded Configuration File:         /etc/php8/cli/php.ini
+Scan for additional .ini files in: /etc/php8/cli/conf.d
+Additional .ini files parsed:      /etc/php8/cli/conf.d/apc.ini,
+/etc/php8/cli/conf.d/pdo.ini,
+/etc/php8/cli/conf.d/pdo_mysql.ini
 ...
 ```
 

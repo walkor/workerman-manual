@@ -8,7 +8,7 @@ Workerman                      // workerman内核代码
     │   └── UdpConnection.php      // Udp连接类
     ├── Events                     // 网络事件库
     │   ├── EventInterface.php     // 网络事件库接口
-    │   ├── Libevent.php           // Libevent网络事件库
+    │   ├── Event.php              // Libevent网络事件库
     │   ├── Ev.php                 // Libev网络事件库
     │   ├── Swoole.php             // Swoole网络事件库
     │   └── Select.php             // Select网络事件库

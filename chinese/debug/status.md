@@ -7,7 +7,7 @@
 ----------------------------------------------GLOBAL STATUS----------------------------------------------------
 Workerman version:3.5.13          PHP version:5.5.9-1ubuntu4.24
 start time:2018-02-03 11:48:20   run 112 days 2 hours   
-load average: 0, 0, 0            event-loop:\Workerman\Events\Libevent
+load average: 0, 0, 0            event-loop:\Workerman\Events\Event
 4 workers       11 processes
 worker_name        exit_status      exit_count
 ChatBusinessWorker 0                0
@@ -43,7 +43,7 @@ WorkerMan的版本```version:3.5.13```
 
 服务器负载 ```load average: 0, 0, 0```，分别是最近1分钟、5分钟、15分钟内系统的平均负载
 
-使用的IO事件库，```event-loop:\Workerman\Events\Libevent```
+使用的IO事件库，```event-loop:\Workerman\Events\Event```
 
  ```4 workers```（3种进程，包括ChatGateway、ChatBusinessWorker、Register进程、WebServer进程）
 
