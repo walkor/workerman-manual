@@ -911,7 +911,7 @@ COUNT 的值可以是以下几种：
 返回被移除元素的数量。 列表不存在时返回 0。不是列表时返回false。
 
 ```php
-$redis->lRem('key1', 'A', 2, function ($r) {
+$redis->lRem('key1', 2, 'A', function ($r) {
     var_dump($r); 
 });
 ```
