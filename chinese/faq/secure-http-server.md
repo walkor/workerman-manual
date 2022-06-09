@@ -84,21 +84,28 @@ Worker::runAll();
 ### nginx配置参考
 **前提条件及准备工作：**
 
-1、假设Workerman监听的是80端口(http协议)
+1、假设Workerman监听的是8181端口(http协议)
 
 2、已经申请了证书（pem/crt文件及key文件）放在了/etc/nginx/conf.d/ssl下
 
-3、打算利用nginx开启4431端口对外提供wss代理服务（端口可以根据需要修改）
+3、打算利用nginx开启443端口对外提供wss代理服务（端口可以根据需要修改）
 
 **nginx配置类似如下**：
 
 ```
+
+upstream workerman {
+    server 127.0.0.1:8181;
+    keepalive 10240;
+}
+
+
 server {
-  listen 4431;
+  listen 443;
 
   ssl on;
-  ssl_certificate /etc/nginx/conf.d/ssl/laychat/laychat.pem;
-  ssl_certificate_key /etc/nginx/conf.d/ssl/laychat/laychat.key;
+  ssl_certificate /etc/nginx/conf.d/ssl/server.pem;
+  ssl_certificate_key /etc/nginx/conf.d/ssl/server.key;
   ssl_session_timeout 5m;
   ssl_session_cache shared:SSL:50m;
   ssl_protocols SSLv3 SSLv2 TLSv1 TLSv1.1 TLSv1.2;
@@ -106,9 +113,10 @@ server {
 
   location /
   {
-    proxy_pass http://127.0.0.1:80;
+    proxy_pass http://workerman;
     proxy_http_version 1.1;
     proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header Connection "";
   }
 }
 ```
