@@ -102,7 +102,9 @@ upstream workerman {
 
 server {
   listen 443;
-
+  server_name 站点域名.com;
+  access_log off;
+  
   ssl on;
   ssl_certificate /etc/nginx/conf.d/ssl/server.pem;
   ssl_certificate_key /etc/nginx/conf.d/ssl/server.key;
