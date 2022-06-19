@@ -1,5 +1,6 @@
 # reusePort
-要求```（workerman >= 3.2.1 并且 PHP>=7.0）```
+> **注意**
+> 需要workerman>= 3.2.1  PHP>=7.0，Windows系统及 Mac OS 不支持此特性
 
 ## 说明:
 
