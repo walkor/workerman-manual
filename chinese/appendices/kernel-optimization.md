@@ -8,7 +8,7 @@
 > 
 > **ulimit -n**: 表示控制**进程级别**能够打开的文件句柄的数量。针对当前`shell`的当前用户及其启动的进程的可用文件句柄控制。
 
-查看**系统级别**能够打开的文件句柄的数量： `cat /pro/sys/fs/file-max`
+查看**系统级别**能够打开的文件句柄的数量： `cat /proc/sys/fs/file-max`
 
 打开文件 /etc/sysctl.conf，增加以下设置
 ```conf
