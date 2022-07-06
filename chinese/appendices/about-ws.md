@@ -24,6 +24,8 @@ $worker->onWorkerStart = function()
 {
     // 以websocket协议连接远程websocket服务器
     $ws_connection = new AsyncTcpConnection("ws://echo.websocket.org:80");
+    // 每隔55秒向服务端发送一个opcode为0x9的websocket心跳
+    $ws_connection->websocketPingInterval = 55;
     // 连上后发送hello字符串
     $ws_connection->onConnect = function($connection){
         $connection->send('hello');
@@ -38,7 +40,9 @@ $worker->onWorkerStart = function()
     };
     // 当连接远程websocket服务器的连接断开时
     $ws_connection->onClose = function($connection){
-        echo "connection closed\n";
+        echo "connection closed and try to reconnect\n";
+        // 如果连接断开，1秒后重连
+        $connection->reConnect(1);
     };
     // 设置好以上各种回调后，执行连接操作
     $ws_connection->connect();

@@ -52,5 +52,36 @@ $worker->onWorkerStart = function($worker)
 Worker::runAll();
 ```
 
+> **注意**
+> 调用reconnect成功重连后，$con的onConnect方法会再次被调用(如果有设置的话)。有时候我们想让onConnect方法只执行一次，重连的时候不再执行，参考如下例子：
 
+```php
+use Workerman\Worker;
+use Workerman\Connection\AsyncTcpConnection;
+use Workerman\Connection\TcpConnection;
+require_once __DIR__ . '/vendor/autoload.php';
+
+$worker = new Worker();
+
+$worker->onWorkerStart = function($worker)
+{
+    $con = new AsyncTcpConnection('ws://echo.websocket.org:80');
+    $con->onConnect = function(AsyncTcpConnection $con) {
+        static $is_first_connect = true;
+        if (!$is_first_connect) return;
+        $is_first_connect = false;
+        $con->send('hello');
+    };
+    $con->onMessage = function(AsyncTcpConnection $con, $msg) {
+        echo "recv $msg\n";
+    };
+    $con->onClose = function(AsyncTcpConnection $con) {
+        // 如果连接断开，则在1秒后重连
+        $con->reConnect(1);
+    };
+    $con->connect();
+};
+
+Worker::runAll();
+```
 
