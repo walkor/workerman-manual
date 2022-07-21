@@ -3,11 +3,10 @@
 void Worker::stopAll(void)
 ```
 
-停止当前进程（子进程）的所有Worker实例并退出。
+停止当前进程并退出。
 
-此方法用于安全退出当前子进程，作用相当于调用exit/die退出当前子进程。
-
-与直接调用exit/die区别是，直接调用exit或者die无法触发onWorkerStop回调，并且会导致一条WORKER EXIT UNEXPECTED错误日志。
+> **注意**
+> `Worker::stopAll()`用于停止当前进程，当前进程退出后主进程会立刻拉起一个新的进程。如果你想停止整个workerman服务，请调用`posix_kill(posix_getppid(), SIGINT)`
 
 ### 参数
 无参数
