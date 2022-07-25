@@ -56,5 +56,5 @@ root soft nofile 1024000
 root hard nofile 1024000
 ```
 
-这种方法需要重启机器才能生效。
+这种方法需要重启服务器才能生效。
 
