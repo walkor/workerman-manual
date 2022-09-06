@@ -6,6 +6,9 @@ WorkerMan实际上就是一个PHP代码包，如果你的PHP环境已经装好�
 composer require workerman/workerman
 ```
 
+> **注意**
+> 有些composer代理镜像不全，使用以上命令`composer config -g --unset repos.packagist` 移除代理
+
 # windows用户（必读）
 
 从workerman3.5.3版开始workerman已经可以同时支持windows和linux系统。
