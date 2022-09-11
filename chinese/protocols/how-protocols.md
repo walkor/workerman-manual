@@ -107,6 +107,10 @@ Worker::runAll();
 ...
 ```
 
+> **提示**
+> workerman会尝试加载`Protocols`命名空间下的协议，例如`new Worker('JsonNL://0.0.0.0:1234')`会尝试加载`Protocols\JsonNL`协议。
+> 如果报错`Class 'Protocols\JsonNL' not found`，请参考[自动加载](../faq/autoload.md)实现自动加载。
+
 ### 协议接口说明
 在WorkerMan中开发的协议类必须实现三个静态方法，input、encode、decode，协议接口说明见Workerman/Protocols/ProtocolInterface.php，定义如下：
 ```php
