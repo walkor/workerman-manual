@@ -21,7 +21,6 @@
 执行 `composer dumpautoload`
 
 **3. 加载autoload.php**  
-
 在项目start.php头部加载`vendor/autoload.php` 例如
 ```
 <?php
