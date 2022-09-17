@@ -130,6 +130,7 @@
     * [Memcache](components/memcache.md)
 * [常见问题](faq.md)
     * [心跳](faq/heartbeat.md)
+    * [自动加载](faq/autoload.md)
     * [客户端连接失败原因](faq/client-connect-fail.md)
     * [是否支持多线程](faq/about-multi-thread.md)
     * [与其它框架整合](faq/work-with-other-framework.md)
