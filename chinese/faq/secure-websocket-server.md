@@ -10,87 +10,10 @@ Workerman如何创建一个wss服务，使得客户端可以用过wss协来连�
 wss协议实际是[websocket](https://baike.baidu.com/item/WebSocket)+[SSL](https://baike.baidu.com/item/ssl)，就是在websocket协议上加入[SSL](https://baike.baidu.com/item/ssl)层，类似[https](https://baike.baidu.com/item/https)([http](https://baike.baidu.com/item/http)+[SSL](https://baike.baidu.com/item/ssl))。
 所以只需要在[websocket](https://baike.baidu.com/item/WebSocket)协议的基础上开启[SSL](https://baike.baidu.com/item/ssl)即可支持wss协议。
 
-
-## 方法一 ，直接用Workerman开启SSL
-
-**准备工作：**
-
-1、Workerman版本>=3.3.7
-
-2、PHP安装了openssl扩展
-
-3、已经申请了证书（pem/crt文件及key文件）放在磁盘任意目录
-
-**代码：**
-
-```php
-<?php
-use Workerman\Worker;
-use Workerman\Connection\TcpConnection;
-require_once __DIR__ . '/vendor/autoload.php';
-
-// 证书最好是申请的证书
-$context = array(
-    // 更多ssl选项请参考手册 http://php.net/manual/zh/context.ssl.php
-    'ssl' => array(
-        // 请使用绝对路径
-        'local_cert'        => '磁盘路径/server.pem', // 也可以是crt文件
-        'local_pk'          => '磁盘路径/server.key',
-        'verify_peer'       => false,
-        'allow_self_signed' => true, //如果是自签名证书需要开启此选项
-    )
-);
-// 这里设置的是websocket协议（端口任意，但是需要保证没被其它程序占用）
-$worker = new Worker('websocket://0.0.0.0:443', $context);
-// 设置transport开启ssl，websocket+ssl即wss
-$worker->transport = 'ssl';
-$worker->onMessage = function(TcpConnection $con, $msg) {
-    $con->send('ok');
-};
-
-Worker::runAll();
-```
-
-通过以上的代码，Workerman就监听了wss协议，客户端就可以通过wss协议来连接workerman实现安全即时通讯了。
-
-**测试**
-
-打开chrome浏览器，按F12打开调试控制台，在Console一栏输入(或者把下面代码放入到html页面用js运行)
-
-```javascript
-// 证书是会检查域名的，请使用域名连接
-ws = new WebSocket("wss://域名");
-ws.onopen = function() {
-    alert("连接成功");
-    ws.send('tom');
-    alert("给服务端发送一个字符串：tom");
-};
-ws.onmessage = function(e) {
-    alert("收到服务端的消息：" + e.data);
-};
-```
-
-**注意：**
-
-1、如果无法启动，则一般是443端口被占用，请改成其它端口，注意改成其它端口后客户端连接时需要带上端口号，客户端连接时地址类似wss://domain.com:xxx ，xxx为端口号。如果必须使用443端口请使用方法二代理的方式实现wss。
-
-2、wss端口只能通过wss协议访问，ws无法访问wss端口。
-
-3、证书一般是与域名绑定的，所以测试的时候客户端请使用域名连接，不要使用ip去连。
-
-4、如果出现无法访问的情况，请检查服务器防火墙。
-
-5、此方法要求PHP版本>=5.6，因为微信小程序要求tls1.2，而PHP5.6以下版本不支持tls1.2。
+## 方法一、利用nginx/apache代理SSL(推荐)
 
 
-## 方法二、利用nginx/apache代理SSL
-
-除了用Workerman自身的SSL，也可以利用nginx/apache作为wss代理转发给workerman
-
-> **注意**
-> nginx/apache代理SSL和Workerman设置SSL二选一，不能同时开启。
-
-通讯原理及流程是：
+**通讯原理及流程**
 
 1、客户端发起wss连接连到nginx/apache
 
@@ -108,16 +31,17 @@ ws.onmessage = function(e) {
 
 2、假设Workerman监听的是8282端口(websocket协议)
 
-3、已经申请了证书（pem/crt文件及key文件）放在了/etc/nginx/conf.d/ssl下
+3、已经申请了证书（pem/crt文件及key文件）假设放在了/etc/nginx/conf.d/ssl下
 
 4、打算利用nginx开启443端口对外提供wss代理服务（端口可以根据需要修改）
 
-5、nginx一般作为网站服务器运行着其它服务，为了不影响原来的站点使用，这里使用地址 ```域名/wss``` 作为wss的代理入口。也就是客户端连接地址为 wss://域名/wss
+5、nginx一般作为网站服务器运行着其它服务，为了不影响原来的站点使用，这里使用地址 ```域名.com/wss``` 作为wss的代理入口。也就是客户端连接地址为 wss://域名.com/wss
 
 **nginx配置类似如下**：
 ```
 server {
   listen 443;
+  # 域名配置省略...
 
   ssl on;
   ssl_certificate /etc/ssl/server.pem;
@@ -141,8 +65,8 @@ server {
 ```
 **测试**
 ```javascript
-// 证书是会检查域名的，请使用域名连接
-ws = new WebSocket("wss://域名/wss");
+// 证书是会检查域名的，请使用域名连接。注意这里不写端口
+ws = new WebSocket("wss://域名.com/wss");
 
 ws.onopen = function() {
     alert("连接成功");
@@ -156,13 +80,13 @@ ws.onmessage = function(e) {
 
 ## 利用apache代理wss
 
-也可以利用apache作为wss代理转发给workerman（注意如使用apache代理SSL，则workerman部分千万不要设置ssl，否则将无法连接）。
+也可以利用apache作为wss代理转发给workerman。
 
 准备工作：
 
 1、GatewayWorker 监听 8282 端口(websocket协议)
 
-2、已经申请了ssl证书, 放在了/server/httpd/cert/ 下
+2、已经申请了ssl证书, 假设放在了/server/httpd/cert/ 下
 
 3、利用apache转发443端口至指定端口8282
 
@@ -204,8 +128,8 @@ SSLCertificateChainFile /server/httpd/cert/chain.pem
 
 **测试**
 ```javascript
-// 证书是会检查域名的，请使用域名连接
-ws = new WebSocket("wss://域名/wss");
+// 证书是会检查域名的，请使用域名连接。注意没有端口
+ws = new WebSocket("wss://域名.com/wss");
 
 ws.onopen = function() {
     alert("连接成功");
@@ -216,6 +140,83 @@ ws.onmessage = function(e) {
     alert("收到服务端的消息：" + e.data);
 };
 ```
+
+
+## 方法二 ，直接用Workerman开启SSL(不推荐)
+
+> **注意**
+> nginx/apache代理SSL和Workerman设置SSL二选一，不能同时开启。
+
+**准备工作：**
+
+1、Workerman版本>=3.3.7
+
+2、PHP安装了openssl扩展
+
+3、已经申请了证书（pem/crt文件及key文件）放在磁盘任意目录
+
+**代码：**
+
+```php
+<?php
+use Workerman\Worker;
+use Workerman\Connection\TcpConnection;
+require_once __DIR__ . '/vendor/autoload.php';
+
+// 证书最好是申请的证书
+$context = array(
+    // 更多ssl选项请参考手册 http://php.net/manual/zh/context.ssl.php
+    'ssl' => array(
+        // 请使用绝对路径
+        'local_cert'        => '磁盘路径/server.pem', // 也可以是crt文件
+        'local_pk'          => '磁盘路径/server.key',
+        'verify_peer'       => false,
+        'allow_self_signed' => true, //如果是自签名证书需要开启此选项
+    )
+);
+// 这里设置的是websocket协议（端口任意，但是需要保证没被其它程序占用）
+$worker = new Worker('websocket://0.0.0.0:8282', $context);
+// 设置transport开启ssl，websocket+ssl即wss
+$worker->transport = 'ssl';
+$worker->onMessage = function(TcpConnection $con, $msg) {
+    $con->send('ok');
+};
+
+Worker::runAll();
+```
+
+通过以上的代码，Workerman就监听了wss协议，客户端就可以通过wss协议来连接workerman实现安全即时通讯了。
+
+**测试**
+
+打开chrome浏览器，按F12打开调试控制台，在Console一栏输入(或者把下面代码放入到html页面用js运行)
+
+```javascript
+// 证书是会检查域名的，请使用域名连接，注意这里有端口号
+ws = new WebSocket("wss://域名.com:8282");
+ws.onopen = function() {
+    alert("连接成功");
+    ws.send('tom');
+    alert("给服务端发送一个字符串：tom");
+};
+ws.onmessage = function(e) {
+    alert("收到服务端的消息：" + e.data);
+};
+```
+
+**注意：**
+
+1、如果必须使用443端口请使用上面第一种方案nginx/apache代理方式实现wss。
+
+2、wss端口只能通过wss协议访问，ws无法访问wss端口。
+
+3、证书一般是与域名绑定的，所以测试的时候客户端请使用域名连接，不要使用ip去连。
+
+4、如果出现无法访问的情况，请检查服务器防火墙。
+
+5、此方法要求PHP版本>=5.6，因为微信小程序要求tls1.2，而PHP5.6以下版本不支持tls1.2。
+
+
 
 相关文章：  
 [透过代理获取客户端真实ip](get-real-ip-from-proxy.md)  
