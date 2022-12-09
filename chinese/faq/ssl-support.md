@@ -52,9 +52,9 @@ Worker::runAll();
 ## Workerman开启服务器名称指示 [SNI（Server Name Indication）](https://baike.baidu.com/item/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%90%8D%E7%A7%B0%E6%8C%87%E7%A4%BA)
 可实现在同一IP、端口情况下，绑定多个证书。
 
-**合并证书pem和key：**
+**合并证书.pem和.key文件：**
 
-将每个证书的pem和对应的key文件内容合并，将key文件内容添加到pem文件结尾。
+将每个证书的.pem和对应的.key文件内容合并，将.key文件内容添加到.pem文件结尾。（若.pem文件内已包含私钥，则可忽略。）
 
 **请注意是单个证书，不是把所有证书复制到一个文件**
 
