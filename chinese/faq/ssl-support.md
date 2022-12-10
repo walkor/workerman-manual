@@ -86,6 +86,8 @@ $context = array(
             'host1.com' => '/path/host1.com.pem', // 证书1
             'host2.com' => '/path/host2.com.pem', // 证书2
         ],
+        'local_cert' => '/path/default.com.pem', // 默认证书
+        'local_pk'   => '/path/default.com.key',
     )
 );
 $worker = new Worker('websocket://0.0.0.0:443', $context);
