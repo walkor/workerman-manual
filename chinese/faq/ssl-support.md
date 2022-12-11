@@ -39,8 +39,58 @@ $context = array(
     )
 );
 // 这里设置的是websocket协议，也可以http协议或者其它协议
-$worker = new Worker('http://0.0.0.0:443', $context);
+$worker = new Worker('websocket://0.0.0.0:443', $context);
 // 设置transport开启ssl
+$worker->transport = 'ssl';
+$worker->onMessage = function(TcpConnection $con, $msg) {
+    $con->send('ok');
+};
+
+Worker::runAll();
+```
+
+## Workerman开启服务器名称指示 [SNI（Server Name Indication）](https://baike.baidu.com/item/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%90%8D%E7%A7%B0%E6%8C%87%E7%A4%BA)
+可实现在同一IP、端口情况下，绑定多个证书。
+
+**合并证书.pem和.key文件：**
+
+将每个证书的.pem和对应的.key文件内容合并，将.key文件内容添加到.pem文件结尾。（若.pem文件内已包含私钥，则可忽略。）
+
+**请注意是单个证书，不是把所有证书复制到一个文件**
+
+例如*host1.com.pem*合并后的pem文件内容大概如下：
+```text
+-----BEGIN CERTIFICATE-----
+MIIGXTCBA...
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+MIIFBzCCA...
+-----END CERTIFICATE-----
+-----BEGIN RSA PRIVATE KEY-----
+MIIEowIBAA....
+-----END RSA PRIVATE KEY-----
+```
+
+**代码：**
+
+```php
+<?php
+use Workerman\Worker;
+use Workerman\Connection\TcpConnection;
+require_once __DIR__ . '/vendor/autoload.php';
+
+$context = array(
+    'ssl' => array(
+        'SNI_enabled' => true, // 开启SNI
+        'SNI_server_certs' => [ // 设置多个证书
+            'host1.com' => '/path/host1.com.pem', // 证书1
+            'host2.com' => '/path/host2.com.pem', // 证书2
+        ],
+        'local_cert' => '/path/default.com.pem', // 默认证书
+        'local_pk'   => '/path/default.com.key',
+    )
+);
+$worker = new Worker('websocket://0.0.0.0:443', $context);
 $worker->transport = 'ssl';
 $worker->onMessage = function(TcpConnection $con, $msg) {
     $con->send('ok');
