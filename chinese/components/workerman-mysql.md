@@ -47,7 +47,6 @@ apt-get install php7.0-mysql
 可以通过composer安装，命令行运行以下命令(composer源在国外，安装过程可能会非常慢)。
 
 ```
-composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 composer require workerman/mysql
 ```
 

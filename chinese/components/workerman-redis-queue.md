@@ -7,7 +7,6 @@ https://github.com/walkor/redis-queue
 
 ## 安装：
 ```
-composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 composer require workerman/redis-queue
 ```
 

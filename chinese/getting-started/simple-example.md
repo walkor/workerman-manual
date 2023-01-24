@@ -1,10 +1,6 @@
 # 简单的开发实例
 
 ## 安装
-**设置镜像**
-由于国内访问composer比较慢，建议设置阿里云composer镜像，运行如下命令设置阿里云代理
-
-`composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/`
 
 **安装workerman**
 在一个空目录中运行

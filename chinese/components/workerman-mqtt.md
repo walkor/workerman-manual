@@ -9,7 +9,6 @@ https://github.com/walkor/mqtt
 
 # 安装 
 ```
-composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 composer require workerman/mqtt
 ```
 
