@@ -107,6 +107,7 @@ $worker->onWorkerStart = function () {
 Worker::runAll();
 ```
 
+当不设置回调函数时，客户端会用同步的方式返回异步请求结果，请求过程不阻塞当前进程，也就是可以并发处理请求。
 
 
 ## 注意：
@@ -116,6 +117,7 @@ Worker::runAll();
 2、所有的异步编码必须在```onXXX```回调中编写
 
 3、支持基于workerman开发的所有项目，包括GatewayWorker、PHPSocket.io等
+
 
 
 

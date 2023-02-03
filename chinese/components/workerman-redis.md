@@ -6,7 +6,7 @@ workeman/redis是基于workerman的异步redis组件。
 
 > **注意**
 > 此项目主要目的是实现redis异步订阅(subscribe、pSubscribe)
-> redis足够快，除了psubscribe subscribe异步订阅，实际上无需使用此异步客户端，使用redis扩展会有更好的性能
+> 因为redis足够快，所以除非需要psubscribe subscribe异步订阅，否则无需使用此异步客户端，使用redis扩展会有更好的性能
 
 ## 安装：
 ```
@@ -67,16 +67,15 @@ $worker->onMessage = function(TcpConnection $connection, $data) {
 Worker::runAll();
 ```
 
+当不设置回调函数时，客户端会用同步的方式返回异步请求结果，请求过程不阻塞当前进程，也就是可以并发处理请求。
+
 > **注意**
 > psubscribe subscribe 不支持协程用法
-
-## 项目地址：
-https://github.com/walkor/redis
 
 ## 文档
 **说明**
 
-**所有接口调用结果通过回调函数来接收。回调函数一般有2个参数($result, $redis)，`$result`为结果，`$redis`为redis实例。例如：**
+**回调方式中，回调函数一般有2个参数($result, $redis)，`$result`为结果，`$redis`为redis实例。例如：**
 ```
 use Workerman\Redis\Client;
 $redis = new Client('redis://127.0.0.1:6379');
@@ -93,7 +92,6 @@ $redis->get('key', function ($result, $redis){
     });
 });
 ```
-> 为了节省篇幅，后面一些例子没有设置回调函数。
 
 ### **连接**
 ```php
