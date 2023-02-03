@@ -1,6 +1,6 @@
 # workerman/http-client
 ## 说明
- [workerman/http-client](https://github.com/walkor/http-client)是一个异步http客户端组件。所有请求响应异步非阻塞，内置连接池，消息请求和响应符合PSR7规则。
+ [workerman/http-client](https://github.com/walkor/http-client)是一个异步http客户端组件。所有请求响应异步非阻塞，内置连接池，消息请求和响应符合PSR7规范。
 
 ## 安装：
 ```
@@ -72,6 +72,42 @@ $worker->onWorkerStart = function(){
 };
 Worker::runAll();
 ```
+
+## 协程用法
+
+> **注意**
+> 协程用法需要workerman>=5.0，workerman/http-client>=2.0.0 并安装 composer require revolt/event-loop ^1.0.0
+
+```php
+use Workerman\Worker;
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+$worker = new Worker();
+$worker->onWorkerStart = function () {
+    $http = new Workerman\Http\Client();
+
+    $response = $http->get('https://example.com/');
+    var_dump($response->getStatusCode());
+    echo $response->getBody();
+
+    $response = $http->post('https://example.com/', ['key1' => 'value1', 'key2' => 'value2']);
+    var_dump($response->getStatusCode());
+    echo $response->getBody();
+    
+
+    $response = $http->request('https://example.com/', [
+        'method' => 'POST',
+        'version' => '1.1',
+        'headers' => ['Connection' => 'keep-alive'],
+        'data' => ['key1' => 'value1', 'key2' => 'value2'],
+    ]);
+    echo $response->getBody();
+};
+Worker::runAll();
+```
+
+
 
 ## 注意：
 

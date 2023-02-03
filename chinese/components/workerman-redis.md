@@ -4,14 +4,16 @@
 
 workeman/redis是基于workerman的异步redis组件。
 
-> 注意：此项目主要目的是实现redis异步订阅(subscribe、pSubscribe)，除此之外请使用redis扩展。
+> **注意**
+> 此项目主要目的是实现redis异步订阅(subscribe、pSubscribe)
+> redis足够快，除了psubscribe subscribe异步订阅，实际上无需使用此异步客户端，使用redis扩展会有更好的性能
 
 ## 安装：
 ```
 composer require workerman/redis
 ```
 
-## 示例：
+## 回调用法
 
 ```php
 use Workerman\Worker;
@@ -36,6 +38,37 @@ $worker->onMessage = function(TcpConnection $connection, $data) {
 
 Worker::runAll();
 ```
+
+## 协程用法
+
+> **注意**
+> 协程用法需要workerman>=5.0，workerman/redis>=2.0.0 并安装 composer require revolt/event-loop ^1.0.0
+
+```php
+use Workerman\Worker;
+use Workerman\Redis\Client;
+use Workerman\Connection\TcpConnection;
+require_once __DIR__ . '/vendor/autoload.php';
+
+$worker = new Worker('http://0.0.0.0:6161');
+
+$worker->onWorkerStart = function() {
+    global $redis;
+    $redis = new Client('redis://127.0.0.1:6379');
+};
+
+$worker->onMessage = function(TcpConnection $connection, $data) {
+    global $redis;
+    $redis->set('key', 'hello world');    
+    $result = $redis->get('key');
+    $connection->send($result);
+};
+
+Worker::runAll();
+```
+
+> **注意**
+> psubscribe subscribe 不支持协程用法
 
 ## 项目地址：
 https://github.com/walkor/redis

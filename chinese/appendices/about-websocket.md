@@ -12,16 +12,22 @@ WebSocket和HTTP一样是一种应用层协议，都是基于TCP传输的，WebS
 
 WebSocket协议有一个握手的过程，握手时浏览器和服务端是以HTTP协议通信的，在Workerman中可以这样介入到握手过程。
 
+**当 workerman <= 4.1 时**
 ```php
-...
+<?php
+require_once __DIR__ . '/vendor/autoload.php';
+
+use Workerman\Connection\TcpConnection;
+use Workerman\Worker;
+
 $ws = new Worker('websocket://0.0.0.0:8181');
 $ws->onConnect = function($connection)
 {
-    $connection->onWebSocketConnect = function($connection , $http_header)
+    $connection->onWebSocketConnect = function($connection , $httpBuffer)
     {
         // 可以在这里判断连接来源是否合法，不合法就关掉连接
         // $_SERVER['HTTP_ORIGIN']标识来自哪个站点的页面发起的websocket连接
-        if($_SERVER['HTTP_ORIGIN'] != 'http://chat.workerman.net')
+        if($_SERVER['HTTP_ORIGIN'] != 'https://www.workerman.net')
         {
             $connection->close();
         }
@@ -29,6 +35,27 @@ $ws->onConnect = function($connection)
         // var_dump($_GET, $_SERVER);
     };
 };
+Worker::runAll();
+```
+
+**当 workerman >= 5.0 时**
+```php
+<?php
+require_once __DIR__ . '/vendor/autoload.php';
+
+use Workerman\Connection\TcpConnection;
+use Workerman\Protocols\Http\Request;
+use Workerman\Worker;
+
+$worker = new Worker('websocket://0.0.0.0:12345');
+$worker->onWebSocketConnect = function (TcpConnection $connection, Request $request) {
+    if ($request->header('origin') != 'https://www.workerman.net') {
+        $connection->close();
+    }
+    var_dump($request->get());
+    var_dump($request->header());
+};
+Worker::runAll();
 ```
 
 ## WebSocket协议传输二进制数据
