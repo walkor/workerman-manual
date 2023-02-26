@@ -172,6 +172,7 @@
     * [接收和发送16进制数据](faq/send-recv-hexadecimal-data.md)
     * [接收一定请求后重启](faq/max-requests.md)
     * [win下初始化多个worker](faq/multi-woker-for-windows.md)
+    * [请求集中在某些进程](faq/requests-concentrated-in-certain-processes.md)
 * [附录](appendices.md)
     * [优化Linux内核](appendices/kernel-optimization.md)
     * [压力测试](appendices/stress-test.md)
