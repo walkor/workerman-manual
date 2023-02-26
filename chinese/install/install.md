@@ -57,7 +57,7 @@ yum install libevent-devel -y
 ```shell
 pecl install event
 ```
-注意提示：```Include libevent OpenSSL support [yes] :``` 时输入```no```回车，注意提示：```PHP Namespace for all Event classes :```时输入```yes```，其它直接敲回车就行
+注意提示：```Include libevent OpenSSL support [yes] :``` 时输入```no```回车，其它直接敲回车就行
 
 3、运行```php --ini```找到并打开php.ini文件，在最后一行加入如下配置
 ```shell
@@ -77,7 +77,7 @@ apt-get install libevent-dev -y
 ```shell
 pecl install event
 ```
-注意提示：```Include libevent OpenSSL support [yes] :``` 时输入```no```回车，注意提示：```PHP Namespace for all Event classes :```时输入```yes```，其它直接敲回车就行
+注意提示：```Include libevent OpenSSL support [yes] :``` 时输入```no```回车，其它直接敲回车就行
 
 
 3、运行```php --ini```找到并打开php.ini文件，在最后一行加入如下配置
@@ -104,7 +104,7 @@ yum install php-cli php-process git gcc php-devel php-pear libevent-devel -y
 ```shell
 pecl install event
 ```
-注意提示：```Include libevent OpenSSL support [yes] :``` 时输入```no```回车，注意提示：```PHP Namespace for all Event classes :```时输入```yes```，其它直接敲回车就行
+注意提示：```Include libevent OpenSSL support [yes] :``` 时输入```no```回车，其它直接敲回车就行
 
 3、运行```php --ini```找到并打开php.ini文件，在最后一行加入如下配置
 ```shell
@@ -130,7 +130,7 @@ apt-get install php-cli git gcc php-pear php-dev libevent-dev -y
 ```shell
 pecl install event
 ```
-注意提示：```Include libevent OpenSSL support [yes] :``` 时输入```no```回车，注意提示：```PHP Namespace for all Event classes :```时输入```yes```，其它直接敲回车就行
+注意提示：```Include libevent OpenSSL support [yes] :``` 时输入```no```回车，其它直接敲回车就行
 
 3、运行```php --ini```找到并打开php.ini文件，在最后一行加入如下配置
 ```shell
