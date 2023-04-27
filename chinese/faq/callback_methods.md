@@ -55,7 +55,7 @@ class MyClass{
     public function onConnect(TcpConnection $connection){}
     public function onMessage(TcpConnection $connection, $message) {}
     public function onClose(TcpConnection $connection){}
-    public function onWorkerStop(TcpConnection $connection){}
+    public function onWorkerStop(Worker $worker){}
 }
 ```
 启动脚本 start.php
@@ -100,7 +100,7 @@ class MyClass{
     public function onConnect(TcpConnection $connection){}
     public function onMessage(TcpConnection $connection, $message) {}
     public function onClose(TcpConnection $connection){}
-    public function onWorkerStop(TcpConnection $connection){}
+    public function onWorkerStop(Worker $worker){}
 }
 ```
 启动脚本 start.php
@@ -142,7 +142,7 @@ class MyClass{
     public static function onConnect(TcpConnection $connection){}
     public static function onMessage(TcpConnection $connection, $message) {}
     public static function onClose(TcpConnection $connection){}
-    public static function onWorkerStop(TcpConnection $connection){}
+    public static function onWorkerStop(Worker $worker){}
 }
 ```
 启动脚本 start.php
