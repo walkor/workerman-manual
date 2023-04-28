@@ -26,7 +26,7 @@ $worker->onMessage = function(TcpConnection $connection, Request $request)
     // 如果Accept头是text/event-stream则说明是SSE请求
     if ($request->header('accept') === 'text/event-stream') {
         // 首先发送一个 Content-Type: text/event-stream 头的响应
-        $connection->send(new Response(200, ['Content-Type' => 'text/event-stream']));
+        $connection->send(new Response(200, ['Content-Type' => 'text/event-stream'], "\r\n"));
         // 定时向客户端推送数据
         $timer_id = Timer::add(2, function () use ($connection, &$timer_id){
             // 连接关闭的时候要将定时器删除，避免定时器不断累积导致内存泄漏
