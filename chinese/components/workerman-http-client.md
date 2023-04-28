@@ -48,6 +48,43 @@ $worker->onWorkerStart = function () {
 Worker::runAll();
 ```
 
+```php
+<?php
+require_once 'vendor/autoload.php';
+use Workerman\Worker;
+
+$worker = new Worker();
+$worker->onWorkerStart = function () {
+    $http = new Workerman\Http\Client();
+    // 上传文件
+    $multipart = new \Workerman\Psr7\MultipartStream([
+        [
+            'name' => 'file',
+            'contents' => fopen(__FILE__, 'r')
+        ],
+        [
+            'name' => 'json',
+            'contents' => json_encode(['a'=>1, 'b'=>2])
+        ]
+    ]);
+    $boundary = $multipart->getBoundary();
+    $http->request('http://127.0.0.1:8787', [
+        'method' => 'POST',
+        'version' => '1.1',
+        'headers' => ['Connection' => 'keep-alive', 'Content-Type' => "multipart/form-data; boundary=$boundary"],
+        'data' => $multipart,
+        'success' => function ($response) {
+            echo $response->getBody();
+        },
+        'error' => function ($exception) {
+            echo $exception;
+        }
+    ]);
+};
+
+Worker::runAll();
+```
+
 # Optinons 选项
 ```php
 <?php
@@ -56,10 +93,10 @@ use Workerman\Worker;
 $worker = new Worker();
 $worker->onWorkerStart = function(){
     $options = [
-        'max_conn_per_addr' => 128, // 每个地址最多维持多少并发连接
+        'max_conn_per_addr' => 128, // 每个域名最多维持多少并发连接
         'keepalive_timeout' => 15,  // 连接多长时间不通讯就关闭
         'connect_timeout'   => 30,  // 连接超时时间
-        'timeout'           => 30,  // 等待响应的超时时间
+        'timeout'           => 30,  // 请求发出后等待响应的超时时间
     ];
     $http = new Workerman\Http\Client($options);
 
