@@ -50,8 +50,9 @@ Worker::runAll();
 
 ```php
 <?php
-require_once 'vendor/autoload.php';
 use Workerman\Worker;
+
+require_once 'vendor/autoload.php';
 
 $worker = new Worker();
 $worker->onWorkerStart = function () {
