@@ -152,7 +152,7 @@ Worker::runAll();
 
 1、项目首先要加载`require __DIR__ . '/vendor/autoload.php';`
 
-2、所有的异步编码必须在```onXXX```回调中编写
+2、所有的异步代码只能在workerman启动后的运行环境运行
 
 3、支持基于workerman开发的所有项目，包括GatewayWorker、PHPSocket.io等
 
