@@ -116,7 +116,7 @@ Worker::runAll();
   * `qos` `QoS`等级，默认`0`
   * `retain` retain 标记，默认`false`
   * `dup` 重发标志，默认`false`
-* `$callback` - `function (\Exception $exception)`，（QoS为0时不支持此设置）当发生错误时或者发布成功时触发， `$exception` 是异常对象，当没有错误发生时 `$exception` 为`null`，下同。
+* `$callback` - `function (\Exception $exception = null)`，（QoS为0时不支持此设置）当发生错误时或者发布成功时触发， `$exception` 是异常对象，当没有错误发生时 `$exception` 为`null`，下同。
   
 -------------------------------------------------------
 
@@ -129,7 +129,7 @@ Worker::runAll();
 当订阅多个主题时，`$topic`是主题是key，`QoS`为值的数组，例如`array('topic1'=> 0, 'topic2'=> 1)`
 * `$options` 订阅选项数组，包含以下设置:
   * `qos` `QoS`等级, 默认 `0`
-* `$callback` - `function (\Exception $exception, array $granted)`
+* `$callback` - `function (\Exception $exception = null, array $granted = [])`
   回调函数，当订阅成功或者发生错误时触发
   * `exception` 异常对象，无错误发生时它是`null`，下同
   * `granted` 订阅结果数组，类似 `array('topic' => 'qos', 'topic' => 'qos')` 其中:
@@ -144,7 +144,7 @@ Worker::runAll();
 取消订阅
 
 * `$topic` 是一个字符串或者字符串数组，类似`array('topic1', 'topic2')`
-* `$callback` - `function (\Exception $e)`, 成功或者失败时触发的回调
+* `$callback` - `function (\Exception $e = null)`, 成功或者失败时触发的回调
 
 -------------------------------------------------------
 
@@ -180,7 +180,7 @@ Worker::runAll();
 -------------------------------------------------------
 
 <a name="onError"></a>
-### callback onError(\Exception $exception)
+### callback onError(\Exception $exception = null)
 当连接发生某种错误时触发
 
 -------------------------------------------------------
