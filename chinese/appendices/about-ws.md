@@ -31,7 +31,7 @@ $worker->onWorkerStart = function()
         echo "tcp connected\n";
     };
     // 当websocket完成握手后
-    $con->onWebSocketConnect = function(AsyncTcpConnection $con, $buffer) {
+    $ws_connection->onWebSocketConnect = function(AsyncTcpConnection $con, $buffer) {
         $con->send('hello');
     };
     // 远程websocket服务器发来消息时
