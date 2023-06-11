@@ -26,9 +26,13 @@ $worker->onWorkerStart = function()
     $ws_connection = new AsyncTcpConnection("ws://echo.websocket.org:80");
     // 每隔55秒向服务端发送一个opcode为0x9的websocket心跳
     $ws_connection->websocketPingInterval = 55;
-    // 连上后发送hello字符串
+    // 当TCP完成三次握手后
     $ws_connection->onConnect = function($connection){
-        $connection->send('hello');
+        echo "tcp connected\n";
+    };
+    // 当websocket完成握手后
+    $con->onWebSocketConnect = function(AsyncTcpConnection $con, $buffer) {
+        $con->send('hello');
     };
     // 远程websocket服务器发来消息时
     $ws_connection->onMessage = function($connection, $data){
