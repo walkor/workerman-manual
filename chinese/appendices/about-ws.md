@@ -19,6 +19,7 @@ $worker = new Worker('ws://0.0.0.0:8080');
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 
+use Workerman\Protocols\Ws;
 use Workerman\Worker;
 use Workerman\Connection\AsyncTcpConnection;
 
@@ -30,12 +31,14 @@ $worker->onWorkerStart = function()
     $ws_connection = new AsyncTcpConnection("ws://127.0.0.1:1234");
     // 每隔55秒向服务端发送一个opcode为0x9的websocket心跳
     $ws_connection->websocketPingInterval = 55;
+    $ws_connection->websocketType = Ws::BINARY_TYPE_BLOB; // BINARY_TYPE_BLOB为文本 BINARY_TYPE_ARRAYBUFFER为二进制
     // 当TCP完成三次握手后
     $ws_connection->onConnect = function($connection){
         echo "tcp connected\n";
     };
     // 当websocket完成握手后
     $ws_connection->onWebSocketConnect = function(AsyncTcpConnection $con, $response) {
+        echo $response;
         $con->send('hello');
     };
     // 远程websocket服务器发来消息时
