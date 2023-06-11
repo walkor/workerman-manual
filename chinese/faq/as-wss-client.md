@@ -19,10 +19,15 @@ $worker->onWorkerStart = function($worker){
 
     $con = new AsyncTcpConnection('ws://echo.websocket.org:80');
 
-    $con->onConnect = function(AsyncTcpConnection $con) {
+    // 自定义http头
+    $con->headers = ['token' => 'value'];
+    
+    // websocket握手成功后
+    $con->onWebSocketConnect = function(AsyncTcpConnection $con, ) {
         $con->send('hello');
     };
 
+    // 当收到消息时
     $con->onMessage = function(AsyncTcpConnection $con, $data) {
         echo $data;
     };
@@ -50,7 +55,7 @@ $worker->onWorkerStart = function($worker){
     // 设置以ssl加密方式访问，使之成为wss
     $con->transport = 'ssl';
 
-    $con->onConnect = function(AsyncTcpConnection $con) {
+    $con->onWebSocketConnect = function(AsyncTcpConnection $con) {
         $con->send('hello');
     };
 
@@ -97,7 +102,7 @@ $worker->onWorkerStart = function($worker){
     // 设置以ssl加密方式访问，使之成为wss
     $con->transport = 'ssl';
 
-    $con->onConnect = function(AsyncTcpConnection $con) {
+    $con->onWebSocketConnect = function(AsyncTcpConnection $con) {
         $con->send('hello');
     };
 
