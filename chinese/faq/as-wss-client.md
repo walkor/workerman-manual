@@ -18,9 +18,6 @@ $worker = new Worker();
 $worker->onWorkerStart = function($worker){
 
     $con = new AsyncTcpConnection('ws://echo.websocket.org:80');
-
-    // 自定义http头
-    $con->headers = ['token' => 'value'];
     
     // websocket握手成功后
     $con->onWebSocketConnect = function(AsyncTcpConnection $con, ) {
