@@ -15,15 +15,18 @@ $worker = new Worker('ws://0.0.0.0:8080');
 **ws作为websocket客户端协议示例：**
 
 ```php
+<?php
+require_once __DIR__ . '/vendor/autoload.php';
+
 use Workerman\Worker;
 use Workerman\Connection\AsyncTcpConnection;
-require_once __DIR__ . '/Workerman/Autoloader.php';
+
 $worker = new Worker();
 // 进程启动时
 $worker->onWorkerStart = function()
 {
     // 以websocket协议连接远程websocket服务器
-    $ws_connection = new AsyncTcpConnection("ws://echo.websocket.org:80");
+    $ws_connection = new AsyncTcpConnection("ws://127.0.0.1:1234");
     // 每隔55秒向服务端发送一个opcode为0x9的websocket心跳
     $ws_connection->websocketPingInterval = 55;
     // 当TCP完成三次握手后
@@ -31,7 +34,7 @@ $worker->onWorkerStart = function()
         echo "tcp connected\n";
     };
     // 当websocket完成握手后
-    $ws_connection->onWebSocketConnect = function(AsyncTcpConnection $con, $buffer) {
+    $ws_connection->onWebSocketConnect = function(AsyncTcpConnection $con, $response) {
         $con->send('hello');
     };
     // 远程websocket服务器发来消息时
