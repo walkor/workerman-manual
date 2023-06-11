@@ -61,3 +61,5 @@ $worker->onWorkerStart = function()
 Worker::runAll();
 ```
 
+更多参考[作为ws/wss客户端](faq/as-wss-client.md)
+
