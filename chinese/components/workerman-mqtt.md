@@ -111,7 +111,7 @@ Worker::runAll();
 向某个主题发布一条消息
 
 * `$topic` 主题
-* `$message` 消息
+* `$content` 消息
 * `$options` 选项数组，包括
   * `qos` `QoS`等级，默认`0`
   * `retain` retain 标记，默认`false`
