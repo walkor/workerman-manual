@@ -65,9 +65,9 @@
         if (isset($con->group_id)) {
             foreach ($con->group_id as $group_id) {
                 unset($group_con_map[$group_id][$con->id]);
-            }
-            if (empty($group_con_map[$group_id])) {
-                unset($group_con_map[$group_id]);
+                if (empty($group_con_map[$group_id])) {
+                    unset($group_con_map[$group_id]);
+                }
             }
         }
     };
