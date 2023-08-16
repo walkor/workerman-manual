@@ -4,9 +4,14 @@
 bool Worker::$reloadable
 ```
 
-设置当前Worker实例是否可以reload，即收到reload信号后是否退出重启。不设置默认为true，收到reload信号后自动重启进程。
+执行`php start.php reload`时会向所有子进程发送reload信号(SIGUSR1)。
 
-有些进程维持着客户端连接，例如Gateway/Worker模型中的gateway进程，当运行reload重新载入业务代码时，却又不想客户端连接断开，则设置gateway进程的reloadable属性为false
+子进程收到reload信号后会自动退出然后主进程会自动拉起一个新的进程，一般用于更新业务代码。
+
+当进程$reloadable为false时，收到reload信号后只会触发 [onWorkerReload](on-worker-reload.md) , 并不会重启当前进程。
+
+例如Gateway/Worker模型中的gateway进程负责维持客户端连接工作，worker进程负责处理请求。
+设置gateway进程的reloadable属性为false则在reload可以做到在不断开客户端连接的情况下更新业务代码。
 
 
 ## 范例
@@ -16,7 +21,7 @@ use Workerman\Worker;
 require_once __DIR__ . '/vendor/autoload.php';
 
 $worker = new Worker('websocket://0.0.0.0:8484');
-// 设置此实例收到reload信号后是否reload重启
+// 设置此实例收到reload信号后是否重启
 $worker->reloadable = false;
 $worker->onWorkerStart = function($worker)
 {
