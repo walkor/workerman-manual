@@ -23,7 +23,7 @@ $worker->onMessage = function($connection, $request) {
 $worker = new Worker('http://0.0.0.0:1234');
 require_once __DIR__ . '/your/path/MessageHandler.php'; // 启动脚本直接载入的文件不支持热更新
 $messageHandler = new MessageHandler();
-$worker->onMessage = [$messageHandler, 'onMessage'];
+$worker->onMessage = [$messageHandler, 'onMessage']; // 假设MessageHandler类里有一个onMessage方法
 ```
 
 
