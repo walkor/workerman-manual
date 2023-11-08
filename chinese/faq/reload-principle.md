@@ -9,7 +9,7 @@
 > Windows系统不支持reload。
 
 > **注意**
-> 长连接(例如websocket)业务，进程平滑重启时连接会被断开。解决方案是使用类似[gatewayWorker](https://www.workerman.net/doc/gateway-worker)类似的架构，将使用一组进程专门维持连接，并将这组进程的[reloadable](../worker/reloadable.md)属性设置为false。业务逻辑专门启动一组worker进程处理，gateway与worker进程通过tcp通讯的方式互相调用。当业务需要变更时，只重启worker进程即可。
+> 长连接(例如websocket)业务，进程平滑重启时连接会被断开。解决方案是使用类似[gatewayWorker](https://www.workerman.net/doc/gateway-worker)的架构，一组进程专门维持连接，并将这组进程的[reloadable](../worker/reloadable.md)属性设置为false。业务逻辑启动另外一组worker进程处理，gateway与worker进程通过tcp通讯的方式互相调用。当业务需要变更时，只重启worker进程即可。
 
 ## 限制
 **注意：只有在on{...}回调中载入的文件平滑重启后才会自动更新，启动脚本中直接载入的文件或者写死的代码运行reload不会自动更新。**
