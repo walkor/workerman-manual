@@ -5,7 +5,42 @@
 
 平滑重启一般应用于业务更新或者版本发布过程中，能够避免因为代码发布重启服务导致的暂时性服务不可用的影响。
 
+> **注意**
+> Windows系统不支持reload
+
+## 限制
 **注意：只有在on{...}回调中载入的文件平滑重启后才会自动更新，启动脚本中直接载入的文件或者写死的代码运行reload不会自动更新。**
+
+#### 以下代码reload后不会更新
+```php
+$worker = new Worker('http://0.0.0.0:1234');
+$worker->onMessage = function($connection, $request) {
+    $connection->send('hi'); // 写死的代码不支持热更新
+};
+```
+
+```php
+$worker = new Worker('http://0.0.0.0:1234');
+require_once __DIR__ . '/your/path/MessageHandler.php'; // 启动脚本直接载入的文件不支持热更新
+$messageHandler = new MessageHandler();
+$worker->onMessage = [$messageHandler, 'onMessage'];
+```
+
+
+#### 以下代码reload后会自动更新
+```php
+$worker = new Worker('http://0.0.0.0:1234');
+$worker->onWorkerStart = function($worker) {
+    require_once __DIR__ . '/your/path/MessageHandler.php'; // 进程启动后载入的文件支持热更新
+    $messageHandler = new MessageHandler();
+    $worker->onMessage = [$messageHandler, 'onMessage'];
+};
+```
+MessageHandler.php改动后执行 `php start.php reload`，MessageHandler.php会重新载入内存达到更新业务逻辑的效果。
+
+
+> **提示**
+> 上面代码为了方便演示，使用了`require_once`语句，如果你的项目支持psr4自动加载，则无需调用`require_once`语句。
 
 ## 平滑重启原理
 
