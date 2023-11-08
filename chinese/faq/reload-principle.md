@@ -33,7 +33,7 @@ $worker->onMessage = [$messageHandler, 'onMessage']; // 假设MessageHandler类�
 #### 以下代码reload后会自动更新
 ```php
 $worker = new Worker('http://0.0.0.0:1234');
-$worker->onWorkerStart = function($worker) {
+$worker->onWorkerStart = function($worker) { // onWorkerStart是进程启动后触发的回调
     require_once __DIR__ . '/your/path/MessageHandler.php'; // 进程启动后载入的文件支持热更新
     $messageHandler = new MessageHandler();
     $worker->onMessage = [$messageHandler, 'onMessage'];
