@@ -70,7 +70,7 @@ Worker::runAll();
 
 **GatewayWorker从nginx设置的header里获取客户端ip**
 
-在start_gateway.php加上下面的代码
+在Events.php加上下面的代码
 ```php
 class Events
 {
