@@ -47,6 +47,6 @@
 
 ## 什么是平滑重启？
 
-参见 [平滑重启原理](../faq/reload-principle)
+参见 [平滑重启原理](../faq/reload-principle.md)
 
 
