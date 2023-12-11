@@ -26,6 +26,7 @@ net.ipv4.tcp_tw_recycle = 0
 fs.file-max = 6815744
 #防火墙跟踪表的大小。注意：如果防火墙没开则会提示error: "net.netfilter.nf_conntrack_max" is an unknown key，忽略即可
 net.netfilter.nf_conntrack_max = 2621440
+net.ipv4.ip_local_port_range = 10240 65000
 ```
 运行 `sysctl -p` 即刻生效。
 
