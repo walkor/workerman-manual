@@ -9,6 +9,8 @@ composer require workerman/http-client
 
 ## 示例：
 
+**get post request用法**
+
 ```php
 use Workerman\Worker;
 
@@ -48,6 +50,8 @@ $worker->onWorkerStart = function () {
 Worker::runAll();
 ```
 
+**上传文件**
+
 ```php
 <?php
 use Workerman\Worker;
@@ -86,7 +90,50 @@ $worker->onWorkerStart = function () {
 Worker::runAll();
 ```
 
-# Optinons 选项
+**progress流式返回**
+
+```php
+<?php
+require_once __DIR__ . '/vendor/autoload.php';
+
+use Workerman\Connection\TcpConnection;
+use Workerman\Http\Client;
+use Workerman\Protocols\Http\Chunk;
+use Workerman\Protocols\Http\Request;
+use Workerman\Protocols\Http\Response;
+use Workerman\Worker;
+
+$worker = new Worker('http://0.0.0.0:1234');
+$worker->onMessage = function (TcpConnection $connection, Request $request) {
+    $http = new Client();
+    $http->request('https://api.bla.cn/v1/chat/completions', [
+        'method' => 'POST',
+        'data' => json_encode([
+            'model' => 'gpt-3.5-turbo',
+            'temperature' => 1,
+            'stream' => true,
+            'messages' => [['role' => 'user', 'content' => 'hello']],
+        ]),
+        'headers' => [
+            'Content-Type' => 'application/json',
+            'Authorization' => 'Bearer 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',
+        ],
+        'progress' => function($buffer) use ($connection) {
+            $connection->send(new Chunk($buffer));
+        },
+        'success' => function($response) use ($connection) {
+            $connection->send(new Chunk(''));
+        },
+    ]);
+    $connection->send(new Response(200, [
+        //"Content-Type" => "application/octet-stream",
+        "Transfer-Encoding" => "chunked",
+    ], ' '));
+};
+Worker::runAll();
+```
+
+## Optinons 选项
 ```php
 <?php
 require __DIR__ . '/vendor/autoload.php';
