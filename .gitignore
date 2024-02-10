@@ -1,4 +1,4 @@
 .buildpath
 .project
 .idea
-script
+script/translate/config.php
