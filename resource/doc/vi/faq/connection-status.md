@@ -1,0 +1,2 @@
+# Xem số lượng kết nối hiện tại từ phía khách hàng
+Chạy lệnh ```php start.php status``` để xem trạng thái chạy của máy chủ hiện tại, trường ```connections``` đánh dấu số lượng kết nối TCP hiện tại của mỗi quá trình. Cần lưu ý rằng trường này không chỉ bao gồm số lượng kết nối TCP từ phía khách hàng, mà cũng bao gồm số lượng kết nối TCP cho việc giao tiếp nội bộ trong WorkerMan. Ví dụ, trong mô hình Gateway/Worker của WorkerMan, số lượng kết nối hiện tại của mỗi quá trình Gateway sẽ là giá trị của trường ```connections``` trừ đi số lượng quá trình Worker.

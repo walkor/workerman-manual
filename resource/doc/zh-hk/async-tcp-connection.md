@@ -1,0 +1,3 @@
+# AsyncTcpConnection類
+
+AsyncTcpConnection是TcpConnection的子類，擁有與TcpConnection一樣的屬性與介面。AsyncTcpConnection用於異步創建一個TcpConnection連接。

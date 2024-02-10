@@ -1,0 +1,7 @@
+# Connection類提供的介面
+
+WorkerMan中有兩個重要的類別Worker與Connection。
+
+每個客戶端連線對應一個Connection物件，可以設定物件的onMessage、onClose等回調，同時提供了向客戶端發送數據send介面與關閉連接close介面，以及其它一些必要的介面。
+
+可以說Worker是一個監聽容器，負責接受客戶端連線，並把連接包裝成connection物件式提供給開發者操作。

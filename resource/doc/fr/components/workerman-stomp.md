@@ -1,0 +1,41 @@
+# workerman/stomp
+
+STOMP est un protocole de communication. Il prend en charge la plupart des files d'attente de messages telles que RabbitMQ, Apollo, etc.
+
+## Adresse du projet : 
+https://github.com/walkor/stomp
+
+## Installation :
+``` 
+composer require workerman/stomp
+```
+
+## Exemple
+``` 
+<?php
+use Workerman\Worker;
+use Workerman\Timer;
+use Workerman\Stomp\Client;
+use Workerman\RedisQueue\Client;
+require_once __DIR__ . '/vendor/autoload.php';
+
+$worker = new Worker();
+$worker->onWorkerStart = function(){
+    $client = new Workerman\Stomp\Client('stomp://127.0.0.1:61613');
+    $client->onConnect = function(Client $client) {
+       // Abonnement
+        $client->subscribe('/topic/foo', function(Client $client, $data) {
+            var_export($data);
+        });
+    };
+    $client->onError = function ($e) {
+        echo $e;
+    };
+    Timer::add(1, function () use ($client) {
+        // Publier
+        $client->send('/topic/foo', 'Bonjour Workerman STOMP');
+    });
+    $client->connect();
+};
+Worker::runAll();
+```

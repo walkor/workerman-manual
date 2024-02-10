@@ -1,0 +1,3 @@
+# AsyncTcpConnectionクラス
+
+AsyncTcpConnectionはTcpConnectionクラスのサブクラスであり、TcpConnectionと同じプロパティとインターフェースを持っています。AsyncTcpConnectionはTcpConnection接続を非同期で作成するために使用されます。
