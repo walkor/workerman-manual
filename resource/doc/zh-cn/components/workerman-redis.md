@@ -72,7 +72,7 @@ Worker::runAll();
 > **注意**
 > psubscribe subscribe 不支持协程用法
 
-## 文档
+# 文档
 **说明**
 
 **回调方式中，回调函数一般有2个参数($result, $redis)，`$result`为结果，`$redis`为redis实例。例如：**
@@ -93,7 +93,7 @@ $redis->get('key', function ($result, $redis){
 });
 ```
 
-### **连接**
+## **连接**
 ```php
 use Workerman\Redis\Client;
 // 省略回调
@@ -107,7 +107,7 @@ $redis = new Client('redis://127.0.0.1:6379', [
 });
 ```
 
-### **auth**
+## **auth**
 ```php
 //  密码验证
 $redis->auth('password', function ($result) {
@@ -119,7 +119,7 @@ $redis->auth('username', 'password', function ($result) {
 });
 ```
 
-### **pSubscribe**
+## **pSubscribe**
 
 订阅一个或多个符合给定模式的频道。
 
@@ -141,7 +141,7 @@ Timer::add(5, function () use ($redis2){
 });
 ```
 
-### **subscribe**
+## **subscribe**
 
 用于订阅给定的一个或多个频道的信息。
 
@@ -161,7 +161,7 @@ Timer::add(5, function () use ($redis2){
 });
 ```
 
-### **publish**
+## **publish**
 
 用于将信息发送到指定的频道。
 
@@ -172,7 +172,7 @@ $redis2->publish('news', 'news content');
 ```
 
 
-### **select**
+## **select**
 ```php
 // 省略回调
 $redis->select(2);
@@ -182,7 +182,7 @@ $redis->select('test', function ($result, $redis) {
 });
 ```
 
-### **get**
+## **get**
 
 命令用于获取指定 key 的值。如果 key 不存在，返回 NULL 。如果key 储存的值不是字符串类型，返回false。
 ```php
@@ -192,7 +192,7 @@ $redis->get('key', function($result) {
 });
 ```
 
-### **set**
+## **set**
 
 用于设置给定 key 的值。如果 key 已经存储其他值， SET 就覆写旧值，且无视类型。
 ```php
@@ -203,7 +203,7 @@ $redis->set('key','value', 10);
 $redis->set('key','value', 10, function($result){});
 ```
 
-### **setEx, pSetEx**
+## **setEx, pSetEx**
 
 为指定的 key 设置值及其过期时间。如果 key 已经存在， SETEX 命令将会替换旧的值。
 
@@ -214,7 +214,7 @@ $redis->setEx('key', 3600, 'value');
 $redis->pSetEx('key', 3600, 'value'); 
 ```
 
-### **del**
+## **del**
 
 用于删除已存在的键，返回结果为数字，代表删除了多少个key(不存在的key不做计数)。
 ```php
@@ -224,7 +224,7 @@ $redis->del('key');
 $redis->del(['key', 'key1', 'key2']);
 ```
 
-### **setNx**
+## **setNx**
 
 （**SET**if**N**ot e**X**ists） 命令在指定的 key 不存在时，为 key 设置指定的值。
 ```php
@@ -237,7 +237,7 @@ $redis->setNx('key', 'value', function($result){
 });
 ```
 
-### **exists**
+## **exists**
 
 命令用于检查给定 key 是否存在。返回结果为数字，代表存在的key的个数。
 ```
@@ -255,7 +255,7 @@ $redis->exists(['foo', 'bar', 'baz'], function ($result) {
 }); 
 ```
 
-### **incr, incrBy**
+## **incr, incrBy**
 
 将 key 中储存的数字值增一/制定的值。 如果 key 不存在，那么 key 的值会先被初始化为 0 ，然后再执行 incr/incrBy 操作。
 如果值包含错误的类型，或字符串类型的值不能表示为数字，那么返回false。
@@ -269,7 +269,7 @@ $redis->incrBy('key1', 10, function ($result) {
 }); 
 ```
 
-### **incrByFloat**
+## **incrByFloat**
 
 为 key 中所储存的值加上指定的浮点数增量值。
 如果 key 不存在，那么 INCRBYFLOAT 会先将 key 的值设为 0 ，再执行加法操作。
@@ -281,7 +281,7 @@ $redis->incrByFloat('key1', 1.5, function ($result) {
 }); 
 ```
 
-### **decr, decrBy**
+## **decr, decrBy**
 
 命令将 key 所储存的值减去一/指定的减量值。
 如果 key 不存在，那么 key 的值会先被初始化为 0 ，然后再执行 decr/decrBy 操作。
@@ -296,7 +296,7 @@ $redis->decrBy('key1', 10, function ($result) {
 }); 
 ```
 
-### **mGet**
+## **mGet**
 
 返回所有(一个或多个)给定 key 的值。 如果给定的 key 里面，有某个 key 不存在，那么这个 key 返回NULL。
 ```php
@@ -308,7 +308,7 @@ $redis->mGet(['key0', 'key1', 'key5'], function ($result) {
 }); 
 ```
 
-### **getSet**
+## **getSet**
 
 用于设置指定 key 的值，并返回 key 的旧值。
 
@@ -322,7 +322,7 @@ $redis->get('x', function ($result) {
 }) ;
 ```
 
-### **randomKey**
+## **randomKey**
 
 从当前数据库中随机返回一个 key。
 ```php
@@ -333,7 +333,7 @@ $redis->randomKey(function($key) use ($redis) {
 })
 ```
 
-### **move**
+## **move**
 
 将当前数据库的 key 移动到给定的数据库 db 当中。
 ```php
@@ -348,7 +348,7 @@ $redis->get('x', function ($result) {
 }) ;
 ```
 
-### **rename**
+## **rename**
 
 修改 key 的名称，key不存在则返回false。
 ```php
@@ -358,7 +358,7 @@ $redis->rename('x', 'y', function ($result) {
 }) ;
 ```
 
-### **renameNx**
+## **renameNx**
 
 在新的 key 不存在时修改 key 的名称。
 ```php
@@ -369,7 +369,7 @@ $redis->renameNx('x', 'y', function ($result) {
 }) ;
 ```
 
-### **expire**
+## **expire**
 
 于设置 key 的过期时间，key 过期后将不再可用。单位以秒。成功返回1，key不存在返回0，发生错误返回false。
 ```php
@@ -377,7 +377,7 @@ $redis->set('x', '42');
 $redis->expire('x', 3);
 ```
 
-### **keys**
+## **keys**
 
 命令用于查找所有符合给定模式 pattern 的 key 。
 ```php
@@ -389,7 +389,7 @@ $redis->keys('user*', function ($keys) {
 }) ;
 ```
 
-### **type**
+## **type**
 
 返回 key 所储存的值的类型。返回结果为字符串， string set list zset hash none 中的一种，其中none表示key不存在。
 ```php
@@ -398,7 +398,7 @@ $redis->type('key', function ($result) {
 }) ;
 ```
 
-### **append**
+## **append**
 
 如果 key 已经存在并且是一个字符串， APPEND 命令将 value 追加到 key 原来的值的末尾，并返回字符串长度。
 
@@ -416,7 +416,7 @@ $redis->get('key', function ($result) {
 }) ;
 ```
 
-### **getRange**
+## **getRange**
 
 获取存储在指定 key 中字符串的子字符串。字符串的截取范围由 start 和 end 两个偏移量决定(包括 start 和 end 在内)。如果key不存在，则返回空字符串。如果key不是字符串类型，则返回false。
 ```php
@@ -429,7 +429,7 @@ $redis->getRange('key', -5, -1 , function ($result) {
 }) ;
 ```
 
-### **setRange**
+## **setRange**
 用指定的字符串覆盖给定 key 所储存的字符串值，覆盖的位置从偏移量 offset 开始。如果key不存在，则将key设置为指定字符串。如果key不是字符串类型，则返回false。
 
 返回结果为更改后的字符串长度。
@@ -444,7 +444,7 @@ $redis->get('key', function ($result) {
 }) ; 
 ```
 
-### **strLen**
+## **strLen**
 
 获取指定 key 所储存的字符串值的长度。当 key 储存的不是字符串值时，返回false。
 
@@ -455,7 +455,7 @@ $redis->strlen('key', function ($result) {
 }) ; 
 ```
 
-### **getBit**
+## **getBit**
 
 对 key 所储存的字符串值，获取指定偏移量上的位(bit)。
 
@@ -466,7 +466,7 @@ $redis->getBit('key', 0, function ($result) {
 }) ; 
 ```
 
-### **setBit**
+## **setBit**
 
 对 key 所储存的字符串值，设置或清除指定偏移量上的位(bit)。
 返回值为0或1，是修改前的值。
@@ -478,7 +478,7 @@ $redis->setBit('key', 5, 1, function ($result) {
 }) ; 
 ```
 
-### **bitOp**
+## **bitOp**
 
 在多个键（包含字符串值）之间执行按位操作并将结果存储在目标键中。
 
@@ -493,7 +493,7 @@ $redis->bitOp( 'AND', 'dst', 'key1', 'key2', function ($result) {
 }) ;
 ```
 
-### **bitCount**
+## **bitCount**
 
 计算字符串中的设置位数（人口计数）。
 
@@ -515,7 +515,7 @@ $redis->bitCount( 'key', function ($result) {
 }) ;
 ```
 
-### **sort**
+## **sort**
 
 sort命令可以对list、set和sorted set的元素进行排序。
 
@@ -551,7 +551,7 @@ $redis->sort('s', ['sort' => 'desc', 'store' => 'out'], function ($result) {
 }); 
 ```
 
-### **ttl, pttl**
+## **ttl, pttl**
 
 以秒/毫秒为单位返回 key 的剩余过期时间。
 
@@ -573,7 +573,7 @@ $redis->pttl('key-not-exists', function ($result) {
 });
 ```
 
-### **persist**
+## **persist**
 
 移除给定 key 的过期时间，使得 key 永不过期。
 
@@ -582,7 +582,7 @@ $redis->pttl('key-not-exists', function ($result) {
 $redis->persist('key');
 ```
 
-### **mSet, mSetNx**
+## **mSet, mSetNx**
 
 在一个原子命令中设置多个键值对。mSetNx仅在设置了所有键的情况下返回1。
 
@@ -591,7 +591,7 @@ $redis->persist('key');
 $redis->mSet(['key0' => 'value0', 'key1' => 'value1']);
 ```
 
-### **hSet**
+## **hSet**
 
 为哈希表中的字段赋值 。
 
@@ -613,7 +613,7 @@ $redis->hGet('h', 'key1', function ($r) {
 }); 
 ```
 
-### **hSetNx**
+## **hSetNx**
 
 为哈希表中不存在的的字段赋值 。
 
@@ -633,7 +633,7 @@ $redis->hSetNx('h', 'key1', 'world', function ($r) {
 });
 ```
 
-### **hGet**
+## **hGet**
 
 返回哈希表中指定字段的值。
 
@@ -646,7 +646,7 @@ $redis->hGet('h', 'key1', function ($result) {
 ```
 
 
-### **hLen**
+## **hLen**
 
 用于获取哈希表中字段的数量。
 
@@ -661,7 +661,7 @@ $redis->hLen('h', function ($result) {
 });
 ```
 
-### **hDel**
+## **hDel**
 
 命令用于删除哈希表 key 中的一个或多个指定字段，不存在的字段将被忽略。
 
@@ -671,7 +671,7 @@ $redis->hLen('h', function ($result) {
 $redis->hDel('h', 'key1');
 ```
 
-### **hKeys**
+## **hKeys**
 
 以数组的形式获取哈希表中的所有域。
 
@@ -683,7 +683,7 @@ $redis->hKeys('key', function ($result) {
 });
 ```
 
-### **hVals**
+## **hVals**
 
 以数组的形式返回哈希表所有域的值。
 
@@ -695,7 +695,7 @@ $redis->hVals('key', function ($result) {
 });
 ```
 
-### **hGetAll**
+## **hGetAll**
 
 以关联数组的形式返回哈希表中所有的字段和值。
 
@@ -721,7 +721,7 @@ array (
 )
 ```
 
-### **hExists**
+## **hExists**
 
 查看哈希表的指定字段是否存在。存在返回1，字段不存在或者key不存在返回0，发生错误返回false。
 
@@ -731,7 +731,7 @@ $redis->hExists('h', 'a', function ($result) {
 });
 ```
 
-### **hIncrBy**
+## **hIncrBy**
 
 用于为哈希表中的字段值加上指定增量值。
 
@@ -752,11 +752,11 @@ $redis->hIncrBy('h', 'x', 2,  function ($result) {
 });
 ```
 
-### **hIncrByFloat**
+## **hIncrByFloat**
 
 类似与hIncrBy，只不过增量是浮点型。
 
-### **hMSet**
+## **hMSet**
 
 同时将多个 field-value (字段-值)对设置到哈希表中。
 
@@ -769,7 +769,7 @@ $redis->del('h');
 $redis->hMSet('h', ['name' => 'Joe', 'sex' => 1])
 ```
 
-### **hMGet**
+## **hMGet**
 
 以关联数组的形式返回哈希表中一个或多个给定字段的值。
 
@@ -791,7 +791,7 @@ array (
  'field3' => null
 )
 ```
-### **blPop, brPop**
+## **blPop, brPop**
 
 移出并获取列表的第一个元素/最后一个元素， 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止。
 
@@ -808,7 +808,7 @@ Timer::add(1, function () use ($redis2) {
 });
 ```
 
-### **bRPopLPush**
+## **bRPopLPush**
 
 从列表中取出最后一个元素，并插入到另外一个列表的头部； 如果列表没有元素会阻塞列表直到等待超时或发现可弹出元素为止。如果超时则返回null。
 
@@ -827,7 +827,7 @@ Timer::add(2, function () use ($redis2) {
 }, null, false);
 ```
 
-### **lIndex**
+## **lIndex**
 
 通过索引获取列表中的元素。你也可以使用负数下标，以 -1 表示列表的最后一个元素， -2 表示列表的倒数第二个元素，以此类推。
 
@@ -842,7 +842,7 @@ $redis->lindex('key1', 0, function ($r) {
 });
 ```
 
-### **lInsert**
+## **lInsert**
 
 在列表的元素前或者后插入元素。当指定元素不存在于列表中时，不执行任何操作。
 
@@ -866,7 +866,7 @@ $redis->lRange('key1', 0, -1, function ($r) {
 });
 ```
 
-### **lPop**
+## **lPop**
 
 移除并返回列表的第一个元素。
 
@@ -881,7 +881,7 @@ $redis->lPop('key1', function ($r) {
 });
 ```
 
-### **lPush**
+## **lPush**
 
 一个或多个值插入到列表头部。 如果 key 不存在，一个空列表会被创建并执行 LPUSH 操作。 当 key 存在但不是列表类型时返回false。
 
@@ -896,7 +896,7 @@ $redis->lRange('key1', 0, -1, function ($r) {
 });
 ```
 
-### **lPushx**
+## **lPushx**
 
 将一个值插入到已存在的列表头部，列表不存在时操作无效，返回0。如果key不是列表类型则返回false。
 
@@ -913,7 +913,7 @@ $redis->lRange('key1', 0, -1, function ($r) {
 });
 ```
 
-### **lRange**
+## **lRange**
 
 返回列表中指定区间内的元素，区间以偏移量 START 和 END 指定。 其中 0 表示列表的第一个元素， 1 表示列表的第二个元素，以此类推。 你也可以使用负数下标，以 -1 表示列表的最后一个元素， -2 表示列表的倒数第二个元素，以此类推。
 
@@ -928,7 +928,7 @@ $redis->lRange('key1', 0, -1, function ($r) {
 });
 ```
 
-### **lRem**
+## **lRem**
 
 根据参数 COUNT 的值，移除列表中与参数 VALUE 相等的元素。
 
@@ -946,7 +946,7 @@ $redis->lRem('key1', 2, 'A', function ($r) {
 });
 ```
 
-### **lSet**
+## **lSet**
 
 通过索引来设置元素的值。
 
@@ -956,7 +956,7 @@ $redis->lRem('key1', 2, 'A', function ($r) {
 $redis->lSet('key1', 0, 'X');
 ```
 
-### **lTrim**
+## **lTrim**
 
 对一个列表进行修剪(trim)，就是说，让列表只保留指定区间内的元素，不在指定区间之内的元素都将被删除。
 
@@ -979,7 +979,7 @@ $redis->lRange('key1', 0, -1, function ($r) {
 });
 ```
 
-### **rPop**
+## **rPop**
 
 用于移除列表的最后一个元素，返回值为移除的元素。
 
@@ -991,7 +991,7 @@ $redis->rPop('key1', function ($r) {
 });
 ```
 
-### **rPopLPush**
+## **rPopLPush**
 
 于移除列表的最后一个元素，并将该元素添加到另一个列表并返回。
 
@@ -1012,7 +1012,7 @@ $redis->lRange('y', 0, -1, function ($r) {
 });
 ```
 
-### **rPush**
+## **rPush**
 
 将一个或多个值插入到列表的尾部(最右边)，并返回插入后的列表的长度。
 
@@ -1027,18 +1027,18 @@ $redis->rPush('key1', 'A', function ($r) {
 });
 ```
 
-### **rPushX**
+## **rPushX**
 
 将一个值插入到已存在的列表尾部(最右边)并返回列表的长度。如果列表不存在，操作无效，返回0。 当列表存在但不是列表类型时返回false。
 
-````php
+```php
 $redis->del('key1');
 $redis->rPushX('key1', 'A', function ($r) {
     var_dump($r); // 0
 });
 ```
 
-### **lLen**
+## **lLen**
 
 返回列表的长度。 如果列表 key 不存在，则 key 被解释为一个空列表，返回 0 。 如果 key 不是列表类型，返回false。
 
@@ -1052,7 +1052,7 @@ $redis->lLen('key1', function ($r) {
 });
 ```
 
-### **sAdd**
+## **sAdd**
 
 将一个或多个成员元素加入到集合中，已经存在于集合的成员元素将被忽略。
 
@@ -1073,7 +1073,7 @@ $redis->sAdd('key1' , 'member2', function ($r) {
 });
 ```
 
-### **sCard**
+## **sCard**
 
 返回集合中元素的数量。当集合 key 不存在时返回 0 。
 
@@ -1090,7 +1090,7 @@ $redis->sCard('keyX', function ($r) {
 });
 ```
 
-### **sDiff**
+## **sDiff**
 
 返回第一个集合与其他集合之间的差异，也可以认为说第一个集合中独有的元素。不存在的集合 key 将视为空集。
 
@@ -1108,7 +1108,7 @@ $redis->sDiff(['s0', 's1', 's2'], function ($r) {
 });
 ```
 
-### **sDiffStore**
+## **sDiffStore**
 
 给定集合之间的差集存储在指定的集合中。如果指定的集合 key 已存在，则会被覆盖。
 
@@ -1128,7 +1128,7 @@ $redis->sMembers('dst', function ($r) {
 });
 ```
 
-### **sInter**
+## **sInter**
 
 返回给定所有给定集合的交集。 不存在的集合 key 被视为空集。 当给定集合当中有一个空集时，结果也为空集。
 
@@ -1147,7 +1147,7 @@ $redis->sInter(['key1', 'key2', 'key3'], function ($r) {
 });
 ```
 
-### **sInterStore**
+## **sInterStore**
 
 将给定集合之间的交集存储在指定的集合中并返回存储交集的集合的元素数量。如果指定的集合已经存在，则将其覆盖。
 
@@ -1171,7 +1171,7 @@ $redis->sMembers('output', function ($r) {
 });
 ```
 
-### **sIsMember**
+## **sIsMember**
 
 判断成员元素是否是集合的成员。
 
@@ -1183,7 +1183,7 @@ $redis->sIsMember('key1', 'member1', function ($r) {
 });
 ```
 
-### **sMembers**
+## **sMembers**
 
 返回集合中的所有的成员。 不存在的集合 key 被视为空集合。
 
@@ -1193,7 +1193,7 @@ $redis->sMembers('s', function ($r) {
 });
 ```
 
-### **sMove**
+## **sMove**
 
 将指定成员 member 元素从 source 集合移动到 destination 集合。
 
@@ -1209,7 +1209,7 @@ SMOVE 是原子性操作。
 $redis->sMove('key1', 'key2', 'member13');
 ```
 
-### **sPop**
+## **sPop**
 
 移除集合中的指定 key 的一个或多个随机元素，移除后会返回移除的元素。
 
@@ -1229,7 +1229,7 @@ $redis->sPop('key2', 3, function ($r) {
 });
 ```
 
-### **sRandMember**
+## **sRandMember**
 
 Redis Srandmember 命令用于返回集合中的一个随机元素。
 
@@ -1264,7 +1264,7 @@ $redis->sRandMember('not-a-set', 100, function ($r) {
 });
 ```
 
-### **sRem**
+## **sRem**
 
 移除集合中的一个或多个成员元素，不存在的成员元素会被忽略。
 
@@ -1280,7 +1280,7 @@ $redis->sRem('key1', ['member2', 'member3'], function ($r) {
 });
 ```
 
-### **sUnion**
+## **sUnion**
 
 命令返回给定集合的并集。不存在的集合 key 被视为空集。
 
@@ -1290,7 +1290,7 @@ $redis->sUnion(['s0', 's1', 's2'], function ($r) {
 });
 ```
 
-### **sUnionStore**
+## **sUnionStore**
 
 将给定集合的并集存储在指定的集合 destination 中并返回元素数量。如果 destination 已经存在，则将其覆盖。
 
