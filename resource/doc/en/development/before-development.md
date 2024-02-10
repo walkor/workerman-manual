@@ -1,32 +1,32 @@
 # Must-read before development
 
-When developing applications using WorkerMan, you need to understand the following content:
+When developing applications using Workerman, you need to understand the following content:
 
-## I. Differences between WorkerMan development and regular PHP development
+## I. Differences between Workerman development and regular PHP development
 
-Apart from the fact that variables and functions related to the HTTP protocol cannot be used directly, there are not many differences between WorkerMan development and regular PHP development.
+Apart from the fact that variables and functions related to the HTTP protocol cannot be used directly, there are not many differences between Workerman development and regular PHP development.
 
 ### 1. Different application layer protocols
 - Regular PHP development is generally based on the HTTP application layer protocol, where the WebServer has already completed the protocol parsing for developers.
-- WorkerMan supports various protocols, and currently has built-in support for HTTP, WebSocket, and other protocols. WorkerMan recommends developers to use simpler custom protocols for communication.
+- Workerman supports various protocols, and currently has built-in support for HTTP, WebSocket, and other protocols. Workerman recommends developers to use simpler custom protocols for communication.
 
   - For HTTP protocol development, please refer to the [HTTP Service section](../http/request.md).
 
 ### 2. Difference in request lifecycle
 - In a Web application, PHP releases all variables and resources after each request.
-- Application programs developed in WorkerMan reside in memory after the initial loading and parsing, so the definitions of classes, global objects, and static class members do not get released, making them available for reuse in subsequent requests.
+- Application programs developed in Workerman reside in memory after the initial loading and parsing, so the definitions of classes, global objects, and static class members do not get released, making them available for reuse in subsequent requests.
 
 ### 3. Avoiding duplicate definitions of classes and constants
-- Because WorkerMan caches compiled PHP files, it is important to avoid multiple require/include of the same class or constant definition files. It's recommended to use require_once/include_once to load files.
+- Because Workerman caches compiled PHP files, it is important to avoid multiple require/include of the same class or constant definition files. It's recommended to use require_once/include_once to load files.
 
 ### 4. Release of singleton mode connection resources
-- Since WorkerMan does not release global objects and class static members after each request, in singleton mode for resources like databases, the database instance (which includes a database socket connection) is often saved in a static member of the database, allowing WorkerMan to reuse this database socket connection throughout the process lifecycle. It is important to note that if the database server detects inactivity in a connection for a certain period, it may actively close the socket connection, leading to errors when using this database instance again (similar to "mysql gone away" error). WorkerMan provides a [database class](../components/workerman-mysql.md) with a reconnect feature, which developers can use directly.
+- Since Workerman does not release global objects and class static members after each request, in singleton mode for resources like databases, the database instance (which includes a database socket connection) is often saved in a static member of the database, allowing Workerman to reuse this database socket connection throughout the process lifecycle. It is important to note that if the database server detects inactivity in a connection for a certain period, it may actively close the socket connection, leading to errors when using this database instance again (similar to "mysql gone away" error). Workerman provides a [database class](../components/workerman-mysql.md) with a reconnect feature, which developers can use directly.
 
 ### 5. Avoiding the use of exit and die statements
-- WorkerMan runs in PHP command-line mode, and calling exit or die statements will cause the current process to exit. While the child process will be immediately recreated to continue serving, it may still have an impact on the business.
+- Workerman runs in PHP command-line mode, and calling exit or die statements will cause the current process to exit. While the child process will be immediately recreated to continue serving, it may still have an impact on the business.
 
 ### 6. Restart the service to apply code changes
-Since WorkerMan resides in memory, PHP class and function definitions are loaded once and remain in memory without disk reads. Therefore, any changes to business code require a restart to take effect.
+Since Workerman resides in memory, PHP class and function definitions are loaded once and remain in memory without disk reads. Therefore, any changes to business code require a restart to take effect.
 
 ## II. Basic concepts to understand
 
@@ -57,7 +57,7 @@ The typical process of restarting involves stopping all processes and then creat
 
 On the other hand, a smooth restart does not stop all processes at once, but rather one process at a time. After stopping each process, a new process is immediately created to take its place, and this process is repeated until all old processes have been replaced.
 
-WorkerMan can use the command ```php your_file.php reload``` for a smooth restart, which allows for updating the application program without affecting service quality.
+Workerman can use the command ```php your_file.php reload``` for a smooth restart, which allows for updating the application program without affecting service quality.
 
 **Note: Only files loaded in the on{...} callback will be automatically updated after a smooth restart. Files directly loaded in the startup script or hardcoded code will not be automatically updated.**
 

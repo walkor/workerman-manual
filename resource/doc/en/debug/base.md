@@ -1,8 +1,8 @@
 # Basic Debugging
 
-WorkerMan has two running modes, debug mode and daemon mode.
+Workerman has two running modes, debug mode and daemon mode.
 
-Run ```php start.php start``` to enter debug mode, where functions like ```echo, var_dump, var_export``` in the code will be displayed in the terminal. Note that when running WorkerMan with ```php start.php start```, all processes will exit when the terminal is closed.
+Run ```php start.php start``` to enter debug mode, where functions like ```echo, var_dump, var_export``` in the code will be displayed in the terminal. Note that when running Workerman with ```php start.php start```, all processes will exit when the terminal is closed.
 
 On the other hand, running ```php start.php start -d``` enters daemon mode, which is the formal online running mode and is not affected by closing the terminal.
 

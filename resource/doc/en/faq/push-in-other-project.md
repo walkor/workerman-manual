@@ -1,8 +1,8 @@
-# Using WorkerMan to push data to clients in other projects
+# Using Workerman to push data to clients in other projects
 
 **Question:**
 
-I have a regular web project and I want to call the WorkerMan interface in this project to push data to clients.
+I have a regular web project and I want to call the Workerman interface in this project to push data to clients.
 
 **Answer:**
 

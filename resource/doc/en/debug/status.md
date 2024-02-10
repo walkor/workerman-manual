@@ -1,6 +1,6 @@
 # Viewing Running Status
 
-Running `php start.php status` shows WorkerMan's running status similar to the following:
+Running `php start.php status` shows Workerman's running status similar to the following:
 
 ``` 
 ----------------------------------------------GLOBAL STATUS----------------------------------------------------
@@ -36,7 +36,7 @@ Summary	18M     -                        -                  54          0       
 
 In this section, we can see:
 
-WorkerMan version `version:3.5.13`
+Workerman version `version:3.5.13`
 
 Start time `2018-02-03 11:48:20`, running for `run 112 days 2 hours`
 

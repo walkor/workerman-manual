@@ -4,8 +4,8 @@ As TCP is stream-based, the data sent by the client flows into the server like a
 ## Why Protocol Specification in Workerman?
 Traditional PHP development is mostly based on the web and primarily uses the HTTP protocol. The parsing and handling of the HTTP protocol is solely handled by the WebServer, so developers do not need to worry about protocol-related issues. However, when there is a need to develop based on non-HTTP protocols, developers need to consider the protocol specifications.
 
-## Protocols Currently Supported by WorkerMan
-WorkerMan currently supports HTTP, websocket, text protocol (see appendix for details), frame protocol (see appendix for details), and ws protocol (see appendix for details). When communication based on these protocols is required, they can be used directly by specifying the protocol when initializing a Worker, for example:
+## Protocols Currently Supported by Workerman
+Workerman currently supports HTTP, websocket, text protocol (see appendix for details), frame protocol (see appendix for details), and ws protocol (see appendix for details). When communication based on these protocols is required, they can be used directly by specifying the protocol when initializing a Worker, for example:
 ```php
 use Workerman\Worker;
 use Workerman\Connection\TcpConnection;
@@ -32,7 +32,7 @@ $unix_worker = new Worker('unix:///tmp/wm.sock');
 ```
 
 ## Using Custom Communication Protocols
-When the built-in communication protocols in WorkerMan cannot meet development needs, developers can customize their own communication protocols. The method for customizing this is described in the next section.
+When the built-in communication protocols in Workerman cannot meet development needs, developers can customize their own communication protocols. The method for customizing this is described in the next section.
 
 **Note:**
 

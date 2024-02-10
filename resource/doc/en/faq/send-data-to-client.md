@@ -1,4 +1,4 @@
-# How to send data to a specific client in WorkerMan
+# How to send data to a specific client in Workerman
 When using `Worker` as the server without using `GatewayWorker`, how to push messages to a specific user?
 
 ```php

@@ -1,8 +1,8 @@
 # Object and Resource Persistence
 
-In traditional web development, the objects, data, and resources created by PHP are released after each request, making it difficult to achieve persistence. However, in WorkerMan, it is easy to achieve persistence.
+In traditional web development, the objects, data, and resources created by PHP are released after each request, making it difficult to achieve persistence. However, in Workerman, it is easy to achieve persistence.
 
-In WorkerMan, if you want to permanently store certain data resources in memory, you can place the resources in global variables or in static class members.
+In Workerman, if you want to permanently store certain data resources in memory, you can place the resources in global variables or in static class members.
 
 For example, in the following code:
 

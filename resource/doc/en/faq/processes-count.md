@@ -30,5 +30,5 @@ If the business code tends to be IO-intensive, the number of processes can be se
 If the business code tends to be CPU-intensive, the number of processes can be set to the number of CPU cores.
 
 ## Note
-WorkerMan's IO itself is non-blocking, for example, ```Connection->send``` is non-blocking, which belongs to CPU-intensive operations. If it is not clear which type your business belongs to, setting the number of processes to around 3 times the number of CPU cores is recommended.
+Workerman's IO itself is non-blocking, for example, ```Connection->send``` is non-blocking, which belongs to CPU-intensive operations. If it is not clear which type your business belongs to, setting the number of processes to around 3 times the number of CPU cores is recommended.
 Additionally, more processes do not necessarily mean better performance. If too many processes are opened, the overhead of process switching will increase, which will have a certain impact on performance.

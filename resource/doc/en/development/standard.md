@@ -6,7 +6,7 @@ The application directory can be placed anywhere.
 
 ## Entry File
 
-Similar to PHP applications under nginx+PHP-FPM, WorkerMan applications also require an entry file, and the entry file is run in PHP Cli mode.
+Similar to PHP applications under nginx+PHP-FPM, Workerman applications also require an entry file, and the entry file is run in PHP Cli mode.
 
 The entry file contains the code related to creating listening processes. For example, the following code snippet is based on Worker development:
 
@@ -33,7 +33,7 @@ $http_worker->onMessage = function(TcpConnection $connection, $data)
 Worker::runAll();
 ```
 
-## Code Specification in WorkerMan
+## Code Specification in Workerman
 
 1. Class names are written in UpperCamelCase, and the class file name must be the same as the class name inside the file for automatic loading. For example:
 ```php

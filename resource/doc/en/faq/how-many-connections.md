@@ -1,4 +1,4 @@
-# WorkerMan supports how many concurrent connections
+# Workerman supports how many concurrent connections
 
 The concept of "concurrency" is too vague, and here we use two quantifiable indicators, "concurrent connection count" and "concurrent request count", to explain.
 
