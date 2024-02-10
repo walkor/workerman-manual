@@ -1,147 +1,149 @@
-# A simple tutorial
+# Simple Development Example
 
-## Example 1 : A HTTP Service
-**Create http_test.php**
+## Installation
+
+**Install workerman**
+
+Run the following command in an empty directory:
+
+```
+composer require workerman/workerman
+```
+
+## Example 1: Providing Web Services Externally Using HTTP Protocol
+
+**Create start.php file**
 ```php
 <?php
 use Workerman\Worker;
-require_once './Workerman/Autoloader.php';
+use Workerman\Connection\TcpConnection;
+use Workerman\Protocols\Http\Request;
+require_once __DIR__ . '/vendor/autoload.php';
 
-// Create a Worker and listens 2345 port，use HTTP Protocol
+// Create a Worker to listen on port 2345 and use the http protocol for communication
 $http_worker = new Worker("http://0.0.0.0:2345");
 
-// 4 processes
+// Start 4 processes to provide external services
 $http_worker->count = 4;
 
-// Emitted when data is received
-$http_worker->onMessage = function($connection, $data)
+// Reply with "hello world" to the browser when receiving data sent by the browser
+$http_worker->onMessage = function(TcpConnection $connection, Request $request)
 {
-    var_dump($_GET, $_POST, $_COOKIE, $_SESSION, $_SERVER, $_FILE);
-    // Send hello world to client
+    // Send "hello world" to the browser
     $connection->send('hello world');
 };
 
-// Run all workers
+// Run the worker
 Worker::runAll();
 ```
 
-**Run with**
+**Run in command line (for Windows users, use [cmd command line](https://baike.baidu.com/item/%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E7%AC%A6?fromtitle=CMD&fromid=1193011&type=syn))**
 ```shell
-php http_test.php start
-
+php start.php start
 ```
 
-**test**
+**Testing**
 
+Assuming the server IP is 127.0.0.1
 
-Visit url http://127.0.0.1:2345
+Access the URL http://127.0.0.1:2345 in a web browser
 
+**Note:**
 
-## Example 2 : A Websocket Service
-**create ws_test.php**
+1. If there is an issue with accessing it, please refer to the [reasons for client connection failure](../faq/client-connect-fail.md) section for troubleshooting.
+
+2. The server uses the http protocol and can only communicate with the http protocol. It cannot directly communicate with other protocols such as websocket.
+
+## Example 2: Providing Services Externally Using WebSocket Protocol
+
+**Create ws_test.php file**
 ```php
 <?php
 use Workerman\Worker;
-require_once './Workerman/Autoloader.php';
+use Workerman\Connection\TcpConnection;
+require_once __DIR__ . '/vendor/autoload.php';
 
-// Create A Worker and Listens 2346 port, use Websocket protocol
-$ws_worker = new Worker("websocket://0.0.0.0:2346");
+// Note: Unlike the previous example, use the websocket protocol here
+$ws_worker = new Worker("websocket://0.0.0.0:2000");
 
-// 4 processes
+// Start 4 processes to provide external services
 $ws_worker->count = 4;
 
-// Emitted when new connection come
-$ws_worker->onConnect = function($connection)
+// When receiving data from the client, return "hello $data" to the client
+$ws_worker->onMessage = function(TcpConnection $connection, $data)
 {
-    // Emitted when websocket handshake done
-    $connection->onWebSocketConnect = function($connection)
-    {
-        echo "New connection\n";
-    };
-};
-
-// Emitted when data is received
-$ws_worker->onMessage = function($connection, $data)
-{
-    // Send hello $data
+    // Send "hello $data" to the client
     $connection->send('hello ' . $data);
 };
 
-// Emitted when connection closed
-$ws_worker->onClose = function($connection)
-{
-    echo "Connection closed";
-};
-
-// Run worker
+// Run the worker
 Worker::runAll();
 ```
 
-**Run with**
+**Run in command line**
 ```shell
 php ws_test.php start
-
 ```
 
-**Test**
+**Testing**
 
-Javascript
+Open the Chrome web browser, press F12 to open the debug console, and enter the following in the Console tab (or put the following code in an HTML page and run it with JavaScript):
 
 ```javascript
-ws = new WebSocket("ws://127.0.0.1:2346");
+// Assuming the server IP is 127.0.0.1
+ws = new WebSocket("ws://127.0.0.1:2000");
 ws.onopen = function() {
-    alert("connection success");
+    alert("Connection successful");
     ws.send('tom');
+    alert("Sent a string 'tom' to the server");
 };
 ws.onmessage = function(e) {
-    alert("recv message from server：" + e.data);
+    alert("Received a message from the server: " + e.data);
 };
 ```
 
-## Example 3 ： A TCP Server
-**create tcp_test.php**
+**Note:**
 
+1. If there is an issue with accessing it, please refer to the [Common Problems in the Manual - Connection Failure](../faq/client-connect-fail.md) section for troubleshooting.
+
+2. The server uses the websocket protocol and can only communicate with the websocket protocol. It cannot directly communicate with other protocols such as http.
+
+## Example 3: Directly Transmitting Data using TCP
+
+**Create tcp_test.php file**
 ```php
+<?php
 use Workerman\Worker;
-require_once './Workerman/Autoloader.php';
+use Workerman\Connection\TcpConnection;
+require_once __DIR__ . '/vendor/autoload.php';
 
-// Creae A Worker and listen 2347 port，not specified protocol
+// Create a Worker listening on port 2347, without using any application layer protocol
 $tcp_worker = new Worker("tcp://0.0.0.0:2347");
 
-// 4 processes
+// Start 4 processes to provide external services
 $tcp_worker->count = 4;
 
-// Emitted when new connection come
-$tcp_worker->onConnect = function($connection)
+// When the client sends data
+$tcp_worker->onMessage = function(TcpConnection $connection, $data)
 {
-    echo "New connection\n";
-};
-
-// Emitted when data is received
-$tcp_worker->onMessage = function($connection, $data)
-{
-    // Send hello $data
+    // Send "hello $data" to the client
     $connection->send('hello ' . $data);
 };
 
-// Emitted when connection closed
-$tcp_worker->onClose = function($connection)
-{
-    echo "Connection closed\n";
-};
-
-// Run worker
+// Run the worker
 Worker::runAll();
 ```
 
-**Run with**
+**Run in command line**
 
 ```shell
 php tcp_test.php start
-
 ```
 
-**Test**
+**Testing: Run in command line**
+
+(The following is the effect in a Linux command line, which may differ from the effect in Windows)
+
 ```shell
 telnet 127.0.0.1 2347
 Trying 127.0.0.1...
@@ -150,3 +152,9 @@ Escape character is '^]'.
 tom
 hello tom
 ```
+
+**Note:**
+
+1. If there is an issue with accessing it, please refer to the [Common Problems in the Manual - Connection Failure](../faq/client-connect-fail.md) section for troubleshooting.
+
+2. The server uses the raw tcp protocol and cannot directly communicate with protocols such as websocket, http, etc.
