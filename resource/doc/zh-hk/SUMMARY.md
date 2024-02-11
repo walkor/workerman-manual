@@ -1,4 +1,4 @@
-* [序論](README.md)
+* [序言](README.md)
 * [原理](principle.md)
 * [開發必讀](must-read.md)
 * 入門指引
@@ -7,7 +7,7 @@
 * 安裝
     * [環境要求](install/requirement.md)
     * [下載安裝](install/install.md)
-    * [啟動停止](install/start-and-stop.md)
+    * [啓動停止](install/start-and-stop.md)
 * 開發流程
     * [開發前必讀](development/before-development.md)
     * [目錄結構](development/directory-structure.md)
@@ -43,7 +43,7 @@
         * [onBufferFull](worker/on-buffer-full.md)
         * [onBufferDrain](worker/on-buffer-drain.md)
         * [onError](worker/on-error.md)
-    * 接口
+    * 介面
         * [runAll](worker/run-all.md)
         * [stopAll](worker/stop-all.md)
         * [listen](worker/listen.md)
@@ -61,7 +61,7 @@
         * [onBufferFull](tcp-connection/on-buffer-full.md)
         * [onBufferDrain](tcp-connection/on-buffer-drain.md)
         * [onError](tcp-connection/on-error.md)
-    * 接口
+    * 介面
         * [send](tcp-connection/send.md)
         * [getRemoteIp](tcp-connection/get-remote-ip.md)
         * [getRemotePort](tcp-connection/get-remote-port.md)
@@ -96,7 +96,7 @@
     * [status命令查看運行狀態](debug/status.md)
     * [調試busy進程](debug/busy-process.md)
     * [網絡抓包](debug/tcpdump.md)
-    * [跟踪系統調用](debug/strace.md)
+    * [跟蹤系統調用](debug/strace.md)
 * 常用組件
     * [GlobalData數據共享組件](components/global-data.md)
         * [GlobalDataServer](components/global-data-server.md)
@@ -116,7 +116,7 @@
     * [FileMonitor文件監控組件](components/file-monitor.md)
     * [MySQL組件](components/mysql.md)
         * [workerman/mysql](components/workerman-mysql.md)
-        * [其它數據庫類](components/other-mysql-class.md)
+        * [其他數據庫類](components/other-mysql-class.md)
     * [Redis組件](components/redis.md)
         * [workerman/redis](components/workerman-redis.md)
     * [異步http組件](components/async-http.md)
@@ -140,13 +140,13 @@
     * [查看客戶端連接數](faq/connection-status.md)
     * [對象和資源的持久化](faq/persistent-data-and-resources.md)
     * [例子無法工作](faq/demo-not-work.md)
-    * [啟動失敗](faq/workerman-start-fail.md)
+    * [啓動失敗](faq/workerman-start-fail.md)
     * [停止失敗](faq/stop-fail.md)
     * [支持多少並發](faq/how-many-connections.md)
-    * [更改代碼不生效](faq/change-code-not-work.md)
+    * [修改代碼不生效](faq/change-code-not-work.md)
     * [向指定客戶端發送數據](faq/send-data-to-client.md)
     * [如何主動推送消息](faq/active-push.md)
-    * [在其它項目中推送](faq/push-in-other-project.md)
+    * [在其他項目中推送](faq/push-in-other-project.md)
     * [如何實現異步任務](faq/async-task.md)
     * [status里send_fail的原因](faq/about-send-fail.md)
     * [Windows下開發Linux下部署](faq/windows-to-linux.md)
@@ -154,7 +154,7 @@
     * [終端關閉導致workerman關閉](faq/ssh-close-and-workerman-stop.md)
     * [與nginx apache的關係](faq/relationship-with-apache-nginx.md)
     * [禁用函數檢查](faq/disable-function-check.md)
-    * [平滑重啟原理](faq/reload-principle.md)
+    * [平滑重啓原理](faq/reload-principle.md)
     * [為Flash開843端口](faq/flash-843.md)
     * [如何廣播數據](faq/how-to-broadcast.md)
     * [如何建立udp服務](faq/how-to-create-udp-service.md)
@@ -170,7 +170,7 @@
     * [透過代理獲取客戶端真實ip](faq/get-real-ip-from-proxy.md)
     * [開機啟動](faq/start-with-system.md)
     * [接收和發送16進制數據](faq/send-recv-hexadecimal-data.md)
-    * [接收一定請求後重啟](faq/max-requests.md)
+    * [接收一定請求後重啓](faq/max-requests.md)
     * [win下初始化多個worker](faq/multi-woker-for-windows.md)
     * [請求集中在某些進程](faq/requests-concentrated-in-certain-processes.md)
 * 附錄
