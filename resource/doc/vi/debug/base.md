@@ -1,8 +1,8 @@
 # Debug cơ bản
 
-WorkerMan có hai chế độ chạy, chế độ debug và chế độ chạy daemon.
+Workerman có hai chế độ chạy, chế độ debug và chế độ chạy daemon.
 
-Chạy ```php start.php start``` để vào chế độ debug, khi đó các hàm như ```echo, var_dump, var_export``` trong mã nguồn sẽ hiển thị trên terminal. Lưu ý rằng nếu chạy WorkerMan bằng ```php start.php start```, tất cả các tiến trình sẽ thoát khi terminal đóng.
+Chạy ```php start.php start``` để vào chế độ debug, khi đó các hàm như ```echo, var_dump, var_export``` trong mã nguồn sẽ hiển thị trên terminal. Lưu ý rằng nếu chạy Workerman bằng ```php start.php start```, tất cả các tiến trình sẽ thoát khi terminal đóng.
 
 Còn nếu chạy ```php start.php start -d``` thì sẽ chuyển sang chế độ daemon, tức là chế độ chạy chính thức trên môi trường sản xuất, và không bị ảnh hưởng khi đóng terminal.
 

@@ -1,8 +1,8 @@
 # Depuración Básica
 
-WorkerMan tiene dos modos de ejecución, el modo de depuración y el modo de demonio.
+Workerman tiene dos modos de ejecución, el modo de depuración y el modo de demonio.
 
-Al ejecutar `php start.php start`, se entra en modo de depuración, en este caso, las funciones de impresión como `echo`, `var_dump` y `var_export` en el código se mostrarán en la terminal. Es importante tener en cuenta que si se ejecuta `php start.php start`, todos los procesos de WorkerMan se cerrarán cuando se cierre la terminal.
+Al ejecutar `php start.php start`, se entra en modo de depuración, en este caso, las funciones de impresión como `echo`, `var_dump` y `var_export` en el código se mostrarán en la terminal. Es importante tener en cuenta que si se ejecuta `php start.php start`, todos los procesos de Workerman se cerrarán cuando se cierre la terminal.
 
 Por otro lado, al ejecutar `php start.php start -d`, se entra en el modo demonio, es decir, el modo de ejecución oficial en línea, y no se verá afectado al cerrar la terminal.
 

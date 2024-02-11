@@ -1,3 +1,3 @@
-# Mehrere WorkerMan-Instanzen ausführen
+# Mehrere Workerman-Instanzen ausführen
 
-Es ist möglich, mehrere WorkerMan-Instanzen auszuführen, normalerweise indem unterschiedliche Startdateien und verschiedene Portnummern verwendet werden.
+Es ist möglich, mehrere Workerman-Instanzen auszuführen, normalerweise indem unterschiedliche Startdateien und verschiedene Portnummern verwendet werden.

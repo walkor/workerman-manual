@@ -64,4 +64,4 @@ Workerman 3.x - 4.x 버전
 Workerman은 Linux 및 Windows 시스템을 모두 지원합니다. Windows 버전의 Workerman **는 어떤 확장도 의존하지 않으며**, PHP 환경 변수를 설정하기만 하면 됩니다. **Windows 버전의 Workerman 설치 및 유의 사항은 [Windows 사용자를 위한 필독사항](https://www.workerman.net/windows)을 참조하십시오.**
 
 ## 클라이언트
-WorkerMan의 통신 프로토콜은 개방적이며 맞춤적이므로 이론적으로 WorkerMan은 어떤 플랫폼의 클라이언트와도 통신할 수 있습니다. 사용자는 클라이언트를 개발할 때 해당 통신 프로토콜에 따라 서버와 통신을 완료할 수 있습니다.
+Workerman의 통신 프로토콜은 개방적이며 맞춤적이므로 이론적으로 Workerman은 어떤 플랫폼의 클라이언트와도 통신할 수 있습니다. 사용자는 클라이언트를 개발할 때 해당 통신 프로토콜에 따라 서버와 통신을 완료할 수 있습니다.

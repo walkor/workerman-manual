@@ -21,7 +21,7 @@ Se la porta è occupata da Workerman e non può essere arrestata con il comando 
 
 ```bash
 killall php
-ps aux|grep WorkerMan|awk '{print $2}'|xargs kill -9
+ps aux|grep -i workerman|awk '{print $2}'|xargs kill -9
 ```
 
 #### Soluzione 4

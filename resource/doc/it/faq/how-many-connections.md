@@ -1,4 +1,4 @@
-# WorkerMan supporta quanti utenti simultanei
+# Workerman supporta quanti utenti simultanei
 
 Il concetto di **simultaneità** è ambiguo, qui verranno illustrati due indicatori quantificabili: il **numero di connessioni simultanee** e il **numero di richieste simultanee**.
 

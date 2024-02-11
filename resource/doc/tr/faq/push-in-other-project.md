@@ -1,8 +1,8 @@
-# WorkerMan'ı diğer projelerde istemciye veri göndermek için nasıl kullanabilirim?
+# Workerman'ı diğer projelerde istemciye veri göndermek için nasıl kullanabilirim?
 
 **Soru:**
 
-Normal bir web projesine sahibim ve bu projede WorkerMan'ın API'sini kullanarak istemcilere veri göndermek istiyorum.
+Normal bir web projesine sahibim ve bu projede Workerman'ın API'sini kullanarak istemcilere veri göndermek istiyorum.
 
 **Cevap:**
 

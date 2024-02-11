@@ -6,7 +6,7 @@ Thư mục ứng dụng có thể được đặt ở bất kỳ vị trí nào.
 
 ## Tệp đầu vào
 
-Tương tự như ứng dụng PHP trong môi trường nginx+PHP-FPM, ứng dụng trong WorkerMan cũng cần một tệp đầu vào, tên tệp đầu vào không có yêu cầu cụ thể, và tệp này chạy bằng cách sử dụng PHP Cli.
+Tương tự như ứng dụng PHP trong môi trường nginx+PHP-FPM, ứng dụng trong Workerman cũng cần một tệp đầu vào, tên tệp đầu vào không có yêu cầu cụ thể, và tệp này chạy bằng cách sử dụng PHP Cli.
 
 Trong tệp đầu vào chứa mã để tạo các quá trình lắng nghe, ví dụ đoạn mã dưới đây dựa trên Worker để phát triển:
 
@@ -33,7 +33,7 @@ $http_worker->onMessage = function(TcpConnection $connection, $data)
 Worker::runAll();
 ```
 
-## Quy tắc mã trong WorkerMan
+## Quy tắc mã trong Workerman
 
 1. Tên lớp sử dụng đúng quy tắc viết hoa chữ cái đầu, tên tệp lớp phải giống với tên lớp bên trong tệp, để có thể tải tự động. Ví dụ:
 

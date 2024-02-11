@@ -1,8 +1,8 @@
 # 基本调试
 
-WorkerMan有两种运行模式，调试模式以及daemon运行模式
+Workerman有两种运行模式，调试模式以及daemon运行模式
 
-运行 ```php start.php start``` 进入调试模式，这时代码中的```echo、var_dump、var_export```等函数打印会在终端显示。注意以```php start.php start```运行的WorkerMan在终端关闭时所有进程会退出。
+运行 ```php start.php start``` 进入调试模式，这时代码中的```echo、var_dump、var_export```等函数打印会在终端显示。注意以```php start.php start```运行的Workerman在终端关闭时所有进程会退出。
 
 而运行 ```php start.php start -d```则是进入daemon模式，也就是正式上线的运行模式，关闭终端不受影响。
 

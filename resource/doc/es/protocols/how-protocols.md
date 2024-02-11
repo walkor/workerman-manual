@@ -16,20 +16,20 @@ Supongamos que el símbolo que identifica los límites de los datos es el salto 
 Es importante observar que al final de los datos de la solicitud hay un carácter de salto de línea (representado por la cadena "\n" en PHP con **comillas dobles**), que indica el final de la solicitud.
 
 ### Pasos de implementación
-En WorkerMan, si deseas implementar el protocolo mencionado anteriormente (supongamos que se llama JsonNL) en un proyecto llamado MyApp, debes seguir los siguientes pasos:
+En Workerman, si deseas implementar el protocolo mencionado anteriormente (supongamos que se llama JsonNL) en un proyecto llamado MyApp, debes seguir los siguientes pasos:
 
 1. Colocar el archivo del protocolo en la carpeta Protocols del proyecto, por ejemplo, el archivo sería MyApp/Protocols/JsonNL.php.
 
 2. Implementar la clase JsonNL con el espacio de nombres `namespace Protocols;`, y asegurarse de implementar tres métodos estáticos: input, encode y decode.
 
-Es importante destacar que WorkerMan llamará automáticamente a estos tres métodos estáticos para implementar la división, el empaquetado y el desempaquetado. Para obtener más detalles sobre el flujo de ejecución, consulta la explicación detallada a continuación.
+Es importante destacar que Workerman llamará automáticamente a estos tres métodos estáticos para implementar la división, el empaquetado y el desempaquetado. Para obtener más detalles sobre el flujo de ejecución, consulta la explicación detallada a continuación.
 
-### Flujo de interacción entre WorkerMan y la clase de protocolo
-1. Supongamos que el cliente envía un paquete de datos al servidor. Cuando el servidor recibe los datos (puede ser parte de los datos), inmediatamente llama al método `input` del protocolo para verificar la longitud de este paquete. El método `input` devuelve el valor de longitud `$length` a WorkerMan.
-2. Una vez que WorkerMan recibe este valor de `$length`, comprueba si la longitud de los datos en el búfer actual es igual o mayor que `$length`. Si no es así, continúa esperando datos hasta que la longitud del búfer sea igual o mayor que `$length`.
-3. Cuando la longitud del búfer es suficiente, WorkerMan corta los datos del búfer con una longitud de `$length` (es decir, **divide el paquete**) y llama al método `decode` del protocolo para **desempaquetar** los datos. El resultado del desempaquetado se almacena en la variable `$data`.
-4. Una vez desempaquetados, WorkerMan pasa los datos `$data` al negocio mediante la devolución de llamada `onMessage($connection, $data)`. El negocio puede utilizar la variable `$data` para obtener los datos completos y desempaquetados enviados por el cliente.
-5. Si el negocio necesita enviar datos al cliente mediante la llamada a `$connection->send($buffer)`, WorkerMan automáticamente utiliza el método `encode` del protocolo para **empaquetar** `$buffer` antes de enviarlo al cliente.
+### Flujo de interacción entre Workerman y la clase de protocolo
+1. Supongamos que el cliente envía un paquete de datos al servidor. Cuando el servidor recibe los datos (puede ser parte de los datos), inmediatamente llama al método `input` del protocolo para verificar la longitud de este paquete. El método `input` devuelve el valor de longitud `$length` a Workerman.
+2. Una vez que Workerman recibe este valor de `$length`, comprueba si la longitud de los datos en el búfer actual es igual o mayor que `$length`. Si no es así, continúa esperando datos hasta que la longitud del búfer sea igual o mayor que `$length`.
+3. Cuando la longitud del búfer es suficiente, Workerman corta los datos del búfer con una longitud de `$length` (es decir, **divide el paquete**) y llama al método `decode` del protocolo para **desempaquetar** los datos. El resultado del desempaquetado se almacena en la variable `$data`.
+4. Una vez desempaquetados, Workerman pasa los datos `$data` al negocio mediante la devolución de llamada `onMessage($connection, $data)`. El negocio puede utilizar la variable `$data` para obtener los datos completos y desempaquetados enviados por el cliente.
+5. Si el negocio necesita enviar datos al cliente mediante la llamada a `$connection->send($buffer)`, Workerman automáticamente utiliza el método `encode` del protocolo para **empaquetar** `$buffer` antes de enviarlo al cliente.
 
 ### Implementación específica
 

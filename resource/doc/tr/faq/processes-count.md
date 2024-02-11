@@ -30,5 +30,5 @@ $http_worker->count = 4;
 İşletme kodu genellikle CPU yoğunluğu durumunda ise işlem sayısını CPU çekirdek sayısına ayarlayabilirsiniz.
 
 ## Dikkat
-WorkerMan'ın kendi IO işlemleri engelleme olmaksızın olduğundan, örneğin "Connection->send" gibi işlemler, CPU yoğunluğuna dahildir. İşletmenin hangi türde olduğunu bilmiyorsanız, işlem sayısını genellikle CPU çekirdek sayısının yaklaşık 3 katı olarak ayarlayabilirsiniz.
+Workerman'ın kendi IO işlemleri engelleme olmaksızın olduğundan, örneğin "Connection->send" gibi işlemler, CPU yoğunluğuna dahildir. İşletmenin hangi türde olduğunu bilmiyorsanız, işlem sayısını genellikle CPU çekirdek sayısının yaklaşık 3 katı olarak ayarlayabilirsiniz.
 Ayrıca, işlem sayısı ne kadar fazla olursa, işlem değiştirme maliyetinin artacağını unutmayın, bu da performansı etkileyebilir.

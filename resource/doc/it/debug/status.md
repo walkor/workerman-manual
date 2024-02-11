@@ -1,6 +1,6 @@
 # Visualizzazione dello stato di esecuzione
 
-Esegui il comando ```php start.php status``` per visualizzare lo stato di esecuzione di WorkerMan, simile al seguente:
+Esegui il comando ```php start.php status``` per visualizzare lo stato di esecuzione di Workerman, simile al seguente:
 
 ```plaintext
 ----------------------------------------------STATO GLOBALE---------------------------------------------------

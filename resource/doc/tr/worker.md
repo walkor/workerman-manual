@@ -1,5 +1,5 @@
 # Worker Sınıfı
-WorkerMan'de Worker ve Connection olmak üzere iki önemli sınıf bulunmaktadır.
+Workerman'de Worker ve Connection olmak üzere iki önemli sınıf bulunmaktadır.
 
 Worker sınıfı, port dinlemeyi sağlar ve istemci bağlantısı olayı, bağlantı üzerindeki mesaj olayı, bağlantının kesilme olayı için geri çağırma işlevlerini ayarlayabilir, bu sayede işlemleri gerçekleştirebilir.
 

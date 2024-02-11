@@ -1,8 +1,8 @@
 # 基本偵錯
 
-WorkerMan有兩種運行模式，偵錯模式以及守護進程運行模式。
+Workerman有兩種運行模式，偵錯模式以及守護進程運行模式。
 
-執行 ```php start.php start``` 進入偵錯模式，這時程式碼中的 ```echo、var_dump、var_export``` 等函數打印將會在終端顯示。請注意，以 ```php start.php start``` 運行的WorkerMan在終端關閉時所有進程將會退出。
+執行 ```php start.php start``` 進入偵錯模式，這時程式碼中的 ```echo、var_dump、var_export``` 等函數打印將會在終端顯示。請注意，以 ```php start.php start``` 運行的Workerman在終端關閉時所有進程將會退出。
 
 而執行 ```php start.php start -d``` 則是進入守護進程模式，也就是正式上線的運行模式，關閉終端不受影響。
 

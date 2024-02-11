@@ -29,15 +29,15 @@
 
 ### เกี่ยวกับ PHP-CLI
 
-WorkerMan ทำงานบนโหมด [PHP command line (PHP-CLI)](https://php.net/manual/zh/features.commandline.php) PHP-CLI แยกจาก PHP-FPM หรือ Apache MOD-PHP และไม่มีความขัดแย้งหรือล้มเหลวซึ่งกันและกัน และทำงานอย่างอิสระ
+Workerman ทำงานบนโหมด [PHP command line (PHP-CLI)](https://php.net/manual/zh/features.commandline.php) PHP-CLI แยกจาก PHP-FPM หรือ Apache MOD-PHP และไม่มีความขัดแย้งหรือล้มเหลวซึ่งกันและกัน และทำงานอย่างอิสระ
 
-### เกี่ยวกับส่วนขยายที่ WorkerMan ต้องการ
+### เกี่ยวกับส่วนขยายที่ Workerman ต้องการ
 
 1. [ส่วนขยาย pcntl](https://cn2.php.net/manual/zh/book.pcntl.php)
-   ส่วนขยาย pcntl เป็นส่วนขยายที่สำคัญสำหรับการควบคุมกระบวนการในระบบปฏิบัติการ Linux และ WorkerMan ใช้คุณสมบัติต่าง ๆ เช่น [การสร้างกระบวนการ](https://cn2.php.net/manual/zh/function.pcntl-fork.php) ควบคุมสัญญาณ (https://cn2.php.net/manual/zh/function.pcntl-signal.php) การตั้งนาฬิกา (https://cn2.php.net/manual/zh/function.pcntl-alarm.php) การทำงานของกระบวนการสถานะการดูแล (https://cn2.php.net/manual/zh/function.pcntl-waitpid.php) ข้อมูลเฉพาะการดูแลดังต่อไปนี้ ส่วนขยายนี้ไม่รองรับบนระบบปฏิบัติการ Windows
+   ส่วนขยาย pcntl เป็นส่วนขยายที่สำคัญสำหรับการควบคุมกระบวนการในระบบปฏิบัติการ Linux และ Workerman ใช้คุณสมบัติต่าง ๆ เช่น [การสร้างกระบวนการ](https://cn2.php.net/manual/zh/function.pcntl-fork.php) ควบคุมสัญญาณ (https://cn2.php.net/manual/zh/function.pcntl-signal.php) การตั้งนาฬิกา (https://cn2.php.net/manual/zh/function.pcntl-alarm.php) การทำงานของกระบวนการสถานะการดูแล (https://cn2.php.net/manual/zh/function.pcntl-waitpid.php) ข้อมูลเฉพาะการดูแลดังต่อไปนี้ ส่วนขยายนี้ไม่รองรับบนระบบปฏิบัติการ Windows
 
 2. [ส่วนขยาย posix](https://cn2.php.net/manual/zh/book.posix.php)
-   ส่วนขยาย posix ทำให้ PHP สามารถเรียกใช้ส่วนต่อประธานจากระบบผ่านทาง [มาตรฐาน POSIX](https://baike.baidu.com/view/209573.htm) WorkerMan ใช้ส่วนต่อประธานในการทำงานเช่นเดียวกันกับการทำกระบวนการที่ปกติควบการของกลุ่มผู้ใช้งาน WorkerMan ส่วนขยายนี้ไม่รองรับบนระบบปฏิบัติการ Windows
+   ส่วนขยาย posix ทำให้ PHP สามารถเรียกใช้ส่วนต่อประธานจากระบบผ่านทาง [มาตรฐาน POSIX](https://baike.baidu.com/view/209573.htm) Workerman ใช้ส่วนต่อประธานในการทำงานเช่นเดียวกันกับการทำกระบวนการที่ปกติควบการของกลุ่มผู้ใช้งาน Workerman ส่วนขยายนี้ไม่รองรับบนระบบปฏิบัติการ Windows
 
 3. [ส่วนขยาย Event](https://php.net/manual/zh/book.event.php) หรือ [ส่วนขยาย libevent](https://cn2.php.net/manual/en/book.libevent.php)
    ส่วนขยาย Event ทำให้ PHP สามารถใช้งานระบบจัดการเหตุการณ์ขั้นสูงเช่น [Epoll](https://baike.baidu.com/view/1385104.htm) และ Kqueue ทำให้ได้ใช้ระบบขั้นสูง เมื่อมีการเชื่อมต่อกับจำนวนมาก ส่วนมากจะเป็นส่วนสำคัญในการใช้งานที่เกี่ยวข้องกับการเชื่อมต่อทางระยะยาวที่มีจำนวนมาก ส่วนขยาย libevent (หรือ ส่วนขยาย event) ไม่จำเป็นต้องใช้งาน หากทำการตั้งค่าไว้แล้วการใช้งานส่วนขยายงี้โดยปริยายจะนำไปใช้งานผ่านกับการจัดกำลังประมวลผลที่ทำมาจาก PHP

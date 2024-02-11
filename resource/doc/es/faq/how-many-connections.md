@@ -1,4 +1,4 @@
-# WorkerMan soporta cuántas conexiones concurrentes
+# Workerman soporta cuántas conexiones concurrentes
 
 El concepto de **conexiones concurrentes** es bastante vago, así que aquí se explicarán dos métricas cuantificables: **número de conexiones concurrentes** y **número de solicitudes concurrentes**.
 

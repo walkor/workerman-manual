@@ -1,8 +1,8 @@
-# Protocolli supportati da WorkerMan
+# Protocolli supportati da Workerman
 
-WorkerMan supporta vari protocolli a livello di interfaccia, purché rispettino l'interfaccia ```ConnectionInterface``` (vedere la sezione Protocolli personalizzati). 
+Workerman supporta vari protocolli a livello di interfaccia, purché rispettino l'interfaccia ```ConnectionInterface``` (vedere la sezione Protocolli personalizzati). 
 
-Per comodità degli sviluppatori, WorkerMan fornisce supporto per i protocolli HTTP, WebSocket e anche per un protocollo di testo molto semplice, oltre a un protocollo di frame utilizzabile per la trasmissione binaria. Gli sviluppatori possono utilizzare direttamente questi protocolli senza dover fare ulteriori sviluppi. Se nessuno di questi protocolli soddisfa le esigenze, gli sviluppatori possono implementare il proprio protocollo seguendo la sezione Protocolli personalizzati.
+Per comodità degli sviluppatori, Workerman fornisce supporto per i protocolli HTTP, WebSocket e anche per un protocollo di testo molto semplice, oltre a un protocollo di frame utilizzabile per la trasmissione binaria. Gli sviluppatori possono utilizzare direttamente questi protocolli senza dover fare ulteriori sviluppi. Se nessuno di questi protocolli soddisfa le esigenze, gli sviluppatori possono implementare il proprio protocollo seguendo la sezione Protocolli personalizzati.
 
 Gli sviluppatori possono anche basarsi direttamente su protocolli TCP o UDP.
 

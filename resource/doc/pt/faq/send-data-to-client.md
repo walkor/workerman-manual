@@ -1,4 +1,4 @@
-# Como enviar dados para um cliente específico no WorkerMan
+# Como enviar dados para um cliente específico no Workerman
 Ao utilizar o Worker como servidor, sem o GatewayWorker, como posso enviar mensagens para um usuário específico?
 
 ```php

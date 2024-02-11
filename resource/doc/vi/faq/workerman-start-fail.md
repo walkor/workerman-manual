@@ -22,7 +22,7 @@ Nếu không thể dừng chương trình sử dụng cổng tương ứng, bạ
 Nếu cổng được sử dụng bởi Workerman và không thể dừng bằng lệnh stop (thường là do mất tập tin pid hoặc quá trình chính bị kill bởi người phát triển), bạn có thể dùng hai lệnh sau để kết thúc tiến trình Workerman.
 ```
 killall php
-ps aux|grep WorkerMan|awk '{print $2}'|xargs kill -9
+ps aux|grep -i workerman|awk '{print $2}'|xargs kill -9
 ```
 
 #### Giải pháp 4

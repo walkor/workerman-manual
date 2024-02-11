@@ -1,8 +1,8 @@
 # Temel Hata Ayıklama
 
-WorkerMan'ın iki çalışma modu vardır: hata ayıklama modu ve daemon çalışma modu.
+Workerman'ın iki çalışma modu vardır: hata ayıklama modu ve daemon çalışma modu.
 
-```php start.php start``` komutunu çalıştırarak hata ayıklama moduna girebilirsiniz, bu durumda ```echo, var_dump, var_export``` gibi fonksiyonların çıktıları terminalde görüntülenecektir. ```php start.php start``` ile çalışan WorkerMan'in tüm süreçleri terminal kapatıldığında sona ereceğini unutmayın.
+```php start.php start``` komutunu çalıştırarak hata ayıklama moduna girebilirsiniz, bu durumda ```echo, var_dump, var_export``` gibi fonksiyonların çıktıları terminalde görüntülenecektir. ```php start.php start``` ile çalışan Workerman'in tüm süreçleri terminal kapatıldığında sona ereceğini unutmayın.
 
 ```php start.php start -d``` komutu ise daemon moduna girmenizi sağlar, yani canlı ortamda kullanılan çalışma modudur ve terminal kapatıldığında etkilenmez. 
 

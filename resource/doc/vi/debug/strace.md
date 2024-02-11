@@ -7,7 +7,7 @@ Khi muốn biết một tiến trình đang làm gì, bạn có thể sử dụn
 ```
 Xin chào quản trị viên
 ---------------------------------------TRẠNG THÁI TOÀN CỤC--------------------------------------------
-Phiên bản WorkerMan: 3.0.1
+Phiên bản Workerman: 3.0.1
 Thời gian bắt đầu: 2014-08-12 17:42:04   Đã chạy 0 ngày 1 giờ
 Trung bình tải: 3.34, 3.59, 3.67
 1 người dùng       8 người làm việc       14 tiến trình

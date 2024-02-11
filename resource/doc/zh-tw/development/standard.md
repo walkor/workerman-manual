@@ -6,7 +6,7 @@
 
 ## 入口檔案
 
-與 nginx+PHP-FPM 下的 PHP 應用程式一樣，WorkerMan 中的應用程式也需要一個入口檔案，入口檔案名稱沒有特定要求，並且這個入口檔案是以 PHP Cli 方式運行。
+與 nginx+PHP-FPM 下的 PHP 應用程式一樣，Workerman 中的應用程式也需要一個入口檔案，入口檔案名稱沒有特定要求，並且這個入口檔案是以 PHP Cli 方式運行。
 
 入口檔案中包含建立監聽進程相關的程式碼，例如以下基於 Worker 開發的程式碼片段：
 
@@ -33,7 +33,7 @@ $http_worker->onMessage = function(TcpConnection $connection, $data)
 Worker::runAll();
 ```
 
-## WorkerMan 中的程式碼規範
+## Workerman 中的程式碼規範
 
 1. 類別使用大寫駝峰式命名，檔案名稱必須與內部類別名稱相同，以便自動載入。例如：
 ```php

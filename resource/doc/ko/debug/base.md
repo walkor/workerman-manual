@@ -1,8 +1,8 @@
 # 기본 디버깅
 
-WorkerMan에는 디버그 모드와 데몬 실행 모드 두 가지가 있습니다.
+Workerman에는 디버그 모드와 데몬 실행 모드 두 가지가 있습니다.
 
-```php start.php start```를 실행하여 디버그 모드에 진입하면 코드 내의 `echo, var_dump, var_export`와 같은 함수 출력이 터미널에 표시됩니다. ```php start.php start```로 실행된 WorkerMan은 터미널을 닫을 때 모든 프로세스가 종료됩니다.
+```php start.php start```를 실행하여 디버그 모드에 진입하면 코드 내의 `echo, var_dump, var_export`와 같은 함수 출력이 터미널에 표시됩니다. ```php start.php start```로 실행된 Workerman은 터미널을 닫을 때 모든 프로세스가 종료됩니다.
 
 반면에 ```php start.php start -d```를 실행하여 데몬 모드에 진입하면 실제 온라인 모드가 됩니다. 터미널을 닫아도 영향을 받지 않습니다.
 

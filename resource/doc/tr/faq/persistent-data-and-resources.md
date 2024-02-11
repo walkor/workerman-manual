@@ -1,7 +1,7 @@
 # Nesnelerin ve Kaynakların Kalıcılığı
-Geleneksel web geliştirmede, PHP tarafından oluşturulan nesneler, veriler, kaynaklar vb. talep sona erdikten sonra tamamen serbest bırakılır, bu da kalıcı olmalarını zorlaştırır. Ancak WorkerMan sayesinde bunlar kolayca başarılabilir.
+Geleneksel web geliştirmede, PHP tarafından oluşturulan nesneler, veriler, kaynaklar vb. talep sona erdikten sonra tamamen serbest bırakılır, bu da kalıcı olmalarını zorlaştırır. Ancak Workerman sayesinde bunlar kolayca başarılabilir.
 
-WorkerMan'de belirli veri kaynaklarını bellekte kalıcı olarak saklamak istiyorsanız, bu kaynakları global değişkenlere veya sınıfın statik üyelerine yerleştirebilirsiniz.
+Workerman'de belirli veri kaynaklarını bellekte kalıcı olarak saklamak istiyorsanız, bu kaynakları global değişkenlere veya sınıfın statik üyelerine yerleştirebilirsiniz.
 
 Aşağıdaki kod örneği ile örneğin:
 

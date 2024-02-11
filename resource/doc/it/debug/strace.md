@@ -7,7 +7,7 @@ Quando si desidera sapere cosa sta facendo un processo, è possibile tracciare t
 ```
 Ciao amministratore
 ---------------------------------------STATO GLOBALE--------------------------------------------
-Versione WorkerMan: 3.0.1
+Versione Workerman: 3.0.1
 orario di avvio: 2014-08-12 17:42:04   attivo da 0 giorni 1 ora
 carico medio: 3,34, 3,59, 3,67
 1 utenti         8 worker       14 processi

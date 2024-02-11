@@ -1,6 +1,6 @@
 # Kurulumu Genişletme
 ## Dikkat
-Apache+PHP veya Nginx+PHP çalışma modundan farklı olarak, WorkerMan PHP komut satırı [PHP CLI](http://php.net/manual/zh/features.commandline.php) üzerinde çalışır ve farklı PHP yürütülebilir dosyasını kullanır, ayrıca farklı bir php.ini dosyası kullanılabilir. Bu nedenle, bir websitesinde ```phpinfo()``` çağrısı ile bir eklentinin yüklü olduğunu görmek, komut satırı PHP CLI'nin aynı eklentiyi yüklediği anlamına gelmez.
+Apache+PHP veya Nginx+PHP çalışma modundan farklı olarak, Workerman PHP komut satırı [PHP CLI](http://php.net/manual/zh/features.commandline.php) üzerinde çalışır ve farklı PHP yürütülebilir dosyasını kullanır, ayrıca farklı bir php.ini dosyası kullanılabilir. Bu nedenle, bir websitesinde ```phpinfo()``` çağrısı ile bir eklentinin yüklü olduğunu görmek, komut satırı PHP CLI'nin aynı eklentiyi yüklediği anlamına gelmez.
 
 ## PHP CLI'nin hangi eklentilerin yüklü olduğunu nasıl belirleriz
 ```php -m``` komutunu çalıştırarak komut satırı PHP CLI'nin yüklü eklentileri listelenir, sonuç aşağıdakine benzer olacaktır:

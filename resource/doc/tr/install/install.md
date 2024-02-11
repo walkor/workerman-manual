@@ -1,5 +1,5 @@
 # Kurulum Talimatları
-WorkerMan aslında bir PHP kod paketidir, PHP ortamınız kurulu ise WorkerMan kaynak kodunu veya demo'yu indirip çalıştırabilirsiniz.
+Workerman aslında bir PHP kod paketidir, PHP ortamınız kurulu ise Workerman kaynak kodunu veya demo'yu indirip çalıştırabilirsiniz.
 
 **Composer ile Kurulum:**
 ```sh
@@ -15,10 +15,10 @@ Workerman 3.5.3 sürümünden itibaren Workerman artık hem Windows hem de Linux
  `=== Bu sayfa aşağıdaki sadece Linux ortamlarda çalışan workerman için geçerlidir, Windows kullanıcıları lütfen yok sayın ===`
 
 # Linux Sistem Ortam Testi
-Linux sistemleri için aşağıdaki betiği kullanarak yerel PHP ortamının WorkerMan çalışma gereksinimlerini karşılayıp karşılamadığını test edebilirsiniz.
+Linux sistemleri için aşağıdaki betiği kullanarak yerel PHP ortamının Workerman çalışma gereksinimlerini karşılayıp karşılamadığını test edebilirsiniz.
  `curl -Ss https://www.workerman.net/check | php`
 
-Yukarıdaki komut tümünü "ok" olarak görüntülerse, WorkerMan gereksinimleri karşılandı anlamına gelir, doğrudan [resmi web sitesinden](https://www.workerman.net/) örnekleri indirebilir ve çalıştırabilirsiniz.
+Yukarıdaki komut tümünü "ok" olarak görüntülerse, Workerman gereksinimleri karşılandı anlamına gelir, doğrudan [resmi web sitesinden](https://www.workerman.net/) örnekleri indirebilir ve çalıştırabilirsiniz.
 
 Eğer tümü "ok" olarak görüntülenmiyorsa, eksik olan uzantıları aşağıdaki belgeden yararlanarak kurabilirsiniz.
 
@@ -106,7 +106,7 @@ Not: `Include libevent OpenSSL support [yes] :` sorusuna "no" giriniz ve devamı
 extension=event.so
 ```
 
-4. Aşağıdaki komutu çalıştırarak (bu adım WorkerMan ana programını github üzerinden indirir):
+4. Aşağıdaki komutu çalıştırarak (bu adım Workerman ana programını github üzerinden indirir):
 ```shell
 git clone https://github.com/walkor/Workerman
 ```
@@ -132,7 +132,7 @@ Not: `Include libevent OpenSSL support [yes] :` sorusuna "no" giriniz ve devamı
 extension=event.so
 ```
 
-4. Aşağıdaki komutu çalıştırarak (bu adım WorkerMan ana programını github üzerinden indirir):
+4. Aşağıdaki komutu çalıştırarak (bu adım Workerman ana programını github üzerinden indirir):
 ```shell
 git clone https://github.com/walkor/Workerman
 ```

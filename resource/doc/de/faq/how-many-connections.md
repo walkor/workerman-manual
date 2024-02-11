@@ -1,4 +1,4 @@
-# WorkerMan unterstützt eine hohe Anzahl von Nebenläufigkeiten
+# Workerman unterstützt eine hohe Anzahl von Nebenläufigkeiten
 
 Der Begriff **Nebenläufigkeiten** ist zu vage, deshalb werden hier zwei quantifizierbare Indikatoren, nämlich die **Nebenläufige Verbindungszahl** und die **Nebenläufige Anfragenzahl**, verwendet, um dies zu erläutern.
 

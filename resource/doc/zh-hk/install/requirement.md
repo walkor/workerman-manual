@@ -21,11 +21,11 @@ Linux用戶只能使用Linux版本的Workerman。
 2、建議安裝event擴展，但不是必須的（注意event擴展需要PHP>=5.4）
 
 ### Linux環境檢查腳本
-Linux用戶可以運行以下腳本檢查本地環境是否滿足WorkerMan要求
+Linux用戶可以運行以下腳本檢查本地環境是否滿足Workerman要求
 
 ```curl -Ss https://www.workerman.net/check | php```
 
-如果腳本中全部提示ok，則代表滿足WorkerMan運行環境
+如果腳本中全部提示ok，則代表滿足Workerman運行環境
 
 （注意：檢測腳本中沒有檢測event擴展，如果並發連接數大於1024建議安裝event擴展，安裝方法參見下一節）
 
@@ -33,21 +33,21 @@ Linux用戶可以運行以下腳本檢查本地環境是否滿足WorkerMan要求
 
 ### 關於PHP-CLI
 
-WorkerMan是基於[PHP命令行(PHP-CLI)](https://php.net/manual/zh/features.commandline.php)模式運行的。PHP-CLI與PHP-FPM或者Apache的MOD-PHP是獨立的可執行程序，它們之間並不衝突也不會有相互依賴，完全獨立。
+Workerman是基於[PHP命令行(PHP-CLI)](https://php.net/manual/zh/features.commandline.php)模式運行的。PHP-CLI與PHP-FPM或者Apache的MOD-PHP是獨立的可執行程序，它們之間並不衝突也不會有相互依賴，完全獨立。
 
-### 關於WorkerMan依賴的擴展
+### 關於Workerman依賴的擴展
 
 1、[pcntl擴展](https://cn2.php.net/manual/zh/book.pcntl.php)
 
-pcntl擴展是PHP在Linux環境下進程控制的重要擴展，WorkerMan用到了其[進程創建](https://cn2.php.net/manual/zh/function.pcntl-fork.php)、[信號控制](https://cn2.php.net/manual/zh/function.pcntl-signal.php)、[定時器](https://cn2.php.net/manual/zh/function.pcntl-alarm.php)、[進程狀態監控](https://cn2.php.net/manual/zh/function.pcntl-waitpid.php)等特性。此擴展win平臺不支持。
+pcntl擴展是PHP在Linux環境下進程控制的重要擴展，Workerman用到了其[進程創建](https://cn2.php.net/manual/zh/function.pcntl-fork.php)、[信號控制](https://cn2.php.net/manual/zh/function.pcntl-signal.php)、[定時器](https://cn2.php.net/manual/zh/function.pcntl-alarm.php)、[進程狀態監控](https://cn2.php.net/manual/zh/function.pcntl-waitpid.php)等特性。此擴展win平臺不支持。
 
 2、[posix擴展](https://cn2.php.net/manual/zh/book.posix.php)
 
-posix擴展使得PHP在Linux環境可以調用系統通過[POSIX標準](https://baike.baidu.com/view/209573.htm)提供的接口。WorkerMan主要使用了其相關的接口實現了守護進程化、用戶組控制等功能。此擴展win平臺不支持。
+posix擴展使得PHP在Linux環境可以調用系統通過[POSIX標準](https://baike.baidu.com/view/209573.htm)提供的接口。Workerman主要使用了其相關的接口實現了守護進程化、用戶組控制等功能。此擴展win平臺不支持。
 
 3、[Event擴展](https://php.net/manual/zh/book.event.php) 或者 [libevent擴展](https://cn2.php.net/manual/en/book.libevent.php) 
 
-event擴展使得PHP可以使用系統[Epoll](https://baike.baidu.com/view/1385104.htm)、Kqueue等高級事件處理機制，能夠顯著提高WorkerMan在高並發連接時CPU利用率。在高並發長連接相關應用中非常重要。libevent擴展（或者event擴展）不是必須的，如果沒安裝，則默認使用PHP原生Select事件處理機制。
+event擴展使得PHP可以使用系統[Epoll](https://baike.baidu.com/view/1385104.htm)、Kqueue等高級事件處理機制，能夠顯著提高Workerman在高並發連接時CPU利用率。在高並發長連接相關應用中非常重要。libevent擴展（或者event擴展）不是必須的，如果沒安裝，則默認使用PHP原生Select事件處理機制。
 
 ## 如何安裝擴展
 

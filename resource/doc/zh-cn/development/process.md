@@ -14,9 +14,9 @@ require_once __DIR__ . '/vendor/autoload.php';
 ```
 
 #### 3、选定协议
-这里我们选定Text文本协议(WorkerMan中自定义的一个协议，格式为文本+换行)
+这里我们选定Text文本协议(Workerman中自定义的一个协议，格式为文本+换行)
 
-（目前WorkerMan支持HTTP、Websocket、Text文本协议，如果需要使用其它协议，请参照协议一章开发自己的协议）
+（目前Workerman支持HTTP、Websocket、Text文本协议，如果需要使用其它协议，请参照协议一章开发自己的协议）
 
 #### 4、根据需要写入口启动脚本
 例如下面这个是一个简单的聊天室的入口文件。

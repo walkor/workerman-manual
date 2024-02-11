@@ -1,8 +1,8 @@
 # Debug di base
 
-WorkerMan ha due modalità di esecuzione, la modalità di debug e la modalità daemon.
+Workerman ha due modalità di esecuzione, la modalità di debug e la modalità daemon.
 
-Esegui ```php start.php start``` per entrare nella modalità di debug. In questo modo, le funzioni di stampa come ```echo, var_dump, var_export``` nel codice verranno visualizzate nel terminale. Si noti che se si esegue ```php start.php start```, tutti i processi di WorkerMan verranno chiusi quando si chiude il terminale.
+Esegui ```php start.php start``` per entrare nella modalità di debug. In questo modo, le funzioni di stampa come ```echo, var_dump, var_export``` nel codice verranno visualizzate nel terminale. Si noti che se si esegue ```php start.php start```, tutti i processi di Workerman verranno chiusi quando si chiude il terminale.
 
 Mentre l'esecuzione di ```php start.php start -d``` entra nella modalità daemon, cioè la modalità di esecuzione effettiva sul sito, e non è influenzata dalla chiusura del terminale.
 

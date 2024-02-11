@@ -1,10 +1,10 @@
 # Überprüfen des Ausführungsstatus
 
-Durch Ausführen von `php start.php status` können Sie den Ausführungsstatus von WorkerMan überprüfen, ähnlich wie folgt:
+Durch Ausführen von `php start.php status` können Sie den Ausführungsstatus von Workerman überprüfen, ähnlich wie folgt:
 
 ```  
 ----------------------------------------------GLOBALER STATUS----------------------------------------------------
-WorkerMan-Version: 3.5.13          PHP-Version: 5.5.9-1ubuntu4.24
+Workerman-Version: 3.5.13          PHP-Version: 5.5.9-1ubuntu4.24
 Startzeit: 2018-02-03 11:48:20   Laufzeit 112 Tage 2 Stunden   
 Durchschnittliche Auslastung: 0, 0, 0            Ereignisschleife: \Workerman\Events\Event
 4 Worker       11 Prozesse
@@ -36,7 +36,7 @@ Zusammenfassung: 18M     -                        -                  54         
 
 Aus dieser Spalte können Sie folgende Informationen ablesen:
 
-- WorkerMan-Version ```version:3.5.13```
+- Workerman-Version ```version:3.5.13```
 - Startzeit ```2018-02-03 11:48:20```, Laufzeit ```run 112 Tage 2 Stunden```
 - Serverauslastung ```load average: 0, 0, 0```, die Durchschnittsbelastung des Systems in den letzten 1, 5 und 15 Minuten
 - Verwendete IO-Ereignisbibliothek, ```event-loop:\Workerman\Events\Event```

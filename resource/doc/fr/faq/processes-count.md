@@ -29,5 +29,5 @@ Si le code commercial est orienté IO intensif, alors le nombre de processus doi
 Si le code commercial est orienté CPU intensif, alors le nombre de processus peut être configuré pour correspondre au nombre de cœurs de CPU.
 
 ## Remarque
-Les IO de WorkerMan lui-même sont non bloquants, par exemple les opérations telles que ```Connection->send``` sont non bloquantes, ce qui relève de l'activité CPU intensive. Si l'orientation de l'activité commerciale n'est pas claire, le nombre de processus peut être configuré à environ 3 fois le nombre de cœurs de CPU.
+Les IO de Workerman lui-même sont non bloquants, par exemple les opérations telles que ```Connection->send``` sont non bloquantes, ce qui relève de l'activité CPU intensive. Si l'orientation de l'activité commerciale n'est pas claire, le nombre de processus peut être configuré à environ 3 fois le nombre de cœurs de CPU.
 De plus, plus de processus ne signifie pas nécessairement de meilleurs résultats. Si trop de processus sont ouverts, le surcoût de basculement des processus augmentera, ce qui aura un certain impact sur les performances.

@@ -1,6 +1,6 @@
 # Instalación de extensiones
 ## Nota
-Diferente al modo de operación de Apache+PHP o Nginx+PHP, WorkerMan se ejecuta en modo de línea de comandos de PHP [PHP CLI](http://php.net/manual/zh/features.commandline.php), y utiliza un ejecutable de PHP diferente, por lo que es posible que también utilice un archivo php.ini diferente. Por lo tanto, ver una extensión instalada al imprimir ```phpinfo()``` en una página web no significa necesariamente que esta extensión también esté instalada para PHP CLI en la línea de comandos.
+Diferente al modo de operación de Apache+PHP o Nginx+PHP, Workerman se ejecuta en modo de línea de comandos de PHP [PHP CLI](http://php.net/manual/zh/features.commandline.php), y utiliza un ejecutable de PHP diferente, por lo que es posible que también utilice un archivo php.ini diferente. Por lo tanto, ver una extensión instalada al imprimir ```phpinfo()``` en una página web no significa necesariamente que esta extensión también esté instalada para PHP CLI en la línea de comandos.
 
 ## Cómo determinar qué extensiones están instaladas para PHP CLI
 Ejecutando ```php -m``` se listarán las extensiones instaladas para PHP CLI. El resultado será similar al siguiente:

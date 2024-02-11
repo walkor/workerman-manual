@@ -1,6 +1,6 @@
 # Verificar estado de ejecución
 
-Ejecutando ```php start.php status``` se puede verificar el estado de ejecución de WorkerMan, similar al siguiente ejemplo:
+Ejecutando ```php start.php status``` se puede verificar el estado de ejecución de Workerman, similar al siguiente ejemplo:
 
 ```plaintext
 ----------------------------------------------ESTADO GLOBAL-----------------------------------------------------
@@ -36,7 +36,7 @@ Resumen	18M     -                        -                           54         
 
 Desde esta sección, se puede observar 
 
-La versión de WorkerMan ```versión:3.5.13```
+La versión de Workerman ```versión:3.5.13```
 
 El tiempo de inicio ```2018-02-03 11:48:20```, con una ejecución de ```112 días 2 horas ```
 

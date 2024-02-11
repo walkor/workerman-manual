@@ -1,8 +1,8 @@
-# WorkerMan hỗ trợ các giao thức nào
+# Workerman hỗ trợ các giao thức nào
 
-WorkerMan hỗ trợ đa dạng các giao thức thông qua việc tuân thủ giao diện ```ConnectionInterface``` (xem phần Định custom giao thức). 
+Workerman hỗ trợ đa dạng các giao thức thông qua việc tuân thủ giao diện ```ConnectionInterface``` (xem phần Định custom giao thức). 
 
-Để thuận tiện cho các nhà phát triển, WorkerMan cung cấp HTTP, WebSocket và giao thức văn bản đơn giản cũng như giao thức frame có thể sử dụng để truyền tải dữ liệu nhị phân. Nhà phát triển có thể sử dụng trực tiếp những giao thức này mà không cần phải phát triển lần thứ hai. Nếu những giao thức này không đáp ứng nhu cầu, nhà phát triển có thể tham khảo phần Định custom giao thức để triển khai giao thức của riêng mình.
+Để thuận tiện cho các nhà phát triển, Workerman cung cấp HTTP, WebSocket và giao thức văn bản đơn giản cũng như giao thức frame có thể sử dụng để truyền tải dữ liệu nhị phân. Nhà phát triển có thể sử dụng trực tiếp những giao thức này mà không cần phải phát triển lần thứ hai. Nếu những giao thức này không đáp ứng nhu cầu, nhà phát triển có thể tham khảo phần Định custom giao thức để triển khai giao thức của riêng mình.
 
 Nhà phát triển cũng có thể sử dụng trực tiếp các giao thức tcp hoặc udp.
 

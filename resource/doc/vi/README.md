@@ -64,6 +64,6 @@ Phiên bản Workerman 3.x - 4.x
 Workerman hỗ trợ cả hệ thống linux và hệ thống windows. Phiên bản windows của Workerman **không phụ thuôc vào bất kỳ phần mở rộng nào**, chỉ cần cấu hình biến môi trường PHP đúng là được, **quy trình cài đặt và các điều cần lưu ý cho phiên bản windows xem tại [Cần đọc cho người dùng windows](https://www.workerman.net/windows)**.
 
 ## Máy khách
-Giao thức liên lạc của WorkerMan là mở, có thể tùy chỉnh, do đó, lý thuyết WorkerMan có thể tương tác với bất kỳ máy khách nào sử dụng bất kỳ giao thức nào. Khi người dùng phát triển máy khách, họ có thể hoàn tất việc tương tác với máy chủ dựa trên giao thức liên lạc tương ứng.
+Giao thức liên lạc của Workerman là mở, có thể tùy chỉnh, do đó, lý thuyết Workerman có thể tương tác với bất kỳ máy khách nào sử dụng bất kỳ giao thức nào. Khi người dùng phát triển máy khách, họ có thể hoàn tất việc tương tác với máy chủ dựa trên giao thức liên lạc tương ứng.
 
 

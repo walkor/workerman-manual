@@ -23,7 +23,7 @@ Workermanが使用しているポートがありながらも、stopコマンド�
 
 ```shell
 killall php
-ps aux|grep WorkerMan|awk '{print $2}'|xargs kill -9
+ps aux|grep -i workerman|awk '{print $2}'|xargs kill -9
 ```
 
 #### 解決法4

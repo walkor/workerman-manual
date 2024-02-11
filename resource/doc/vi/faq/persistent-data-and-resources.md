@@ -1,8 +1,8 @@
 # Object và Persistence của Tài Nguyên
 
-Trong phát triển Web truyền thống, các đối tượng, dữ liệu và tài nguyên được tạo ra bởi PHP sẽ được giải phóng hoàn toàn sau khi yêu cầu kết thúc, điều này gây khó khăn trong việc duy trì. Tuy nhiên, với WorkerMan, điều này có thể dễ dàng thực hiện.
+Trong phát triển Web truyền thống, các đối tượng, dữ liệu và tài nguyên được tạo ra bởi PHP sẽ được giải phóng hoàn toàn sau khi yêu cầu kết thúc, điều này gây khó khăn trong việc duy trì. Tuy nhiên, với Workerman, điều này có thể dễ dàng thực hiện.
 
-Trong WorkerMan, nếu bạn muốn lưu trữ một số dữ liệu tài nguyên trong bộ nhớ vĩnh viễn, bạn có thể đặt tài nguyên vào biến toàn cục hoặc thành viên tĩnh của lớp.
+Trong Workerman, nếu bạn muốn lưu trữ một số dữ liệu tài nguyên trong bộ nhớ vĩnh viễn, bạn có thể đặt tài nguyên vào biến toàn cục hoặc thành viên tĩnh của lớp.
 
 Ví dụ đoạn code sau:
 

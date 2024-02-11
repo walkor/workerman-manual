@@ -1,6 +1,6 @@
 واجهة Connection Class المقدمة
 
-WorkerMan يحتوي على صنفين هامين Worker و Connection.
+Workerman يحتوي على صنفين هامين Worker و Connection.
 
 يتوافق كل اتصال عميل مع كائن Connection، ويمكن ضبط دوال الاستدعاء onMessage و onClose للكائن، بالإضافة إلى توفر واجهة send لإرسال البيانات إلى العميل وواجهة close لإغلاق الاتصال، بالإضافة إلى واجهات أخرى ضرورية.
 

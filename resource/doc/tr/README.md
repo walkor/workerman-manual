@@ -63,4 +63,4 @@ Workerman 3.x - 4.x sürümleri
 Workerman, hem linux hem de windows sistemlerini destekler. Windows sürümü Workerman kendisi **hiçbir uzantıya bağlı değil**, sadece PHP ortam değişkenlerini yapılandırmanız gerekir, **Windows sürümü Workerman kurulumu ve dikkat edilmesi gerekenler için [windows kullanıcıları için önemli](https://www.workerman.net/windows)** bölümüne bakın.
 
 ## İstemci
-WorkerMan'ın iletişim protokolü açık ve özelleştirilebilir olduğu için teorik olarak WorkerMan, herhangi bir platformun istemcisi tarafından herhangi bir iletişim protokolü kullanarak iletişim kurabilir. Kullanıcı, istemci geliştirirken ilgili iletişim protokolüne dayalı olarak sunucu ile iletişim kurabilir.
+Workerman'ın iletişim protokolü açık ve özelleştirilebilir olduğu için teorik olarak Workerman, herhangi bir platformun istemcisi tarafından herhangi bir iletişim protokolü kullanarak iletişim kurabilir. Kullanıcı, istemci geliştirirken ilgili iletişim protokolüne dayalı olarak sunucu ile iletişim kurabilir.

@@ -1,32 +1,32 @@
 # Geliştirme Öncesi Okunması Gerekenler
 
-WorkerMan uygulaması geliştirmek için aşağıdaki konuları anlamanız gerekmektedir:
+Workerman uygulaması geliştirmek için aşağıdaki konuları anlamanız gerekmektedir:
 
-## Birinci, WorkerMan Geliştirme ile Normal PHP Geliştirme Arasındaki Farklar
+## Birinci, Workerman Geliştirme ile Normal PHP Geliştirme Arasındaki Farklar
 
-WorkerMan geliştirme ile normal PHP geliştirme arasında, HTTP protokolü ile ilgili değişken fonksiyonların doğrudan kullanılamaması dışında büyük farklılık bulunmamaktadır.
+Workerman geliştirme ile normal PHP geliştirme arasında, HTTP protokolü ile ilgili değişken fonksiyonların doğrudan kullanılamaması dışında büyük farklılık bulunmamaktadır.
 
 ### 1. Uygulama Katmanı Protokolü Farklılığı
 * Normal PHP geliştirme genellikle HTTP uygulama katmanı protokolüne dayanır, Web Sunucusu geliştiriciler için protokolün çözümü yapılmıştır.
-* WorkerMan, çeşitli protokolleri destekler, şu anda HTTP, WebSocket gibi protokoller yerleşiktir. WorkerMan, geliştiricilere daha basit özel iletişim protokollerini kullanmalarını önerir.
+* Workerman, çeşitli protokolleri destekler, şu anda HTTP, WebSocket gibi protokoller yerleşiktir. Workerman, geliştiricilere daha basit özel iletişim protokollerini kullanmalarını önerir.
 
 *  HTTP protokolü geliştirmesi için lütfen [HTTP hizmet bölümüne](../http/request.md) bakınız.
 
 ### 2. İstek Döngüsü Farkı
 * PHP web uygulamasında bir istekten sonra tüm değişkenleri ve kaynakları serbest bırakacaktır.
-* WorkerMan geliştirmesi yapılan uygulama, ilk yükleme ve çözme sonrasında sürekli bellekte kalır, bu nedenle sınıf tanımları, genel nesneler, sınıfın statik üyeleri serbest bırakılmaz, tekrar kullanım için kolaylaştırır.
+* Workerman geliştirmesi yapılan uygulama, ilk yükleme ve çözme sonrasında sürekli bellekte kalır, bu nedenle sınıf tanımları, genel nesneler, sınıfın statik üyeleri serbest bırakılmaz, tekrar kullanım için kolaylaştırır.
 
 ### 3. Sınıf ve Sabit Tanımlarının Tekrar Define Edilmesinden Kaçının
-* WorkerMan derlenmiş PHP dosyalarını önbelleğe alacağından, aynı sınıf veya sabit tanım dosyalarını birden fazla kez gerektirmekten kaçınmak gerekir. Genellikle require_once/include_once kullanımını öneririz.
+* Workerman derlenmiş PHP dosyalarını önbelleğe alacağından, aynı sınıf veya sabit tanım dosyalarını birden fazla kez gerektirmekten kaçınmak gerekir. Genellikle require_once/include_once kullanımını öneririz.
 
 ### 4. Tekil Moddaki Bağlantı Kaynağının Serbest Bırakılmasına Dikkat Edin
-* WorkerMan, her istek sonrası genel nesneleri ve sınıfın statik üyelerini serbest bırakmayacağı için, veritabanı gibi tekil modda bulunan kaynakları genellikle veritabanı sınıfının içindeki (içeriden bir veritabanı soket bağlantısı içeren) veritabanı örneğini saklar, böylece WorkerMan işlem ömrü boyunca bu veritabanı soket bağlantısını yeniden kullanır. Dikkat edilmesi gereken nokta, veritabanı sunucusunun belirli bir süre boyunca etkin olmadığı bir bağlantıyı kapatma eğiliminde olmasıdır, bu durumda bu veritabanı örneğini tekrar kullandığınızda (hata mesajı genellikle mysql gone away gibi) hata alırsınız. WorkerMan, [veritabanı sınıfını](../components/workerman-mysql.md) sunar, kesintisiz yeniden bağlanma işlevi mevcuttur, geliştiriciler bu işlevi doğrudan kullanabilirler.
+* Workerman, her istek sonrası genel nesneleri ve sınıfın statik üyelerini serbest bırakmayacağı için, veritabanı gibi tekil modda bulunan kaynakları genellikle veritabanı sınıfının içindeki (içeriden bir veritabanı soket bağlantısı içeren) veritabanı örneğini saklar, böylece Workerman işlem ömrü boyunca bu veritabanı soket bağlantısını yeniden kullanır. Dikkat edilmesi gereken nokta, veritabanı sunucusunun belirli bir süre boyunca etkin olmadığı bir bağlantıyı kapatma eğiliminde olmasıdır, bu durumda bu veritabanı örneğini tekrar kullandığınızda (hata mesajı genellikle mysql gone away gibi) hata alırsınız. Workerman, [veritabanı sınıfını](../components/workerman-mysql.md) sunar, kesintisiz yeniden bağlanma işlevi mevcuttur, geliştiriciler bu işlevi doğrudan kullanabilirler.
 
 ### 5. exit, die gibi ifadeleri kullanmaktan kaçının
-* WorkerMan, PHP komut satırı modunda çalışır, exit, die çıkış ifadeleri çağrıldığında, mevcut işlemi sonlandırır. Alt süreçlerin çıkışından sonra hemen aynı alt sürecin yeniden oluşturulmasına rağmen, işletme üzerinde hala olumsuz bir etkiye neden olabilir.
+* Workerman, PHP komut satırı modunda çalışır, exit, die çıkış ifadeleri çağrıldığında, mevcut işlemi sonlandırır. Alt süreçlerin çıkışından sonra hemen aynı alt sürecin yeniden oluşturulmasına rağmen, işletme üzerinde hala olumsuz bir etkiye neden olabilir.
 
 ### 6. Kodu Değiştirdikten Sonra Hizmeti Yeniden Başlatmanız Gerekir
-WorkerMan sürekli bellekte olduğundan, php sınıfı ve fonksiyon tanımları bir kez yüklendikten sonra sürekli bellekte kalır, tekrar diskten okunmaz, bu nedenle işletme kodunu değiştirdikten sonra her seferinde başlatılması gerekir.
+Workerman sürekli bellekte olduğundan, php sınıfı ve fonksiyon tanımları bir kez yüklendikten sonra sürekli bellekte kalır, tekrar diskten okunmaz, bu nedenle işletme kodunu değiştirdikten sonra her seferinde başlatılması gerekir.
 
 ## İkinci, Temel Kavramları Anlamak
 
@@ -55,7 +55,7 @@ Normal bir yeniden başlatma süreci, tüm süreçleri duraklatır ve ardından 
 
 Düzgün yeniden başlatma ise tüm süreçleri aynı anda durdurmak yerine, her bir süreci duraklatıp hemen ardından yeni bir süreç oluşturarak, eski tüm süreçler yerine yenileriyle değiştirene kadar devam eder.
 
-WorkerMan'da, ```php your_file.php reload``` komutu, uygulama programını güncellerken hizmet kalitesini etkilemeden işlem yapmanızı sağlar.
+Workerman'da, ```php your_file.php reload``` komutu, uygulama programını güncellerken hizmet kalitesini etkilemeden işlem yapmanızı sağlar.
 
 **Not: Yalnızca on{...} geri çağırma işlevleri içe aktarılan dosyaları yeniden başlatır, başlatma betiğine doğrudan aktarılan dosyalar veya sert kodlar yeniden başlatma yapmaz.**
 

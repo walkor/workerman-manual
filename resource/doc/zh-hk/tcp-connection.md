@@ -1,6 +1,6 @@
 # Connection類提供的介面
 
-WorkerMan中有兩個重要的類別Worker與Connection。
+Workerman中有兩個重要的類別Worker與Connection。
 
 每個客戶端連接對應一個Connection對象，可以設置對象的onMessage、onClose等回調，同時提供了向客戶端發送數據send介面與關閉連接close介面，以及其他一些必要的介面。
 

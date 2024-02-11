@@ -16,7 +16,7 @@
 上記のリクエストデータの最後に改行文字(これはPHPでは**ダブルクオート**文字列"\n"として表されます)が含まれており、リクエストの終了を表しています。
 
 ### 実装手順
-WorkerManでは、上記のプロトコルを実装する場合、プロトコルの名前をJsonNLとし、プロジェクトがMyAppであると仮定します。その場合、以下の手順が必要です。
+Workermanでは、上記のプロトコルを実装する場合、プロトコルの名前をJsonNLとし、プロジェクトがMyAppであると仮定します。その場合、以下の手順が必要です。
 
 1、プロトコルファイルをプロジェクトのProtocolsディレクトリに配置します。例えば、ファイルMyApp/Protocols/JsonNL.phpを配置します。
 
@@ -111,7 +111,7 @@ Worker::runAll();
 > `Class 'Protocols\JsonNL' not found`というエラーが発生した場合は、[自動読み込み](../faq/autoload.md)を参照して自動ロードを実装してください。
 
 ### プロトコルインターフェースの説明
-WorkerManで開発されたプロトコルクラスは、input、encode、decodeの3つの静的メソッドを実装する必要があります。プロトコルインターフェースの詳細については、Workerman/Protocols/ProtocolInterface.phpを参照するか、以下のように定義されます。
+Workermanで開発されたプロトコルクラスは、input、encode、decodeの3つの静的メソッドを実装する必要があります。プロトコルインターフェースの詳細については、Workerman/Protocols/ProtocolInterface.phpを参照するか、以下のように定義されます。
 
 ```php
 namespace Workerman\Protocols;
@@ -140,7 +140,7 @@ interface ProtocolInterface
     /**
      * リクエストの展開に使用されます
      *
-     * inputの戻り値が0より大きく、WorkerManが十分なデータを受信した場合、自動的にdecodeを呼び出し、メッセージコールバックをトリガーし、decodeで解析されたデータがonMessageコールバックの第2引数に渡されます
+     * inputの戻り値が0より大きく、Workermanが十分なデータを受信した場合、自動的にdecodeを呼び出し、メッセージコールバックをトリガーし、decodeで解析されたデータがonMessageコールバックの第2引数に渡されます
      * つまり、クライアントリクエストパケットを完全に受信したときに自動的にdecode解析が呼び出され、ビジネスコードで手動で呼び出す必要はありません
      * @param ConnectionInterface $connection
      * @param string $recv_buffer

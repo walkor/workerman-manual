@@ -1,5 +1,5 @@
 # Worker 클래스
-WorkerMan에는 Worker 및 Connection이라는 두 가지 중요한 클래스가 있습니다.
+Workerman에는 Worker 및 Connection이라는 두 가지 중요한 클래스가 있습니다.
 
 Worker 클래스는 포트의 리스닝을 구현하고, 클라이언트 연결 이벤트, 연결된 메시지 이벤트, 연결 해제 이벤트의 콜백 함수를 설정하여 비즈니스 처리를 구현하는 데 사용됩니다.
 

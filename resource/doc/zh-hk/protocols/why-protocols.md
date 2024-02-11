@@ -2,13 +2,13 @@
 由於TCP是基於流的，客戶端發送的請求數據是像水流一樣流入到服務端，服務端探測到有數據到來後應該檢查數據是否是完整的，因為可能只是一個請求的部分數據到達服務端，甚至可能是多個請求連在一起到達服務端。如何判斷請求是否全部到達或者從多個連在一起的請求中分離請求，就需要規定一套通訊協議。
 
 
-## 在WorkerMan中為什麼要制定協議？
+## 在Workerman中為什麼要制定協議？
 
 傳統PHP開發都是基於Web的，基本上都是HTTP協議，HTTP協議的解析處理都由WebServer獨自承擔了，所以開發者不會關心協議方面的事情。然而當我們需要基於非HTTP協議開發時，開發者就需要考慮協議的事情了。
 
 
-## WorkerMan已經支持的協議
-WorkerMan目前已經支持HTTP、websocket、text協議(見附錄說明)、frame協議(見附錄說明)，ws協議(見附錄說明)，需要基於這些協議通訊時可以直接使用，使用方法為：在初始化Worker時指定協議，例如
+## Workerman已經支持的協議
+Workerman目前已經支持HTTP、websocket、text協議(見附錄說明)、frame協議(見附錄說明)，ws協議(見附錄說明)，需要基於這些協議通訊時可以直接使用，使用方法為：在初始化Worker時指定協議，例如
 ```php
 use Workerman\Worker;
 use Workerman\Connection\TcpConnection;
@@ -36,7 +36,7 @@ $unix_worker = new Worker('unix:///tmp/wm.sock');
 
 
 ## 使用自定義的通訊協議
-當WorkerMan自帶的通訊協議滿足不了開發需求時，開發者可以定制自己的通訊協議，定制方法見下一節內容。
+當Workerman自帶的通訊協議滿足不了開發需求時，開發者可以定制自己的通訊協議，定制方法見下一節內容。
 
 **提示：**
 

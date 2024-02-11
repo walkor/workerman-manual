@@ -16,20 +16,20 @@ Angenommen, das Trennzeichen zur Unterscheidung der Daten ist der Zeilenumbruch 
 Bitte beachten Sie das Zeilenumbruchszeichen am Ende des Anfragepakets (im PHP-Code wird dies als **Doppelzitatszeichen**-Zeichenfolge "\n" dargestellt), das das Ende einer Anfrage kennzeichnet.
 
 ### Implementierungsschritte
-Wenn Sie das oben genannte Protokoll in WorkerMan implementieren möchten, und angenommen, dass Ihr Protokoll JsonNL heißt und sich im Projekt MyApp befindet, müssen Sie die folgenden Schritte ausführen:
+Wenn Sie das oben genannte Protokoll in Workerman implementieren möchten, und angenommen, dass Ihr Protokoll JsonNL heißt und sich im Projekt MyApp befindet, müssen Sie die folgenden Schritte ausführen:
 
 1. Platzieren Sie die Protokolldatei im Ordner Protokolle des Projekts, z.B. die Datei MyApp/Protocols/JsonNL.php
 
 2. Implementieren Sie die Klasse JsonNL, wobei ```namespace Protocols;``` für den Namensraum verwendet wird. Es müssen drei statische Methoden implementiert werden: input, encode und decode.
 
-Hinweis: WorkerMan wird diese drei statischen Methoden automatisch aufrufen, um die Paketierung, Entpackung und Verschlüsselung zu implementieren. Details zum Ablauf finden Sie in der nachstehenden Ablaufbeschreibung.
+Hinweis: Workerman wird diese drei statischen Methoden automatisch aufrufen, um die Paketierung, Entpackung und Verschlüsselung zu implementieren. Details zum Ablauf finden Sie in der nachstehenden Ablaufbeschreibung.
 
-### Interaktionsablauf zwischen WorkerMan und der Protokollklasse
-1. Angenommen, der Client sendet ein Datenpaket an den Server. Sobald der Server die Daten (möglicherweise teilweise) empfängt, ruft er sofort die Methode ```input``` des Protokolls auf, um die Länge des Pakets zu überprüfen. Die Methode ```input``` gibt die Länge ```$length``` an das WorkerMan-Framework zurück.
-2. Nachdem das WorkerMan-Framework den Wert ```$length``` erhalten hat, überprüft es, ob im aktuellen Datenpuffer bereits eine Datenlänge von ```$length``` empfangen wurde. Falls nicht, wird weiter auf Daten gewartet, bis die Datenpufferlänge nicht kleiner als ```$length``` ist.
-3. Wenn die Datenpufferlänge ausreicht, schneidet WorkerMan die Daten mit einer Länge von ```$length``` aus dem Puffer aus (d.h. **Paketierung**) und ruft die Methode ```decode``` des Protokolls zum **Entpacken** auf. Die entschlüsselten Daten werden in ```$data``` zurückgegeben.
-4. Nach dem Entpacken übergibt WorkerMan die Daten ```$data``` im Rahmen des ```onMessage($connection, $data)```-Callbacks an die Geschäftslogik. Innerhalb des ```onMessage```-Callbacks kann die Geschäftslogik die vollständigen und bereits entschlüsselten Daten des Clients mithilfe der Variablen ```$data``` erhalten.
-5. Wenn die Geschäftslogik in ```onMessage``` Daten an den Client senden muss, ruft WorkerMan automatisch die Methode ```encode``` des Protokolls auf, um das ```$buffer``` zu **verpacken**, bevor es an den Client gesendet wird.
+### Interaktionsablauf zwischen Workerman und der Protokollklasse
+1. Angenommen, der Client sendet ein Datenpaket an den Server. Sobald der Server die Daten (möglicherweise teilweise) empfängt, ruft er sofort die Methode ```input``` des Protokolls auf, um die Länge des Pakets zu überprüfen. Die Methode ```input``` gibt die Länge ```$length``` an das Workerman-Framework zurück.
+2. Nachdem das Workerman-Framework den Wert ```$length``` erhalten hat, überprüft es, ob im aktuellen Datenpuffer bereits eine Datenlänge von ```$length``` empfangen wurde. Falls nicht, wird weiter auf Daten gewartet, bis die Datenpufferlänge nicht kleiner als ```$length``` ist.
+3. Wenn die Datenpufferlänge ausreicht, schneidet Workerman die Daten mit einer Länge von ```$length``` aus dem Puffer aus (d.h. **Paketierung**) und ruft die Methode ```decode``` des Protokolls zum **Entpacken** auf. Die entschlüsselten Daten werden in ```$data``` zurückgegeben.
+4. Nach dem Entpacken übergibt Workerman die Daten ```$data``` im Rahmen des ```onMessage($connection, $data)```-Callbacks an die Geschäftslogik. Innerhalb des ```onMessage```-Callbacks kann die Geschäftslogik die vollständigen und bereits entschlüsselten Daten des Clients mithilfe der Variablen ```$data``` erhalten.
+5. Wenn die Geschäftslogik in ```onMessage``` Daten an den Client senden muss, ruft Workerman automatisch die Methode ```encode``` des Protokolls auf, um das ```$buffer``` zu **verpacken**, bevor es an den Client gesendet wird.
 
 ### Spezifische Implementierung
 
@@ -107,11 +107,11 @@ Worker::runAll();
 ```
 
 > **Hinweis**
-> WorkerMan versucht, Protokolle im Namensraum `Protocols` zu laden. Beispielsweise versucht `new Worker('JsonNL://0.0.0.0:1234')` das Protokoll `Protocols\JsonNL` zu laden.
+> Workerman versucht, Protokolle im Namensraum `Protocols` zu laden. Beispielsweise versucht `new Worker('JsonNL://0.0.0.0:1234')` das Protokoll `Protocols\JsonNL` zu laden.
 > Wenn der Fehler `Class 'Protocols\JsonNL' not found` auftritt, lesen Sie bitte die Anleitung zur [automatischen Ladung](../faq/autoload.md) der Klassen.
 
 ### Protokoll-Schnittstellenbeschreibung
-Bei der Entwicklung von Protokollklassen in WorkerMan müssen drei statische Methoden implementiert werden: input, encode und decode. Die Schnittstellenbeschreibung für Protokolle finden Sie in Workerman/Protocols/ProtocolInterface.php und lautet wie folgt:
+Bei der Entwicklung von Protokollklassen in Workerman müssen drei statische Methoden implementiert werden: input, encode und decode. Die Schnittstellenbeschreibung für Protokolle finden Sie in Workerman/Protocols/ProtocolInterface.php und lautet wie folgt:
 
 ```php
 namespace Workerman\Protocols;
@@ -140,7 +140,7 @@ interface ProtocolInterface
     /**
      * Zum Entpacken von Anfragen
      *
-     * Wenn input einen Wert größer als 0 zurückgibt und WorkerMan genügend Daten empfangen hat, wird decode automatisch aufgerufen
+     * Wenn input einen Wert größer als 0 zurückgibt und Workerman genügend Daten empfangen hat, wird decode automatisch aufgerufen
      * Anschließend wird das onMessage-Callback ausgelöst und die von decode entschlüsselten Daten als zweites Argument an das onMessage-Callback übergeben
      * Mit anderen Worten, wenn eine vollständige Client-Anfrage empfangen wird, wird decode automatisch zur Entschlüsselung aufgerufen und muss nicht manuell im Geschäftscode aufgerufen werden
      * @param ConnectionInterface $connection
@@ -161,4 +161,4 @@ interface ProtocolInterface
 ```
 
 ## Hinweis:
-WorkerMan schreibt nicht vor, dass Protokollklassen die ProtocolInterface implementieren müssen. In der Praxis genügt es, wenn die Klasse die drei statischen Methoden input, encode und decode enthält.
+Workerman schreibt nicht vor, dass Protokollklassen die ProtocolInterface implementieren müssen. In der Praxis genügt es, wenn die Klasse die drei statischen Methoden input, encode und decode enthält.

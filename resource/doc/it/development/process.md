@@ -14,9 +14,9 @@ require_once __DIR__ . '/vendor/autoload.php';
 ```
 
 #### 3. Scegliere il protocollo
-Qui scegliamo il protocollo di testo (un protocollo personalizzato in WorkerMan, con formato testo + nuova riga)
+Qui scegliamo il protocollo di testo (un protocollo personalizzato in Workerman, con formato testo + nuova riga)
 
-(Attualmente WorkerMan supporta HTTP, WebSocket, protocollo di testo. Se è necessario utilizzare un altro protocollo, consultare il capitolo sui protocolli per sviluppare il proprio protocollo)
+(Attualmente Workerman supporta HTTP, WebSocket, protocollo di testo. Se è necessario utilizzare un altro protocollo, consultare il capitolo sui protocolli per sviluppare il proprio protocollo)
 
 #### 4. Scrivere lo script di avvio dell'ingresso in base alle esigenze
 Di seguito viene mostrato un semplice file di ingresso per una chat room.

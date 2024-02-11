@@ -21,11 +21,11 @@ Gli utenti Linux possono utilizzare solo la versione di Workerman per Linux.
 2. È consigliabile installare l'estensione event, ma non è obbligatoria (si noti che l'estensione event richiede PHP >= 5.4).
 
 ### Script di controllo dell'ambiente Linux
-Gli utenti Linux possono eseguire lo script seguente per verificare se l'ambiente locale soddisfa i requisiti di WorkerMan
+Gli utenti Linux possono eseguire lo script seguente per verificare se l'ambiente locale soddisfa i requisiti di Workerman
 
 ```curl -Ss https://www.workerman.net/check | php```
 
-Se lo script restituisce solo "ok", significa che l'ambiente di esecuzione di WorkerMan è soddisfatto
+Se lo script restituisce solo "ok", significa che l'ambiente di esecuzione di Workerman è soddisfatto
 
 (Nota: lo script di controllo non verifica l'estensione event. Se il numero di connessioni simultanee supera 1024, si consiglia di installare l'estensione event. Per istruzioni sull'installazione, fare riferimento alla sezione successiva)
 
@@ -33,21 +33,21 @@ Se lo script restituisce solo "ok", significa che l'ambiente di esecuzione di Wo
 
 ### Riguardo a PHP-CLI
 
-WorkerMan viene eseguito in modalità [PHP Command Line Interface (PHP-CLI)](https://php.net/manual/it/features.commandline.php). PHP-CLI è un programma eseguibile indipendente da PHP-FPM o da MOD-PHP di Apache, quindi non entra in conflitto né dipende da essi.
+Workerman viene eseguito in modalità [PHP Command Line Interface (PHP-CLI)](https://php.net/manual/it/features.commandline.php). PHP-CLI è un programma eseguibile indipendente da PHP-FPM o da MOD-PHP di Apache, quindi non entra in conflitto né dipende da essi.
 
-### Estensioni richieste da WorkerMan
+### Estensioni richieste da Workerman
 
 1. [Estensione pcntl](https://www.php.net/manual/it/book.pcntl.php)
 
-L'estensione pcntl è essenziale per il controllo dei processi in ambiente Linux. WorkerMan utilizza funzionalità come la [creazione di processi](https://www.php.net/manual/it/function.pcntl-fork.php), il [controllo dei segnali](https://www.php.net/manual/it/function.pcntl-signal.php), il [timer](https://www.php.net/manual/it/function.pcntl-alarm.php) e il [monitoraggio dello stato dei processi](https://www.php.net/manual/it/function.pcntl-waitpid.php). Questa estensione non è supportata su piattaforma Windows.
+L'estensione pcntl è essenziale per il controllo dei processi in ambiente Linux. Workerman utilizza funzionalità come la [creazione di processi](https://www.php.net/manual/it/function.pcntl-fork.php), il [controllo dei segnali](https://www.php.net/manual/it/function.pcntl-signal.php), il [timer](https://www.php.net/manual/it/function.pcntl-alarm.php) e il [monitoraggio dello stato dei processi](https://www.php.net/manual/it/function.pcntl-waitpid.php). Questa estensione non è supportata su piattaforma Windows.
 
 2. [Estensione posix](https://www.php.net/manual/it/book.posix.php)
 
-L'estensione posix consente a PHP di chiamare le interfacce fornite dal sistema operativo in conformità allo standard [POSIX](https://it.wikipedia.org/wiki/POSIX). WorkerMan utilizza principalmente queste interfacce per implementare funzionalità come i processi in esecuzione in background e il controllo dei gruppi utente. Anche questa estensione non è supportata su piattaforma Windows.
+L'estensione posix consente a PHP di chiamare le interfacce fornite dal sistema operativo in conformità allo standard [POSIX](https://it.wikipedia.org/wiki/POSIX). Workerman utilizza principalmente queste interfacce per implementare funzionalità come i processi in esecuzione in background e il controllo dei gruppi utente. Anche questa estensione non è supportata su piattaforma Windows.
 
 3. [Estensione Event](https://www.php.net/manual/it/book.event.php) o [Estensione Libevent](https://www.php.net/manual/en/book.libevent.php)
 
-L'estensione Event permette a PHP di utilizzare avanzati meccanismi di gestione degli eventi come [Epoll](https://it.wikipedia.org/wiki/Epoll), Kqueue, consentendo di migliorare notevolmente l'utilizzo della CPU da parte di WorkerMan in caso di elevate connessioni simultanee. È particolarmente importante in applicazioni con numerose connessioni attive. Se non installata, WorkerMan utilizzerà di default il meccanismo di gestione eventi nativo di PHP, Select.
+L'estensione Event permette a PHP di utilizzare avanzati meccanismi di gestione degli eventi come [Epoll](https://it.wikipedia.org/wiki/Epoll), Kqueue, consentendo di migliorare notevolmente l'utilizzo della CPU da parte di Workerman in caso di elevate connessioni simultanee. È particolarmente importante in applicazioni con numerose connessioni attive. Se non installata, Workerman utilizzerà di default il meccanismo di gestione eventi nativo di PHP, Select.
 
 ## Come installare le estensioni
 

@@ -1,5 +1,5 @@
 # Clase Worker
-En WorkerMan, hay dos clases importantes: Worker y Connection.
+En Workerman, hay dos clases importantes: Worker y Connection.
 
 La clase Worker se utiliza para escuchar puertos y se puede configurar funciones de devolución de llamada para eventos como la conexión de clientes, los mensajes recibidos y la desconexión. Esto permite implementar el procesamiento de negocios.
 

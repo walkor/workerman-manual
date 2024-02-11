@@ -1,4 +1,4 @@
-# WorkerMan hỗ trợ bao nhiêu kết nối đồng thời
+# Workerman hỗ trợ bao nhiêu kết nối đồng thời
 
 **Khái niệm về đồng thời** rất mơ hồ, ở đây chúng ta sẽ sử dụng hai chỉ số có thể đo lường: **số lượng kết nối đồng thời** và **số lượng yêu cầu đồng thời** để giải thích.
 

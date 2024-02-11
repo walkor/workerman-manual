@@ -23,7 +23,7 @@ Si c'est le port utilisé par Workerman et qu'il ne peut pas être arrêté par 
 
 ```shell
 killall php
-ps aux|grep WorkerMan|awk '{print $2}'|xargs kill -9
+ps aux|grep -i workerman|awk '{print $2}'|xargs kill -9
 ```
 
 #### Solution 4

@@ -1,7 +1,7 @@
 # Principio
 
 ### Descrizione del Worker
-Il Worker è il contenitore più fondamentale in WorkerMan, può aprire più processi per ascoltare le porte e comunicare utilizzando protocolli specifici, simile a nginx che ascolta su una certa porta. Ogni processo Worker funziona in modo indipendente, utilizzando Epoll (richiede l'installazione dell'estensione event) e IO non bloccante. Ogni processo Worker può gestire decine di migliaia di connessioni client e gestire i dati inviati da queste connessioni. Il processo principale si occupa di monitorare i processi figlio per garantire la stabilità, senza ricevere dati o eseguire alcuna logica di business.
+Il Worker è il contenitore più fondamentale in Workerman, può aprire più processi per ascoltare le porte e comunicare utilizzando protocolli specifici, simile a nginx che ascolta su una certa porta. Ogni processo Worker funziona in modo indipendente, utilizzando Epoll (richiede l'installazione dell'estensione event) e IO non bloccante. Ogni processo Worker può gestire decine di migliaia di connessioni client e gestire i dati inviati da queste connessioni. Il processo principale si occupa di monitorare i processi figlio per garantire la stabilità, senza ricevere dati o eseguire alcuna logica di business.
 
 ### Relazione tra il cliente e il processo Worker
 ![workerman master woker](images/Worker.png)

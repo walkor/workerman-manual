@@ -1,6 +1,6 @@
 # Interfaces provided by the Connection class
 
-Em WorkerMan, existem dois classes importantes: Worker e Connection.
+Em Workerman, existem dois classes importantes: Worker e Connection.
 
 Cada conexão de cliente corresponde a um objeto Connection, que pode ter callbacks configurados, como onMessage, onClose, etc. Além disso, a classe fornece interfaces para enviar dados para o cliente (send) e fechar a conexão (close), bem como outras interfaces necessárias.
 

@@ -6,11 +6,11 @@ static string Worker::$pidFile
 
 Sauf indication contraire, il est recommandé de ne pas définir cette propriété.
 
-Cette propriété est une propriété statique globale utilisée pour définir le chemin du fichier pid du processus WorkerMan.
+Cette propriété est une propriété statique globale utilisée pour définir le chemin du fichier pid du processus Workerman.
 
-Cette configuration est utile pour la surveillance, par exemple en plaçant le fichier pid de WorkerMan dans un répertoire spécifique, cela facilite la lecture par certains logiciels de surveillance pour surveiller l'état du processus WorkerMan. 
+Cette configuration est utile pour la surveillance, par exemple en plaçant le fichier pid de Workerman dans un répertoire spécifique, cela facilite la lecture par certains logiciels de surveillance pour surveiller l'état du processus Workerman. 
 
-Si cette propriété n'est pas définie, WorkerMan générera automatiquement un fichier pid à un emplacement par défaut (notez que avant la version 3.2.3, cela se faisait par défaut dans ```sys_get_temp_dir()```) et pour éviter les conflits de pid dus au démarrage de plusieurs instances de WorkerMan, le fichier pid généré contient le chemin actuel de WorkerMan.
+Si cette propriété n'est pas définie, Workerman générera automatiquement un fichier pid à un emplacement par défaut (notez que avant la version 3.2.3, cela se faisait par défaut dans ```sys_get_temp_dir()```) et pour éviter les conflits de pid dus au démarrage de plusieurs instances de Workerman, le fichier pid généré contient le chemin actuel de Workerman.
 
 Remarque : Cette propriété doit être définie avant l'exécution de ```Worker::runAll();```. Cette fonctionnalité n'est pas supportée sur les systèmes Windows.
 

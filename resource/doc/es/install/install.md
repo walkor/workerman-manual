@@ -1,5 +1,5 @@
 # Instrucciones de instalación
-WorkerMan es en realidad un paquete de código PHP. Si tu entorno de PHP ya está configurado, solo necesitas descargar el código fuente o la demo de WorkerMan para ejecutarlo.
+Workerman es en realidad un paquete de código PHP. Si tu entorno de PHP ya está configurado, solo necesitas descargar el código fuente o la demo de Workerman para ejecutarlo.
 
 **Instalación mediante Composer:**
 ```sh
@@ -11,15 +11,15 @@ composer require workerman/workerman
 
 # Usuarios de Windows (lectura obligatoria)
 
-A partir de la versión 3.5.3 de WorkerMan, ya es compatible con sistemas Windows y Linux. Los usuarios de Windows necesitan configurar las variables de entorno de PHP.
+A partir de la versión 3.5.3 de Workerman, ya es compatible con sistemas Windows y Linux. Los usuarios de Windows necesitan configurar las variables de entorno de PHP.
 
- ` === Los siguientes pasos solo son aplicables para entornos Linux de WorkerMan, los usuarios de Windows pueden ignorarlos === `
+ ` === Los siguientes pasos solo son aplicables para entornos Linux de Workerman, los usuarios de Windows pueden ignorarlos === `
 
 # Verificación del entorno del sistema Linux
-El sistema Linux puede usar el siguiente script para probar si el entorno PHP local cumple con los requisitos de ejecución de WorkerMan.
+El sistema Linux puede usar el siguiente script para probar si el entorno PHP local cumple con los requisitos de ejecución de Workerman.
  `curl -Ss https://www.workerman.net/check | php`
 
-Si todas las pruebas en el script se muestran como "ok", significa que cumple con los requisitos de WorkerMan. Puedes descargar el ejemplo directamente desde el [sitio web oficial](https://www.workerman.net/) y ejecutarlo.
+Si todas las pruebas en el script se muestran como "ok", significa que cumple con los requisitos de Workerman. Puedes descargar el ejemplo directamente desde el [sitio web oficial](https://www.workerman.net/) y ejecutarlo.
 
 Si no todas las pruebas resultan en "ok", consulta el siguiente documento para instalar las extensiones faltantes.
 
@@ -106,7 +106,7 @@ Ten en cuenta la indicación: ```Include libevent OpenSSL support [yes] :``` y r
 extension=event.so
 ```
 
-4. Ejecuta el siguiente comando en la línea de comandos (este paso implica la descarga del programa principal de WorkerMan a través de GitHub):
+4. Ejecuta el siguiente comando en la línea de comandos (este paso implica la descarga del programa principal de Workerman a través de GitHub):
 ```shell
 git clone https://github.com/walkor/Workerman
 ```
@@ -132,7 +132,7 @@ Ten en cuenta la indicación: ```Include libevent OpenSSL support [yes] :``` y r
 extension=event.so
 ```
 
-4. Ejecuta el siguiente comando en la línea de comandos (este paso implica la descarga del programa principal de WorkerMan a través de GitHub):
+4. Ejecuta el siguiente comando en la línea de comandos (este paso implica la descarga del programa principal de Workerman a través de GitHub):
 ```shell
 git clone https://github.com/walkor/Workerman
 ```
@@ -147,7 +147,7 @@ git clone https://github.com/walkor/Workerman
 
 2. Consulta la sección [Apéndices - Instalación de extensiones](../appendices/install-extension.md) en el manual para instalar la extensión ```event``` utilizando phpize (esto se puede omitir si se utiliza como máquina de desarrollo).
 
-3. Descarga el programa principal de WorkerMan desde https://www.workerman.net/download/workermanzip, o descárgalo desde el [sitio web oficial](https://www.workerman.net/) y ejecuta el ejemplo.
+3. Descarga el programa principal de Workerman desde https://www.workerman.net/download/workermanzip, o descárgalo desde el [sitio web oficial](https://www.workerman.net/) y ejecuta el ejemplo.
 
 **Método 2:** Instala PHP y las extensiones correspondientes utilizando el comando ```brew```.
 

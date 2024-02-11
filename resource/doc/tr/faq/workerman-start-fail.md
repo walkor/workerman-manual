@@ -24,7 +24,7 @@ Eğer ilgili portu durduramıyorsanız, workerman'ın portunu değiştirerek sor
 Eğer Workerman'ın kullandığı bir port ise ve stop komutu ile durdurulamıyorsa (genellikle pid dosyasının eksik olmasından veya geliştirici tarafından ana işlemi sonlandırılmasından dolayı), aşağıdaki komutları çalıştırarak Workerman sürecini sonlandırabilirsiniz.
 
 ```killall php
-ps aux|grep WorkerMan|awk '{print $2}'|xargs kill -9
+ps aux|grep -i workerman|awk '{print $2}'|xargs kill -9
 ```
 
 #### Çözüm 4

@@ -1,6 +1,6 @@
 # Çalışma Durumunu Kontrol Etme
 
-```php start.php status``` komutunu çalıştırarak WorkerMan'in çalışma durumunu kontrol edebilirsiniz. Aşağıdaki gibi bir çıktı alacaksınız:
+```php start.php status``` komutunu çalıştırarak Workerman'in çalışma durumunu kontrol edebilirsiniz. Aşağıdaki gibi bir çıktı alacaksınız:
 
 ```
 ----------------------------------------------GLOBAL STATUS----------------------------------------------------
@@ -36,7 +36,7 @@ pid	bellek  dinleniyor                işçi_adı        bağlantılar gönderme
 
 Bu bölümden aşağıdakileri görebiliriz:
 
-WorkerMan sürümü: ```version:3.5.13```
+Workerman sürümü: ```version:3.5.13```
 
 Başlangıç zamanı: ```2018-02-03 11:48:20```, çalışma süresi: ```run 112 gün 2 saat```
 

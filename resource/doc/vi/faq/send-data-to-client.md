@@ -1,4 +1,4 @@
-# Cách gửi dữ liệu đến một khách hàng cụ thể trong WorkerMan
+# Cách gửi dữ liệu đến một khách hàng cụ thể trong Workerman
 
 Khi sử dụng worker để tạo máy chủ mà không sử dụng GatewayWorker, làm thế nào để triển khai việc gửi tin nhắn cho một người dùng cụ thể?
 

@@ -7,7 +7,7 @@ Wenn Sie wissen möchten, was ein Prozess gerade tut, können Sie mit dem Befehl
 ````
 Hallo Administrator
 ---------------------------------------GLOBALER STATUS--------------------------------------------
-WorkerMan-Version: 3.0.1
+Workerman-Version: 3.0.1
 Startzeit: 2014-08-12 17:42:04   Laufzeit 0 Tage 1 Stunde
 Durchschnittliche Auslastung: 3,34, 3,59, 3,67
 1 Benutzer          8 Worker       14 Prozesse

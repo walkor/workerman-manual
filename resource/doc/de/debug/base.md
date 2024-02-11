@@ -1,8 +1,8 @@
 # Grundlegende Fehlerbehebung
 
-WorkerMan hat zwei Betriebsmodi, den Debug-Modus und den Daemon-Betriebsmodus.
+Workerman hat zwei Betriebsmodi, den Debug-Modus und den Daemon-Betriebsmodus.
 
-Führen Sie ```php start.php start``` aus, um den Debug-Modus zu starten. In diesem Modus werden Ausgaben von Funktionen wie ```echo```, ```var_dump``` und ```var_export``` in der Terminalanzeige angezeigt. Beachten Sie, dass WorkerMan, der mit ```php start.php start``` gestartet wird, alle Prozesse beendet, wenn das Terminal geschlossen wird.
+Führen Sie ```php start.php start``` aus, um den Debug-Modus zu starten. In diesem Modus werden Ausgaben von Funktionen wie ```echo```, ```var_dump``` und ```var_export``` in der Terminalanzeige angezeigt. Beachten Sie, dass Workerman, der mit ```php start.php start``` gestartet wird, alle Prozesse beendet, wenn das Terminal geschlossen wird.
 
 Laufen Sie hingegen mit ```php start.php start -d```, um den Daemon-Betriebsmodus zu starten, der der offizielle Online-Betriebsmodus ist und nicht von der Schließung des Terminals beeinflusst wird.
 

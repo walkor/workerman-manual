@@ -1,5 +1,5 @@
 # Hướng dẫn cài đặt
-WorkerMan thực sự chỉ là một gói mã nguồn PHP, nếu bạn đã cài đặt môi trường PHP, chỉ cần tải mã nguồn hoặc ví dụ của WorkerMan và chạy nó.
+Workerman thực sự chỉ là một gói mã nguồn PHP, nếu bạn đã cài đặt môi trường PHP, chỉ cần tải mã nguồn hoặc ví dụ của Workerman và chạy nó.
 
 **Cài đặt bằng Composer:**
 ```sh
@@ -15,10 +15,10 @@ Từ phiên bản workerman3.5.3 trở lên, workerman đã hỗ trợ cả hệ
  ` ===Từ đây trở xuống chỉ dành cho môi trường Linux workerman, người dùng windows vui lòng bỏ qua=== `
 
 # Kiểm tra môi trường hệ thống Linux
-Hệ thống Linux có thể sử dụng đoạn mã dưới đây để kiểm tra môi trường PHP trên máy tính xem có đáp ứng yêu cầu chạy WorkerMan không.
+Hệ thống Linux có thể sử dụng đoạn mã dưới đây để kiểm tra môi trường PHP trên máy tính xem có đáp ứng yêu cầu chạy Workerman không.
  `curl -Ss https://www.workerman.net/check | php`
 
-Nếu tất cả đều hiển thị OK, tương đương với việc đáp ứng yêu cầu của WorkerMan, bạn có thể tải demo từ [trang web chính thức](https://www.workerman.net/) để chạy.
+Nếu tất cả đều hiển thị OK, tương đương với việc đáp ứng yêu cầu của Workerman, bạn có thể tải demo từ [trang web chính thức](https://www.workerman.net/) để chạy.
 
 Nếu không đáp ứng hết, hãy tham khảo tài liệu dưới đây để cài đặt các phần mở rộng còn thiếu.
 
@@ -104,7 +104,7 @@ Lưu ý: Khi yêu cầu "Include libevent OpenSSL support [yes] :" xuất hiện
 extension=event.so
 ```
 
-4. Chạy dòng lệnh sau (bước này dung để tải mã nguồn chính của WorkerMan từ github)
+4. Chạy dòng lệnh sau (bước này dung để tải mã nguồn chính của Workerman từ github)
 ```shell
 git clone https://github.com/walkor/Workerman
 ```
@@ -130,7 +130,7 @@ Lưu ý: Khi yêu cầu "Include libevent OpenSSL support [yes] :" xuất hiện
 extension=event.so
 ```
 
-4. Chạy dòng lệnh sau (bước này dung để tải mã nguồn chính của WorkerMan từ github)
+4. Chạy dòng lệnh sau (bước này dung để tải mã nguồn chính của Workerman từ github)
 ```shell
 git clone https://github.com/walkor/Workerman
 ```
@@ -144,7 +144,7 @@ git clone https://github.com/walkor/Workerman
 
 2. Tham khảo [Hướng dẫn cài đặt phần mở rộng - Phần 4 sử dụng phpize](../appendices/install-extension.md) để cài đặt phần mở rộng ```event``` (nhưng với máy phát triển, bước này có thể bỏ qua).
 
-3. Tải mã nguồn chính của WorkerMan từ https://www.workerman.net/download/workermanzip hoặc tải ví dụ từ [trang web chính thức](https://www.workerman.net/) để chạy.
+3. Tải mã nguồn chính của Workerman từ https://www.workerman.net/download/workermanzip hoặc tải ví dụ từ [trang web chính thức](https://www.workerman.net/) để chạy.
 
 **Phương pháp 2:** Cài đặt php và phần mở rộng tương ứng thông qua lệnh ```brew```:
 

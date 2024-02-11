@@ -1,5 +1,5 @@
 # 安裝說明
-WorkerMan實際上是一個PHP程式包，如果你的PHP環境已經裝好，只需要把WorkerMan源代碼或者demo下載下來即可運行。
+Workerman實際上是一個PHP程式包，如果你的PHP環境已經裝好，只需要把Workerman源代碼或者demo下載下來即可運行。
 
 **Composer安裝：**
 ```sh
@@ -17,10 +17,10 @@ windows用戶需要配置下php環境變量。
  ` ===本頁面以下僅適用於Linux環境workerman，windows用戶請忽略=== `
 
 # Linux系統環境檢測
-Linux系統可以使用以下腳本測試本機PHP環境是否滿足WorkerMan運行要求。
+Linux系統可以使用以下腳本測試本機PHP環境是否滿足Workerman運行要求。
  `curl -Ss https://www.workerman.net/check | php`
 
-上面腳本如果全部顯示ok，則代表滿足WorkerMan要求，直接到[官網](https://www.workerman.net/)下載例子即可運行。
+上面腳本如果全部顯示ok，則代表滿足Workerman要求，直接到[官網](https://www.workerman.net/)下載例子即可運行。
 
 如果不是全部ok，則參考下面文檔安裝缺失的擴展即可。
 
@@ -108,7 +108,7 @@ pecl install event
 extension=event.so
 ```
 
-4、命令列運行（此步驟是通過github下載WorkerMan主程序）
+4、命令列運行（此步驟是通過github下載Workerman主程序）
 ```shell
 git clone https://github.com/walkor/Workerman
 ```
@@ -136,7 +136,7 @@ pecl install event
 extension=event.so
 ```
 
-4、命令列運行（此步驟是通過github下載WorkerMan主程序）
+4、命令列運行（此步驟是通過github下載Workerman主程序）
 ```shell
 git clone https://github.com/walkor/Workerman
 ```
@@ -151,7 +151,7 @@ git clone https://github.com/walkor/Workerman
 
 2、參考手冊[附錄-安裝擴展](../appendices/install-extension.md)一節中方法四利用phpize安裝```event```擴展（作為開發機此可省略）。
 
-3、通過https://www.workerman.net/download/workermanzip 下載WorkerMan主程序，或者到[官網](https://www.workerman.net/)下載例子運行。
+3、通過https://www.workerman.net/download/workermanzip 下載Workerman主程序，或者到[官網](https://www.workerman.net/)下載例子運行。
 
 **方法2：** 通過```brew```命令安裝php及對應擴展
 

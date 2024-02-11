@@ -1,4 +1,4 @@
-# WorkerMan中如何向某个特定客户端发送数据
+# Workerman中如何向某个特定客户端发送数据
 使用worker来做服务器，没有用GatewayWorker，如何实现向指定用户推送消息？
 
 ```php

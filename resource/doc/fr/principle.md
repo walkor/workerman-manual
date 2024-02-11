@@ -1,7 +1,7 @@
 # Principes
 
 ### Description du worker
-Le Worker est le conteneur de base de WorkerMan, capable d'ouvrir plusieurs processus pour écouter des ports et communiquer avec un protocole spécifique, similaire à la façon dont nginx écoute un port spécifique. Chaque processus Worker fonctionne de manière indépendante, utilisant Epoll (nécessite une extension event) et des entrées/sorties non bloquantes. Chaque processus Worker peut gérer des dizaines de milliers de connexions clients et traiter les données envoyées sur ces connexions. Le processus principal, pour maintenir la stabilité, se contente de surveiller les processus enfants, sans recevoir de données ou effectuer de logique métier.
+Le Worker est le conteneur de base de Workerman, capable d'ouvrir plusieurs processus pour écouter des ports et communiquer avec un protocole spécifique, similaire à la façon dont nginx écoute un port spécifique. Chaque processus Worker fonctionne de manière indépendante, utilisant Epoll (nécessite une extension event) et des entrées/sorties non bloquantes. Chaque processus Worker peut gérer des dizaines de milliers de connexions clients et traiter les données envoyées sur ces connexions. Le processus principal, pour maintenir la stabilité, se contente de surveiller les processus enfants, sans recevoir de données ou effectuer de logique métier.
 
 ### Relation entre le client et les processus Worker
 ![Modèle maître-worker de Workerman](images/Worker.png)

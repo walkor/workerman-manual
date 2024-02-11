@@ -6,7 +6,7 @@ El directorio de la aplicación puede ubicarse en cualquier lugar.
 
 ## Archivo de entrada
 
-Al igual que en las aplicaciones PHP bajo nginx+PHP-FPM, las aplicaciones en WorkerMan también necesitan un archivo de entrada, cuyo nombre no tiene restricciones, y este archivo de entrada se ejecuta como PHP Cli.
+Al igual que en las aplicaciones PHP bajo nginx+PHP-FPM, las aplicaciones en Workerman también necesitan un archivo de entrada, cuyo nombre no tiene restricciones, y este archivo de entrada se ejecuta como PHP Cli.
 
 El archivo de entrada contiene el código relacionado con la creación de procesos de escucha, como el fragmento de código basado en Worker a continuación.
 
@@ -33,7 +33,7 @@ $http_worker->onMessage = function(TcpConnection $connection, $data)
 Worker::runAll();
 ```
 
-## Normas de código en WorkerMan
+## Normas de código en Workerman
 
 1. Los nombres de clase se escriben en mayúscula la primera letra de cada palabra, y el nombre del archivo de la clase debe ser igual al nombre interno de la clase, para permitir la carga automática. Por ejemplo:
 ```php

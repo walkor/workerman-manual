@@ -7,7 +7,7 @@
 ```plain
 Hello admin
 ---------------------------------------GLOBAL STATUS--------------------------------------------
-WorkerMan version:3.0.1
+Workerman version:3.0.1
 start time:2014-08-12 17:42:04   run 0 days 1 hours
 load average: 3.34, 3.59, 3.67
 1 users          8 workers       14 processes

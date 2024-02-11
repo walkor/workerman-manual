@@ -1,32 +1,32 @@
 # Đọc trước khi phát triển
 
-Để phát triển ứng dụng bằng WorkerMan, bạn cần hiểu về những nội dung sau:
+Để phát triển ứng dụng bằng Workerman, bạn cần hiểu về những nội dung sau:
 
-## I. Sự khác biệt giữa phát triển bằng WorkerMan và phát triển PHP thông thường
+## I. Sự khác biệt giữa phát triển bằng Workerman và phát triển PHP thông thường
 
-Ngoài việc không thể sử dụng trực tiếp các biến và hàm liên quan đến giao thức HTTP, việc phát triển bằng WorkerMan không có nhiều sự khác biệt so với phát triển PHP thông thường.
+Ngoài việc không thể sử dụng trực tiếp các biến và hàm liên quan đến giao thức HTTP, việc phát triển bằng Workerman không có nhiều sự khác biệt so với phát triển PHP thông thường.
 
 ### 1. Giao thức ứng dụng khác nhau
 * Phát triển PHP thông thường thường dựa trên giao thức ứng dụng HTTP, máy chủ web đã hoàn tất việc phân tích giao thức cho người phát triển
-* WorkerMan hỗ trợ nhiều loại giao thức, hiện tại hỗ trợ sẵn giao thức HTTP, WebSocket, v.v. WorkerMan khuyến khích người phát triển sử dụng giao thức tùy chỉnh đơn giản hơn
+* Workerman hỗ trợ nhiều loại giao thức, hiện tại hỗ trợ sẵn giao thức HTTP, WebSocket, v.v. Workerman khuyến khích người phát triển sử dụng giao thức tùy chỉnh đơn giản hơn
 
 ###[ Phần HTTP](../http/request.md) để phát triển theo giao thức HTTP
 
 ### 2. Chu kỳ yêu cầu khác nhau
 * Trong ứng dụng web PHP, sau mỗi lần yêu cầu, tất cả biến và tài nguyên sẽ được giải phóng
-* Ứng dụng được phát triển bằng WorkerMan sẽ ở trong bộ nhớ sau khi được tải và phân tích lần đầu, điều này làm cho việc định nghĩa lớp, đối tượng toàn cục, thành viên tĩnh của lớp không bị giải phóng, từ đó thuận tiện cho việc sử dụng lại trong tương lai
+* Ứng dụng được phát triển bằng Workerman sẽ ở trong bộ nhớ sau khi được tải và phân tích lần đầu, điều này làm cho việc định nghĩa lớp, đối tượng toàn cục, thành viên tĩnh của lớp không bị giải phóng, từ đó thuận tiện cho việc sử dụng lại trong tương lai
 
 ### 3. Chú ý tránh định nghĩa lớp và hằng số trùng lặp
-* Vì WorkerMan sẽ cache file PHP sau khi biên dịch, nên cần tránh việc require/include nhiều lần cùng một file định nghĩa lớp hoặc hằng số. Đề xuất sử dụng require_once/include_once để tải tệp.
+* Vì Workerman sẽ cache file PHP sau khi biên dịch, nên cần tránh việc require/include nhiều lần cùng một file định nghĩa lớp hoặc hằng số. Đề xuất sử dụng require_once/include_once để tải tệp.
 
 ### 4. Chú ý giải phóng tài nguyên kết nối trong chế độ Singleton
-* Vì WorkerMan không giải phóng đối tượng toàn cục và thành viên tĩnh của lớp sau mỗi lần yêu cầu, trong trường hợp Singleton như cơ sở dữ liệu, thường sẽ giữ thể hiện cơ sở dữ liệu (bao gồm kết nối socket cơ sở dữ liệu) trong thành viên tĩnh của cơ sở dữ liệu, làm cho WorkerMan có thể tái sử dụng kết nối socket cơ sở dữ liệu này suốt vòng đời của quy trình. Cần chú ý rằng khi máy chủ cơ sở dữ liệu phát hiện một kết nối đã đóng trong một khoảng thời gian nhất định sẽ tự động đóng kết nối socket này, khi sử dụng lại thể hiện cơ sở dữ liệu này lúc đó sẽ báo lỗi (thông báo lỗi tương tự như "mysql gone away"). WorkerMan cung cấp [lớp cơ sở dữ liệu](../components/workerman-mysql.md), với chức năng kết nối lại, người phát triển có thể sử dụng trực tiếp.
+* Vì Workerman không giải phóng đối tượng toàn cục và thành viên tĩnh của lớp sau mỗi lần yêu cầu, trong trường hợp Singleton như cơ sở dữ liệu, thường sẽ giữ thể hiện cơ sở dữ liệu (bao gồm kết nối socket cơ sở dữ liệu) trong thành viên tĩnh của cơ sở dữ liệu, làm cho Workerman có thể tái sử dụng kết nối socket cơ sở dữ liệu này suốt vòng đời của quy trình. Cần chú ý rằng khi máy chủ cơ sở dữ liệu phát hiện một kết nối đã đóng trong một khoảng thời gian nhất định sẽ tự động đóng kết nối socket này, khi sử dụng lại thể hiện cơ sở dữ liệu này lúc đó sẽ báo lỗi (thông báo lỗi tương tự như "mysql gone away"). Workerman cung cấp [lớp cơ sở dữ liệu](../components/workerman-mysql.md), với chức năng kết nối lại, người phát triển có thể sử dụng trực tiếp.
 
 ### 5. Chú ý không sử dụng câu lệnh exit, die
-* WorkerMan chạy trong chế độ dòng lệnh PHP, khi gọi câu lệnh thoát exit, die sẽ dẫn đến quá trình hiện tại kết thúc. Mặc dù quá trình con sẽ tự động tạo ra một quá trình con tương tự ngay sau khi quá trình con kết thúc, nhưng vẫn có thể ảnh hưởng đến doanh nghiệp.
+* Workerman chạy trong chế độ dòng lệnh PHP, khi gọi câu lệnh thoát exit, die sẽ dẫn đến quá trình hiện tại kết thúc. Mặc dù quá trình con sẽ tự động tạo ra một quá trình con tương tự ngay sau khi quá trình con kết thúc, nhưng vẫn có thể ảnh hưởng đến doanh nghiệp.
 
 ### 6. Cần khởi động lại dịch vụ để áp dụng các thay đổi
-Do WorkerMan là một ứng dụng trong bộ nhớ, khi định nghĩa lớp PHP hoặc hàm, nó chỉ cần tải một lần, không cần đọc lại từ đĩa, vì vậy mỗi lần sửa đổi mã doanh nghiệp cần khởi động lại để áp dụng.
+Do Workerman là một ứng dụng trong bộ nhớ, khi định nghĩa lớp PHP hoặc hàm, nó chỉ cần tải một lần, không cần đọc lại từ đĩa, vì vậy mỗi lần sửa đổi mã doanh nghiệp cần khởi động lại để áp dụng.
 
 
 ## 二、Các Khái Niệm Cơ Bản Cần Hiểu
@@ -56,7 +56,7 @@ Thường thì quy trình khởi động là tắt tất cả các tiến trình
 
 Khởi động lại mềm không phải là tắt hết tất cả các tiến trình mà là từng tiến trình một, mỗi khi tắt một tiến trình thì sẽ ngay lập tức khởi tạo một tiến trình mới thay thế, cho đến khi tất cả các tiến trình cũ đều được thay thế. 
 
-WorkerMan có thể sử dụng lệnh ```php your_file.php reload``` để cập nhật ứng dụng mà không ảnh hưởng tới chất lượng dịch vụ.
+Workerman có thể sử dụng lệnh ```php your_file.php reload``` để cập nhật ứng dụng mà không ảnh hưởng tới chất lượng dịch vụ.
 
 **Lưu ý:** Chỉ có các tệp được tải trong các callback on{...} sau khi khởi động lại mềm thì mới được cập nhật tự động, các tệp được tải trực tiếp trong tệp khởi động hoặc mã code cứng không được cập nhật khi chạy lệnh reload.
 

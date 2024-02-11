@@ -1,5 +1,5 @@
 # Worker類
-在 WorkerMan 中有兩個重要的類，分別為 Worker 與 Connection。
+在 Workerman 中有兩個重要的類，分別為 Worker 與 Connection。
 
 Worker 類用於實現端口的監聽，並可以設置客戶端連接事件、連接上消息事件、連接斷開事件的回調函數，從而實現業務處理。
 

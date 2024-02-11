@@ -1,8 +1,8 @@
-# WorkerMan支持哪些協議
+# Workerman支持哪些協議
 
-WorkerMan在接口上支持各種協議，只要符合```ConnectionInterface```接口即可（參見定制通訊協議章節）。
+Workerman在接口上支持各種協議，只要符合```ConnectionInterface```接口即可（參見定制通訊協議章節）。
 
-為了方便開發者，WorkerMan提供了HTTP協議、WebSocket協議以及非常簡單的Text文本協議、可用於二進制傳輸的frame協議。開發者可以直接使用這些協議，不必再二次開發。如果這些協議都不滿足需要，開發者可以參照定制協議章節實現自己的協議。
+為了方便開發者，Workerman提供了HTTP協議、WebSocket協議以及非常簡單的Text文本協議、可用於二進制傳輸的frame協議。開發者可以直接使用這些協議，不必再二次開發。如果這些協議都不滿足需要，開發者可以參照定制協議章節實現自己的協議。
 
 開發者也可以直接基於tcp或者udp協議。
 

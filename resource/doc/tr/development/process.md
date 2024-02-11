@@ -14,9 +14,9 @@ require_once __DIR__ . '/vendor/autoload.php';
 ```
 
 #### 3. Protokol Seçimi
-Burada Text metin protokolünü seçiyoruz (WorkerMan'de özel olarak metin+newline formatında bir protokol)
+Burada Text metin protokolünü seçiyoruz (Workerman'de özel olarak metin+newline formatında bir protokol)
 
-(Şu anda WorkerMan HTTP, WebSocket, Text metin protokolünü desteklemektedir. Diğer protokoller gerekiyorsa, kendi protokolünüzü geliştirmek için protokol bölümüne bakınız.)
+(Şu anda Workerman HTTP, WebSocket, Text metin protokolünü desteklemektedir. Diğer protokoller gerekiyorsa, kendi protokolünüzü geliştirmek için protokol bölümüne bakınız.)
 
 #### 4. Gereksinimlere Göre Ana Başlangıç Betiğini Yazın
 Aşağıda, basit bir sohbet odasının giriş dosyası bulunmaktadır.

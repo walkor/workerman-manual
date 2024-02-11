@@ -6,7 +6,7 @@ Das Anwendungsverzeichnis kann an beliebiger Stelle platziert werden.
 
 ## Einstiegsdatei
 
-Wie bei PHP-Anwendungen unter nginx+PHP-FPM benötigt auch die Anwendung in WorkerMan eine Einstiegsdatei. Der Name der Einstiegsdatei ist nicht festgelegt, und diese Datei wird im PHP Cli-Modus ausgeführt.
+Wie bei PHP-Anwendungen unter nginx+PHP-FPM benötigt auch die Anwendung in Workerman eine Einstiegsdatei. Der Name der Einstiegsdatei ist nicht festgelegt, und diese Datei wird im PHP Cli-Modus ausgeführt.
 
 Die Einstiegsdatei enthält den Code zum Erstellen von Überwachungsprozessen, wie zum Beispiel das folgende Code-Snippet, das auf Worker-Entwicklung basiert.
 
@@ -35,7 +35,7 @@ Worker::runAll();
 ```
 
 
-## Code-Standards in WorkerMan
+## Code-Standards in Workerman
 
 1. Klassen werden in CamelCase mit großem Anfangsbuchstaben benannt, und der Dateiname der Klasse muss mit dem internen Klassennamen übereinstimmen, um eine automatische Ladung zu ermöglichen. Beispiel:
 ```php

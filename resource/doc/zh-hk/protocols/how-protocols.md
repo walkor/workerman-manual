@@ -17,7 +17,7 @@
 注意上面的請求數據末尾有一個換行字符(在PHP中用**雙引號**字符串"\n"表示)，代表一個請求的結束。
 
 ### 實現步驟
-在 WorkerMan 中如果要實現上面的協議，假設協議的名字叫 JsonNL，所在項目為 MyApp，則需要以下步驟
+在 Workerman 中如果要實現上面的協議，假設協議的名字叫 JsonNL，所在項目為 MyApp，則需要以下步驟
 
 1、協議文件放到項目的 Protocols 文件夾，例如文件 MyApp/Protocols/JsonNL.php
 
@@ -112,7 +112,7 @@ Worker::runAll();
 > 如果報錯`Class 'Protocols\JsonNL' not found`，請參考[自動加載](../faq/autoload.md)實現自動加載。
 
 ### 協議接口說明
-在 WorkerMan 中開發的協議類必須實現三個靜態方法，input、encode、decode，協議接口說明見Workerman/Protocols/ProtocolInterface.php，定義如下：
+在 Workerman 中開發的協議類必須實現三個靜態方法，input、encode、decode，協議接口說明見Workerman/Protocols/ProtocolInterface.php，定義如下：
 
 ```php
 namespace Workerman\Protocols;
@@ -141,7 +141,7 @@ interface ProtocolInterface
     /**
      * 用於請求解包
      *
-     * input返回值大於0，並且 WorkerMan 收到了足夠的數據，則自動調用decode
+     * input返回值大於0，並且 Workerman 收到了足夠的數據，則自動調用decode
      * 然後觸發onMessage回調，並將decode解碼後的數據傳遞給onMessage回調的第二個參數
      * 也就是說當收到完整的客戶端請求時，會自動調用decode解碼，無需業務代碼中手動調用
      * @param ConnectionInterface $connection

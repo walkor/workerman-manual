@@ -7,7 +7,7 @@ Quando queremos saber o que um processo está fazendo, podemos rastrear todas as
 ```plaintext
 Olá admin
 ---------------------------------------STATUS GLOBAL--------------------------------------------
-Versão do WorkerMan: 3.0.1
+Versão do Workerman: 3.0.1
 Hora de início: 2014-08-12 17:42:04   0 dias de execução 1 horas
 carga média: 3.34, 3.59, 3.67
 1 usuário       8 workers       14 processos

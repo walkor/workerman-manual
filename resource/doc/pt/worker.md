@@ -1,5 +1,5 @@
 # Classe Worker
-Em WorkerMan, há duas classes importantes: Worker e Connection.
+Em Workerman, há duas classes importantes: Worker e Connection.
 
 A classe Worker é usada para realizar a escuta de portas e pode definir funções de retorno de chamada para eventos de conexão do cliente, eventos de recebimento de mensagens na conexão e eventos de desconexão, a fim de realizar o processamento de negócios.
 

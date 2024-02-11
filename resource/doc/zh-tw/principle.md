@@ -1,7 +1,7 @@
 # 原理
 
 ### Worker說明
-Worker是WorkerMan中最基本的容器，Worker可以開啟多個進程監聽端口並使用特定協議進行通訊，類似於nginx監聽某個端口。每個Worker進程獨立運作，採用Epoll（需要裝event擴展）+非阻塞IO，每個Worker進程都能處理上萬個客戶端連接，並處理這些連接上發來的數據。主進程為了保持穩定性，只負責監控子進程，不負責接收數據，也不作任何業務邏輯。
+Worker是Workerman中最基本的容器，Worker可以開啟多個進程監聽端口並使用特定協議進行通訊，類似於nginx監聽某個端口。每個Worker進程獨立運作，採用Epoll（需要裝event擴展）+非阻塞IO，每個Worker進程都能處理上萬個客戶端連接，並處理這些連接上發來的數據。主進程為了保持穩定性，只負責監控子進程，不負責接收數據，也不作任何業務邏輯。
 
 ### 客戶端與worker進程的關係
 ![workerman master woker模型](images/Worker.png)

@@ -1,8 +1,8 @@
-# WorkerMan hangi protokolleri destekler
+# Workerman hangi protokolleri destekler
 
-WorkerMan, arabirim açısından ```ConnectionInterface``` arabirimini takip eden her türlü protokolü destekler (özel iletişim protokolü bölümüne bakınız).
+Workerman, arabirim açısından ```ConnectionInterface``` arabirimini takip eden her türlü protokolü destekler (özel iletişim protokolü bölümüne bakınız).
 
-Geliştiricilerin kullanımını kolaylaştırmak için, WorkerMan HTTP protokolünü, WebSocket protokolünü ve oldukça basit metin protokolünü sağlar, ayrıca ikili iletim için kullanılabilen çerçeve protokolünü sunar. Geliştiriciler bu protokollerini doğrudan kullanabilir ve tekrar geliştirme yapmak zorunda kalmaz. Eğer bu protokoller gereksinimleri karşılamıyorsa, geliştiriciler özel protokollerini uygulamak için özel protokol bölümüne bakabilirler.
+Geliştiricilerin kullanımını kolaylaştırmak için, Workerman HTTP protokolünü, WebSocket protokolünü ve oldukça basit metin protokolünü sağlar, ayrıca ikili iletim için kullanılabilen çerçeve protokolünü sunar. Geliştiriciler bu protokollerini doğrudan kullanabilir ve tekrar geliştirme yapmak zorunda kalmaz. Eğer bu protokoller gereksinimleri karşılamıyorsa, geliştiriciler özel protokollerini uygulamak için özel protokol bölümüne bakabilirler.
 
 Geliştiriciler ayrıca doğrudan tcp veya udp protokolü üzerine de çalışabilir.
 

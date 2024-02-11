@@ -1,9 +1,9 @@
 # Xem trạng thái chạy
 
-Chạy lệnh ```php start.php status``` có thể xem trạng thái hoạt động của WorkerMan, tương tự như sau:
+Chạy lệnh ```php start.php status``` có thể xem trạng thái hoạt động của Workerman, tương tự như sau:
 
 ```----------------------------------------------GLOBAL STATUS----------------------------------------------------
-WorkerMan version:3.5.13          PHP version:5.5.9-1ubuntu4.24
+Workerman version:3.5.13          PHP version:5.5.9-1ubuntu4.24
 thời gian bắt đầu:2018-02-03 11:48:20   chạy 112 ngày 2 giờ   
 tải trung bình: 0, 0, 0            vòng lặp sự kiện: \Workerman\Events\Event
 4 workers       11 processes
@@ -34,7 +34,7 @@ Tổng hợp	18M     -                        -                  54          0  
 
 Từ dòng này, chúng ta có thể thấy
 
-- Phiên bản của WorkerMan: ```version:3.5.13```
+- Phiên bản của Workerman: ```version:3.5.13```
 
 - Thời gian bắt đầu ```2018-02-03 11:48:20```, chạy được ```112 ngày 2 giờ```
 

@@ -63,4 +63,4 @@ Workerman 3.x - 4.x版本
 workerman同時支持linux系統及windows系統。windows版本workerman本身**不依賴任何擴展**，只需要配置好PHP環境變數即可，**windows版本workerman安裝及注意事項參見[windows用戶必看](https://www.workerman.net/windows)。**
 
 ## 客戶端
-WorkerMan的通訊協議是開放的，又是可定制的，因此，理論上WorkerMan可以與使用任意協議的任意平臺的客戶端進行通訊。當用戶開發客戶端時，可以根據相應的通訊協議完成與服務端的通訊。
+Workerman的通訊協議是開放的，又是可定制的，因此，理論上Workerman可以與使用任意協議的任意平臺的客戶端進行通訊。當用戶開發客戶端時，可以根據相應的通訊協議完成與服務端的通訊。

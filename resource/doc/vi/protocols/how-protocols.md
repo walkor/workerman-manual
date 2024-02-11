@@ -16,7 +16,7 @@ Thực tế, việc thiết lập giao thức của riêng mình là một đi�
 Lưu ý rằng cuối dữ liệu yêu cầu ở trên có một ký tự xuống dòng (được biểu diễn trong PHP bằng chuỗi **cặp dấu ngoặc kép** "\n"), đại diện cho việc kết thúc một yêu cầu.
 
 ### Bước thực hiện
-Trong WorkerMan, nếu muốn thực hiện giao thức như trên, giả sử giao thức có tên là JsonNL, nằm trong dự án là MyApp, bước cần thiết như sau:
+Trong Workerman, nếu muốn thực hiện giao thức như trên, giả sử giao thức có tên là JsonNL, nằm trong dự án là MyApp, bước cần thiết như sau:
 
 1. Đặt tệp giao thức vào thư mục của dự án Protocols, ví dụ: tệp MyApp/Protocols/JsonNL.php
 
@@ -111,7 +111,7 @@ Worker::runAll();
 > Nếu gặp lỗi `Class 'Protocols\JsonNL' not found`, vui lòng tham khảo [tự động tải](../faq/autoload.md) để triển khai tải tự động.
 
 ### Giải thích giao diện giao thức
-Trong WorkerMan, lớp giao thức phải triển khai ba phương thức tĩnh là input, encode, decode, giao diện giao thức được giải thích trong Workerman/Protocols/ProtocolInterface.php, định nghĩa như sau:
+Trong Workerman, lớp giao thức phải triển khai ba phương thức tĩnh là input, encode, decode, giao diện giao thức được giải thích trong Workerman/Protocols/ProtocolInterface.php, định nghĩa như sau:
 
 ```php
 namespace Workerman\Protocols;
@@ -140,7 +140,7 @@ interface ProtocolInterface
     /**
      * Dùng để giải gói yêu cầu
      *
-     * Nếu giá trị trả về từ input lớn hơn 0, và WorkerMan đã nhận đủ dữ liệu, thì sẽ tự động gọi decode
+     * Nếu giá trị trả về từ input lớn hơn 0, và Workerman đã nhận đủ dữ liệu, thì sẽ tự động gọi decode
      * Sau đó gọi lại hàm gọi lại onMessage và truyền dữ liệu giải gói từ decode cho tham số thứ hai của hàm gọi lại onMessage
      * Có nghĩa là khi nhận được yêu cầu từ client hoàn chỉnh, sẽ tự động gọi decode để giải mã, không cần phải gọi thủ công trong mã logic kinh doanh
      * @param ConnectionInterface $connection

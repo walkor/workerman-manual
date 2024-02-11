@@ -14,9 +14,9 @@ require_once __DIR__ . '/vendor/autoload.php';
 ```
 
 #### 3. Chọn giao thức
-Ở đây chúng ta chọn giao thức văn bản (là một giao thức do WorkerMan tự định nghĩa, có định dạng dữ liệu là văn bản + dòng xuống hàng)
+Ở đây chúng ta chọn giao thức văn bản (là một giao thức do Workerman tự định nghĩa, có định dạng dữ liệu là văn bản + dòng xuống hàng)
 
-(Hiện tại WorkerMan hỗ trợ giao thức HTTP, Websocket, giao thức văn bản. Nếu cần sử dụng giao thức khác, vui lòng tham khảo chương về giao thức để phát triển giao thức riêng của mình)
+(Hiện tại Workerman hỗ trợ giao thức HTTP, Websocket, giao thức văn bản. Nếu cần sử dụng giao thức khác, vui lòng tham khảo chương về giao thức để phát triển giao thức riêng của mình)
 
 #### 4. Viết tệp khởi đầu theo nhu cầu
 Ví dụ dưới đây là một tệp khởi đầu đơn giản của một phòng chat.

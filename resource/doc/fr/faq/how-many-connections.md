@@ -1,4 +1,4 @@
-# WorkerMan prend-il en charge la concurrence?
+# Workerman prend-il en charge la concurrence?
 
 **Le concept de** concurrence **est trop vague, nous allons l'expliquer ici avec deux mesures quantifiables: le nombre de connexions concurrentes et le nombre de requêtes concurrentes.**
 

@@ -23,7 +23,7 @@ Se a porta está sendo utilizada pelo Workerman e não é possível interrompê-
 
 ```shell
 killall php
-ps aux|grep WorkerMan|awk '{print $2}'|xargs kill -9
+ps aux|grep -i workerman|awk '{print $2}'|xargs kill -9
 ```
 
 #### Solução 4

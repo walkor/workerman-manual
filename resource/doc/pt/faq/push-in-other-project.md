@@ -1,8 +1,8 @@
-# Usando WorkerMan para enviar dados para o cliente em outros projetos
+# Usando Workerman para enviar dados para o cliente em outros projetos
 
 **Pergunta:**
 
-Eu tenho um projeto web comum e gostaria de chamar a interface do WorkerMan neste projeto para enviar dados para o cliente.
+Eu tenho um projeto web comum e gostaria de chamar a interface do Workerman neste projeto para enviar dados para o cliente.
 
 
 **Resposta:**

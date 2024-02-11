@@ -1,8 +1,8 @@
-# Utiliser WorkerMan pour envoyer des données aux clients dans d'autres projets
+# Utiliser Workerman pour envoyer des données aux clients dans d'autres projets
 
 **Question :**
 
-J'ai un projet web ordinaire et je souhaite appeler l'API de WorkerMan dans ce projet pour envoyer des données aux clients.
+J'ai un projet web ordinaire et je souhaite appeler l'API de Workerman dans ce projet pour envoyer des données aux clients.
 
 **Réponse :**
 

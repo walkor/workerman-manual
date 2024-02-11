@@ -1,12 +1,12 @@
-# Sử dụng WorkerMan trong dự án khác để đẩy dữ liệu đến máy khách
+# Sử dụng Workerman trong dự án khác để đẩy dữ liệu đến máy khách
 
 **Câu hỏi:**
 
-Tôi có một dự án web thông thường và muốn gọi API của WorkerMan trong dự án này để đẩy dữ liệu đến máy khách.
+Tôi có một dự án web thông thường và muốn gọi API của Workerman trong dự án này để đẩy dữ liệu đến máy khách.
 
 **Trả lời:**
 
-**Dựa trên WorkerMan có thể tham khảo các liên kết sau:**
+**Dựa trên Workerman có thể tham khảo các liên kết sau:**
 
 - [Ví dụ đẩy thông tin sử dụng thành phần Channel](../components/channel-examples.md) (hỗ trợ nhiều tiến trình/cụm máy chủ, cần tải về thành phần Channel)
 

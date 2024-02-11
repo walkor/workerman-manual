@@ -20,7 +20,7 @@ PHP Warning:  stream_socket_server(): unable to connect to tcp://xx.xx.xx.xx:xxx
 หาก Workerman กำลังใช้พอร์ต และไม่สามารถหยุดด้วยคำสั่ง stop (โดยทั่วไปเกิดจากการสูญหายของไฟล์ pid หรือโปรเซสหลักถูก kill โดยนักพัฒนา) สามารถใช้คำสั่งเหล่านี้เพื่อฆ่าโปรเซส Workerman
 ```bash
 killall php
-ps aux|grep WorkerMan|awk '{print $2}'|xargs kill -9
+ps aux|grep -i workerman|awk '{print $2}'|xargs kill -9
 ```
 
 #### วิธีแก้ปัญหา 4

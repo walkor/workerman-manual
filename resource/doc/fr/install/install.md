@@ -1,5 +1,5 @@
 # Instructions d'installation
-WorkerMan est en fait un package de code PHP. Si votre environnement PHP est déjà installé, il suffit de télécharger le code source ou la démo de WorkerMan pour le faire fonctionner.
+Workerman est en fait un package de code PHP. Si votre environnement PHP est déjà installé, il suffit de télécharger le code source ou la démo de Workerman pour le faire fonctionner.
 
 **Installation avec Composer :**
 ```sh
@@ -10,16 +10,16 @@ composer require workerman/workerman
 > Certains miroirs de proxy Composer ne sont pas complets. Utilisez la commande ci-dessus `composer config -g --unset repos.packagist` pour supprimer le proxy.
 
 # Utilisateurs de Windows (lecture obligatoire)
-À partir de la version 3.5.3 de WorkerMan, ce dernier est compatible avec les systèmes Windows et Linux.
+À partir de la version 3.5.3 de Workerman, ce dernier est compatible avec les systèmes Windows et Linux.
 Les utilisateurs Windows doivent configurer les variables d'environnement PHP.
 
- ` ===Les instructions ci-dessous s'appliquent uniquement à l'environnement Linux de WorkerMan, veuillez ignorer si vous êtes un utilisateur Windows=== `
+ ` ===Les instructions ci-dessous s'appliquent uniquement à l'environnement Linux de Workerman, veuillez ignorer si vous êtes un utilisateur Windows=== `
 
 # Vérification de l'environnement du système Linux
-Le script suivant peut être utilisé sur un système Linux pour tester si votre environnement PHP est conforme aux exigences d'exécution de WorkerMan.
+Le script suivant peut être utilisé sur un système Linux pour tester si votre environnement PHP est conforme aux exigences d'exécution de Workerman.
  `curl -Ss https://www.workerman.net/check | php`
 
-Si toutes les vérifications du script ci-dessus sont correctes, cela signifie que votre environnement PHP est conforme aux exigences de WorkerMan, et vous pouvez télécharger l'exemple directement depuis le [site officiel](https://www.workerman.net/) pour l'exécuter.
+Si toutes les vérifications du script ci-dessus sont correctes, cela signifie que votre environnement PHP est conforme aux exigences de Workerman, et vous pouvez télécharger l'exemple directement depuis le [site officiel](https://www.workerman.net/) pour l'exécuter.
 
 Si toutes les vérifications ne sont pas correctes, veuillez vous référer à la documentation ci-dessous pour installer les extensions manquantes.
 
@@ -109,7 +109,7 @@ Lorsqu'il est demandé : ```Include libevent OpenSSL support [yes] :```, entrez 
 extension=event.so
 ```
 
-4. Exécutez la commande suivante dans votre terminal (cette étape télécharge le programme principal de WorkerMan à partir de Github) :
+4. Exécutez la commande suivante dans votre terminal (cette étape télécharge le programme principal de Workerman à partir de Github) :
 ```shell
 git clone https://github.com/walkor/Workerman
 ```
@@ -135,7 +135,7 @@ Lorsqu'il est demandé : ```Include libevent OpenSSL support [yes] :```, entrez 
 extension=event.so
 ```
 
-4. Exécutez la commande suivante dans votre terminal (cette étape télécharge le programme principal de WorkerMan à partir de Github) :
+4. Exécutez la commande suivante dans votre terminal (cette étape télécharge le programme principal de Workerman à partir de Github) :
 ```shell
 git clone https://github.com/walkor/Workerman
 ```
@@ -149,7 +149,7 @@ git clone https://github.com/walkor/Workerman
 
 2. Veuillez vous référer à la section "Utilisation de phpize pour installer l'extension ```event```" dans le manuel [Annexe - Installation d'extensions](../appendices/install-extension.md) (Ceci peut être omis pour une machine de développement).
 
-3. Téléchargez le programme principal de WorkerMan à partir de [ce lien](https://www.workerman.net/download/workermanzip) ou depuis le [site officiel](https://www.workerman.net/) pour l'exécuter.
+3. Téléchargez le programme principal de Workerman à partir de [ce lien](https://www.workerman.net/download/workermanzip) ou depuis le [site officiel](https://www.workerman.net/) pour l'exécuter.
 
 **Méthode 2 :** Installation de PHP et de ses extensions correspondantes avec la commande ```brew```.
 

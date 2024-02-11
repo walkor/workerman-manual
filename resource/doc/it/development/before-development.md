@@ -1,33 +1,33 @@
 # Lettura obbligatoria prima dello sviluppo
 
-Per sviluppare un'applicazione con WorkerMan, è necessario comprendere i seguenti punti:
+Per sviluppare un'applicazione con Workerman, è necessario comprendere i seguenti punti:
 
 
-## I. Differenze tra lo sviluppo con WorkerMan e il normale sviluppo PHP
+## I. Differenze tra lo sviluppo con Workerman e il normale sviluppo PHP
 
-A parte l'impossibilità di utilizzare direttamente le variabili e le funzioni relative al protocollo HTTP, lo sviluppo con WorkerMan non differisce molto dal normale sviluppo PHP.
+A parte l'impossibilità di utilizzare direttamente le variabili e le funzioni relative al protocollo HTTP, lo sviluppo con Workerman non differisce molto dal normale sviluppo PHP.
 
 ### 1. Differenze nel protocollo delle applicazioni
 * Nello sviluppo PHP tradizionale si basa principalmente sul protocollo HTTP, il server Web ha già completato l'analisi del protocollo per lo sviluppatore.
-* WorkerMan supporta vari protocolli, al momento ha incorporato i protocolli HTTP e WebSocket. Si consiglia agli sviluppatori di utilizzare protocolli personalizzati più semplici per la comunicazione.
+* Workerman supporta vari protocolli, al momento ha incorporato i protocolli HTTP e WebSocket. Si consiglia agli sviluppatori di utilizzare protocolli personalizzati più semplici per la comunicazione.
 
  * Per lo sviluppo con protocollo HTTP fare riferimento alla sezione [Servizio Http](../http/request.md)
 
 ### 2. Differenze nel ciclo delle richieste
 * Nell'applicazione Web PHP, una volta completata la richiesta, tutte le variabili e le risorse vengono rilasciate.
-* Le applicazioni sviluppate con WorkerMan rimangono in memoria dopo il caricamento e l'analisi iniziale, quindi le definizioni delle classi, gli oggetti globali e i membri statici delle classi non vengono rilasciati e possono quindi essere riutilizzati più volte successivamente.
+* Le applicazioni sviluppate con Workerman rimangono in memoria dopo il caricamento e l'analisi iniziale, quindi le definizioni delle classi, gli oggetti globali e i membri statici delle classi non vengono rilasciati e possono quindi essere riutilizzati più volte successivamente.
 
 ### 3. Attenzione a evitare la ridichiarazione delle classi e delle costanti
-* Dato che WorkerMan memorizzerà i file PHP compilati, è necessario evitare di richiamare più volte gli stessi file di definizione di classi o costanti. Si consiglia di utilizzare require_once/include_once per caricare i file.
+* Dato che Workerman memorizzerà i file PHP compilati, è necessario evitare di richiamare più volte gli stessi file di definizione di classi o costanti. Si consiglia di utilizzare require_once/include_once per caricare i file.
 
 ### 4. Attenzione al rilascio delle risorse di connessione in modalità singleton
-* Poiché WorkerMan non rilascia gli oggetti globali e i membri statici delle classi dopo ogni richiesta, nelle modalità singleton come i database, è comune mantenere l'istanza del database (che include una connessione del socket del database) in un membro statico. Questo consente a WorkerMan di riutilizzare questa connessione del socket del database per l'intera durata della vita del processo. È importante notare che il server del database potrebbe chiudere attivamente la connessione del socket se non c'è attività per un certo periodo di tempo, e ciò potrebbe causare un errore quando si cerca di utilizzare nuovamente questa istanza del database (l'errore è simile a "il mysql è andato via"). WorkerMan fornisce una [classe per il database](../components/workerman-mysql.md) con una funzionalità di riconnessione, che i programmatori possono utilizzare direttamente.
+* Poiché Workerman non rilascia gli oggetti globali e i membri statici delle classi dopo ogni richiesta, nelle modalità singleton come i database, è comune mantenere l'istanza del database (che include una connessione del socket del database) in un membro statico. Questo consente a Workerman di riutilizzare questa connessione del socket del database per l'intera durata della vita del processo. È importante notare che il server del database potrebbe chiudere attivamente la connessione del socket se non c'è attività per un certo periodo di tempo, e ciò potrebbe causare un errore quando si cerca di utilizzare nuovamente questa istanza del database (l'errore è simile a "il mysql è andato via"). Workerman fornisce una [classe per il database](../components/workerman-mysql.md) con una funzionalità di riconnessione, che i programmatori possono utilizzare direttamente.
 
 ### 5. Non utilizzare le istruzioni di uscita exit e die
-* WorkerMan viene eseguito in modalità a riga di comando PHP, quindi l'uso delle istruzioni di uscita exit e die provocherà la chiusura del processo corrente. Anche se il processo figlio verrà immediatamente ricreato per continuare il servizio, potrebbe comunque avere un impatto sul business.
+* Workerman viene eseguito in modalità a riga di comando PHP, quindi l'uso delle istruzioni di uscita exit e die provocherà la chiusura del processo corrente. Anche se il processo figlio verrà immediatamente ricreato per continuare il servizio, potrebbe comunque avere un impatto sul business.
 
 ### 6. I cambiamenti nel codice richiedono il riavvio del servizio per essere effettivi
-Poiché WorkerMan è in esecuzione nella memoria permanente, una volta caricata in memoria la definizione della classe PHP o delle funzioni, non verrà più letta dal disco. Pertanto, ogni volta che si modifica il codice dell'applicazione, è necessario riavviare il servizio per renderlo effettivo.
+Poiché Workerman è in esecuzione nella memoria permanente, una volta caricata in memoria la definizione della classe PHP o delle funzioni, non verrà più letta dal disco. Pertanto, ogni volta che si modifica il codice dell'applicazione, è necessario riavviare il servizio per renderlo effettivo.
 
 
 ## II. Concetti di base da comprendere
@@ -57,7 +57,7 @@ Un riavvio normale comporta l'arresto di tutti i processi, seguito dalla creazio
 
 Al contrario, un riavvio graduale comporta non l'interruzione di tutti i processi contemporaneamente, ma viene arrestato un processo alla volta, sostituendolo immediatamente con un nuovo, fino a quando tutti i vecchi processi non vengono sostituiti.
 
-WorkerMan consente un riavvio graduale con il comando ```php your_file.php reload```, permettendo di aggiornare l'applicazione senza compromettere la qualità del servizio.
+Workerman consente un riavvio graduale con il comando ```php your_file.php reload```, permettendo di aggiornare l'applicazione senza compromettere la qualità del servizio.
 
 **Nota: solo i file caricati automaticamente tramite il callback on{...} verranno aggiornati automaticamente dopo un riavvio graduale. I file caricati direttamente nello script di avvio o il codice codificato non saranno aggiornati automaticamente dopo il reload.**
 

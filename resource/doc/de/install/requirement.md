@@ -18,11 +18,11 @@ Linux-Benutzer können nur die Linux-Version von Workerman verwenden.
 2. Es wird empfohlen, die Event-Erweiterung zu installieren, jedoch ist dies nicht zwingend erforderlich (Beachten Sie, dass die Event-Erweiterung mindestens PHP-Version 5.4 erfordert).
 
 ### Skript zur Überprüfung der Linux-Umgebung
-Linux-Benutzer können das folgende Skript ausführen, um zu überprüfen, ob ihre lokale Umgebung den Anforderungen von WorkerMan entspricht.
+Linux-Benutzer können das folgende Skript ausführen, um zu überprüfen, ob ihre lokale Umgebung den Anforderungen von Workerman entspricht.
 
 ```curl -Ss https://www.workerman.net/check | php```
 
-Wenn das Skript ausschließlich "ok" anzeigt, erfüllt die WorkerMan-Ausführungsumgebung die Anforderungen.
+Wenn das Skript ausschließlich "ok" anzeigt, erfüllt die Workerman-Ausführungsumgebung die Anforderungen.
 
 (Hinweis: Das Prüfskript überprüft nicht die Event-Erweiterung. Wenn die Anzahl der gleichzeitigen Verbindungen größer als 1024 ist, wird empfohlen, die Event-Erweiterung zu installieren. Siehe nächster Abschnitt für Informationen zur Installation.)
 
@@ -30,15 +30,15 @@ Wenn das Skript ausschließlich "ok" anzeigt, erfüllt die WorkerMan-Ausführung
 
 ### Über PHP-CLI
 
-WorkerMan wird im [PHP-Befehlszeilenmodus (PHP-CLI)](https://php.net/manual/zh/features.commandline.php) ausgeführt. PHP-CLI ist ein eigenständiges ausführbares Programm und nicht in Konflikt mit PHP-FPM oder dem Apache-Modul PHP-MOD und hängt nicht voneinander ab.
+Workerman wird im [PHP-Befehlszeilenmodus (PHP-CLI)](https://php.net/manual/zh/features.commandline.php) ausgeführt. PHP-CLI ist ein eigenständiges ausführbares Programm und nicht in Konflikt mit PHP-FPM oder dem Apache-Modul PHP-MOD und hängt nicht voneinander ab.
 
-### Über die von WorkerMan abhängigen Erweiterungen
+### Über die von Workerman abhängigen Erweiterungen
 
-1. [pcntl-Erweiterung](https://cn2.php.net/manual/zh/book.pcntl.php): Die pcntl-Erweiterung ist eine wichtige Erweiterung für die Prozesskontrolle von PHP in der Linux-Umgebung. WorkerMan nutzt Funktionen wie [Prozesserstellung](https://cn2.php.net/manual/zh/function.pcntl-fork.php), [Signalsteuerung](https://cn2.php.net/manual/zh/function.pcntl-signal.php), [Timer](https://cn2.php.net/manual/zh/function.pcntl-alarm.php) und [Überwachung des Prozessstatus](https://cn2.php.net/manual/zh/function.pcntl-waitpid.php). Diese Erweiterung wird nicht auf der Windows-Plattform unterstützt.
+1. [pcntl-Erweiterung](https://cn2.php.net/manual/zh/book.pcntl.php): Die pcntl-Erweiterung ist eine wichtige Erweiterung für die Prozesskontrolle von PHP in der Linux-Umgebung. Workerman nutzt Funktionen wie [Prozesserstellung](https://cn2.php.net/manual/zh/function.pcntl-fork.php), [Signalsteuerung](https://cn2.php.net/manual/zh/function.pcntl-signal.php), [Timer](https://cn2.php.net/manual/zh/function.pcntl-alarm.php) und [Überwachung des Prozessstatus](https://cn2.php.net/manual/zh/function.pcntl-waitpid.php). Diese Erweiterung wird nicht auf der Windows-Plattform unterstützt.
 
-2. [posix-Erweiterung](https://cn2.php.net/manual/zh/book.posix.php): Die posix-Erweiterung ermöglicht es PHP in der Linux-Umgebung, auf die vom [POSIX-Standard](https://baike.baidu.com/view/209573.htm) bereitgestellten Schnittstellen zuzugreifen. WorkerMan verwendet hauptsächlich Schnittstellen, um die Funktionen der Daemonisierung und der Benutzergruppenkontrolle zu implementieren. Diese Erweiterung wird nicht auf der Windows-Plattform unterstützt.
+2. [posix-Erweiterung](https://cn2.php.net/manual/zh/book.posix.php): Die posix-Erweiterung ermöglicht es PHP in der Linux-Umgebung, auf die vom [POSIX-Standard](https://baike.baidu.com/view/209573.htm) bereitgestellten Schnittstellen zuzugreifen. Workerman verwendet hauptsächlich Schnittstellen, um die Funktionen der Daemonisierung und der Benutzergruppenkontrolle zu implementieren. Diese Erweiterung wird nicht auf der Windows-Plattform unterstützt.
 
-3. [Event-Erweiterung](https://php.net/manual/zh/book.event.php) oder [libevent-Erweiterung](https://cn2.php.net/manual/en/book.libevent.php): Die Event-Erweiterung ermöglicht es PHP, fortgeschrittene Ereignisbehandlungsmechanismen wie [Epoll](https://baike.baidu.com/view/1385104.htm) und Kqueue zu nutzen, um die CPU-Auslastung von WorkerMan bei gleichzeitigen Verbindungen erheblich zu verringern. Sie ist besonders wichtig für Anwendungen mit hoher gleichzeitiger Verbindung zur Langzeitverbindung. Die libevent-Erweiterung (bzw. die Event-Erweiterung) ist optional. Wenn sie nicht installiert ist, wird standardmäßig der nativen Select-Ereignisbehandlungsmechanismus von PHP verwendet.
+3. [Event-Erweiterung](https://php.net/manual/zh/book.event.php) oder [libevent-Erweiterung](https://cn2.php.net/manual/en/book.libevent.php): Die Event-Erweiterung ermöglicht es PHP, fortgeschrittene Ereignisbehandlungsmechanismen wie [Epoll](https://baike.baidu.com/view/1385104.htm) und Kqueue zu nutzen, um die CPU-Auslastung von Workerman bei gleichzeitigen Verbindungen erheblich zu verringern. Sie ist besonders wichtig für Anwendungen mit hoher gleichzeitiger Verbindung zur Langzeitverbindung. Die libevent-Erweiterung (bzw. die Event-Erweiterung) ist optional. Wenn sie nicht installiert ist, wird standardmäßig der nativen Select-Ereignisbehandlungsmechanismus von PHP verwendet.
 
 ## Installation der Erweiterungen
 

@@ -1,6 +1,6 @@
 # エクステンションのインストール
 ## 注意
-Apache+PHPやNginx+PHPの実行モードとは異なり、WorkerManはPHPコマンドライン[PHP CLI](http://php.net/manual/zh/features.commandline.php)を使用しており、異なるPHP実行ファイルを使用し、異なるphp.iniファイルが使用される可能性があります。そのため、Webページで```phpinfo()```をプリントして、あるエクステンションがインストールされているのを見たとしても、コマンドラインのPHP CLIにそのエクステンションがインストールされているとは限りません。
+Apache+PHPやNginx+PHPの実行モードとは異なり、WorkermanはPHPコマンドライン[PHP CLI](http://php.net/manual/zh/features.commandline.php)を使用しており、異なるPHP実行ファイルを使用し、異なるphp.iniファイルが使用される可能性があります。そのため、Webページで```phpinfo()```をプリントして、あるエクステンションがインストールされているのを見たとしても、コマンドラインのPHP CLIにそのエクステンションがインストールされているとは限りません。
 
 ## PHP CLIにインストールされたエクステンションの確認方法
 ```php -m```を実行すると、コマンドラインのPHP CLIにインストールされたエクステンションがリストされます。結果は以下のようになります：

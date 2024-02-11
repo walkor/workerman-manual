@@ -1,12 +1,12 @@
 # Le rôle des protocoles de communication
 Comme le TCP est basé sur un flux, les données de requête envoyées par le client arrivent au serveur comme un cours d'eau. Une fois les données détectées par le serveur, il doit vérifier si ces dernières sont complètes, car il est possible qu'une partie seulement de la requête soit arrivée, voire que plusieurs requêtes soient arrivées en même temps. Afin de déterminer si la requête est entièrement arrivée ou de séparer les requêtes provenant de connexions multiples, il est nécessaire d'établir un ensemble de protocoles de communication.
 
-## Pourquoi établir des protocoles dans WorkerMan ?
+## Pourquoi établir des protocoles dans Workerman ?
 
 Traditionnellement, le développement PHP est basé sur le Web et utilise principalement le protocole HTTP. Le traitement et l'analyse du protocole HTTP sont entièrement pris en charge par le serveur Web, de sorte que les développeurs n'ont pas à se soucier des aspects protocolaires. Cependant, lorsque nous devons développer en dehors du protocole HTTP, les développeurs doivent commencer à se préoccuper des protocoles.
 
-## Protocoles actuellement pris en charge par WorkerMan
-Actuellement, WorkerMan prend en charge les protocoles suivants : HTTP, websocket, protocole text (voir l'annexe pour plus de détails), protocole frame (voir l'annexe pour plus de détails), ws (voir l'annexe pour plus de détails). Lorsque vous avez besoin de communiquer en utilisant l'un de ces protocoles, vous pouvez les utiliser directement. La méthode consiste à spécifier le protocole lors de l'initialisation du Worker, par exemple :
+## Protocoles actuellement pris en charge par Workerman
+Actuellement, Workerman prend en charge les protocoles suivants : HTTP, websocket, protocole text (voir l'annexe pour plus de détails), protocole frame (voir l'annexe pour plus de détails), ws (voir l'annexe pour plus de détails). Lorsque vous avez besoin de communiquer en utilisant l'un de ces protocoles, vous pouvez les utiliser directement. La méthode consiste à spécifier le protocole lors de l'initialisation du Worker, par exemple :
 
 ```php
 use Workerman\Worker;
@@ -33,7 +33,7 @@ $unix_worker = new Worker('unix:///tmp/wm.sock');
 ```
 
 ## Utilisation d'un protocole personnalisé
-Lorsque les protocoles de communication intégrés à WorkerMan ne répondent pas aux besoins de développement, les développeurs peuvent créer leur propre protocole de communication. La méthode de personnalisation est expliquée dans la section suivante.
+Lorsque les protocoles de communication intégrés à Workerman ne répondent pas aux besoins de développement, les développeurs peuvent créer leur propre protocole de communication. La méthode de personnalisation est expliquée dans la section suivante.
 
 **Conseil :**
 

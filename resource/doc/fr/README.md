@@ -65,6 +65,6 @@ Versions 3.x - 4.x de Workerman
 Workerman prend en charge les systèmes Linux et Windows. La version Windows de Workerman **ne dépend d'aucune extension**, elle nécessite simplement la configuration de la variable d'environnement PHP. Pour connaître les détails de l'installation de la version Windows de Workerman et les points à retenir, consultez le lien [Windows Users Must Read](https://www.workerman.net/windows).
 
 ## Client
-Le protocole de communication de WorkerMan est ouvert et personnalisable, de ce fait, en théorie, WorkerMan peut communiquer avec des clients utilisant n'importe quel protocole sur n'importe quelle plateforme. Lorsque l'utilisateur développe un client, il peut se baser sur le protocole de communication correspondant pour communiquer avec le serveur.
+Le protocole de communication de Workerman est ouvert et personnalisable, de ce fait, en théorie, Workerman peut communiquer avec des clients utilisant n'importe quel protocole sur n'importe quelle plateforme. Lorsque l'utilisateur développe un client, il peut se baser sur le protocole de communication correspondant pour communiquer avec le serveur.
 
 

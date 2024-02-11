@@ -1,11 +1,11 @@
 # Ruolo dei protocolli di comunicazione
 Poiché TCP si basa sul flusso, i dati di richiesta inviati dal client scorrono verso il server come un flusso d'acqua. Una volta che il server rileva l'arrivo dei dati, deve verificare se i dati sono completi, in quanto potrebbe essere arrivata solo una parte della richiesta al server, o addirittura potrebbero essere arrivate più richieste concatenate. Per determinare se una richiesta è stata completamente ricevuta o separare le richieste concatenate, è necessario definire un set di protocolli di comunicazione.
 
-## Perché definire un protocollo in WorkerMan?
+## Perché definire un protocollo in Workerman?
 Lo sviluppo tradizionale in PHP si basa principalmente su HTTP, e il parsing e la gestione dei protocolli HTTP sono principalmente affidati al WebServer, quindi gli sviluppatori non devono preoccuparsi degli aspetti relativi ai protocolli. Tuttavia, quando si sviluppa basandosi su protocolli diversi da HTTP, gli sviluppatori devono prendere in considerazione proprio questi aspetti.
 
-## Protocolli supportati da WorkerMan
-Al momento, WorkerMan supporta già i protocolli HTTP, websocket, text (vedi spiegazione in appendice) e frame (vedi spiegazione in appendice), oltre al protocollo ws (vedi spiegazione in appendice). Quando si necessita di comunicare basandosi su tali protocolli, è possibile utilizzarli direttamente specificando il protocollo durante l'inizializzazione del Worker, come mostrato di seguito:
+## Protocolli supportati da Workerman
+Al momento, Workerman supporta già i protocolli HTTP, websocket, text (vedi spiegazione in appendice) e frame (vedi spiegazione in appendice), oltre al protocollo ws (vedi spiegazione in appendice). Quando si necessita di comunicare basandosi su tali protocolli, è possibile utilizzarli direttamente specificando il protocollo durante l'inizializzazione del Worker, come mostrato di seguito:
 ```php
 use Workerman\Worker;
 use Workerman\Connection\TcpConnection;
@@ -31,7 +31,7 @@ $unix_worker = new Worker('unix:///tmp/wm.sock');
 ```
 
 ## Utilizzo di un protocollo di comunicazione personalizzato
-Quando i protocolli di comunicazione predefiniti di WorkerMan non soddisfano le esigenze di sviluppo, gli sviluppatori possono personalizzare il proprio protocollo di comunicazione, come illustrato nella sezione successiva.
+Quando i protocolli di comunicazione predefiniti di Workerman non soddisfano le esigenze di sviluppo, gli sviluppatori possono personalizzare il proprio protocollo di comunicazione, come illustrato nella sezione successiva.
 
 **Suggerimento:**
 Workerman include nativamente un protocollo di testo, con il formato testo + carattere di nuova riga. Il protocollo text semplifica molto lo sviluppo e il debug, ed è adatto alla maggior parte delle esigenze di protocolli personalizzati, supportando anche il debug tramite telnet. Se gli sviluppatori devono sviluppare il proprio protocollo di applicazione, possono utilizzare direttamente il protocollo text senza doverlo sviluppare separatamente.

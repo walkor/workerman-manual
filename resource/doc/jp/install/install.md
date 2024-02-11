@@ -1,5 +1,5 @@
 # インストール手順
-WorkerManは実際にはPHPのコードパッケージであり、すでにPHP環境が整備されている場合、WorkerManのソースコードまたはデモをダウンロードして実行するだけです。
+Workermanは実際にはPHPのコードパッケージであり、すでにPHP環境が整備されている場合、Workermanのソースコードまたはデモをダウンロードして実行するだけです。
 
 **Composerのインストール：**
 ```sh
@@ -17,10 +17,10 @@ Windowsユーザーは、PHP環境変数を設定する必要があります。
  ` ===このページの以下の内容はLinux環境のWorkermanにのみ適用され、Windowsユーザーは無視してください=== `
 
 # Linuxシステム環境のテスト
-Linuxシステムでは、以下のスクリプトを使用して、ローカルのPHP環境がWorkerManの実行要件を満たしているかどうかをテストできます。
+Linuxシステムでは、以下のスクリプトを使用して、ローカルのPHP環境がWorkermanの実行要件を満たしているかどうかをテストできます。
  `curl -Ss https://www.workerman.net/check | php`
 
-上記のスクリプトがすべて「ok」を表示した場合、WorkerManの要件を満たしていることを示し、[公式サイト](https://www.workerman.net/)から例をダウンロードして実行できます。
+上記のスクリプトがすべて「ok」を表示した場合、Workermanの要件を満たしていることを示し、[公式サイト](https://www.workerman.net/)から例をダウンロードして実行できます。
 
 すべてがOKでない場合は、以下の文書を参照して、不足している拡張機能をインストールします。
 
@@ -110,7 +110,7 @@ pecl install event
 extension=event.so
 ```
 
-4、以下のコマンドを実行して、WorkerManメインプログラムをgithubからダウンロードします。
+4、以下のコマンドを実行して、Workermanメインプログラムをgithubからダウンロードします。
 ```shell
 git clone https://github.com/walkor/Workerman
 ```
@@ -136,7 +136,7 @@ pecl install event
 extension=event.so
 ```
 
-4、以下のコマンドを実行して、WorkerManメインプログラムをgithubからダウンロードします。
+4、以下のコマンドを実行して、Workermanメインプログラムをgithubからダウンロードします。
 ```shell
 git clone https://github.com/walkor/Workerman
 ```
@@ -151,7 +151,7 @@ git clone https://github.com/walkor/Workerman
 
 2、参考:[付録-拡張機能のインストール](../appendices/install-extension.md)セクションの方法4を使用して、```event```拡張機能をインストールします（開発用のマシンでは省略可）。
 
-3、https://www.workerman.net/download/workermanzip からWorkerManメインプログラムをダウンロードするか、[公式サイト](https://www.workerman.net/) から例をダウンロードして実行してください。
+3、https://www.workerman.net/download/workermanzip からWorkermanメインプログラムをダウンロードするか、[公式サイト](https://www.workerman.net/) から例をダウンロードして実行してください。
 
 **方法2：** ```brew``` コマンドを使用してPHPおよび対応する拡張をインストールする
 

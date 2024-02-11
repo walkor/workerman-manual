@@ -1,5 +1,5 @@
 # คำแนะนำในการติดตั้ง
-WorkerMan ซึ่งเป็นจริง ๆ แล้วเป็นแค่ชุดโค้ด PHP หากคุณมี PHP environment ที่ถูกต้องแล้ว คุณสามารถดาวน์โหลดโค้ดต้นฉบับของ WorkerMan หรือตัวอย่างไปทำงานได้ทันที
+Workerman ซึ่งเป็นจริง ๆ แล้วเป็นแค่ชุดโค้ด PHP หากคุณมี PHP environment ที่ถูกต้องแล้ว คุณสามารถดาวน์โหลดโค้ดต้นฉบับของ Workerman หรือตัวอย่างไปทำงานได้ทันที
 
 **การติดตั้งผ่าน Composer:**
 ```sh
@@ -15,10 +15,10 @@ composer require workerman/workerman
  ` ===ข้อมูลดังต่อไปนี้เฉพาะสำหรับระบบปฏิบัติการ Linux เท่านั้น ผู้ใช้ Windows โปรดละเว้น=== `
 
 # ตรวจสอบสภาพแวดล้อมระบบปฏิบัติการ Linux
-สำหรับระบบปฏิบัติการ Linux คุณสามารถใช้สคริปต์นี้เพื่อทดสอบว่าสภาพแวดล้อม PHP บนเครื่องของคุณพร้อมที่จะรัน WorkerMan หรือไม่
+สำหรับระบบปฏิบัติการ Linux คุณสามารถใช้สคริปต์นี้เพื่อทดสอบว่าสภาพแวดล้อม PHP บนเครื่องของคุณพร้อมที่จะรัน Workerman หรือไม่
  `curl -Ss https://www.workerman.net/check | php`
 
-หากสคริปต์ด้านบนแสดงข้อความ "ok" ทั้งหมด นั่นหมายความว่า WorkerMan สามารถรันได้โดยตรง คุณสามารถดาวน์โหลดตัวอย่างจาก[เว็บไซต์อย่างเป็นทางการ](https://www.workerman.net/) เพื่อทดสอบใช้งาน
+หากสคริปต์ด้านบนแสดงข้อความ "ok" ทั้งหมด นั่นหมายความว่า Workerman สามารถรันได้โดยตรง คุณสามารถดาวน์โหลดตัวอย่างจาก[เว็บไซต์อย่างเป็นทางการ](https://www.workerman.net/) เพื่อทดสอบใช้งาน
 
 หากมีข้อผิดพลาดสามารถอ้างอิงเอกสารด้านล่างเพื่อทำการติดตังเพิ่มเติม
 
@@ -101,7 +101,7 @@ pecl install event
 ```shell
 extension=event.so
 ```
-4. ดำเนินการ clone WorkerMan main program ผ่าน GitHub
+4. ดำเนินการ clone Workerman main program ผ่าน GitHub
 ```shell
 git clone https://github.com/walkor/Workerman
 ```
@@ -125,7 +125,7 @@ pecl install event
 extension=event.so
 ```
 
-4. รันคำสั่งต่อไปนี้ใน Command Line (ขั้นตอนนี้เป็นการดาวน์โหลดโปรแกรมหลักของ WorkerMan จาก github)
+4. รันคำสั่งต่อไปนี้ใน Command Line (ขั้นตอนนี้เป็นการดาวน์โหลดโปรแกรมหลักของ Workerman จาก github)
 ```shell
 git clone https://github.com/walkor/Workerman
 ```
@@ -140,7 +140,7 @@ git clone https://github.com/walkor/Workerman
 
 2. ดูประกาศ [เพิ่มเติม-การติดตั้ง extension](../appendices/install-extension.md) ในส่วนการติดตั้ง ```event``` โดยใช้ phpize (คำสั่งนี้สามารถข้ามได้ถ้าเป็นเครื่องพัฒนา)
 
-3. ดาวน์โหลดโปรแกรมหลักของ WorkerMan จาก https://www.workerman.net/download/workermanzip  หรือจาก [เว็บไซต์อย่างเป็นทางการ](https://www.workerman.net/)
+3. ดาวน์โหลดโปรแกรมหลักของ Workerman จาก https://www.workerman.net/download/workermanzip  หรือจาก [เว็บไซต์อย่างเป็นทางการ](https://www.workerman.net/)
 
 **วิธีที่ 2:** ใช้คำสั่ง ```brew``` เพื่อติดตั้ง php และ extension ที่เกี่ยวข้อง
 

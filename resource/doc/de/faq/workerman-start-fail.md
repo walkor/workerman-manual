@@ -20,7 +20,7 @@ Falls es nicht möglich ist, das Programm zu beenden, das den Port belegt, kann 
 Wenn der von Workerman belegte Port nicht durch den Befehl "stop" gestoppt werden kann (normalerweise aufgrund des fehlenden PID-Datei oder weil der Hauptprozess vom Entwickler beendet wurde), können die folgenden beiden Befehle ausgeführt werden, um den Workerman-Prozess zu beenden:
 ```bash
 killall php
-ps aux|grep WorkerMan|awk '{print $2}'|xargs kill -9
+ps aux|grep -i workerman|awk '{print $2}'|xargs kill -9
 ```
 
 #### Lösung 4

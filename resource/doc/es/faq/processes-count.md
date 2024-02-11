@@ -30,5 +30,5 @@ Si el código empresarial es intensivo en E/S, configure el número de procesos 
 Si el código empresarial es intensivo en la CPU, el número de procesos puede establecerse igual que el número de núcleos de CPU.
 
 ## Nota
-La E/S en WorkerMan en sí misma es no bloqueante, por ejemplo, ```Connection->send```, todas son operaciones no bloqueantes, que pertenecen a la categoría de intensivo en la CPU. Si no está seguro de qué tipo de carga de trabajo tiene su negocio, puede configurar el número de procesos en aproximadamente 3 veces el número de núcleos de CPU.
+La E/S en Workerman en sí misma es no bloqueante, por ejemplo, ```Connection->send```, todas son operaciones no bloqueantes, que pertenecen a la categoría de intensivo en la CPU. Si no está seguro de qué tipo de carga de trabajo tiene su negocio, puede configurar el número de procesos en aproximadamente 3 veces el número de núcleos de CPU.
 Además, más procesos no significan mejor rendimiento; abrir demasiados procesos aumentará el costo del cambio de procesos y tendrá un cierto impacto en el rendimiento.

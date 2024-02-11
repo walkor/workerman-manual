@@ -31,5 +31,5 @@ Se o código do negócio for intensivo em E/S, o número de processos pode ser d
 Se o código do negócio for intensivo em CPU, o número de processos pode ser configurado igual ao número de núcleos da CPU.
 
 ## Observação
-O IO do próprio WorkerMan é não bloqueante, por exemplo, o```Connection->send```, todos são operações não bloqueantes, o que corresponde a operações intensivas em CPU. Se não estiver claro sobre qual tipo o seu negócio se enquadra, pode-se configurar o número de processos para cerca de 3 vezes o número de núcleos da CPU.
+O IO do próprio Workerman é não bloqueante, por exemplo, o```Connection->send```, todos são operações não bloqueantes, o que corresponde a operações intensivas em CPU. Se não estiver claro sobre qual tipo o seu negócio se enquadra, pode-se configurar o número de processos para cerca de 3 vezes o número de núcleos da CPU.
 Além disso, mais processos nem sempre significam melhor desempenho. Se houver muitos processos em execução, o custo de troca de contexto aumentará, o que terá um certo impacto no desempenho.

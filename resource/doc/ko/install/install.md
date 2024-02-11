@@ -1,4 +1,4 @@
-WorkerMan은 사실 PHP 코드 패키지이며, PHP 환경이 이미 설정되어 있다면 WorkerMan 소스 코드나 데모를 다운로드하여 실행할 수 있습니다.
+Workerman은 사실 PHP 코드 패키지이며, PHP 환경이 이미 설정되어 있다면 Workerman 소스 코드나 데모를 다운로드하여 실행할 수 있습니다.
 
 **Composer로 설치:**
 ```sh
@@ -16,10 +16,10 @@ Windows 사용자는 PHP 환경 변수를 설정해야 합니다.
  ` ===이 페이지 이하는 리눅스 환경에서만 적용되며, Windows 사용자는 무시하십시오=== `
 
 # 리눅스 시스템 환경 검사
-리눅스 시스템에서 다음 스크립트를 사용하여 현재 PHP 환경이 WorkerMan 실행 요구 사항을 충족하는지를 테스트할 수 있습니다.
+리눅스 시스템에서 다음 스크립트를 사용하여 현재 PHP 환경이 Workerman 실행 요구 사항을 충족하는지를 테스트할 수 있습니다.
  `curl -Ss https://www.workerman.net/check | php`
 
-위 스크립트가 모두 "OK"로 표시되면 WorkerMan 요구 사항을 충족한다는 것을 의미하며, [공식 웹 사이트](https://www.workerman.net/)에서 예제를 다운로드하여 실행할 수 있습니다.
+위 스크립트가 모두 "OK"로 표시되면 Workerman 요구 사항을 충족한다는 것을 의미하며, [공식 웹 사이트](https://www.workerman.net/)에서 예제를 다운로드하여 실행할 수 있습니다.
 
 모두 "OK"로 나오지 않으면 아래 문서를 참고하여 누락된 확장 기능을 설치하면 됩니다.
 
@@ -106,7 +106,7 @@ pecl install event
 extension=event.so
 ```
 
-4. 명령줄에서 GitHub에서 WorkerMan 메인 프로그램을 다운로드하려면 다음을 실행하십시오.
+4. 명령줄에서 GitHub에서 Workerman 메인 프로그램을 다운로드하려면 다음을 실행하십시오.
 ```shell
 git clone https://github.com/walkor/Workerman
 ```
@@ -132,7 +132,7 @@ pecl install event
 extension=event.so
 ```
 
-4. 명령줄에서 GitHub에서 WorkerMan 메인 프로그램을 다운로드하려면 다음을 실행하십시오.
+4. 명령줄에서 GitHub에서 Workerman 메인 프로그램을 다운로드하려면 다음을 실행하십시오.
 ```shell
 git clone https://github.com/walkor/Workerman
 ```
@@ -146,7 +146,7 @@ git clone https://github.com/walkor/Workerman
 
 2. [부록-확장 설치](../appendices/install-extension.md) 섹션의 네 번째 방법인 phpize를 사용하여 ```event``` 확장을 설치하십시오 (개발 시스템에서는 이 단계를 생략할 수 있음).
 
-3. https://www.workerman.net/download/workermanzip에서 WorkerMan 메인 프로그램을 다운로드하거나 [공식 웹 사이트](https://www.workerman.net/)에서 데모를 다운로드하여 실행하십시오.
+3. https://www.workerman.net/download/workermanzip에서 Workerman 메인 프로그램을 다운로드하거나 [공식 웹 사이트](https://www.workerman.net/)에서 데모를 다운로드하여 실행하십시오.
 
 **방법 2:** ```brew``` 명령어를 사용하여 php 및 해당 확장을 설치하십시오.
 

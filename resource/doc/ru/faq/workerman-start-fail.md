@@ -22,7 +22,7 @@ PHP Warning:  stream_socket_server(): unable to connect to tcp://xx.xx.xx.xx:xxx
 
 ```
 killall php
-ps aux|grep WorkerMan|awk '{print $2}'|xargs kill -9
+ps aux|grep -i workerman|awk '{print $2}'|xargs kill -9
 ```
 
 #### Решение 4

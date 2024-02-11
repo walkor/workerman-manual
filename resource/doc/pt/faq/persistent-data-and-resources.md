@@ -1,8 +1,8 @@
 # Persistência de Objetos e Recursos
 
-Na tradicional desenvolvimento web, os objetos, dados e recursos criados pelo PHP são liberados após a conclusão da solicitação, tornando difícil alcançar a persistência. No entanto, com o WorkerMan, isso pode ser facilmente alcançado.
+Na tradicional desenvolvimento web, os objetos, dados e recursos criados pelo PHP são liberados após a conclusão da solicitação, tornando difícil alcançar a persistência. No entanto, com o Workerman, isso pode ser facilmente alcançado.
 
-No WorkerMan, se desejar manter permanentemente certos recursos de dados na memória, é possível colocar os recursos em variáveis globais ou em membros estáticos de uma classe.
+No Workerman, se desejar manter permanentemente certos recursos de dados na memória, é possível colocar os recursos em variáveis globais ou em membros estáticos de uma classe.
 
 Por exemplo, no código abaixo:
 

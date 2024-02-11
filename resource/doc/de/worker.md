@@ -1,5 +1,5 @@
 # Die Worker-Klasse
-In WorkerMan gibt es zwei wichtige Klassen: Worker und Connection.
+In Workerman gibt es zwei wichtige Klassen: Worker und Connection.
 
 Die Worker-Klasse wird verwendet, um den Port zu überwachen und Callback-Funktionen für Ereignisse wie das Herstellen einer Verbindung zum Client, das Empfangen von Nachrichten und das Trennen der Verbindung zu setzen, um die Geschäftslogik umzusetzen.
 

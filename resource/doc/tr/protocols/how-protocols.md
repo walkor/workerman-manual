@@ -17,7 +17,7 @@ Burada veri sınırlarını ayırt eden belirleyicinin bir satır sonu "\n" oldu
 Yukarıdaki istek verisinin sonunda bir satır sonu karakteri bulunmaktadır (PHP'de **çift tırnaklı** dize olarak "\n" olarak temsil edilir), bu bir isteğin sonunu temsil eder.
 
 ### Uygulama Adımları
-WorkerMan'da yukarıdaki protokolü uygulamak istiyorsak, protokolümüzün adının JsonNL olduğunu ve proje adının MyApp olduğunu varsayalım. Bu durumda aşağıdaki adımları takip etmemiz gerekir.
+Workerman'da yukarıdaki protokolü uygulamak istiyorsak, protokolümüzün adının JsonNL olduğunu ve proje adının MyApp olduğunu varsayalım. Bu durumda aşağıdaki adımları takip etmemiz gerekir.
 
 1. Protokol dosyasını projenin Protocols klasörüne koymalısınız, örneğin dosya şu şekilde olacaktır: MyApp/Protocols/JsonNL.php
 2. JsonNL sınıfını uygulamalıyız ve ```namespace Protocols;``` olarak adlandırmalıyız. Bu sınıfın input, encode ve decode olmak üzere üç adet statik yöntemi uygulamamız gerekir.
@@ -140,7 +140,7 @@ interface ProtocolInterface
     /**
      * İstek açmak için kullanılır
      *
-     * input değeri 0'dan büyük ve WorkerMan istenilen miktarda veri alındığında otomatik olarak decode yöntemini çağırır
+     * input değeri 0'dan büyük ve Workerman istenilen miktarda veri alındığında otomatik olarak decode yöntemini çağırır
      * ve onMessage geri çağırımını tetikler ve açılmış veriyi onMessage geri çağırımının ikinci parametresi olarak iletilir
      * Yani, istemci isteğinin tamamını alınca otomatik olarak decode yöntemini çağırmak için kod yazmaya gerek yoktur.
      * @param ConnectionInterface $connection

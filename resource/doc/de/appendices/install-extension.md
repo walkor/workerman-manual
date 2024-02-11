@@ -1,6 +1,6 @@
 # Erweiterungen installieren
 ## Hinweis
-Im Gegensatz zu Apache+PHP oder Nginx+PHP läuft WorkerMan auf PHP-Befehlszeile [PHP CLI](http://php.net/manual/zh/features.commandline.php) und verwendet ein anderes PHP-Ausführungsprogramm sowie möglicherweise eine unterschiedliche php.ini-Datei. Daher bedeutet das Vorhandensein einer Erweiterung bei der Ausgabe von ```phpinfo()``` auf der Webseite nicht zwangsläufig, dass dieselbe Erweiterung auch in der PHP CLI installiert ist.
+Im Gegensatz zu Apache+PHP oder Nginx+PHP läuft Workerman auf PHP-Befehlszeile [PHP CLI](http://php.net/manual/zh/features.commandline.php) und verwendet ein anderes PHP-Ausführungsprogramm sowie möglicherweise eine unterschiedliche php.ini-Datei. Daher bedeutet das Vorhandensein einer Erweiterung bei der Ausgabe von ```phpinfo()``` auf der Webseite nicht zwangsläufig, dass dieselbe Erweiterung auch in der PHP CLI installiert ist.
 
 ## Ermitteln installierter PHP CLI-Erweiterungen
 Die Ausführung von ```php -m``` listet die installierten Erweiterungen der PHP CLI auf. Das Ergebnis wäre ähnlich wie unten dargestellt:

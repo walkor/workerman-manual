@@ -1,7 +1,7 @@
 # 확장 설치
 
 ## 주의
-Apache+PHP 또는 Nginx+PHP와는 다르게 WorkerMan은 PHP 커맨드 라인 [PHP CLI](http://php.net/manual/zh/features.commandline.php)을 기반으로 하며, 다른 PHP 실행 파일을 사용하며 php.ini 파일도 다를 수 있습니다. 따라서 웹페이지에서 ```phpinfo()```를 통해 특정 확장이 설치되었다고 하더라도, 커맨드 라인의 PHP CLI에도 해당 확장이 설치되어 있는 것은 아닙니다.
+Apache+PHP 또는 Nginx+PHP와는 다르게 Workerman은 PHP 커맨드 라인 [PHP CLI](http://php.net/manual/zh/features.commandline.php)을 기반으로 하며, 다른 PHP 실행 파일을 사용하며 php.ini 파일도 다를 수 있습니다. 따라서 웹페이지에서 ```phpinfo()```를 통해 특정 확장이 설치되었다고 하더라도, 커맨드 라인의 PHP CLI에도 해당 확장이 설치되어 있는 것은 아닙니다.
 
 ## PHP CLI에 설치된 확장 확인하는 방법
 ```php -m``` 명령어를 실행하여 커맨드 라인의 PHP CLI에 설치된 확장을 나열할 수 있으며, 결과는 다음과 같습니다:

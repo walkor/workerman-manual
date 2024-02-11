@@ -1,8 +1,8 @@
-# ¿Qué protocolos admite WorkerMan?
+# ¿Qué protocolos admite Workerman?
 
-WorkerMan admite varios protocolos a nivel de interfaz, siempre que cumplan con la interfaz ```ConnectionInterface``` (consulte la sección de Protocolos de comunicación personalizados).
+Workerman admite varios protocolos a nivel de interfaz, siempre que cumplan con la interfaz ```ConnectionInterface``` (consulte la sección de Protocolos de comunicación personalizados).
 
-Para mayor comodidad de los desarrolladores, WorkerMan proporciona soporte para los protocolos HTTP, WebSocket, así como un protocolo de texto muy simple que se puede utilizar para la transmisión binaria. Los desarrolladores pueden usar directamente estos protocolos sin necesidad de realizar más desarrollo. Si ninguno de estos protocolos satisface las necesidades, los desarrolladores pueden implementar su propio protocolo siguiendo la sección de protocolos personalizados.
+Para mayor comodidad de los desarrolladores, Workerman proporciona soporte para los protocolos HTTP, WebSocket, así como un protocolo de texto muy simple que se puede utilizar para la transmisión binaria. Los desarrolladores pueden usar directamente estos protocolos sin necesidad de realizar más desarrollo. Si ninguno de estos protocolos satisface las necesidades, los desarrolladores pueden implementar su propio protocolo siguiendo la sección de protocolos personalizados.
 
 Los desarrolladores también pueden basarse directamente en los protocolos TCP o UDP.
 

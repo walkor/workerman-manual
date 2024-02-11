@@ -7,7 +7,7 @@ Lorsque vous souhaitez savoir ce que fait un processus, vous pouvez suivre tous 
 ```plaintext
 Bonjour admin
 ---------------------------------------GLOBAL STATUS--------------------------------------------
-Version de WorkerMan : 3.0.1
+Version de Workerman : 3.0.1
 heure de démarrage : 2014-08-12 17:42:04   en cours d'exécution depuis 0 jours 1 heure
 charge moyenne : 3.34, 3.59, 3.67
 1 utilisateur          8 ouvriers       14 processus

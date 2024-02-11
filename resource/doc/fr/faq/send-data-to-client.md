@@ -1,4 +1,4 @@
-# Comment envoyer des données à un client spécifique dans WorkerMan
+# Comment envoyer des données à un client spécifique dans Workerman
 
 Utiliser un worker pour créer un serveur, sans utiliser GatewayWorker, comment envoyer des messages à des utilisateurs spécifiques ?
 

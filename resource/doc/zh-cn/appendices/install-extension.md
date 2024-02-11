@@ -1,6 +1,6 @@
 # 安装扩展
 ## 注意
-与Apache+PHP或者Nginx+PHP的运行模式不同，WorkerMan是基于PHP命令行 [PHP CLI](http://php.net/manual/zh/features.commandline.php) 运行的，使用的是不同的PHP可执行程序，使用的php.ini文件也可能不同。所以在网页中打印```phpinfo()```看到安装了某个扩展，不代表命令行的PHP CLI也安装了对应的扩展。
+与Apache+PHP或者Nginx+PHP的运行模式不同，Workerman是基于PHP命令行 [PHP CLI](http://php.net/manual/zh/features.commandline.php) 运行的，使用的是不同的PHP可执行程序，使用的php.ini文件也可能不同。所以在网页中打印```phpinfo()```看到安装了某个扩展，不代表命令行的PHP CLI也安装了对应的扩展。
 
 ## 如何确定PHP CLI安装了哪些扩展
 运行 ```php -m``` 会列出命令行 PHP CLI 已经安装的扩展，结果类似如下：

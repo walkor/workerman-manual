@@ -1,6 +1,6 @@
 # Connection 클래스에서 제공하는 인터페이스
 
-WorkerMan에는 두 가지 중요한 클래스 Worker와 Connection이 있습니다.
+Workerman에는 두 가지 중요한 클래스 Worker와 Connection이 있습니다.
 
 각 클라이언트 연결에는 하나의 Connection 객체가 대응하며, 이 객체의 onMessage, onClose 등의 콜백을 설정할 수 있습니다. 또한 클라이언트에 데이터를 전송하는 send 인터페이스와 연결을 닫는 close 인터페이스, 그리고 다른 필수적인 인터페이스가 제공됩니다.
 

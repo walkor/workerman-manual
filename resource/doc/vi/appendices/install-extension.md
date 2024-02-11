@@ -1,6 +1,6 @@
 # Cài đặt các extension
 ## Lưu ý
-Khác với cách Apache+PHP hoặc Nginx+PHP hoạt động, WorkerMan hoạt động dựa trên PHP command line [PHP CLI](http://php.net/manual/zh/features.commandline.php), sử dụng chương trình thực thi PHP khác nhau, và có thể sử dụng tệp php.ini khác nhau. Do đó, khi in ```phpinfo()``` trên trang web và thấy cài đặt một extension, không có nghĩa là PHP CLI đã cài đặt được extension tương ứng.
+Khác với cách Apache+PHP hoặc Nginx+PHP hoạt động, Workerman hoạt động dựa trên PHP command line [PHP CLI](http://php.net/manual/zh/features.commandline.php), sử dụng chương trình thực thi PHP khác nhau, và có thể sử dụng tệp php.ini khác nhau. Do đó, khi in ```phpinfo()``` trên trang web và thấy cài đặt một extension, không có nghĩa là PHP CLI đã cài đặt được extension tương ứng.
 
 ## Làm thế nào để xác định cài đặt các extension cho PHP CLI
 Chạy lệnh ```php -m``` sẽ liệt kê các extension đã được cài đặt cho PHP CLI, kết quả sẽ tương tự như sau:

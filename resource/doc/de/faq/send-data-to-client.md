@@ -1,4 +1,4 @@
-# Wie sendet man Daten an einen bestimmten Client in WorkerMan
+# Wie sendet man Daten an einen bestimmten Client in Workerman
 
 Wenn Sie den Worker als Server verwenden, anstatt GatewayWorker zu verwenden, wie können Sie dann Nachrichten an einen bestimmten Benutzer senden?
 

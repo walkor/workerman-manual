@@ -7,7 +7,7 @@ Cuando se quiere saber qué está haciendo un proceso, se puede utilizar el coma
 ```
 Hola admin
 ---------------------------------------ESTADO GLOBAL--------------------------------------------
-Versión de WorkerMan: 3.0.1
+Versión de Workerman: 3.0.1
 Hora de inicio: 2014-08-12 17:42:04   en ejecución 0 días 1 horas
 carga promedio: 3.34, 3.59, 3.67
 1 usuario         8 trabajadores       14 procesos

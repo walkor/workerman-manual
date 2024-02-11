@@ -1,5 +1,5 @@
 # Worker类
-WorkerMan中有两个重要的类Worker与Connection。
+Workerman中有两个重要的类Worker与Connection。
 
 Worker类用于实现端口的监听，并可以设置客户端连接事件、连接上消息事件、连接断开事件的回调函数，从而实现业务处理。
 

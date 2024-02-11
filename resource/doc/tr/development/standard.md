@@ -6,7 +6,7 @@ Uygulama dizinleri herhangi bir konuma yerleştirilebilir.
 
 ## Giriş Dosyası
 
-Nginx+PHP-FPM'deki PHP uygulamaları gibi, WorkerMan'deki uygulamalar da bir giriş dosyasına ihtiyaç duyar. Giriş dosyasının bir adı zorunlu değildir ve bu giriş dosyası PHP Cli modunda çalıştırılır.
+Nginx+PHP-FPM'deki PHP uygulamaları gibi, Workerman'deki uygulamalar da bir giriş dosyasına ihtiyaç duyar. Giriş dosyasının bir adı zorunlu değildir ve bu giriş dosyası PHP Cli modunda çalıştırılır.
 
 Giriş dosyası, dinleme işlemleriyle ilgili kodları içerir. Örneğin, aşağıdaki Worker tabanlı geliştirme kodu parçası:
 
@@ -34,7 +34,7 @@ Worker::runAll();
 
 ```
 
-## WorkerMan'de Kod Standartları
+## Workerman'de Kod Standartları
 
 1. Sınıflar büyük harfle başlayan CamelCase isimlendirmesi kullanır. Sınıf dosya adı, içerideki sınıf adı ile aynı olmalıdır ve otomatik yükleme için uygun olmalıdır. Örneğin:
 ```php

@@ -1,6 +1,6 @@
 # Connectionクラスの提供するインターフェース
 
-WorkerManには、WorkerとConnectionという2つの重要なクラスがあります。
+Workermanには、WorkerとConnectionという2つの重要なクラスがあります。
 
 各クライアント接続には、Connectionオブジェクトが対応しており、オブジェクトのonMessageやonCloseなどのコールバックを設定できます。さらに、クライアントにデータを送信するsendインターフェースや接続を閉じるcloseインターフェースなどが提供されており、その他にも必要なインターフェースがいくつかあります。
 

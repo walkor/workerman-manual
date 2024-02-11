@@ -29,5 +29,5 @@ Se il codice aziendale è orientato verso l'I/O, il numero dei processi può ess
 Se il codice aziendale è orientato verso la CPU, il numero dei processi può essere impostato uguale al numero dei core della CPU.
 
 ## Attenzione
-L'I/O di WorkerMan è sempre non bloccante, ad esempio, ```Connection->send``` è un'operazione non bloccante, quindi rientra nella categoria di operazioni CPU-intensive. Se non si conosce l'orientamento del proprio business, è sufficiente impostare il numero dei processi a circa 3 volte il numero dei core della CPU.
+L'I/O di Workerman è sempre non bloccante, ad esempio, ```Connection->send``` è un'operazione non bloccante, quindi rientra nella categoria di operazioni CPU-intensive. Se non si conosce l'orientamento del proprio business, è sufficiente impostare il numero dei processi a circa 3 volte il numero dei core della CPU.
 Inoltre, un numero maggiore di processi non significa necessariamente una migliore prestazione. Un numero eccessivo di processi aumenterà i costi di commutazione dei processi, influenzando le prestazioni.

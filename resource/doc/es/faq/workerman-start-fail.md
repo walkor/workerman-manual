@@ -23,7 +23,7 @@ Si workerman está ocupando el puerto y no se puede detener con el comando stop 
 
 ``` 
 killall php
-ps aux|grep WorkerMan|awk '{print $2}'|xargs kill -9
+ps aux|grep -i workerman|awk '{print $2}'|xargs kill -9
 ```
 
 #### Solución 4

@@ -1,5 +1,5 @@
 # Instruções de Instalação
-O Workerman é na realidade um pacote de código PHP. Se o seu ambiente PHP estiver configurado corretamente, você só precisa baixar o código-fonte do WorkerMan ou o demo para executá-lo.
+O Workerman é na realidade um pacote de código PHP. Se o seu ambiente PHP estiver configurado corretamente, você só precisa baixar o código-fonte do Workerman ou o demo para executá-lo.
 
 **Instalação via Composer:**
 ```sh
@@ -16,10 +16,10 @@ A partir da versão 3.5.3 do Workerman, o sistema suporta tanto Windows quanto L
  ` === As seguintes instruções se aplicam apenas ao ambiente do Workerman do sistema Linux, os usuários do Windows devem ignorar === `
 
 # Verificação do Ambiente do Sistema Linux
-No sistema Linux, você pode usar o seguinte script para testar se o ambiente PHP local atende aos requisitos de execução do WorkerMan.
+No sistema Linux, você pode usar o seguinte script para testar se o ambiente PHP local atende aos requisitos de execução do Workerman.
  `curl -Ss https://www.workerman.net/check | php`
 
-Se o script acima mostrar "ok" em todos os casos, isso significa que os requisitos do WorkerMan estão satisfeitos e você pode baixar o exemplo do [site oficial](https://www.workerman.net/) e executá-lo.
+Se o script acima mostrar "ok" em todos os casos, isso significa que os requisitos do Workerman estão satisfeitos e você pode baixar o exemplo do [site oficial](https://www.workerman.net/) e executá-lo.
 
 Caso contrário, siga a documentação abaixo para instalar as extensões ausentes.
 

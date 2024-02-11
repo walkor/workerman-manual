@@ -7,7 +7,7 @@ Bir işlemin ne yaptığını öğrenmek istediğinizde, `strace` komutuyla bir 
 ```plaintext
 Merhaba admin
 ---------------------------------------GLOBAL DURUM--------------------------------------------
-WorkerMan sürümü: 3.0.1
+Workerman sürümü: 3.0.1
 başlangıç zamanı: 2014-08-12 17:42:04   0 gün 1 saat çalışma
 ortalama yük: 3.34, 3.59, 3.67
 1 kullanıcı          8 çalışan       14 işlem

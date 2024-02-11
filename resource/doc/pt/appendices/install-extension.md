@@ -1,6 +1,6 @@
 # Instalação de Extensões
 ## Atenção
-Diferente do modo de execução Apache+PHP ou Nginx+PHP, o WorkerMan é executado com base no PHP de linha de comando [PHP CLI](http://php.net/manual/zh/features.commandline.php), utilizando um executável PHP diferente e um arquivo php.ini também diferente. Portanto, só porque uma extensão está instalada e aparece no ```phpinfo()``` do navegador, não significa que a extensão correspondente esteja instalada para o PHP CLI.
+Diferente do modo de execução Apache+PHP ou Nginx+PHP, o Workerman é executado com base no PHP de linha de comando [PHP CLI](http://php.net/manual/zh/features.commandline.php), utilizando um executável PHP diferente e um arquivo php.ini também diferente. Portanto, só porque uma extensão está instalada e aparece no ```phpinfo()``` do navegador, não significa que a extensão correspondente esteja instalada para o PHP CLI.
 
 ## Como verificar as extensões instaladas para o PHP CLI
 Executar o comando ```php -m``` listará as extensões já instaladas para o PHP CLI, e o resultado será semelhante ao seguinte:

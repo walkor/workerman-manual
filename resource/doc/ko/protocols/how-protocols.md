@@ -16,7 +16,7 @@
 위의 요청 데이터 끝에는 줄 바꿈 문자(이것은 PHP에서 **이중 인용부호** 문자열 "\n"로 표시됨)가 포함되어 있으며, 이는 요청의 종료를 의미합니다.
 
 ### 구현 단계
-WorkerMan에서 위의 프로토콜을 구현하려면, 프로토콜을 JsonNL이라고 가정하고, 프로젝트를 MyApp으로 가정하면 다음 단계가 필요합니다.
+Workerman에서 위의 프로토콜을 구현하려면, 프로토콜을 JsonNL이라고 가정하고, 프로젝트를 MyApp으로 가정하면 다음 단계가 필요합니다.
 
 1. 프로젝트의 Protocols 폴더에 프로토콜 파일을 넣어야 합니다. 예를들어, 파일은 MyApp/Protocols/JsonNL.php에 위치해야 합니다.
 
@@ -116,7 +116,7 @@ Worker::runAll();
 > 만약 `Class 'Protocols\JsonNL' not found` 에러가 발생한다면, [자동 로딩](../faq/autoload.md)을 참조하여 자동으로 로딩할 수 있도록 구현해야 합니다.
 
 ### 프로토콜 인터페이스 설명
-WorkerMan에서 개발하는 프로토콜 클래스는 반드시 input, encode, decode 세 가지의 정적 메서드를 구현해야 합니다. 프로토콜 인터페이스에 대한 자세한 설명은 Workerman/Protocols/ProtocolInterface.php를 참조하십시오. 다음과 같이 정의됩니다:
+Workerman에서 개발하는 프로토콜 클래스는 반드시 input, encode, decode 세 가지의 정적 메서드를 구현해야 합니다. 프로토콜 인터페이스에 대한 자세한 설명은 Workerman/Protocols/ProtocolInterface.php를 참조하십시오. 다음과 같이 정의됩니다:
 
 ```php
 namespace Workerman\Protocols;
@@ -145,7 +145,7 @@ interface ProtocolInterface
     /**
      * 요청 언패킹에 사용됩니다.
      *
-     * input 반환값이 0보다 크고 WorkerMan이 충분한 데이터를 수신했다면 자동으로 decode가 호출되고, 이후 onMessage 콜백이 발생하며 decode로 해석된 데이터가 onMessage의 두 번째 매개 변수로 전달됩니다.
+     * input 반환값이 0보다 크고 Workerman이 충분한 데이터를 수신했다면 자동으로 decode가 호출되고, 이후 onMessage 콜백이 발생하며 decode로 해석된 데이터가 onMessage의 두 번째 매개 변수로 전달됩니다.
      * 즉, 완전한 클라이언트 요청을 받으면 자동으로 decode가 호출되고, 비즈니스 코드에서 수동으로 호출할 필요가 없습니다.
      * @param ConnectionInterface $connection
      * @param string $recv_buffer
