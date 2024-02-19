@@ -106,7 +106,7 @@ use Workerman\Worker;
 $worker = new Worker('http://0.0.0.0:1234');
 $worker->onMessage = function (TcpConnection $connection, Request $request) {
     $http = new Client();
-    $http->request('https://api.bla.cn/v1/chat/completions', [
+    $http->request('https://api.ai.com/v1/chat/completions', [
         'method' => 'POST',
         'data' => json_encode([
             'model' => 'gpt-3.5-turbo',
@@ -116,7 +116,7 @@ $worker->onMessage = function (TcpConnection $connection, Request $request) {
         ]),
         'headers' => [
             'Content-Type' => 'application/json',
-            'Authorization' => 'Bearer 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',
+            'Authorization' => 'Bearer sk-xxx',
         ],
         'progress' => function($buffer) use ($connection) {
             $connection->send(new Chunk($buffer));
@@ -128,7 +128,7 @@ $worker->onMessage = function (TcpConnection $connection, Request $request) {
     $connection->send(new Response(200, [
         //"Content-Type" => "application/octet-stream",
         "Transfer-Encoding" => "chunked",
-    ], ' '));
+    ], ''));
 };
 Worker::runAll();
 ```
