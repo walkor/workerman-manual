@@ -33,7 +33,7 @@ $worker->onWorkerStart = function () {
     });
     // 消费失败触发的回调(可选)
     $client->onConsumeFailure(function (\Throwable $exception, $package) {
-        echo "consume failure\n";
+        echo "队列 " . $package['queue'] . " 消费失败\n";
         echo $exception->getMessage(), "\n";
         var_export($package);
     });
