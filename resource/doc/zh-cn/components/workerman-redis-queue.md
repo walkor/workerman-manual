@@ -21,15 +21,21 @@ require_once __DIR__ . '/vendor/autoload.php';
 $worker = new Worker();
 $worker->onWorkerStart = function () {
     $client = new Client('redis://127.0.0.1:6379');
-   // 订阅
+    // 订阅
     $client->subscribe('user-1', function($data){
         echo "user-1\n";
         var_export($data);
     });
-   // 订阅
+    // 订阅
     $client->subscribe('user-2', function($data){
         echo "user-2\n";
         var_export($data);
+    });
+    // 消费失败触发的回调(可选)
+    $client->onConsumeFailure(function (\Throwable $exception, $package) {
+        echo "consume failure\n";
+        echo $exception->getMessage(), "\n";
+        var_export($package);
     });
     // 定时向队列发送消息
     Timer::add(1, function()use($client){
@@ -45,6 +51,7 @@ Worker::runAll();
   * <a href="#send"><code>Client::<b>send()</b></code></a>
   * <a href="#subscribe"><code>Client::<b>subscribe()</b></code></a>
   * <a href="#unsubscribe"><code>Client::<b>unsubscribe()</b></code></a>
+  * <a href="#unsubscribe"><code>Client::<b>onConsumeFailure()</b></code></a>
 
 -------------------------------------------------------
 
@@ -92,6 +99,31 @@ Worker::runAll();
 取消订阅
 
 * `$queue` 队列名或者包含多个队列名的数组
+
+-------------------------------------------------------
+
+<a name="onConsumeFailure"></a>
+### onConsumeFailure(callable $callback)
+
+消费失败时触发
+
+* `$callback` - `function (\Throwable $exception, array $package)`, `$package`是队列内部数据结构，包含了`data` `queue` `attempts` `max_attempts`等信息
+
+支持更改内部数据结构`$package`的值，只需要将更改后的`$package` return 即可。例如当某个消息放生某种错误时不希望再次重试，代码类似
+
+```
+$client->onConsumeFailure(function (\Throwable $exception, $package) {
+    echo "失败的队列名:" . $package['queue'] . "\n";
+    // 当队列发生某种致命错误时
+    if ($exception->getMessage() === 'Some Fatal error') {
+        // 将此消息的最大重试次数设置为0
+        $package['max_attempts'] = 0;
+    }
+    // 返回修改后的`$package`数据结构
+    return $package;
+});
+```
+
 
 -------------------------------------------------------
 
