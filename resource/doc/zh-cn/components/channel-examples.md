@@ -69,7 +69,7 @@ Worker::runAll();
 ```
 
 `start_http.php`
-整个系统可以部署多个start_ws服务，假设运行在 192.168.1.4和192.168.1.5 两台服务器上。
+整个系统可以部署多个start_http服务，假设运行在 192.168.1.4和192.168.1.5 两台服务器上。
 ```php
 <?php
 use Workerman\Worker;
