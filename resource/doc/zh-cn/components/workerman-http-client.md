@@ -122,7 +122,7 @@ $worker->onMessage = function (TcpConnection $connection, Request $request) {
             $connection->send(new Chunk($buffer));
         },
         'success' => function($response) use ($connection) {
-            $connection->send(new Chunk(''));
+            $connection->send(new Chunk('')); // 发送空的的chunk代表resonse结束
         },
     ]);
     $connection->send(new Response(200, [
@@ -202,6 +202,41 @@ Worker::runAll();
 2、所有的异步代码只能在workerman启动后的运行环境运行
 
 3、支持基于workerman开发的所有项目，包括GatewayWorker、PHPSocket.io等
+
+## webman中的用法
+如果你需要在webman中使用异步http请求并将结果返回给前端，参考以下用法
+
+```php
+<?php
+namespace app\controller;
+
+use support\Request;
+use support\Response;
+use Workerman\Protocols\Http\Chunk;
+
+class IndexController
+{
+    public function index(Request $request)
+    {
+        $connection = $request->connection;
+        $http = new \Workerman\Http\Client();
+        $http->get('https://example.com/', function ($response) use ($connection) {
+            $connection->send(new Chunk($response->getBody()));
+            $connection->send(new Chunk('')); // 发送空的的chunk代表resonse结束
+        });
+        return response()->withHeaders([
+            "Transfer-Encoding" => "chunked",
+        ]);
+    }
+}
+```
+
+以上用法是先给客户端返回一个带chunked的http头，然后将数据以chunk的方式发送给客户端。
+
+
+## 在webman中请求OpenAI接口并流式返回
+参考 https://www.workerman.net/plugin/157
+
 
 
 
