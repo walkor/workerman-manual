@@ -204,6 +204,12 @@ ws.onmessage = function(e) {
 };
 ```
 
+**常见错误**
+`SSL routines:SSL23_GET_CLIENT_HELLO:http request`
+原因是客户端使用`ws://域名.com`来访问导致的，正确的访问地址应该是`wss://域名.com`，既以wss开头访问。
+出现这个问题大部分场景是端口原本是ws的，突然改成wss后有些客户端页面没刷新，仍然以ws方式访问，导致错误。
+这个错误可以忽略，不影响正常wss的连接。
+
 **注意：**
 
 1、如果必须使用443端口请使用上面第一种方案nginx/apache代理方式实现wss。
