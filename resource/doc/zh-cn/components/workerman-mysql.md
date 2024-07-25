@@ -1,5 +1,8 @@
 # Workerman/MySQL
 
+> **注意**
+> 此库不再维护，推荐使用[illuminate/database](https://github.com/illuminate/database)或[topthink/think-orm](https://github.com/top-think/think-orm)
+
 ## 说明
 常驻内存的程序在使用mysql时经常会遇到```mysql gone away```的错误，这个是由于程序与mysql的连接长时间没有通讯，连接被mysql服务端踢掉导致。本数据库类可以解决这个问题，当发生```mysql gone away```错误时，会自动重试一次。
 
