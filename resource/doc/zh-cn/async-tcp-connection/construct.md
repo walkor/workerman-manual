@@ -89,7 +89,11 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 $worker = new Worker();
 
-$worker->onWorkerStart = function($worker){
+$worker->onWorkerStart = function($worker) {
+    // 如果你想只在一个进程里发起连接，可以通过判断$worker->id来做到，例如下面是只在0号进程发起连接
+    if ($worker->id != 0) {
+        return;
+    }
     // 设置访问对方主机的本地ip及端口(每个socket连接都会占用一个本地端口)
     $context_option = array(
         'socket' => array(
