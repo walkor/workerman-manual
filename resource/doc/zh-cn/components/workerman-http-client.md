@@ -122,7 +122,7 @@ $worker->onMessage = function (TcpConnection $connection, Request $request) {
             $connection->send(new Chunk($buffer));
         },
         'success' => function($response) use ($connection) {
-            $connection->send(new Chunk('')); // 发送空的的chunk代表resonse结束
+            $connection->send(new Chunk('')); // 发送空的的chunk代表response结束
         },
     ]);
     $connection->send(new Response(200, [
@@ -222,7 +222,7 @@ class IndexController
         $http = new \Workerman\Http\Client();
         $http->get('https://example.com/', function ($response) use ($connection) {
             $connection->send(new Chunk($response->getBody()));
-            $connection->send(new Chunk('')); // 发送空的的chunk代表resonse结束
+            $connection->send(new Chunk('')); // 发送空的的chunk代表response结束
         });
         return response()->withHeaders([
             "Transfer-Encoding" => "chunked",
