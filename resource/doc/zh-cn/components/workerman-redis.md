@@ -10,7 +10,7 @@ workeman/redis是基于workerman的异步redis组件。
 
 ## 安装：
 ```
-composer require workerman/redis
+composer require workerman/redis ^v2.0.3
 ```
 
 ## 回调用法
