@@ -71,7 +71,7 @@ Workerman的版本```version:3.5.13```
 
 pid：进程pid
 
-memory：该进程当前占用内存（不包括php自身可执行文件的占用的内存）
+memory：该进程PHP申请的内存。该值不统计PHP可执行文件等占用内存，所以显示值要小于实际进程占用内存，具体请参考[memory_get_usage](https://www.php.net/manual/zh/function.memory-get-usage.php)。
 
 listening：传输层协议及监听ip端口。如果不监听任何端口则显示none。参见[Worker类构造函数](worker/construct.md)
 
