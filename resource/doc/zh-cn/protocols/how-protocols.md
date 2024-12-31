@@ -43,7 +43,7 @@ class JsonNL
     /**
      * 检查包的完整性
      * 如果能够得到包长，则返回包的在buffer中的长度，否则返回0继续等待数据
-     * 如果协议有问题，则可以返回false，当前客户端连接会因此断开
+     * 如果协议有问题，则可以返回-1，当前客户端连接会因此断开
      * @param string $buffer
      * @return int
      */
@@ -129,11 +129,11 @@ interface ProtocolInterface
      *
      * 如果可以在$recv_buffer中得到请求包的长度则返回整个包的长度
      * 否则返回0，表示需要更多的数据才能得到当前请求包的长度
-     * 如果返回false或者负数，则代表错误的请求，则连接会断开
+     * 如果返回-1，则代表错误的请求，则连接会断开
      *
      * @param ConnectionInterface $connection
      * @param string $recv_buffer
-     * @return int|false
+     * @return int
      */
     public static function input($recv_buffer, ConnectionInterface $connection);
 
