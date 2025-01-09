@@ -12,6 +12,12 @@ https://github.com/walkor/mqtt
 composer require workerman/mqtt
 ```
 
+# 支持
+
+- MQTT
+- MQTT5
+- MQTT over websocket
+
 # 示例
 **subscribe.php**
 ```php
@@ -95,6 +101,7 @@ Worker::runAll();
     * `bindto` 用来指定本地以哪个ip和端口向Broker发起连接，默认值为''
     * `ssl` ssl选项，默认是 `false`，如果设置为`true`，则以ssl方式连接。同时支持传入ssl上下文数组，用来配置本地证书等，ssl上下文参考https://php.net/manual/en/context.ssl.php
     * `debug` 是否开启debug模式，debug模式可以输出与Broker通讯的详细信息，默认为`false`
+    * `uri` mqtt over websocket的uri地址，一般为 `/mqtt`
 
 -------------------------------------------------------
 
@@ -189,4 +196,4 @@ Worker::runAll();
 ### callback onClose()
 当连接关闭时触发，无论是客户端主动关闭还是服务端关闭都会触发`onClose`
 
-
+## 更多示例`examples/workerman`
