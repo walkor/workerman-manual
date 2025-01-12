@@ -161,7 +161,7 @@ Worker::runAll();
 ## 协程用法
 
 > **注意**
-> 协程用法需要workerman>=5.0，workerman/http-client>=2.0.0 并安装 composer require revolt/event-loop ^1.0.0
+> 协程用法需要workerman>=5.0，workerman/http-client>=2.0.0 并安装 composer require revolt/event-loop
 
 ```php
 use Workerman\Worker;
