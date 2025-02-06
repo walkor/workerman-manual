@@ -13,10 +13,6 @@
     * [目录结构](development/directory-structure.md)
     * [开发规范](development/standard.md)
     * [基本流程](development/process.md)
-* 通讯协议
-    * [通讯协议作用](protocols/why-protocols.md)
-    * [定制通讯协议](protocols/how-protocols.md)
-    * [一些例子](protocols/example.md)
 * [Worker类](worker.md)
     * [构造函数](worker/construct.md)
     * 属性
@@ -91,6 +87,18 @@
     * [session会话](http/session.md)
     * [session管理](http/session-control.md)
     * [SSE](http/SSE.md)
+* 协程
+    * [协程介绍](coroutine/coroutine.md)
+    * [协程上下文 Context](coroutine/context.md)
+    * [连接池 Pool](coroutine/pool.md)
+    * [协程屏障 Barrier](coroutine/barrier.md)
+    * [协程并发 Parallel](coroutine/parallel.md)
+    * [协程锁 Locker](coroutine/locker.md)
+    * [协程通道 Channel](coroutine/channel.md)
+* 通讯协议
+    * [通讯协议作用](protocols/why-protocols.md)
+    * [定制通讯协议](protocols/how-protocols.md)
+    * [一些例子](protocols/example.md)
 * 调试
     * [基本调试](debug/base.md)
     * [status命令查看运行状态](debug/status.md)
