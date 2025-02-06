@@ -85,18 +85,18 @@ $http_worker->onWorkerStart = function()
 };
 $http_worker->onMessage = function(TcpConnection $connection, $request)
 {
-    // 兼容workerman4.x
+    // 兼容workerman4.x 5.x
     if (!is_array($request)) {
-            $_GET = $request->get();
-   }
+        $get = $request->get();
+    }
     $connection->send('ok');
-    if(empty($_GET['content'])) return;
+    if(empty($get['content'])) return;
     // 是向某个worker进程中某个连接推送数据
-    if(isset($_GET['to_worker_id']) && isset($_GET['to_connection_id']))
+    if(isset($get['to_worker_id']) && isset($get['to_connection_id']))
     {
-        $event_name = $_GET['to_worker_id'];
-        $to_connection_id = $_GET['to_connection_id'];
-        $content = $_GET['content'];
+        $event_name = $get['to_worker_id'];
+        $to_connection_id = $get['to_connection_id'];
+        $content = $get['content'];
         Channel\Client::publish($event_name, array(
            'to_connection_id' => $to_connection_id,
            'content'          => $content
@@ -106,7 +106,7 @@ $http_worker->onMessage = function(TcpConnection $connection, $request)
     else
     {
         $event_name = '广播';
-        $content = $_GET['content'];
+        $content = $get['content'];
         Channel\Client::publish($event_name, array(
            'content'          => $content
         ));

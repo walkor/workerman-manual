@@ -57,7 +57,7 @@ Workerman因为常驻内存，本身不依赖apache/nginx/php-fpm，没有容器
 现在早已经不是单枪匹马的时代了，单台服务器性能再强悍也有极限，分布式多服务器部署才是王道。Workerman直接提供了一套长连接分布式通讯方案[GatewayWorker框架](https://doc2.workerman.net)，加服务器只需要简单配置下然后启动即可，业务代码零更改，系统承载能力成倍增加。如果你是开发TCP长连接应用，建议直接用[GatewayWorker](https://doc2.workerman.net)，它是对Workerman的一个包装，针对长连接应用提供了更丰富的接口以及强悍的分布式处理能力。
 
 ## 本手册作用范围
-Workerman 3.x - 4.x 版本
+Workerman 3.x - 5.x 版本
 
 ## windows用户（必读）
 workerman同时支持linux系统及windows系统。windows版本workerman本身**不依赖任何扩展**，只需要配置好PHP环境变量即可，**windows版本workerman安装及注意事项参见[windows用户必看](https://www.workerman.net/windows)。**
