@@ -80,7 +80,7 @@ Worker::runAll();
 <?php
 use Workerman\Connection\TcpConnection;
 use Workerman\Coroutine\Context;
-use Workerman\Coroutine\Coroutine;
+use Workerman\Coroutine;
 use Workerman\Coroutine\Pool;
 use Workerman\Events\Swoole;
 use Workerman\Protocols\Http\Request;

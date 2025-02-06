@@ -17,7 +17,7 @@ workerman提供了一个通用的协程接口，底层自动兼容Swoole/Swow/Fi
 ```php
 <?php
 use Workerman\Connection\TcpConnection;
-use Workerman\Coroutine\Coroutine;
+use Workerman\Coroutine;
 use Workerman\Events\Swoole;
 use Workerman\Protocols\Http\Request;
 use Workerman\Worker;

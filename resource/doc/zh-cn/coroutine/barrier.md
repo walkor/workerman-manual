@@ -13,7 +13,7 @@ Barrier 是一个用于协程同步的工具，允许在异步任务中等待所
 <?php
 use Workerman\Connection\TcpConnection;
 use Workerman\Coroutine\Barrier;
-use Workerman\Coroutine\Coroutine;
+use Workerman\Coroutine;
 use Workerman\Events\Swoole;
 use Workerman\Protocols\Http\Request;
 use Workerman\Worker;

@@ -13,7 +13,7 @@ Channel是协程之间通信的一种机制。一个协程可以将数据推送�
 <?php
 use Workerman\Connection\TcpConnection;
 use Workerman\Coroutine\Channel;
-use Workerman\Coroutine\Coroutine;
+use Workerman\Coroutine;
 use Workerman\Events\Swoole;
 use Workerman\Protocols\Http\Request;
 use Workerman\Worker;
