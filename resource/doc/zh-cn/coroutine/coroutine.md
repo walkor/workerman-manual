@@ -7,12 +7,12 @@ workerman提供了一个通用的协程接口，底层自动兼容Swoole/Swow/Fi
 > 此特性需要 workerman>=5.1.0
 
 ## 注意
-* 仅支持Swoole/Swow/Fiber驱动
-* 通过Swoole或者Swow扩展可以实现PHP阻塞函数自动协程化，从而实现原来的同步代码异步执行
-* Fiber无法像Swoole和Swow那样自动协程化，遇到PHP自带的阻塞函数时会阻塞整个进程，并不会发生协程切换
-* 如果使用Fiber协程需要安装 `composer require revolt/event-loop`
-* 当使用Swoole/Swow/Fiber驱动时，workerman每次运行onWorkerStart/onMessage/onConnect/onClose等回调时会自动创建一个协程来执行
-* 可以利用`$worker->eventLoop=xxx;`给每个worker设置不同的协程驱动
+* 协程仅支持`Swoole` `Swow` `Fiber`驱动
+* 如果使用`Fiber`驱动时需要安装 `composer require revolt/event-loop`
+* `Swoole`或者`Swow`驱动可以实现PHP阻塞函数自动协程化，从而实现原来的同步代码异步执行
+* 但`Fiber`无法像`Swoole`和`Swow`那样自动协程化，遇到PHP自带的阻塞函数时会阻塞整个进程，并不会发生协程切换
+* 当使用`Swoole` `Swow` `Fiber`驱动时，`workerman`每次运行`onWorkerStart` `onMessage` `onConnect` `onClose`等回调时会自动创建一个协程来执行
+* 可以利用`$worker->eventLoop=xxx;`给不同`worker`设置不同的协程驱动
 
 ```php
 <?php
@@ -104,9 +104,3 @@ PHP引入协程后最大的作用就是可以用同步的方式编写异步代�
 
 引入协程后产生了协程创建、调度、销毁、连接池等额外开销。
 通过大量压测数据来看，在充分利用CPU的情况下，引入协程后极限性能比阻塞式IO下降约10%-20%。
-
-
-
-
-
-
