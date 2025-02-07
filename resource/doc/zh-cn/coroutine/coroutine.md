@@ -19,6 +19,7 @@ workerman提供了一个通用的协程接口，底层自动兼容Swoole/Swow/Fi
 use Workerman\Connection\TcpConnection;
 use Workerman\Coroutine;
 use Workerman\Events\Swoole;
+use Workerman\Events\Fiber;
 use Workerman\Protocols\Http\Request;
 use Workerman\Worker;
 require_once __DIR__ . '/vendor/autoload.php';
