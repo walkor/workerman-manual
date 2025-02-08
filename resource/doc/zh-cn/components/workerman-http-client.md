@@ -161,7 +161,7 @@ Worker::runAll();
 ## 协程用法
 
 > **注意**
-> 协程用法需要workerman>=5.1，安装`swoole`或者`swow`扩展，或者安装`composer require revolt/event-loop` 以支持Fiber驱动
+> 协程用法需要workerman>=5.1，http-client>=3.0，安装`swoole`或者`swow`扩展，或者安装`composer require revolt/event-loop` 以支持Fiber驱动
 
 ```php
 use Workerman\Worker;
