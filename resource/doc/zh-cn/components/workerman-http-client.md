@@ -161,7 +161,7 @@ Worker::runAll();
 ## 协程用法
 
 > **注意**
-> 协程用法需要workerman>=5.0，workerman/http-client>=2.0.0 并安装 composer require revolt/event-loop
+> 协程用法需要workerman>=5.1，安装`swoole`或者`swow`扩展，或者安装`composer require revolt/event-loop` 以支持Fiber驱动
 
 ```php
 use Workerman\Worker;
@@ -169,6 +169,7 @@ use Workerman\Worker;
 require_once __DIR__ . '/vendor/autoload.php';
 
 $worker = new Worker();
+$worker->eventLoop = \Workerman\Events\Swoole::class; // Or \Workerman\Events\Swow::class or \Workerman\Events\Fiber::class
 $worker->onWorkerStart = function () {
     $http = new Workerman\Http\Client();
 
@@ -201,7 +202,7 @@ Worker::runAll();
 
 2、所有的异步代码只能在workerman启动后的运行环境运行
 
-3、支持基于workerman开发的所有项目，包括GatewayWorker、PHPSocket.io等
+3、支持基于workerman开发的所有项目，包括Webman、GatewayWorker、PHPSocket.io等
 
 ## webman中的用法
 如果你需要在webman中使用异步http请求并将结果返回给前端，参考以下用法
