@@ -93,6 +93,7 @@
     * [连接池 Pool](coroutine/pool.md)
     * [协程屏障 Barrier](coroutine/barrier.md)
     * [协程并发 Parallel](coroutine/parallel.md)
+    * [协程并发 WaitGroup](coroutine/wait-group.md)
     * [协程锁 Locker](coroutine/locker.md)
     * [协程通道 Channel](coroutine/channel.md)
 * 通讯协议
