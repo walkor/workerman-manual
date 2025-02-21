@@ -14,6 +14,9 @@ composer require workerman/rabbitmq
 
 ### 消费者
 
+> **提示**
+> 需要 workerman >= v5.1
+
 - receive.php
 
 ```php
@@ -28,7 +31,7 @@ use Workerman\RabbitMQ\Client;
 require_once __DIR__ . '/vendor/autoload.php';
 
 $worker = new Worker();
-$worker->eventLoop = \Workerman\Events\Revolt::class;
+$worker->eventLoop = \Workerman\Events\Fiber::class;
 
 $worker->onWorkerStart = function() {
     // Create RabbitMQ Client
@@ -71,6 +74,9 @@ Worker::runAll();
 
 ### 在workerman环境中使用publish
 
+> **提示**
+> 需要 workerman >= v5.1
+
 - send.php
 
 ```php
@@ -83,7 +89,7 @@ use Workerman\Worker;
 require_once __DIR__ . '/vendor/autoload.php';
 
 $worker = new Worker();
-$worker->eventLoop = \Workerman\Events\Revolt::class;
+$worker->eventLoop = \Workerman\Events\Fiber::class;
 $worker->onWorkerStart = function() {
     $client = Client::factory([
         'host' => 'host.docker.internal',
