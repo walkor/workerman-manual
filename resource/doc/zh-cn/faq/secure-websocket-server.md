@@ -12,6 +12,13 @@ wss协议实际是[websocket](https://baike.baidu.com/item/WebSocket)+[SSL](http
 
 ## 方法一、利用nginx/apache代理SSL(推荐)
 
+> **推荐理由**
+> * 可以复用443端口，客户端连接时不必指定端口
+> * 集中管理 SSL 证书，可以复用网站配置
+> * 可以负载均衡
+> * 自带日志监控
+> * 更好的兼容性
+
 
 **通讯原理及流程**
 
