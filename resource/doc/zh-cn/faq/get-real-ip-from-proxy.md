@@ -40,25 +40,24 @@ server {
 
 ```php
 <?php
+
 use Workerman\Worker;
 use Workerman\Connection\TcpConnection;
 require_once __DIR__ . '/vendor/autoload.php';
 
 $worker = new Worker('websocket://0.0.0.0:7272');
 
-// 客户端练上来时，即完成TCP三次握手后的回调
-$worker->onConnect = function(TcpConnection $connection) {
-   /**
-    * 客户端websocket握手时的回调onWebSocketConnect
-    * 在onWebSocketConnect回调中获得nginx通过http头中的X_REAL_IP值
-    */
-   $connection->onWebSocketConnect = function(TcpConnection $connection){
-       /**
-        * connection对象本没有realIP属性，这里给connection对象动态添加个realIP属性
-        * 记住php对象是可以动态添加属性的，你也可以用自己喜欢的属性名
-        */
-       $connection->realIP = $_SERVER['HTTP_X_REAL_IP'];
-   };
+/**
+ * 客户端websocket握手时的回调onWebSocketConnect
+ * 在onWebSocketConnect回调中获得nginx通过http头中的X_REAL_IP值
+ */
+$worker->onWebSocketConnect = function(TcpConnection $connection, $request){
+    /**
+     * connection对象本没有realIP属性，这里给connection对象动态添加个realIP属性
+     * 记住php对象是可以动态添加属性的，你也可以用自己喜欢的属性名
+     */
+    //$connection->realIP = $_SERVER['HTTP_X_REAL_IP']; // workerman v4 用法
+    $connection->realIP = $request->header('x-real-ip'); // workerman v5 用法
 };
 $worker->onMessage = function(TcpConnection $connection, $data)
 {
