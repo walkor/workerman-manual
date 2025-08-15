@@ -204,6 +204,8 @@ Worker::runAll();
 
 3、支持基于workerman开发的所有项目，包括Webman、GatewayWorker、PHPSocket.io等
 
+4、尽量将client对象保存起来复用，这样能充分利用连接池提高性能，不要每次`new Workerman\Http\Client()`重复创建对象。
+
 ## webman中的用法
 如果你需要在webman中使用异步http请求并将结果返回给前端，参考以下用法
 
@@ -219,8 +221,10 @@ class IndexController
 {
     public function index(Request $request)
     {
+        // client对象保存起来复用，可大幅度提高性能
+        static $http;
         $connection = $request->connection;
-        $http = new \Workerman\Http\Client();
+        $http = $http ?: new \Workerman\Http\Client();
         $http->get('https://example.com/', function ($response) use ($connection) {
             $connection->send(new Chunk($response->getBody()));
             $connection->send(new Chunk('')); // 发送空的的chunk代表response结束
@@ -232,7 +236,10 @@ class IndexController
 }
 ```
 
-以上用法是先给客户端返回一个带chunked的http头，然后将数据以chunk的方式发送给客户端。
+以上用法是先给客户端返回一个带chunked的http头，然后将数据以chunk的方式发送给客户端，当然也可以参考上面使用协程用法。
+
+> **注意**
+> 以上代码为了复用client对象将其存储在了方法作用域的静态变量中，实际上也可以存储到类的静态成员中或者全局对象里。
 
 
 ## 在webman中请求OpenAI接口并流式返回
