@@ -2,8 +2,6 @@
 
 workerman从4.x版本开始加强了HTTP服务的支持。引入了请求类、响应类、session类以及[SSE](SSE.md)。如果你想使用workerman的HTTP服务，强烈推荐使用workerman4.x或者以后的更高版本。
 
-**注意以下都是workerman4.x版本的用法，不兼容workerman3.x。**
-
 
 # 获取session对象
 ```php
@@ -234,5 +232,6 @@ $has = $session->exists('name');
 ```
 以上代码也是用来判断session数据是否存在，区别时当对应的session项值为null时，也返回true。
 
-
+## 注意事项
+在使用 session 时不建议直接存储类的实例对象，尤其是来源不可控的类实例，反序列化时可能造成潜在风险。
 
