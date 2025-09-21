@@ -1,6 +1,7 @@
 {
-  "name": "workerman",
-  "lang":"Arabic",
+  "name": "webman manual",
+  "lang":"العربية",
   "repo":"https://github.com/walkor/workerman-manual",
-  "zh-lang": "阿拉伯语"
+  "zh-lang": "阿拉伯语",
+  "order": 10
 }

@@ -1,6 +1,7 @@
 {
-  "name": "workerman",
-  "lang":"Russian",
+  "name": "webman manual",
+  "lang":"Русский",
   "repo":"https://github.com/walkor/workerman-manual",
-  "zh-lang": "俄语"
+  "zh-lang": "俄语",
+  "order": 6
 }

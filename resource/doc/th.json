@@ -1,6 +1,7 @@
 {
-  "name": "workerman",
-  "lang":"Thai",
+  "name": "webman manual",
+  "lang":"ไทย",
   "repo":"https://github.com/walkor/workerman-manual",
-  "zh-lang": "泰语"
+  "zh-lang": "泰语",
+  "order": 15
 }

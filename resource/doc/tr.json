@@ -1,6 +1,7 @@
 {
-  "name": "workerman",
-  "lang":"Turkish",
+  "name": "webman manual",
+  "lang":"Türkçe",
   "repo":"https://github.com/walkor/workerman-manual",
-  "zh-lang": "土耳其语"
+  "zh-lang": "土耳其语",
+  "order": 13
 }

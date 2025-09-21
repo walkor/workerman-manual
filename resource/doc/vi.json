@@ -1,6 +1,7 @@
 {
-  "name": "workerman",
-  "lang":"Vietnamese",
+  "name": "webman manual",
+  "lang":"Tiếng Việt",
   "repo":"https://github.com/walkor/workerman-manual",
-  "zh-lang": "越南语"
+  "zh-lang": "越南语",
+  "order": 14
 }

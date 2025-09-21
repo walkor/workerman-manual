@@ -1,6 +1,7 @@
 {
-  "name": "workerman",
-  "lang":"Japanese",
+  "name": "webman manual",
+  "lang":"日本語",
   "repo":"https://github.com/walkor/workerman-manual",
-  "zh-lang": "日语"
+  "zh-lang": "日语",
+  "order": 7
 }
