@@ -120,7 +120,7 @@ function translateTraditionalChinese($content, $file, $done = null, $attempt = 0
     }
     $apikey = $apikeys[$last_key_index];
     $chat = new Chat(['apikey' => $apikey, 'api' => $api]);
-    $prompt = "你是资深技术文档本地化专家。请将以下 Webman（基于 Workerman 的高性能 PHP 框架）官方文档精准翻译为{$zh_lang}，并严格遵循：\n"
+    $prompt = "你是资深技术文档本地化专家。请将以下 Workerman 官方文档精准翻译为{$zh_lang}，并严格遵循：\n"
         . "1) 忠实准确、通顺自然，不增删含义，不编造内容；尽量与原文段落一一对应，不合并不拆分，不改变空行与缩进。\n"
         . "2) 完整保留 Markdown 结构与格式：标题层级、列表编号、表格、链接与锚点、图片、引用、分隔线、脚注均保持不变。\n"
         . "3) 代码块、命令行、配置与输出不翻译，仅翻译其中的自然语言注释；内联代码与反引号内容保持原样。\n"
