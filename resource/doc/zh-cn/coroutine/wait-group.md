@@ -13,7 +13,7 @@
 ```php
 <?php
 use Workerman\Connection\TcpConnection;
-use Workerman\Coroutine\Barrier;
+use Workerman\Coroutine\WaitGroup;
 use Workerman\Coroutine;
 use Workerman\Events\Swoole;
 use Workerman\Protocols\Http\Request;
