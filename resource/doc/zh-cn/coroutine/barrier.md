@@ -25,7 +25,7 @@ $worker->eventLoop = Swoole::class; // Or Swow::class or Fiber::class
 $worker->onMessage = function (TcpConnection $connection, Request $request) {
     $barrier = Barrier::create();
     for ($i=1; $i<5; $i++) {
-        // 注意需要用use传递屏障
+        // 注意需要用use传递$barrier屏障
         Coroutine::create(function () use ($barrier, $i) {
             // Do something
         });
