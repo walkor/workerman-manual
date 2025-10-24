@@ -25,6 +25,7 @@ $worker->eventLoop = Swoole::class; // Or Swow::class or Fiber::class
 $worker->onMessage = function (TcpConnection $connection, Request $request) {
     $barrier = Barrier::create();
     for ($i=1; $i<5; $i++) {
+        // 注意需要用use传递屏障
         Coroutine::create(function () use ($barrier, $i) {
             // Do something
         });
@@ -36,6 +37,10 @@ $worker->onMessage = function (TcpConnection $connection, Request $request) {
 
 Worker::runAll();
 ```
+
+
+> **注意**
+> 需要在协程用使用 use 语法传递屏障，增加引用计数。
 
 ## 接口说明
 
