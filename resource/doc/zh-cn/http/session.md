@@ -29,7 +29,8 @@ Worker::runAll();
 ```
 **注意事项**
 - session必须在`$connection->send()`调用之前操作。
-- session在对象销毁时会自动保存修改，所以不要把`$request->session()`返回的对象保存在全局数组或者类成员中导致session无法保存。
+- session在对象销毁时会自动保存修改，如果你想立刻保存请手动调用`$session->save()`。
+- 将session对象或者request对象保存到全局变量将阻止session对象的销毁，无法自动保存session，需要手动调用 `$session->save()`
 - session默认存储在磁盘文件中，如果想要更好的性能建议使用redis。
 
 
