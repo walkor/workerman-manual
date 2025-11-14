@@ -5,3 +5,7 @@ Workerman中有两个重要的类Worker与Connection。
 每个客户端连接对应一个Connection对象，可以设置对象的onMessage、onClose等回调，同时提供了向客户端发送数据send接口与关闭连接close接口，以及其它一些必要的接口。
 
 可以说Worker是一个监听容器，负责接受客户端连接，并把连接包装成connection对象式提供给开发者操作。
+
+> **注意**
+> 开发者不要使用`$connection->headers`属性，使用`$connection->headers`属性时框架不会校验header的合法性，可能会导致安全问题。
+> 如需设置http头请使用`$response->header()` 或 `$response->withHeaders()`接口。
