@@ -26,9 +26,10 @@ class Doc
             return redirect("/doc/$lang/");
         }
 
+        $is_index = false;
         if ($uri === "/doc/$lang/") {
             $uri = "/doc/$lang/README.md";
-            $index_title = "$lang";
+            $is_index = true;
         } else {
             if (pathinfo($uri, PATHINFO_EXTENSION) !== 'html') {
                 return notfound();
@@ -55,7 +56,7 @@ class Doc
         $path = substr($request->uri(), strlen("/doc/$lang/"));
 
         return view('doc/view', [
-            'html_title' => $index_title??($title ? "$title-{$info['name']}": $info['name']),
+            'html_title' => $this->buildHtmlTitle($title, $info['name'], $is_index),
             'repo'        => $repo,
             'name'        => $info['name'],
             'sidebar'     => $sidebar,
@@ -149,6 +150,14 @@ class Doc
     protected function getInfo($lang)
     {
         return json_decode(file_get_contents(resource_path() . "/doc/$lang.json"), true);
+    }
+
+    protected function buildHtmlTitle(string $pageTitle, string $manualName, bool $isIndex): string
+    {
+        if ($isIndex || $pageTitle === '' || $pageTitle === $manualName) {
+            return $manualName;
+        }
+        return "$pageTitle | $manualName";
     }
 
 }
